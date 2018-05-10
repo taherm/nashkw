@@ -17,7 +17,7 @@ class CountriesTableSeeder extends Seeder
     {
         $countries = config('countries');
         foreach($countries as $country) {
-            factory(Country::class, app()->environment('production') ? 2 : 2)->create(
+            factory(Country::class)->create(
                 [
                     'name_ar' => $country['name_ar'],
                     'name_en' => $country['name_en'],

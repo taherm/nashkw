@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\Country;
+use App\Models\Country;
 use Faker\Generator as Faker;
 
 $factory->define(Country::class, function (Faker $faker) {
@@ -8,6 +8,7 @@ $factory->define(Country::class, function (Faker $faker) {
         'name_ar' => $faker->name,
         'name_en' => $faker->name,
         'flag' => $faker->numberBetween(1, 10) . '.jpeg',
-        'order' => $faker->randomDigit
+        'order' => $faker->randomDigit,
+        'code' => $faker->name
     ];
 });

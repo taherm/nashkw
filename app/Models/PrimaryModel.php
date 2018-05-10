@@ -5,7 +5,6 @@
  * Date: 4/16/16
  * Time: 7:31 PM
  */
-
 namespace App\Models;
 
 use App\Services\Traits\LocaleTrait;

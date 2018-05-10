@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Model\Country;
-use App\Model\PrimaryModel;
 
 class Currency extends PrimaryModel
 {
