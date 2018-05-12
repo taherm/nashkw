@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Contactus;
 use Illuminate\Database\Seeder;
 
 class ContactusTableSeeder extends Seeder
@@ -11,6 +12,6 @@ class ContactusTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Contactus::class)->create();
     }
 }

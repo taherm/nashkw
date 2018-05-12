@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Model\PrimaryModel;
 
 class Newsletter extends PrimaryModel
 {

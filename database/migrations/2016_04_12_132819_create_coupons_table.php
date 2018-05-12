@@ -21,7 +21,7 @@ class CreateCouponsTable extends Migration
             $table->boolean('consumed')->default(0);
             $table->string('code');
             // price after sale
-            $table->integer('minimum_charge');
+            $table->integer('minimum_charge')->nullable();
 
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('due_date')->nullable();

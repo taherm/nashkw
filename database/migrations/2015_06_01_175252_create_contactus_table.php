@@ -27,6 +27,7 @@ class CreateContactusTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('instagram')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }
