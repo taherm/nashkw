@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Src\User;
+namespace App\Models;
 
 
 class Faq extends PrimaryModel

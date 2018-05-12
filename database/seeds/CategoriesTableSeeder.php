@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\Category;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesTableSeeder extends Seeder
@@ -13,7 +13,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         factory(Category::class, app()->environment('production') ? 2 : 20)->create(['parent_id' => 0 ])->each(function ($c) {
-            $c->children()->saveMany(factory(Category::class, 3)->create(['is_parent' => false, 'parent_id' => $c->id]));
+            $c->children()->saveMany(factory(Category::class, 3)->create(['parent_id' => $c->id]));
         });
     }
 }

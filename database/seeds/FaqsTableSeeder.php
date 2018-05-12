@@ -1,6 +1,6 @@
 <?php
 
-use App\Src\User\Faq;
+use App\Models\Faq;
 use Illuminate\Database\Seeder;
 
 class FaqsTableSeeder extends Seeder
@@ -12,6 +12,6 @@ class FaqsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Faq::class,app()->environment('production') ? 2 , 10)->create();
+        factory(Faq::class,app()->environment('production') ? 2  : 10)->create();
     }
 }

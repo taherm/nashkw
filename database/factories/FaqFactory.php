@@ -1,6 +1,7 @@
 <?php
 
-use App\Src\User\Faq;
+
+use App\Models\Faq;
 use Faker\Generator as Faker;
 
 $factory->define(Faq::class, function (Faker $faker) {

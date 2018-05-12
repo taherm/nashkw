@@ -25,6 +25,6 @@ class Gallery extends PrimaryModel
      */
     public function images()
     {
-        return $this->hasMany('App\Src\Gallery\Image');
+        return $this->hasMany(Image::class);
     }
 }

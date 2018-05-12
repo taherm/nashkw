@@ -57,4 +57,8 @@ class Product extends PrimaryModel
     {
         return $this->belongsToMany(Size::class, 'product_attributes', 'product_id', 'size_id');
     }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class,'category_product');
+    }
 }

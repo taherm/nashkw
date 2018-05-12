@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Contactus;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Contactus::class, function (Faker $faker) {
     return [
         'company_ar' => $faker->name,
         'company_en' => $faker->name,
@@ -12,7 +13,7 @@ $factory->define(Model::class, function (Faker $faker) {
         'phone' => $faker->bankAccountNumber,
         'country_ar' => $faker->country,
         'country_en' => $faker->country,
-        'zipcode' => $faker->countryCode,
+        'zipcode' => $faker->randomDigit,
         'email' => $faker->email,
         'youtube' => $faker->url,
         'instagram' => $faker->url,
