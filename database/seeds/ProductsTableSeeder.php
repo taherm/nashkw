@@ -24,10 +24,9 @@ class ProductsTableSeeder extends Seeder
         factory(Product::class, app()->environment('production') ? 10 : 200)->create()->each(function ($p) {
             $p->product_attributes()->save(factory(ProductAttribute::class)->create());
             $p->categories()->saveMany(Category::all()->random(3));
-//            $p->gallery()->save(factory(Gallery::class)->create()->each(function ($gallery) {
-//                $gallery->images()->saveMany(factory(Image::class, 5)->create());
-//            }));
-
+            $gallery = factory(Gallery::class)->create();
+            $p->gallery()->save($gallery);
+            $gallery->images()->saveMany(factory(Image::class, 5)->create());
         });
     }
 }

@@ -42,41 +42,50 @@
     </div>
 
     <div class="header-right-link">
-        {!!   Form::open(['route' => 'search','method' => 'get']) !!}
-        <div class="search-option" style="left: 0px;bottom: -27px;">
-            <input type="text" name="term" placeholder="{{ trans('general.search') }}" style="margin-bottom: 0px;height: 30px;border: none;">
-            <button class="button" type="submit"><i class="fa fa-search"></i></button>
-        </div>
-        <a class="search-img" href="#"><img src="{{asset('meem/frontend/img/icons/seach.png')}}" alt=""></a>
-        {!! Form::close() !!}
+        <Form method="get" action="{{ route('frontend.search') }}">
+            <div class="search-option" style="left: 0px;bottom: -27px;">
+                <input type="text" name="term" placeholder="{{ trans('general.search') }}"
+                       style="margin-bottom: 0px;height: 30px;border: none;">
+                <button class="button" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            <a class="search-img" href="#"><img src="{{asset('meem/frontend/img/icons/seach.png')}}" alt=""></a>
+        </Form>
     </div>
     <div class="header-right-link">
         <div class="cart-item">
             <div class="cart-item-title">
-                <a href="{{ route('cart.index') }}"><img src="{{asset('meem/frontend/img/icons/card.png')}}" alt="">
-                    <span class="total-cart">{{ $cartItemsCount }}</span>
+                <a href="{{ route('frontend.cart.index') }}"><img src="{{asset('meem/frontend/img/icons/card.png')}}" alt="">
+                    <span class="total-cart">{{ $cartCount }}</span>
                 </a>
-                @if(count($cartHeaderItems->items) > 0)
+                @if($cartCount > 0)
                     <div class="cart-content">
                         <div style="display: none;">{{$itemCount = 1}}</div>
-                        @foreach($cartHeaderItems->items as $product)
+                        @foreach($cart as $product)
                             @if($itemCount <= 2)
-                            <div class="product-items-cart">
-                                <div class="cart-img">
-                                    <a href="{{ route('product.show',$product->id) }}"><img width="50" height="60" src="{{ asset('img/uploads/thumbnail/').'/'.$product->image}}" alt="" /></a>
+                                <div class="product-items-cart">
+                                    <div class="cart-img">
+                                        <a href="{{ route('frontend.product.show',$product->id) }}">
+                                            <img width="50" height="60" src="{{ asset('uploads/images/thumbnail/'.$product->image)}}"alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="cart-text-2">
+                                        <a class="btn-remove" title="Remove This Item"
+                                           href="{{ route('cart.remove',$product->id) }}"><i
+                                                    class="fa fa-times"></i></a>
+                                        <p class="product-name"><a
+                                                    href="{{ route('frontend.product.show',$product->id) }}">{{ $product->name }}</a>
+                                        </p>
+                                        <p><strong>{{ $product->quantity }}</strong> x<span class="price">{{ $product->sale_price }}
+                                                KD</span></p>
+                                    </div>
                                 </div>
-                                <div class="cart-text-2">
-                                    <a class="btn-remove" title="Remove This Item" href="{{ route('cart.remove',$product->id) }}"><i class="fa fa-times"></i></a>
-                                    <p class="product-name"><a href="{{ route('product.show',$product->id) }}">{{ $product->name }}</a></p>
-                                    <p><strong>{{ $product->quantity }}</strong> x<span class="price">{{ $product->sale_price }} KD</span> </p>
-                                </div>
-                            </div>
-                            <div style="display: none;">{{$itemCount++}}</div>
+                                <div style="display: none;">{{$itemCount++}}</div>
                             @endif
                         @endforeach
 
                         <div class="cart-btn-3">
-                            <a class="button" href="{{ route('cart.index') }}" style="margin-left: 10%;">{{trans('general.view_all_items')}}</a>
+                            <a class="button" href="{{ route('cart.index') }}"
+                               style="margin-left: 10%;">{{trans('general.view_all_items')}}</a>
                         </div>
                     </div>
                 @endif

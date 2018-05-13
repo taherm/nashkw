@@ -19,7 +19,8 @@ class OrdersTableSeeder extends Seeder
         - coupon
         */
         factory(Order::class, app()->environment('production') ? 2 : 100)->create()->each(function ($o) {
-            $o->coupon()->save(factory(Coupon::class)->create(['customer_id' => $o->user_id]));
+            $coupon = factory(Coupon::class)->create(['customer_id' => $o->user_id]);
+            $o->update(['coupon_id' => $coupon->id]);
             $o->order_metas()->saveMany(factory(OrderMeta::class, 3)->create());
         });
     }

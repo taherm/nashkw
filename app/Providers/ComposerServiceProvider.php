@@ -14,14 +14,16 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         // frontend
-//        view()->composer([
-//                'backend.partials.sidebar',
-//            'backend.modules.user.create',
-//            'backend.modules.category.create',
-//            'backend.modules.category.edit',
-//        ],
-//            'App\Services\ViewComposers@getRoles');
-
+        view()->composer([
+                'frontend.partials.slider',
+        ],
+            'App\Services\ViewComposers@getSliders');
+        view()->composer('*','App\Services\ViewComposers@getCart');
+        view()->composer('*','App\Services\ViewComposers@getCartCount');
+        view()->composer('*', 'App\Services\ViewComposers@getCurrency');
+        view()->composer('*', 'App\Services\ViewComposers@getCurrencies');
+        view()->composer('*', 'App\Services\ViewComposers@getCategories');
+        view()->composer('*', 'App\Services\ViewComposers@getContactus');
     }
 
     /**

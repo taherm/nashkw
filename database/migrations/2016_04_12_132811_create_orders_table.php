@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->enum('status', ['pending', 'success', 'shipped', 'completed', 'failed']);
+            $table->enum('status', ['pending', 'success', 'shipped', 'completed', 'failed','delivered']);
             $table->integer('coupon_id')->unsigned()->nullable();
             $table->integer('country_id')->unsigned()->index();
             $table->float('coupon_value')->unsigned();

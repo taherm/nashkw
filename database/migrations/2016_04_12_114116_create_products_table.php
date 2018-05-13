@@ -32,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->text('description_ar')->nullable();
             $table->text('notes_ar')->nullable();
             $table->text('notes_en')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
 
             $table->timestamp('start_sale')->nullable();
             $table->timestamp('end_sale')->nullable();

@@ -30,7 +30,6 @@ mix.styles([
     '../../Documents/Home/metronic_v4.5.6/theme//assets/global/plugins/jquery-minicolors/jquery.minicolors.css',
 
 
-
     '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
     '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/datatables/datatables.min.css',
     '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css',
@@ -46,6 +45,7 @@ mix.styles([
     '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/layout2/css/custom.min.css',
     './node_modules/jquery.minicolors/jquery.minicolors.css',
     './node_modules/font-awesome/css/font-awesome.min.css',
+    './resources/assets/css/backend-custom.css',
 
 ], 'public/css/backend.css').version();
 mix.scripts([
@@ -113,38 +113,39 @@ mix.scripts([
         '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/layout2/scripts/demo.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/global/scripts/quick-sidebar.min.js',
         './node_modules/tinymce/tinymce.min.js',
-        './node_modules/jquery-minicolors/jquery.minicolors.min.js'
+        './node_modules/jquery-minicolors/jquery.minicolors.min.js',
+        './resources/assets/js/backend-custom.js',
     ],
     'public/js/backend.js').version();
-mix.scripts('resources/assets/js/backend-custom.js', 'public/js/backend-custom.js').version();
-mix.scripts('resources/assets/js/backend-custom.js', 'public/js/backend-custom.js').version();
 mix.styles([
-    '../../Documents/Home/expert-theme/expert/css/bootstrap.min.css',
-    '../../Documents/Home/expert-theme/expert/css/font-awesome.min.css',
-    '../../Documents/Home/expert-theme/expert/css/jquery-ui.min.css',
-    '../../Documents/Home/expert-theme/expert/css/jquery.simpleGallery.css',
-    '../../Documents/Home/expert-theme/expert/css/jquery.simpleLens.css',
-    '../../Documents/Home/expert-theme/expert/css/meanmenu.min.css',
-    '../../Documents/Home/expert-theme/expert/css/nivo-slider.css',
-    '../../Documents/Home/expert-theme/expert/css/owl.carousel.css',
-    '../../Documents/Home/expert-theme/expert/css/responsive.css',
+        '../../Documents/Home/expert-theme/expert/css/bootstrap.min.css',
+        '../../Documents/Home/expert-theme/expert/css/font-awesome.min.css',
+        '../../Documents/Home/expert-theme/expert/css/jquery-ui.min.css',
+        '../../Documents/Home/expert-theme/expert/css/jquery.simpleGallery.css',
+        '../../Documents/Home/expert-theme/expert/css/jquery.simpleLens.css',
+        '../../Documents/Home/expert-theme/expert/css/meanmenu.min.css',
+        '../../Documents/Home/expert-theme/expert/css/nivo-slider.css',
+        '../../Documents/Home/expert-theme/expert/css/owl.carousel.css',
+        '../../Documents/Home/expert-theme/expert/css/responsive.css',
+        './resources/assets/css/frontend-custom.css',
     ]
-    ,'public/css/frontend.css').version();
+    , 'public/css/frontend.css').version();
 mix.styles([
-    '../../Documents/Home/expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
-    '../../Documents/Home/expert-theme/expert/js/vendor/modernizr-2.8.3.min.js',
-    '../../Documents/Home/expert-theme/expert/js/bootstrap.min.js',
-    '../../Documents/Home/expert-theme/expert/js/jquery-ui.min.js',
-    '../../Documents/Home/expert-theme/expert/js/jquery.meanmenu.js',
-    '../../Documents/Home/expert-theme/expert/js/jquery.nivo.slider.pack.js',
-    '../../Documents/Home/expert-theme/expert/js/jquery.simpleGallery.min.js',
-    '../../Documents/Home/expert-theme/expert/js/jquery.simpleLens.min.js',
-    '../../Documents/Home/expert-theme/expert/js/main.js',
-    '../../Documents/Home/expert-theme/expert/js/owl.carousel.min.js',
-    '../../Documents/Home/expert-theme/expert/js/plugins.js',
-    '../../Documents/Home/expert-theme/expert/js/wow.min.js',
+        '../../Documents/Home/expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
+        '../../Documents/Home/expert-theme/expert/js/vendor/modernizr-2.8.3.min.js',
+        '../../Documents/Home/expert-theme/expert/js/bootstrap.min.js',
+        '../../Documents/Home/expert-theme/expert/js/jquery-ui.min.js',
+        '../../Documents/Home/expert-theme/expert/js/jquery.meanmenu.js',
+        '../../Documents/Home/expert-theme/expert/js/jquery.nivo.slider.pack.js',
+        '../../Documents/Home/expert-theme/expert/js/jquery.simpleGallery.min.js',
+        '../../Documents/Home/expert-theme/expert/js/jquery.simpleLens.min.js',
+        '../../Documents/Home/expert-theme/expert/js/main.js',
+        '../../Documents/Home/expert-theme/expert/js/owl.carousel.min.js',
+        '../../Documents/Home/expert-theme/expert/js/plugins.js',
+        '../../Documents/Home/expert-theme/expert/js/wow.min.js',
+        './resources/assets/js/frontend-custom.js',
     ]
-    ,'public/css/frontend.js').version();
+    , 'public/js/frontend.js').version();
 
 mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/simple-line-icons/fonts', 'public/css/fonts');
 mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/datatables/images', 'public/plugins/datatables/images');

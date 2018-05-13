@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 $factory->define(Order::class, function (Faker $faker) {
     return [
         'user_id' => User::all()->random()->id,
-        'status' => $faker->randomElement(['pending', 'success', 'failed']),
+        'status' => $faker->randomElement(['pending', 'success', 'failed','delivered']),
 //        'coupon_id' => Coupon::all()->random()->id,
         'country_id' => Country::all()->random()->id,
         'coupon_value' => $faker->randomDigit,

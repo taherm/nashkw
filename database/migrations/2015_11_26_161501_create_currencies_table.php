@@ -21,6 +21,7 @@ class CreateCurrenciesTable extends Migration
             $table->float('exchange_rate',4);
             $table->boolean('active')->default(1);
             $table->integer('country_id')->unsigned();
+            $table->boolean('active')->default(1);
 
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
             $table->rememberToken();

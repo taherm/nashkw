@@ -8,6 +8,7 @@ $factory->define(Currency::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'symbol' => $faker->name,
+        'active' => $faker->boolean(true),
         'format' => $faker->name,
         'exchange_rate' => $faker->name,
         'active' => $faker->boolean(true),

@@ -4,8 +4,16 @@ namespace App\Models;
 
 class Product extends PrimaryModel
 {
+    use ProductHelpers;
     protected $localeStrings = ['name','description','notes'];
     protected $guarded = [''];
+    protected $casts = [
+        'on_sale' => 'boolean',
+        'on_sale_on_homepage' => 'boolean',
+        'active' => 'boolean',
+        'home_delivery_availability' => 'boolean'
+    ];
+    protected $with = ['gallery.images'];
     /**
      * MorphRelation
      * MorphOne = many hasONe relation

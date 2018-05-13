@@ -15,15 +15,19 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
 
 });
 
-Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend', 'as' => 'frontend.', 'middleware' => []], function () {
-
-    Route::get('/', function () {
-        return view('welcome');
-    });
+Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []], function () {
+    Route::resource('product', 'ProductController');
+    Route::resource('newsletter', 'NewsletterController');
+    Route::resource('cart', 'CartController');
+    Route::resource('category', 'CategoryController');
+    Route::get('search', 'HomeController@search')->name('search');
+    Route::get('currency/{currency}', 'HomeController@changeCurrency')->name('currency.change');
+    Route::get('language/{locale}', 'HomeController@changeLanguage')->name('language.change');
+    Route::get('aboutus', 'HomeController@getAboutus')->name('aboutus');
 
 
 });
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Frontend\HomeController@index')->name('home');
+Route::get('/home', 'Frontend\HomeController@index')->name('home');

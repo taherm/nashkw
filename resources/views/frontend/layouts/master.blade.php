@@ -24,7 +24,7 @@
 
 @include('frontend.layouts.header')
 
-@include('backend.partials._notification')
+@include('frontend.partials._notification')
 
 @section('content')
 @yield('body')

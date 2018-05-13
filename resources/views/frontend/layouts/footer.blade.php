@@ -110,10 +110,14 @@
                                 <h3>{{ trans('general.informations') }}</h3>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="{{route('about')}}">{{ trans('general.aboutus') }}</a></li>
-                                        <li><a href="{{route('contact')}}">{{ trans('general.help_contactus') }}</a>
+                                        <li>
+                                            <a href="{{route('frontend.about')}}">{{ trans('general.aboutus') }}</a></li>
+                                        <li>
+                                            <a href="{{route('frontend.contact')}}">{{ trans('general.help_contactus') }}</a>
                                         </li>
-                                        <li><a href="{{route('faq')}}">{{ strtoupper(trans('general.faqs')) }}</a></li>
+                                        <li>
+                                            <a href="{{route('frontend.faq')}}">{{ strtoupper(trans('general.faqs')) }}</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -125,14 +129,17 @@
                                 <h3>{{ trans('general.polices') }}</h3>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="{{ route('privacy') }}">{{ trans('general.privacy_policy') }}</a>
-                                        </li>
-                                        <li><a href="{{ route('terms') }}">{{ trans('general.terms_and_policy') }}</a>
-                                        </li>
-                                        <li><a href="{{ route('policy') }}">{{ trans('general.return_policy') }}</a>
+                                        <li>
+                                            <a href="{{ route('frontend.privacy') }}">{{ trans('general.privacy_policy') }}</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('shipping-orders') }}">{{ trans('general.orders_and_shopping') }}</a>
+                                            <a href="{{ route('frontend.terms') }}">{{ trans('general.terms_and_policy') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('frontend.policy') }}">{{ trans('general.return_policy') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('frontend.shipping-orders') }}">{{ trans('general.orders_and_shopping') }}</a>
                                         </li>
                                     </ul>
                                 </div>
