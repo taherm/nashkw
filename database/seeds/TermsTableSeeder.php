@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Term;
 use Illuminate\Database\Seeder;
 
 class TermsTableSeeder extends Seeder
@@ -11,6 +12,6 @@ class TermsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Term::class, app()->environment('production') ? 1 : 5)->create();
     }
 }

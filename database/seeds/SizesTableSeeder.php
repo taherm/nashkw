@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Size;
 use Illuminate\Database\Seeder;
 
 class SizesTableSeeder extends Seeder
@@ -11,6 +12,6 @@ class SizesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Size::class, app()->environment('production') ? 3 : 5)->create();
     }
 }

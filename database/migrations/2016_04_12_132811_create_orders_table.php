@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->enum('status', ['pending', 'success', 'shipped', 'completed', 'failed']);
-            $table->integer('coupon_id')->unsigned()->default(0);
+            $table->integer('coupon_id')->unsigned()->nullable();
             $table->integer('country_id')->unsigned()->index();
             $table->float('coupon_value')->unsigned();
             $table->decimal('shipping_cost',6,2)->unsigned();
@@ -30,6 +30,7 @@ class CreateOrdersTable extends Migration
             $table->string('reference_id')->nullable()->deafult(0);
             $table->string('payment_method')->nullable();
 
+            $table->foreign('coupon_id')->references('id')->on('coupons');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->timestamps();

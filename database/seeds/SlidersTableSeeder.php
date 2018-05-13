@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Slider;
 use Illuminate\Database\Seeder;
 
 class SlidersTableSeeder extends Seeder
@@ -11,6 +12,6 @@ class SlidersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Slider::class,app()->environment('production') ? 2 : 15)->create();
     }
 }
