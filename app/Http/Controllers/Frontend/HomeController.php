@@ -42,13 +42,14 @@ class HomeController extends Controller
 
     public function changeCurrency()
     {
-        $currency = Currency::where('symbol', request('currency'))->first();
+        $currency = Currency::where('symbol', strtoupper(request('currency')))->first();
         session()->put('currency', $currency);
         return redirect()->back();
     }
 
     public function changeLanguage()
     {
+        app()->setLocale(request('locale'));
         session()->put('locale', request('locale'));
         return redirect()->back();
     }

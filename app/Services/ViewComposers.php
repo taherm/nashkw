@@ -43,10 +43,7 @@ class ViewComposers
 
     public function getCurrencies(View $view)
     {
-        if (!session()->has('currencies')) {
-            session()->put('currencies', Currency::active()->get());
-        }
-        $currencies = session()->get('currencies');
+        $currencies = Currency::active()->get();
         return $view->with(compact('currencies'));
     }
 

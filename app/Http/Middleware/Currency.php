@@ -15,12 +15,11 @@ class Currency
      */
     public function handle($request, Closure $next)
     {
-        if (request()->has('currency')) {
-            $currency = \App\Models\Currency::where('symbol', request('currency'))->first();
+        if (!session()->has('currency')) {
+            $currency = \App\Models\Currency::where('symbol', 'KWD')->first();
             session()->put('currency', $currency);
-        } else {
-            $currency = \App\Models\Currency::where('symbol', session('currency'))->first();
-            session()->put('currency', $currency);
+//            $currency = \App\Models\Currency::where('symbol', strtoupper(session('currency')->symbol))->first();
+//            session()->put('currency', $currency);
         }
 
         return $next($request);
