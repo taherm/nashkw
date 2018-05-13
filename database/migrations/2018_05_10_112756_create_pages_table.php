@@ -14,13 +14,19 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title_ar');
-            $table->string('title_en');
+            $table->string('title_ar')->nullable();
+            $table->string('title_en')->nullable();
+            $table->string('slug_ar')->nullable();
+            $table->string('slug_en')->nullable();
             $table->string('image')->nullble();
-            $table->text('content_ar');
-            $table->text('content_en');
-            $table->boolean('active')->default(1);
+            $table->string('url')->nullble();
+            $table->text('content_ar')->nullable();
+            $table->text('content_en')->nullable();
             $table->integer('order')->nullable();
+            $table->boolean('active')->default(1);
+            $table->boolean('on_home')->default(1);
+            $table->boolean('on_footer')->default(1);
+            $table->boolean('on_menu')->default(1);
             $table->timestamps();
         });
     }

@@ -88,9 +88,9 @@ class HomeController extends Controller
 
     public function getFaq()
     {
-        $QAs = $this->pagesQuestions->getFaqs();
+        $faqs = $this->pagesQuestions->getFaqs();
 
-        return view('frontend.pages.faq', compact('QAs'));
+        return view('frontend.pages.faq', compact('faqs'));
     }
 
     public function getPrivacy(Privacy $privacy)

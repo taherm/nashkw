@@ -56,8 +56,9 @@ class Category extends PrimaryModel
         return $filters->apply($query);
     }
 
-    public function scopeIsParent($q)
+    public function scopeOnlyParent($q)
     {
         return $q->where('parent_id', 0);
     }
+    
 }

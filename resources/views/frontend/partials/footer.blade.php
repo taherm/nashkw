@@ -24,7 +24,7 @@
                             <!-- single-footer-service start -->
                             <div class="single-footer-service footer-2-service" style="min-height: 95px;">
                                 <div class="footer-service-icon">
-                                    <img class="box-icon" src="{{asset('meem/frontend/img/icons/ft-img_2.png')}}"
+                                    <img class="box-icon" src="{{asset('img/icons/ft-img_2.png')}}"
                                          alt="">
                                 </div>
                                 <div class="footer-service-text">
@@ -38,7 +38,7 @@
                             <!-- single-footer-service start -->
                             <div class="single-footer-service footer-2-service" style="min-height: 95px;">
                                 <div class="footer-service-icon">
-                                    <img class="box-icon" src="{{asset('meem/frontend/img/icons/ft-img_3.png')}}"
+                                    <img class="box-icon" src="{{asset('img/icons/ft-img_3.png')}}"
                                          alt="">
                                 </div>
                                 <div class="footer-service-text">
@@ -52,7 +52,7 @@
                             <!-- single-footer-service start -->
                             <div class="single-footer-service footer-2-service" style="min-height: 95px;">
                                 <div class="footer-service-icon">
-                                    <img class="box-icon" src="{{asset('meem/frontend/img/icons/ft-img_4.png')}}"
+                                    <img class="box-icon" src="{{asset('img/icons/ft-img_4.png')}}"
                                          alt="">
                                 </div>
                                 <div class="footer-service-text">
@@ -76,13 +76,16 @@
                             <!-- middle-footer-text start-->
                             <div class="middle-footer-text middle-footer-text4">
                                 <div class="footer-logo">
-                                    <a href="#"><img src="{{asset('meem/frontend/img/logo/footerlogo.jpeg')}}" alt=""></a>
+                                    <a href="#"><img src="{{asset('storage/uploads/images/medium/'.$contact->logo)}}"
+                                                     alt=""></a>
                                 </div>
                                 <div class="middle-text">
                                     <p>{{ trans('general.online_shopping_in_gulf') }}</p>
                                     <ul class="footer-icon">
-                                        <li><a href="https://www.instagram.com/meemonoon/" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="https://www.twitter.com/meemonoonmarket/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="https://www.instagram.com/meemonoon/" target="_blank"><i
+                                                        class="fa fa-instagram"></i></a></li>
+                                        <li><a href="https://www.twitter.com/meemonoonmarket/" target="_blank"><i
+                                                        class="fa fa-twitter"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -110,14 +113,11 @@
                                 <h3>{{ trans('general.informations') }}</h3>
                                 <div class="footer-menu">
                                     <ul>
+                                        @foreach($pages as $page)
                                         <li>
-                                            <a href="{{route('frontend.about')}}">{{ trans('general.aboutus') }}</a></li>
-                                        <li>
-                                            <a href="{{route('frontend.contact')}}">{{ trans('general.help_contactus') }}</a>
+                                            <a href="{{ $page->url }}">{{ $page->slug }}</a>
                                         </li>
-                                        <li>
-                                            <a href="{{route('frontend.faq')}}">{{ strtoupper(trans('general.faqs')) }}</a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -129,18 +129,11 @@
                                 <h3>{{ trans('general.polices') }}</h3>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li>
-                                            <a href="{{ route('frontend.privacy') }}">{{ trans('general.privacy_policy') }}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('frontend.terms') }}">{{ trans('general.terms_and_policy') }}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('frontend.policy') }}">{{ trans('general.return_policy') }}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('frontend.shipping-orders') }}">{{ trans('general.orders_and_shopping') }}</a>
-                                        </li>
+                                        @foreach($pages->where('on_footer', true) as $page)
+                                            <li>
+                                                <a href="{{ $page->url }}">{{ $page->slug }}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -152,10 +145,17 @@
                                 <h3>{{ strtoupper(trans('general.my_account')) }}</h3>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="{{ route('profile') }}">{{ trans('general.my_account') }}</a></li>
-                                        <li><a href="{{ route('orders') }}">{{ trans('general.order_history') }}</a>
+                                        @auth
+                                        <li>
+                                            <a href="{{ route('frontend.user.show', auth()->user()->id) }}">{{ trans('general.my_account') }}</a>
                                         </li>
-                                        <li><a href="{{route('wishlist.index')}}">{{ trans('general.wlist') }}</a></li>
+                                        @endauth
+                                        <li>
+                                            <a href="{{ route('frontend.order.index') }}">{{ trans('general.order_history') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('frontend.favorite.index')}}">{{ trans('general.wlist') }}</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -180,19 +180,19 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="payment-history">
                             <ul>
-                                @if(currency()->getCurrency(session()->get('currency'))['code'] === 'KWD')
+                                @if($currency->symbol === 'KWD')
                                     <li>
                                         <a href="#"><img style="width: 35px; height : 23px;"
-                                                         src="{{asset('meem/frontend/img/footer/k-net-icon.png')}}"
+                                                         src="{{asset('img/k-net-icon.png')}}"
                                                          alt=""></a>
                                         <a href="#"><img style="width: 70px; height : 23px;"
-                                                         src="{{asset('meem/frontend/img/footer/payment.png')}}" alt=""></a>
+                                                         src="{{asset('img/payment.png')}}" alt=""></a>
                                         <a href="#"><img style="width: 35px; height : 23px;"
-                                                         src="{{asset('meem/frontend/img/footer/cash-icon.png')}}"
+                                                         src="{{asset('img/cash-icon.png')}}"
                                                          alt=""></a></li>
                                 @else
                                     <li><a href="#"><img style="width: 80px; height : auto;"
-                                                         src="{{asset('meem/frontend/img/footer/payment.png')}}" alt=""></a>
+                                                         src="{{asset('img/payment.png')}}" alt=""></a>
                                     </li>
                                 @endif
                             </ul>

@@ -18,12 +18,29 @@ class ComposerServiceProvider extends ServiceProvider
                 'frontend.partials.slider',
         ],
             'App\Services\ViewComposers@getSliders');
-        view()->composer('*','App\Services\ViewComposers@getCart');
-        view()->composer('*','App\Services\ViewComposers@getCartCount');
-        view()->composer('*', 'App\Services\ViewComposers@getCurrency');
-        view()->composer('*', 'App\Services\ViewComposers@getCurrencies');
-        view()->composer('*', 'App\Services\ViewComposers@getCategories');
-        view()->composer('*', 'App\Services\ViewComposers@getContactus');
+        view()->composer([
+            'frontend.partials._nav_right'
+        ],'App\Services\ViewComposers@getCart');
+        view()->composer([
+            'frontend.partials._nav_right'
+        ],'App\Services\ViewComposers@getCartCount');
+        view()->composer([
+            'frontend.home',
+            'frontend.partials.footer'
+        ], 'App\Services\ViewComposers@getCurrency');
+        view()->composer([
+            'frontend.home'
+        ], 'App\Services\ViewComposers@getCurrencies');
+        view()->composer([
+            'frontend.partials.header'
+        ], 'App\Services\ViewComposers@getCategories');
+        view()->composer([
+            'frontend.partials.footer',
+            'frontend.partials.header'
+        ], 'App\Services\ViewComposers@getContactus');
+        view()->composer([
+            'frontend.partials.footer'
+        ], 'App\Services\ViewComposers@getPages');
     }
 
     /**

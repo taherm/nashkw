@@ -21,7 +21,7 @@
                             <div class="contact-info">
                                 <h3>Frequently Asked Questions</h3>
                                 <span style="display: none;">{{$counter = 0}}</span>
-                                @foreach($QAs as $qa)
+                                @foreach($faqs as $qa)
                                     <!-- Panel Default -->
                                     <div class="panel panel-default">
                                         <div class="panel-heading">

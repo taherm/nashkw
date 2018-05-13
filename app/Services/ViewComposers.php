@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\Contactus;
 use App\Models\Currency;
+use App\Models\Page;
 use App\Models\Setting;
 use App\Models\Country;
 use App\Models\Field;
@@ -57,7 +58,7 @@ class ViewComposers
 
     public function getCategories(View $view)
     {
-        $categories = Category::active()->isParent()->with('children')->get();
+        $categories = Category::active()->onlyParent()->with('parent.children.children')->get();
         return $view->with(compact('categories'));
     }
 
@@ -82,13 +83,19 @@ class ViewComposers
     public function getSizes(View $view)
     {
         $sizes = Size::all();
-        $view->with('sizes', $sizes);
+        return $view->with(compact('sizes'));
     }
 
     public function getColors(View $view)
     {
         $colors = Color::all();
-        $view->with('colors', $colors);
+        return $view->with(compact('colors'));
+    }
+
+    public function getPages(View $view)
+    {
+        $pages = Page::active()->get();
+        return $view->with(compact('pages'));
     }
 }
 

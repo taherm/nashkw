@@ -1,5 +1,5 @@
 <!-- feature-product-area start -->
-<div class="feature-product-area" style="background: {{ isset($backgroundColor) ?  :'white' }};">
+<div class="feature-product-area">
     <div class="container">
         <!-- Area-heading start -->
         <div class="row">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <!-- Area-heading end -->
-        @include('frontend.modules.product.partials.product_thumbnail',['products'=>$products,'carousel'=>true])
+        @include('frontend.modules.product.partials.product_thumbnail',['products'=>$products,'carousel' => true])
     </div>
 </div>
 

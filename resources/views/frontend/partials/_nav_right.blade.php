@@ -48,13 +48,13 @@
                        style="margin-bottom: 0px;height: 30px;border: none;">
                 <button class="button" type="submit"><i class="fa fa-search"></i></button>
             </div>
-            <a class="search-img" href="#"><img src="{{asset('meem/frontend/img/icons/seach.png')}}" alt=""></a>
+            <a class="search-img" href="#"><img src="{{asset('img/icons/seach.png')}}" alt=""></a>
         </Form>
     </div>
     <div class="header-right-link">
         <div class="cart-item">
             <div class="cart-item-title">
-                <a href="{{ route('frontend.cart.index') }}"><img src="{{asset('meem/frontend/img/icons/card.png')}}" alt="">
+                <a href="{{ route('frontend.cart.index') }}"><img src="{{asset('img/icons/card.png')}}" alt="">
                     <span class="total-cart">{{ $cartCount }}</span>
                 </a>
                 @if($cartCount > 0)
