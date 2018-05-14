@@ -40,7 +40,10 @@
     <body>
     <div class="container">
         <div class="content">
-            <div class="title">{{ $exception->getMessage() }}</div>
+            <img src="http://globaltrade-egypt.com/under.png" alt=""/>
+            <div class="title">
+                {{ $exception->getMessage() }}
+            </div>
         </div>
     </div>
     </body>
