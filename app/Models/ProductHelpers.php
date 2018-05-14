@@ -70,6 +70,6 @@ trait ProductHelpers
             ->select('products.id', DB::raw('count(*) as count'))
             ->groupBy('products.id')// responsible to get the sum of products returned
             ->orderBy('count', 'DESC')// DESC
-            ->get();
+            ->take(app()->isLocale('ar') ? 7 : 12)->pluck('id');
     }
 }

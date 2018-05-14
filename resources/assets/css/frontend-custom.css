@@ -1,0 +1,12 @@
+@font-face {
+    font-family: cairo;
+    src: url('fonts/Cairo-SemiBold.otf');
+}
+
+body, div, a, span, table, p, form, input, h1, h2, h3, h4 {
+    font-family: 'cairo', sans-serif !important;
+}
+
+.main-menu4 nav ul li a {
+    color : white;
+}

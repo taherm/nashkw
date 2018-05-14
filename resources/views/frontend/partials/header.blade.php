@@ -1,16 +1,18 @@
 <!-- Header-area start -->
 <header>
-    <div class="header-area header-4-area">
+    <div class="header-area">
         <!-- header-top start -->
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    @include('frontend.partials._nav_left')
-                    <div class="col-lg-4 col-md-4 col-sm-4" style="max-height: 73px;">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        @include('frontend.partials._nav_left')
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="logo">
                             <a href="{{ route('home') }}"><img class="img-responsive" style="max-height: 100px;"
-                                                        src="{{asset('storage/uploads/images/medium/'.$contact->logo)}}"
-                                                        alt=""></a>
+                                                               src="{{asset('storage/uploads/images/medium/'.$contact->logo)}}"
+                                                               alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -67,36 +69,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 hidden-lg hidden-md">
-                        <nav id="dropdown">
-                            <ul>
-                                <li><a href="{{ route('home')  }}">home</a></li>
-                                @foreach($categories->sortBy('order') as $category)
-                                    <li>
-                                        <a href="{{ route('frontend.category.show',$category->id) }}">{{ $category->name }}</a>
-                                        <!-- mega menu start -->
-                                        @if(count($category->children) > 0)
-                                            <ul>
-                                                @foreach($category->children->sortBy('order') as $child)
-                                                    <li>
-                                                        <a class="mega-headline"
-                                                           href="{{ route('frontend.category.show',[$category->id]) }}?child={{ $child->id }}">{{ $child->name }}</a>
-                                                        @if(count($child->children) > 0)
-                                                            <ul>
-                                                                @foreach($child->children->sortBy('order') as $subChild)
-                                                                    <li>
-                                                                        <a href="{{ route('frontend.category.show',[$child->id]) }}?child={{ $subChild->id }}">{{ $subChild->name }}</a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        @endif
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </nav>
+                    <nav id="dropdown">
+                        <ul>
+                            <li><a href="{{ route('home')  }}">home</a></li>
+                            @foreach($categories->sortBy('order') as $category)
+                                <li>
+                                    <a href="{{ route('frontend.category.show',$category->id) }}">{{ $category->name }}</a>
+                                    <!-- mega menu start -->
+                                    @if(count($category->children) > 0)
+                                        <ul>
+                                            @foreach($category->children->sortBy('order') as $child)
+                                                <li>
+                                                    <a class="mega-headline"
+                                                       href="{{ route('frontend.category.show',[$category->id]) }}?child={{ $child->id }}">{{ $child->name }}</a>
+                                                    @if(count($child->children) > 0)
+                                                        <ul>
+                                                            @foreach($child->children->sortBy('order') as $subChild)
+                                                                <li>
+                                                                    <a href="{{ route('frontend.category.show',[$child->id]) }}?child={{ $subChild->id }}">{{ $subChild->name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

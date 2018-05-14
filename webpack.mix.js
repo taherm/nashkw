@@ -10,7 +10,8 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
+mix.js('resources/assets/js/app.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css');
 // backend
 mix.styles([
     '../Documents/home/metronic_v4.5.6/theme/assets/global/plugins/simple-line-icons/simple-line-icons.min.css',

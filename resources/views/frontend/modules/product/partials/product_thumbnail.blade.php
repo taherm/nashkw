@@ -1,8 +1,9 @@
 <div class="row">
-    <div class="feature-product-4 product-carousel derection-key">
+    {{--<div class="feature-product-4 product-carousel derection-key">--}}
+        <div class="bestseller-product product-carousel derection-key">
         <!-- single-product start -->
         @foreach($products as $product)
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!-- single-product end -->
                 <div class="single-product">
                     <div class="product-details">
@@ -27,22 +28,14 @@
                             <span class="sale-text new-sale">{{ trans('general.new') }}</span>
                         @endif
                         <a href="{{ route('frontend.product.show',$product->id) }}">
-                            {{--                            @if(file_exists(url('img/uploads/medium/'.$product->image)))--}}
                             <img class="primary-img"
                                  src="{{ asset('uploads/images/thumbnail/'.$product->image) }} "
                                  alt="{{ $product->name }}">
-                            {{--@else--}}
-                            {{--<img class="primary-img" src="{{ url('img/uploads/thumbnail/default-placeholder.jpg') }} " alt="" style="width: 261px;height: 300px;">--}}
-                            {{--@endif--}}
 
                             @if(isset($product->gallery->images->first()->thumb_url))
-                                {{--                                @if(file_exists(url('img/uploads/medium/'.$product->gallery->images->first()->thumb_url)))--}}
                                 <img class="secondary-img"
                                      src="{{ asset('uploads/images/thumbnail/'.$product->gallery->images->first()->thumb_url) }} "
                                      alt="{{ $product->name }}">
-                                {{--@else--}}
-                                {{--<img class="secondary-img" src="{{ url('img/uploads/thumbnail/default-placeholder.jpg') }} " alt="" style="width: 261px;height: 300px;">--}}
-                                {{--@endif--}}
                             @endif
                         </a>
                         <div class="add-action">

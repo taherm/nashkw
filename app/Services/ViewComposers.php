@@ -55,7 +55,26 @@ class ViewComposers
 
     public function getCategories(View $view)
     {
-        $categories = Category::active()->onlyParent()->with('parent.children.children')->get();
+//        $categories = Category::active()->onlyParent()->with('parent.children.children')->get();
+        // get parent that has children and children of children whereHas products and with their products
+        $categories = Category::active()
+            ->whereHas('children', function ($q) {
+                return $q->whereHas('products', function ($q) {
+                    return $q;
+                }, '>', 0)->orWhereHas('children', function ($q) {
+                    return $q->whereHas('products', function ($q) {
+                        return $q;
+                    }, '>', 0)->orWhereHas('children', function ($q) {
+                        return $q;
+                    }, '>', 0);
+                }, '>', 0);
+            }, '>', 0)
+            ->orWhereHas('products', function ($q) {
+                return $q;
+            }, '>', 0)
+            ->onlyParent()
+            ->with('children.children')
+            ->get();
         return $view->with(compact('categories'));
     }
 

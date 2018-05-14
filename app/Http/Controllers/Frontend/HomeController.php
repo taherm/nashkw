@@ -27,12 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newArrivals = $this->product->active()->onHomePage()->orderBy('created_at', 'desc')->take(12)->get();
-
-        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->take(12)->get();
-
-        $bestSalesProducts = $this->product->bestSalesProducts();
-
+        $newArrivals = $this->product->active()->onHomePage()->orderBy('created_at', 'desc')->take(app()->isLocale('ar') ? 7 : 12)->get();
+        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->take(app()->isLocale('ar') ? 7 : 12)->get();
+        $bestSalesProducts = $this->product->whereIn('id', $this->product->bestSalesProducts())->get();
         return view('frontend.home', compact(
             'newArrivals',
             'onSaleProducts',
