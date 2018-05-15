@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Services\Search\QueryFilters;
+
 class Product extends PrimaryModel
 {
     use ProductHelpers;
-    protected $localeStrings = ['name','description','notes'];
+    protected $localeStrings = ['name', 'description', 'notes'];
     protected $guarded = [''];
     protected $casts = [
         'on_sale' => 'boolean',
@@ -14,6 +16,7 @@ class Product extends PrimaryModel
         'home_delivery_availability' => 'boolean'
     ];
     protected $with = ['gallery.images'];
+
     /**
      * MorphRelation
      * MorphOne = many hasONe relation
@@ -23,7 +26,6 @@ class Product extends PrimaryModel
     {
         return $this->morphOne(Gallery::class, 'galleryable');
     }
-
 
 
     /**
@@ -66,7 +68,29 @@ class Product extends PrimaryModel
         return $this->belongsToMany(Size::class, 'product_attributes', 'product_id', 'size_id');
     }
 
-    public function categories() {
-        return $this->belongsToMany(Category::class,'category_product');
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_product');
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'product_tag');
+    }
+
+    /**
+     * @param $q
+     * @param QueryFilters $filters
+     * @return \Illuminate\Database\Eloquent\Builder
+     * QueryFilters used within the search
+     */
+    public function scopeFilters($q, QueryFilters $filters)
+    {
+        return $filters->apply($q);
     }
 }

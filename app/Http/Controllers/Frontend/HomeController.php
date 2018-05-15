@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use App\Models\Product;
+use App\Services\Search\Filters;
 
 class HomeController extends Controller
 {
@@ -35,6 +36,22 @@ class HomeController extends Controller
             'onSaleProducts',
             'bestSalesProducts'
         ));
+    }
+
+    public function search(Filters $filters) {
+        $validator = validator(request()->all(), ['search' => 'nullable']);
+//        'parent' => 'required_without:sub', 'sub' => 'required_without:parent'
+        if ($validator->fails()) {
+            return redirect()->home()->withErrors($validator->messages());
+        }
+
+        $elements = Product::filters($filters)->paginate(12);
+
+        if (!$elements->isEmpty()) {
+            return view('frontend.modules.ad.index', compact('elements'));
+        } else {
+            return redirect()->home()->with('error', title_case('no items found .. plz try again'));
+        }
     }
 
     public function changeCurrency()

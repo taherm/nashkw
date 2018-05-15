@@ -47,9 +47,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id,['id'])->with('children.children')->get()->pluck('id');
-//        $subCategories = $category->children->first()->children->pluck('id');
-        dd($category);
+
     }
 
     /**

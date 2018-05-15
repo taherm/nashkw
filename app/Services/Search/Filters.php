@@ -22,11 +22,13 @@ class Filters extends QueryFilters
 
     public function search($search)
     {
-        return $this->builder->where(function ($q) use ($search) {
-            $q->whereHas('meta', function ($q) use ($search) {
-                return $q->where('description', 'like', "%{$search}%");
-            })->orWhere('title', 'like', "%{$search}%");
-        });
+        return $this->builder
+            ->where('name_ar', 'like', "%{$search}%")
+            ->orWhere('name_en', 'like', "%{$search}%")
+            ->orWhere('description_ar', 'like', "%{$search}%")
+            ->orWhere('description_en', 'like', "%{$search}%")
+            ->orWhere('notes_ar', 'like', "%{$search}%")
+            ->orWhere('notes_en', 'like', "%{$search}%");
     }
 
     public function parent()
