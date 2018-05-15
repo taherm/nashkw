@@ -11,7 +11,7 @@
                 <!--breadcrumbs start-->
                 {{--@include('frontend.modules.category.partials._breadcrumbs')--}}
                         <!--breadcrumbs end-->
-                {{--@include('frontend.modules.category.partials._tags')--}}
+                @include('frontend.modules.category.partials._tags')
                 <div class="shop-product-view">
                     <!-- Shop Product Tab Area -->
                     <div class="product-tab-area">

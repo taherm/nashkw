@@ -27,7 +27,8 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer([
             'frontend.home',
             'frontend.partials.footer',
-            'frontend.modules.product.index'
+            'frontend.modules.product.index',
+            'frontend.modules.product.show',
         ], 'App\Services\ViewComposers@getCurrency');
         view()->composer([
             'frontend.partials._currency_language'

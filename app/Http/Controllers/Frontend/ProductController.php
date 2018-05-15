@@ -32,10 +32,11 @@ class ProductController extends Controller
             return redirect()->home()->withErrors($validator->messages());
         }
 
-        $elements = $this->product->filters($filters)->with('categories')->paginate(20);
+        $elements = $this->product->filters($filters)->with('tags')->paginate(20);
+        $tags = $elements->pluck('tags')->unique()->flatten();
 
         if (!$elements->isEmpty()) {
-            return view('frontend.modules.product.index', compact('elements'));
+            return view('frontend.modules.product.index', compact('elements','tags'));
         } else {
             return redirect()->home()->with('error', title_case('no items found .. plz try again'));
         }
@@ -43,10 +44,10 @@ class ProductController extends Controller
 
     public function show($productId)
     {
-        $product = $this->product->whereId($productId)->with('gallery', 'tagged')->first();
+        $product = $this->product->whereId($productId)->with('product_attributes','gallery', 'tags','categories')->first();
         // return array of ['size_id', 'color', 'att_id','qty' ] for one product
-        $data = $product->data;
-        $products = $this->product->getRelatedProducts($productId);
+        $data = $product->product_attributes->toArray();
+        $products = $this->product->getRelatedProducts($product);
         /*
          * Rating Percentage for each product loaded.
          *

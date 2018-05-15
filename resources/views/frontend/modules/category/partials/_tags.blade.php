@@ -9,8 +9,8 @@
                             {{--<li><a href="{{ route('product.tags',[$tag->name]) }}"--}}
                                    {{--style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->name }}</a></li>--}}
 
-                            <li style=""><a href="{{ route('product.tags',[$tag->name]) }}"
-                                   style="">{{ $tag->name }}</a></li>
+                            <li style=""><a href="{{ route('frontend.product.search',['tag_id' => $tag->id]) }}"
+                                   style="">{{ $tag->slug }}</a></li>
                         @endforeach
                     </ul>
                 </div>

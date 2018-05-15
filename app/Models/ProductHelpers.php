@@ -72,4 +72,12 @@ trait ProductHelpers
             ->orderBy('count', 'DESC')// DESC
             ->take(app()->isLocale('ar') ? 7 : 12)->pluck('id');
     }
+
+    public function getRelatedProducts($product)
+    {
+        $categoriesId = $product->categories->pluck('id');
+        return $this->whereHas('categories', function ($q) use ($categoriesId) {
+            return $q->whereId($categoriesId);
+        })->take(7)->get();
+    }
 }

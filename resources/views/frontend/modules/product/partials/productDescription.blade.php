@@ -12,16 +12,16 @@
                     <!-- Tab Content -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="product-des">
-                            <p>{!! $product->product_meta->description !!}</p>
+                            <p>{!! $product->description !!}</p>
                         </div>
                         <div class="tab-pane" id="product-tag">
                             <h2>{{ trans('general.product_tags') }}</h2>
                             <div class="popular-tag">
                                 <div class="tag-list">
                                     <ul>
-                                        @foreach($product->tagged as $tag)
-                                            <li><a href="{{ route('product.tags',[$tag->tag_name]) }}"
-                                                   style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->tag_name }}</a></li>
+                                        @foreach($product->tags as $tag)
+                                            <li><a href="{{ route('frontend.product.search',['tag_id' => $tag->id]) }}"
+                                                   style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->slug }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

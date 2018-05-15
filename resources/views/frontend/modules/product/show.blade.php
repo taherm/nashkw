@@ -7,8 +7,8 @@
     <meta property="og:url" content="{{ request()->fullUrl() }}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{ $product->name }}"/>
-    <meta property="og:description" content="{!! strip_tags($product->product_meta->description) !!}"/>
-    <meta property="og:image" content="{{asset('img/uploads/thumbnail/'.$product->product_meta->image)}}"/>
+    <meta property="og:description" content="{!! strip_tags($product->description) !!}"/>
+    <meta property="og:image" content="{{asset('img/uploads/thumbnail/'.$product->image)}}"/>
 @endsection
 
 @section('body')
@@ -43,12 +43,12 @@
                                         <div style="display: none;">
                                             {{$count = 1}}
                                         </div>
-                                        @if(isset($product->product_meta->image))
+                                        @if(isset($product->image))
                                             <div class="tab-pane active" id="{{'p-view-1'}}">
                                                 <div class="simpleLens-big-image-container">
                                                     <a class="simpleLens-lens-image"
-                                                       data-lens-image="{{asset('img/uploads/large/'.$product->product_meta->image)}}">
-                                                        <img src="{{asset('img/uploads/large/'.$product->product_meta->image)}}"
+                                                       data-lens-image="{{asset(env('LARGE').$product->image)}}">
+                                                        <img src="{{asset(env('LARGE').$product->image)}}"
                                                              class="simpleLens-big-image" alt="{{ $product->name }}">
                                                     </a>
                                                 </div>
@@ -64,8 +64,8 @@
                                                      id="{{'p-view-'. $count++}}">
                                                     <div class="simpleLens-big-image-container">
                                                         <a class="simpleLens-lens-image"
-                                                           data-lens-image="{{asset('img/uploads/large/'.$image->large_url)}}">
-                                                            <img src="{{asset('img/uploads/large/'.$image->large_url)}}"
+                                                           data-lens-image="{{asset(env('LARGE').$image->large_url)}}">
+                                                            <img src="{{asset(env('LARGE').$image->large_url)}}"
                                                                  class="simpleLens-big-image" alt="{{ $product->name }}">
                                                         </a>
                                                     </div>
@@ -77,18 +77,18 @@
                                     <!-- Simple Lence Thumbnail -->
                                     <div class="simpleLens-thumbnails-container text-center">
                                         <div id="single-product" class="owl-carousel custom-carousel">
-                                            @if(isset($product->product_meta->image) && count($product->gallery->images) > 0)
-                                                @if(isset($product->product_meta->image))
+                                            @if(isset($product->image) && count($product->gallery->images) > 0)
+                                                @if(isset($product->image))
                                                     <ul class="nav nav-tabs" role="tablist">
                                                         <li class="active"><a href="/#p-view-1" role="tab" data-toggle="tab">
-                                                                <img src="{{asset('img/uploads/thumbnail/'.$product->product_meta->image)}}"
+                                                                <img src="{{asset('img/uploads/thumbnail/'.$product->image)}}"
                                                                      width="100" height="100" alt="{{ $product->name }}"></a>
                                                         </li>
                                                     </ul>
                                                 @endif
                                                 <div style="display: none;">
 
-                                                    @if(isset($product->product_meta->image))
+                                                    @if(isset($product->image))
                                                         {{$count2 = 2}}
                                                     @else
                                                         {{$count2 = 1}}
@@ -102,7 +102,7 @@
                                                             <li class="@if($count2 == 1) active @else last-li @endif"><a
                                                                         href="{{'/#p-view-'. $count2++}}" role="tab"
                                                                         data-toggle="tab"><img
-                                                                            src="{{asset('img/uploads/large/'.$image->large_url)}}"
+                                                                            src="{{asset(env('LARGE').$image->large_url)}}"
                                                                             width="100" height="100" alt="{{ $product->name }}"></a>
                                                             </li>
                                                         </ul>
@@ -125,18 +125,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-2 {{ App::getLocale() == 'ar' ? 'pull-left' : 'pull-right' }}">
+                                    <div class="col-lg-2 {{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }}">
                                         <div class="sin-product-icons fix">
                                             <div class="add-action">
                                                 <ul>
                                                     <li>
-                                                        @if($product->liked())
-                                                            <a href="{{ route('wishlist.remove',$product->id) }}"
+                                                        @if($product->favorited)
+                                                            <a href="{{ route('frontend.favorite.remove',$product->id) }}"
                                                                data-toggle="tooltip" title="Remove from Wishlist">
                                                                 <i class="fa fa-heart" style="color: red"></i>
                                                             </a>
                                                         @else
-                                                            <a href="{{ route('wishlist.add',$product->id) }}"
+                                                            <a href="{{ route('frontend.favorite.store',$product->id) }}"
                                                                data-toggle="tooltip" title="Add to Wishlist">
                                                                 <i class="fa fa-heart-o"></i>
                                                             </a>
@@ -151,42 +151,36 @@
                                     <h3 style="font-size: 15px;">{{ trans('general.sku') }} : ({{$product->sku}})</h3>
                                 </div>
                                 <div class="price-box">
-                                    @if($product->product_meta->on_sale)
+                                    @if($product->on_sale)
                                         <span class="old-price">
-                                            {{ currency($product->product_meta->price,'KWD',currency()->getUserCurrency('KWD'),false) }}
-                                            {{ currency()->getCurrency('KWD')['code'] }}
+                                            {{ $product->price }} - {{ $currency->symbol }}
                                         </span>
                                         <span class="new-price">
-                                            {{ currency($product->product_meta->sale_price,'KWD',currency()->getUserCurrency('KWD'),false) }}
-                                            {{ currency()->getCurrency('KWD')['code'] }}
+                                            {{ $product->sale_price }} - {{ $currency->symbol }}
                                         </span>
-                                        @if(Currency::getCurrency(session()->get('currency')) != 'KWD')
+                                        @if($currency->symbol != 'KWD')
                                             <div>
                                                 <p style="margin: 0px;padding-top: 15px;font-size: 10px;">{{trans('general.approximately')}}</p>
                                                 <span class="old-price"
                                                       style="font-size: 13px;">
-                                                {{ currency($product->product_meta->price,'KWD',session()->get('currency'),false) }}
-                                                    {{ currency()->getCurrency(session()->get('currency'))['code'] }}
+                                                {{ $product->convertedPrice }} - {{ $currency->symbol }}
                                                 </span>
                                                 <span class="new-price"
                                                       style="font-size: 13px;">
-                                                {{ currency($product->product_meta->sale_price,'KWD',session()->get('currency'),false) }}
-                                                    {{ currency()->getCurrency(session()->get('currency'))['code'] }}
+                                                {{ $product->convertedSalePrice }} - {{ $currency->symbol }}
                                                 </span>
                                             </div>
                                         @endif
                                     @else
                                         <span class="new-price">
-                                        {{ currency($product->product_meta->price,'KWD',currency()->getUserCurrency('KWD'),false) }}
-                                            {{ currency()->getCurrency('KWD')['code'] }}
+                                        {{ $product->convertedPrice }} - {{ $currency->symbol }}
                                         </span>
                                         @if(currency()->getCurrency(session()->get('currency')) != 'KWD')
                                             <div>
                                                 <p style="margin: 0px;padding-top: 15px;font-size: 10px;">Approx.</p>
                                                 <span class="new-price"
                                                       style="font-size: 13px;">
-                                                {{ currency($product->product_meta->price,'KWD',session()->get('currency'),false) }}
-                                                    {{ currency()->getCurrency(session()->get('currency'))['code'] }}
+                                                {{ $product->convertedSalePrice }} - {{ $currency->symbol }}
                                                 </span>
                                             </div>
                                         @endif
@@ -212,7 +206,7 @@
                                 {{--</p>--}}
                                 </br>
                                 <div class="product-review">
-                                    <p>{!! $product->product_meta->description !!}</p>
+                                    <p>{!! $product->description !!}</p>
                                 </div>
                                 @if($product->totalQty > 0)
                                     <div class="add-to-cart cart-sin-product">
@@ -293,7 +287,7 @@
                                                 <div class="box-icon button-plus">
                                                     <input id="increaseQty" type="button" class="qty-increase "
                                                            value="+"
-                                                           style="{{ App::getLocale() == 'ar' ?  'margin-right: -90px; margin-top: -8px; width:20px;' :  'padding-right: 20px; top: -27px;' }} outline: none;"
+                                                           style="{{ app()->isLocale('ar') ?  'margin-right: -90px; margin-top: -8px; width:20px;' :  'padding-right: 20px; top: -27px;' }} outline: none;"
                                                            disabled>
                                                 </div>
                                                 <div class="box-icon button-minus">
@@ -331,7 +325,7 @@
 
         @if(!is_null($products) && $products->count() > 0)
                 <!--related-products-area start-->
-        @include('frontend.modules.product.partials.product_carousel',['products'=>$products,'heading'=>'Related Products','backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-3 col-md-3 col-sm-3'])
+        @include('frontend.modules.product.partials.product_carousel',[$products ,'heading'=>'Related Products','backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-3 col-md-3 col-sm-3'])
                 <!--related-products-area end-->
         @endif
     </div>
@@ -349,7 +343,7 @@
                     <h4 class="modal-title" id="myModalLabel">Size Chart</h4>
                 </div>
                 <div class="modal-body" style="text-align: center;">
-                    <img src="{{ file_exists(public_path('img/uploads/large/'.$product->product_meta->size_chart_image)) ? asset('img/uploads/large/'.$product->product_meta->size_chart_image) : asset('meem/frontend/img/charts.png') }}"
+                    <img src="{{ file_exists(asset(env('LARGE').$product->size_chart_image)) ? asset(env('LARGE').$product->size_chart_image) : asset('img/charts.png') }}"
                          id="imagepreview"
                          style="width: 400px; height: 264px;">
                 </div>
