@@ -32,12 +32,10 @@ class ProductController extends Controller
             return redirect()->home()->withErrors($validator->messages());
         }
 
-        $elements = $this->product->filters($filters)->with('categories')->get();
-
-        dd($elements);
+        $elements = $this->product->filters($filters)->with('categories')->paginate(20);
 
         if (!$elements->isEmpty()) {
-            return view('frontend.modules.ad.index', compact('elements'));
+            return view('frontend.modules.product.index', compact('elements'));
         } else {
             return redirect()->home()->with('error', title_case('no items found .. plz try again'));
         }

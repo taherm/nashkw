@@ -30,6 +30,11 @@
                                 @endif
                             </li>
                         @endforeach
+                        @foreach($pages->where('on_menu_desktop', true) as $page)
+                            <li>
+                                <a href="{{ $page->url }}">{{ $page->slug }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </nav>
             </div>

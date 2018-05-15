@@ -26,6 +26,6 @@
                 {{--@endif--}}
             {{--@endfor--}}
         {{--</ol>--}}
-        {{ $products->links() }}
+        {{ $elements->appends($_GET)->links() }}
     {{--</div>--}}
 {{--@endif--}}

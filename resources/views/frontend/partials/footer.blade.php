@@ -110,7 +110,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                             <!-- middle-footer-text start-->
                             <div class="middle-footer-text middle-footer-text2">
-                                <h3>{{ trans('general.informations') }}</h3>
+                                <h3>{{ trans('general.information') }}</h3>
                                 <div class="footer-menu">
                                     <ul>
                                         @foreach($pages as $page)
@@ -126,7 +126,7 @@
                         <div class="col-lg-2 col-md-2 hidden-sm col-xs-12">
                             <!-- middle-footer-text start-->
                             <div class="middle-footer-text middle-footer-text2">
-                                <h3>{{ trans('general.polices') }}</h3>
+                                <h3>{{ trans('general.pages') }}</h3>
                                 <div class="footer-menu">
                                     <ul>
                                         @foreach($pages->where('on_footer', true) as $page)

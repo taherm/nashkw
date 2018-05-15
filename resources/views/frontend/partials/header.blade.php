@@ -28,9 +28,9 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <!-- main-menu start -->
-                        <div class="main-menu main-menu4">
+                        <div class="main-menu">
                             <nav>
-                                <ul style="{!! (App::isLocale('ar')) ? 'direction: rtl !important;' : null !!}">
+                                <ul>
                                     <li><a class="no-child" href="{{URL('/')}}">{{ trans('general.home') }}</a></li>
                                     @foreach($categories->sortBy('order') as $category)
                                         <li>
@@ -52,6 +52,12 @@
                                                     @endforeach
                                                 </div>
                                             @endif
+                                        </li>
+                                    @endforeach
+                                    @foreach($pages->where('on_menu_desktop', true) as $page)
+                                        <li>
+                                            <a class="no-child"
+                                               href="{{ $page->url }}">{{ $page->slug }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

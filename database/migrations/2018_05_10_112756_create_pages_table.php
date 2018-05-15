@@ -24,9 +24,9 @@ class CreatePagesTable extends Migration
             $table->text('content_en')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('active')->default(1);
-            $table->boolean('on_home')->default(1);
+            $table->boolean('on_menu_desktop')->default(1);
+            $table->boolean('on_menu_mobile')->default(1);
             $table->boolean('on_footer')->default(1);
-            $table->boolean('on_menu')->default(1);
             $table->timestamps();
         });
     }

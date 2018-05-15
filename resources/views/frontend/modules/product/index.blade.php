@@ -9,9 +9,9 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--breadcrumbs start-->
-                @include('frontend.modules.category.partials._breadcrumbs')
+                {{--@include('frontend.modules.category.partials._breadcrumbs')--}}
                         <!--breadcrumbs end-->
-                @include('frontend.modules.category.partials._tags')
+                {{--@include('frontend.modules.category.partials._tags')--}}
                 <div class="shop-product-view">
                     <!-- Shop Product Tab Area -->
                     <div class="product-tab-area">
@@ -21,7 +21,7 @@
                         <div class="tab-content">
                             <div id="shop-grid" class="tab-pane active" role="tabpanel">
                                 <div class="row">
-                                    @include('frontend.modules.product.partials.product_thumbnail',[$products,'cols' => 'col-lg-3 col-md-3 col-sm-3'])
+                                    @include('frontend.modules.product.partials.product_thumbnail',['products' => $elements ,'cols' => 'col-lg-3 col-md-3 col-sm-3'])
                                 </div>
                             </div>
                         </div>

@@ -26,10 +26,11 @@ class ComposerServiceProvider extends ServiceProvider
         ],'App\Services\ViewComposers@getCartCount');
         view()->composer([
             'frontend.home',
-            'frontend.partials.footer'
+            'frontend.partials.footer',
+            'frontend.modules.product.index'
         ], 'App\Services\ViewComposers@getCurrency');
         view()->composer([
-            'frontend.home'
+            'frontend.partials._currency_language'
         ], 'App\Services\ViewComposers@getCurrencies');
         view()->composer([
             'frontend.partials.header'
@@ -39,7 +40,8 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.partials.header'
         ], 'App\Services\ViewComposers@getContactus');
         view()->composer([
-            'frontend.partials.footer'
+            'frontend.partials.footer',
+            'frontend.partials.header'
         ], 'App\Services\ViewComposers@getPages');
     }
 

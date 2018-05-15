@@ -13,7 +13,10 @@ $factory->define(Page::class, function (Faker $faker) {
         'content_ar' => $faker->paragraph,
         'url' => $faker->url,
         'content_en' => $faker->paragraph,
-        'active' => $faker->boolean,
         'order' => $faker->numberBetween(1, 10),
+        'active' => $faker->boolean,
+        'on_footer' => $faker->boolean,
+        'on_menu_desktop' => $faker->boolean,
+        'on_menu_mobile' => $faker->boolean,
     ];
 });
