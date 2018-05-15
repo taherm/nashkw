@@ -25,6 +25,24 @@ class ProductController extends Controller
         return view('frontend.modules.product.index', compact('products'));
     }
 
+    public function search(Filters $filters)
+    {
+        $validator = validator(request()->all(), ['search' => 'nullable']);
+        if ($validator->fails()) {
+            return redirect()->home()->withErrors($validator->messages());
+        }
+
+        $elements = $this->product->filters($filters)->with('categories')->get();
+
+        dd($elements);
+
+        if (!$elements->isEmpty()) {
+            return view('frontend.modules.ad.index', compact('elements'));
+        } else {
+            return redirect()->home()->with('error', title_case('no items found .. plz try again'));
+        }
+    }
+
     public function show($productId)
     {
         $product = $this->product->whereId($productId)->with('gallery', 'tagged')->first();

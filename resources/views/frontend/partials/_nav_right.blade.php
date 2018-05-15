@@ -42,9 +42,9 @@
     </div>
 
     <div class="header-right-link">
-        <Form method="get" action="{{ route('frontend.search') }}">
+        <Form method="get" action="{{ route('frontend.product.search') }}">
             <div class="search-option" style="left: 0px;bottom: -27px;">
-                <input type="text" name="term" placeholder="{{ trans('general.search') }}"
+                <input type="text" name="search" placeholder="{{ trans('general.search') }}"
                        style="margin-bottom: 0px;height: 30px;border: none;">
                 <button class="button" type="submit"><i class="fa fa-search"></i></button>
             </div>

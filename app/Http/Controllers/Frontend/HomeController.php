@@ -38,22 +38,6 @@ class HomeController extends Controller
         ));
     }
 
-    public function search(Filters $filters) {
-        $validator = validator(request()->all(), ['search' => 'nullable']);
-//        'parent' => 'required_without:sub', 'sub' => 'required_without:parent'
-        if ($validator->fails()) {
-            return redirect()->home()->withErrors($validator->messages());
-        }
-
-        $elements = Product::filters($filters)->paginate(12);
-
-        if (!$elements->isEmpty()) {
-            return view('frontend.modules.ad.index', compact('elements'));
-        } else {
-            return redirect()->home()->with('error', title_case('no items found .. plz try again'));
-        }
-    }
-
     public function changeCurrency()
     {
         $currency = Currency::where('symbol', strtoupper(request('currency')))->first();

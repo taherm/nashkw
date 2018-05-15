@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\Search;
 
 use App\Models\Category;
@@ -31,135 +32,48 @@ class Filters extends QueryFilters
             ->orWhere('notes_en', 'like', "%{$search}%");
     }
 
-    public function parent()
+    public function category_id()
     {
-        $subs = $this->category->whereId(request()->parent)->first()->children()->pluck('id')->toArray();
-        return $this->sub($subs);
+        $children = $this->category->whereId(request()->category_id)->with('children')->first()->children->pluck('id');
+        return $this->builder->whereHas('categories', function ($q) use ($children) {
+            return $q->whereIn('id', [request()->category_id, !$children->isEmpty() ? $children : null]);
+        });
     }
 
-    public function sub($subs = null)
+    public function tag_id()
     {
-        if (request()->has('parent')) {
-            return $this->builder->whereIn('category_id', $subs);
-        } else {
-            return $this->builder->where('category_id', request()->sub);
-        }
-    }
-
-    public function brand_id()
-    {
-        return $this->builder->where('brand_id', request()->brand_id);
+        return $this->builder->whereHas('tags', function ($q) {
+            return $q->where('id', request()->tag_id);
+        });
     }
 
     public function color_id()
     {
-        return $this->builder->where('color_id', request()->color_id);
+        return $this->builder->whereHas('product_attributes', function ($q) {
+            return $q->where('color_id', request()->color_id);
+        });
     }
 
     public function size_id()
     {
-        return $this->builder->where('size_id', request()->size_id);
-    }
-
-    public function model_id()
-    {
-        return $this->builder->where('model_id', request()->model);
-    }
-
-    public function type()
-    {
-        return $this->builder->where('type_id', request()->type);
-    }
-
-    public function is_new()
-    {
-        var_dump('is_new'.request()->is_new);
-        return $this->builder->where(function ($q) {
-            return $q->whereHas('meta', function ($q) {
-                return $q->where('is_new', request()->is_new);
-            });
+        return $this->builder->whereHas('product_attributes', function ($q) {
+            return $q->where('size_id', request()->color_id);
         });
     }
 
-    public function mileage()
+    public function on_sale()
     {
-        return $this->builder->where(function ($q) {
-            return $q->whereHas('meta', function ($q) {
-                return $q->where('mileage', '<=', request()->mileage);
-            });
-        });
+        return $this->builder->where('on_sale', true);
     }
 
-    public function min($ads)
+    public function min()
     {
-        var_dump('min'.request()->min);
         return $this->builder->where('price', '>=', request()->min);
     }
 
     public function max()
     {
-        var_dump('max'.request()->max);
         return $this->builder->where('price', '<=', request()->max);
-    }
-
-    public function area_id()
-    {
-        return $this->builder->where('area_id', request()->area);
-    }
-
-    public function city_id()
-    {
-        return $this->builder->where('city_id', request()->area);
-    }
-
-    public function rent_type()
-    {
-        return $this->builder->where(function ($q) {
-            return $q->whereHas('meta', function ($q) {
-                return $q->where('rent_type', request()->rent_type);
-            });
-        });
-    }
-
-    public function space()
-    {
-        return $this->builder->where(function ($q) {
-            return $q->whereHas('meta', function ($q) {
-                return $q->where('space', '>=', request()->space);
-            });
-        });
-    }
-
-    public function manufacturing_year()
-    {
-        return $this->builder->where(function ($q) {
-            return $q->whereHas('meta', function ($q) {
-                return $q->where('manufacturing_year', '=>', request()->manufacturing_year);
-            });
-        });
-    }
-
-    public function is_automatic()
-    {
-        return $this->builder->where(function ($q) {
-            return $q->whereHas('meta', function ($q) {
-                return $q->where('is_automatic', request()->is_automatic);
-            });
-        });
-    }
-
-    public function have_images()
-    {
-        return $this->builder->where('image', '!=', null);
-    }
-
-    public function only_premium()
-    {
-        return $this->builder->hasValidDeal();
-    }
-
-    public function page() {
-        return $this->builder;
     }
 
 }

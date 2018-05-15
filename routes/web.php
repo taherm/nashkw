@@ -24,11 +24,9 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::resource('user', 'UserController');
     Route::resource('order', 'OrderController');
     Route::resource('favorite', 'FavoriteController');
-    Route::get('search', 'HomeController@search')->name('search');
+    Route::get('search', 'ProductController@search')->name('product.search');
     Route::get('currency/{currency}', 'HomeController@changeCurrency')->name('currency.change');
     Route::get('language/{locale}', 'HomeController@changeLanguage')->name('language.change');
-
-
 });
 Auth::routes();
 
