@@ -80,4 +80,9 @@ trait ProductHelpers
             return $q->whereId($categoriesId);
         })->take(7)->get();
     }
+
+    public function getTotalQtyAttribute()
+    {
+        return $this->product_attributes->sum('qty');
+    }
 }

@@ -16,9 +16,15 @@
                                 @if(Auth::id() == 1)
                                     <li><a href="{{ url('/backend') }}">{{ trans('general.dashboard') }}</a></li>
                                 @endif
-                                <li><a href="{{ route('frontend.user.show', auth()->user()->id) }}">{{ trans('general.my_account') }}</a></li>
-                                <li><a href="{{ route('frontend.favorite.index') }}">{{ trans('general.my_wishlist') }}</a></li>
-                                <li><a href="{{ route('frontend.cart.index') }}">{{ trans('general.shopping_cart') }}</a></li>
+                                <li>
+                                    <a href="{{ route('frontend.user.show', auth()->user()->id) }}">{{ trans('general.my_account') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('frontend.favorite.index') }}">{{ trans('general.my_wishlist') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('frontend.cart.show') }}">{{ trans('general.shopping_cart') }}</a>
+                                </li>
                                 <li><a href="/checkout">{{ trans('general.checkout') }}</a></li>
                                 <li style="display: block;">
                                     <a href="{{ url('/logout') }}"
@@ -54,7 +60,7 @@
     <div class="header-right-link">
         <div class="cart-item">
             <div class="cart-item-title">
-                <a href="{{ route('frontend.cart.index') }}"><img src="{{asset('img/icons/card.png')}}" alt="">
+                <a href="{{ route('frontend.cart.show') }}"><img src="{{asset('img/icons/card.png')}}" alt="">
                     <span class="total-cart">{{ $cartCount }}</span>
                 </a>
                 @if($cartCount > 0)
@@ -65,7 +71,8 @@
                                 <div class="product-items-cart">
                                     <div class="cart-img">
                                         <a href="{{ route('frontend.product.show',$product->id) }}">
-                                            <img width="50" height="60" src="{{ asset('uploads/images/thumbnail/'.$product->image)}}"alt=""/>
+                                            <img width="50" height="60"
+                                                 src="{{ asset(env('THUMBNAIL').$product->image)}}" alt=""/>
                                         </a>
                                     </div>
                                     <div class="cart-text-2">
@@ -84,7 +91,7 @@
                         @endforeach
 
                         <div class="cart-btn-3">
-                            <a class="button" href="{{ route('cart.index') }}"
+                            <a class="button" href="{{ route('frontend.cart.show') }}"
                                style="margin-left: 10%;">{{trans('general.view_all_items')}}</a>
                         </div>
                     </div>
