@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
 use App\Core\Services\Image\PrimaryImageService;
-use App\Src\Gallery\Gallery;
-use App\Src\Product\ProductMeta;
+use App\Models\ProductMeta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;

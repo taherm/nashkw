@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-        'sku' => $faker->name,
+        'sku' => $faker->postcode,
         'active' => $faker->boolean,
         'name_ar' => $faker->name,
         'name_en' => $faker->name,
