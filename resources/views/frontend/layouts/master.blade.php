@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<input type="hidden" name="language" value="{{ app()->getLocale() }}" id="language">
 @include('frontend.modules.product.partials.quick-view')
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade

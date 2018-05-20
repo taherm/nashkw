@@ -145,8 +145,8 @@ mix.styles([
         '../../Documents/Home/expert-theme/expert/js/wow.min.js',
         '../../Documents/Home/expert-theme/expert/js/plugins.js',
         '../../Documents/Home/expert-theme/expert/js/main.js',
-        './resources/assets/js/frontend-custom.js',
         '../../Documents/Home/expert-theme/expert/js/vendor/modernizr-2.8.3.min.js',
+        './resources/assets/js/frontend-custom.js',
     ]
     , 'public/js/frontend.js').version();
 

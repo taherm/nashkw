@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use App\Services\Traits\LocaleTrait;
-
 class Size extends PrimaryModel
 {
-    use LocaleTrait;
     protected $localeStrings = ['name'];
 
     public function product_attribute()

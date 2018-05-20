@@ -21,7 +21,8 @@ class ProductController extends Controller
 
     public function index(Filters $filters)
     {
-        $products = $this->product->filters($filters)->paginate(12);
+        $products = $this->product->filters($filters)->hasProductAttribute()->paginate(12);
+        dd($products);
         return view('frontend.modules.product.index', compact('products'));
     }
 
@@ -32,11 +33,12 @@ class ProductController extends Controller
             return redirect()->home()->withErrors($validator->messages());
         }
 
-        $elements = $this->product->filters($filters)->with('tags')->paginate(20);
+        $elements = $this->product->filters($filters)->hasProductAttribute()->with('tags')->paginate(20);
+
         $tags = $elements->pluck('tags')->unique()->flatten();
 
         if (!$elements->isEmpty()) {
-            return view('frontend.modules.product.index', compact('elements','tags'));
+            return view('frontend.modules.product.index', compact('elements', 'tags'));
         } else {
             return redirect()->home()->with('error', title_case('no items found .. plz try again'));
         }
@@ -44,7 +46,7 @@ class ProductController extends Controller
 
     public function show($productId)
     {
-        $product = $this->product->whereId($productId)->with('product_attributes.color','gallery', 'tags','categories')->first();
+        $product = $this->product->whereId($productId)->with('product_attributes.color', 'gallery', 'tags', 'categories')->first();
         // return array of ['size_id', 'color', 'att_id','qty' ] for one product
         $data = $product->product_attributes->toArray();
         $products = $this->product->getRelatedProducts($product);

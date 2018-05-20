@@ -85,4 +85,11 @@ trait ProductHelpers
     {
         return $this->product_attributes->sum('qty');
     }
+
+    public function scopeHasProductAttribute($q)
+    {
+        return $q->whereHas('product_attributes', function ($q) {
+            return $q;
+        }, '>', 0);
+    }
 }

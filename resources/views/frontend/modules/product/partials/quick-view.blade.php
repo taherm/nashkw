@@ -79,25 +79,10 @@
     <!-- END quickview product -->
 @endif
 
-@section('customScripts')
+@section('scripts')
     @parent
     <script type="text/javascript">
-        $(document).on('show.bs.modal', function(event) {
-            console.log('a', event);
-            $('.old-price-ql').show();
-            var product = $(event.relatedTarget) // Button that triggered the modal
-            $('.old-price-ql').html(product.data('price'));
-            $('.new-price-ql').html(product.data('saleprice'));
-            $('.product-heading').html(product.data('name'));
-            $('.view-details').attr('href', product.data('link'));
-            $('.product-image').attr('src', product.data('image'));
-            $('.quick-desc').html(product.data('description'));
 
-            // hide the on sale node if the product is not on sale
-            if (product.data('price') == product.data('saleprice')) {
-                $('.old-price-ql').hide();
-            }
-        });
     </script>
 @endsection
 
