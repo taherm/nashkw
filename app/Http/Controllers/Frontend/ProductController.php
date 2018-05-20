@@ -44,7 +44,7 @@ class ProductController extends Controller
 
     public function show($productId)
     {
-        $product = $this->product->whereId($productId)->with('product_attributes','gallery', 'tags','categories')->first();
+        $product = $this->product->whereId($productId)->with('product_attributes.color','gallery', 'tags','categories')->first();
         // return array of ['size_id', 'color', 'att_id','qty' ] for one product
         $data = $product->product_attributes->toArray();
         $products = $this->product->getRelatedProducts($product);

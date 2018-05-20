@@ -129,9 +129,10 @@ mix.styles([
         '../../Documents/Home/expert-theme/expert/css/jquery.simpleLens.css',
         '../../Documents/Home/expert-theme/expert/style.css',
         '../../Documents/Home/expert-theme/expert/css/responsive.css',
-        './resources/assets/css/frontend-custom.css',
+        './resources/assets/css/frontend-custom.css'
     ]
     , 'public/css/frontend.css').version();
+mix.styles('./resources/assets/css/frontend-custom-ar.css', 'public/css/frontend-custom-ar.css')
 mix.styles([
         '../../Documents/Home/expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
         '../../Documents/Home/expert-theme/expert/js/bootstrap.min.js',

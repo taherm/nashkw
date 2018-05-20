@@ -20,12 +20,12 @@ $factory->define(Product::class, function (Faker $faker) {
             return $array['price'] - rand(1, 5);
         },
         'home_delivery_fees' => $faker->boolean,
-        'size_chart_image' => $faker->numberBetween(1, 10) . '.jpeg',
+        'size_chart_image' => $faker->numberBetween(1, 10) . '.jpg',
         'description_en' => $faker->paragraph,
         'description_ar' => $faker->paragraph,
         'notes_ar' => $faker->paragraph,
         'notes_en' => $faker->paragraph,
-        'image' => $faker->numberBetween(1, 10) . '.jpeg',
+        'image' => $faker->numberBetween(1, 10) . '.jpg',
         'start_sale' => $faker->dateTime('now'),
         'end_sale' => $faker->dateTimeBetween('now', '1 year'),
     ];

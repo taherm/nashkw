@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js"
-      lang="{{ app()->getLocale() }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr'}}"
+      lang="{{ app()->getLocale() }}"
+      {{--dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr'}}"--}}
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://ogp.me/ns/fb#"
 >
@@ -40,8 +41,9 @@
 <!--footer end-->
 
 <!--script for this page-->
-@section('customScripts')
+@section('scripts')
     @include('frontend.partials.scripts')
 @show
-</body>
+</body
+        >
 </html>

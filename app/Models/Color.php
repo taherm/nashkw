@@ -7,6 +7,7 @@ class Color extends PrimaryModel
 {
     protected $localeStrings = ['name'];
 
+
     public function product_attribute()
     {
         return $this->hasOne(ProductAttribute::class);

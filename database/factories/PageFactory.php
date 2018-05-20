@@ -9,7 +9,7 @@ $factory->define(Page::class, function (Faker $faker) {
         'title_en' => $faker->name,
         'slug_ar' => $faker->name,
         'slug_en' => $faker->name,
-        'image' => $faker->numberBetween(1, 10) . '.jpeg',
+        'image' => $faker->numberBetween(1, 10) . '.jpg',
         'content_ar' => $faker->paragraph,
         'url' => $faker->url,
         'content_en' => $faker->paragraph,

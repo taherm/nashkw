@@ -5,7 +5,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-product">
@@ -26,8 +27,10 @@
                             </div>
                             {{--<a href="shop.html" class="see-all">See all features</a>--}}
                             <div class="quick-add-to-cart">
-                                <a href="#" class="single_add_to_cart_button view-details hidden-xs hidden-sm" style="padding-top: 10px;">{{ trans('general.view_details') }}</a>
-                                <a href="#" class="hidden-lg hidden-md" style="padding-top: 10px;">{{ trans('general.view_details') }}</a>
+                                <a href="#" class="single_add_to_cart_button view-details hidden-xs hidden-sm"
+                                   style="padding-top: 10px;">{{ trans('general.view_details') }}</a>
+                                <a href="#" class="hidden-lg hidden-md"
+                                   style="padding-top: 10px;">{{ trans('general.view_details') }}</a>
                             </div>
                             <div class="quick-desc"></div>
                             {{--<div class="social-sharing">--}}
@@ -50,26 +53,51 @@
     </div>
     <!-- END Modal -->
 </div>
-<!-- END quickview product -->
+
+@if(isset($product))
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span
+                                class="sr-only">{{ trans('general.close') }}</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Size Chart</h4>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <img src="{{ file_exists(asset(env('LARGE').$product->size_chart_image)) ? asset(env('LARGE').$product->size_chart_image) : asset('img/charts.png') }}"
+                         id="imagepreview"
+                         style="width: 400px; height: 264px;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END quickview product -->
+@endif
 
 @section('customScripts')
     @parent
     <script type="text/javascript">
-        $(document).on('show.bs.modal', function (event) {
-            console.log('a',event);
+        $(document).on('show.bs.modal', function(event) {
+            console.log('a', event);
             $('.old-price-ql').show();
             var product = $(event.relatedTarget) // Button that triggered the modal
             $('.old-price-ql').html(product.data('price'));
             $('.new-price-ql').html(product.data('saleprice'));
             $('.product-heading').html(product.data('name'));
-            $('.view-details').attr('href',product.data('link'));
-            $('.product-image').attr('src',product.data('image'));
+            $('.view-details').attr('href', product.data('link'));
+            $('.product-image').attr('src', product.data('image'));
             $('.quick-desc').html(product.data('description'));
 
             // hide the on sale node if the product is not on sale
-            if(product.data('price') == product.data('saleprice')) {
+            if (product.data('price') == product.data('saleprice')) {
                 $('.old-price-ql').hide();
             }
         });
     </script>
 @endsection
+

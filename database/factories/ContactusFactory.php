@@ -18,6 +18,6 @@ $factory->define(Contactus::class, function (Faker $faker) {
         'youtube' => $faker->url,
         'instagram' => $faker->url,
         'twitter' => $faker->name,
-        'logo' => $faker->numberBetween(1, 10) . '.jpeg',
+        'logo' => $faker->numberBetween(1, 10) . '.jpg',
     ];
 });
