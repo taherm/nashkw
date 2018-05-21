@@ -39,19 +39,22 @@
             font-size: 72px;
             margin: 40px;
         }
+
         .link {
             text-decoration: none;
             font-size: 72px;
-            color : darkgoldenrod;
+            color: darkgoldenrod;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="content">
-        <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" style="max-width: 700px;"/>
+        <a href="{{ asset('images/brochure.pdf') }}">
+            <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" style="max-width: 700px;"/>
+        </a>
         <div class="title">
-            <a href="{{ asset('images/pdf.pdf') }}" class="link">View Our Brochure</a>
+            <a href="{{ asset('images/brochure.pdf') }}" class="link">View Our Brochure</a>
         </div>
         <div class="title">
             {{ $exception->getMessage() }}
