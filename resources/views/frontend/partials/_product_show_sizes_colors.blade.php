@@ -1,7 +1,8 @@
 <div class="col-lg-12">
     <div class="add-to-cart cart-sin-product">
         <div class="quick-add-to-cart">
-            <form method="post" class="cart">
+            <form method="post" class="cart" action="{{ route('frontend.cart.add') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="product_id" value="{{ $product->id }}" id="product_id">
                 <div class="col-lg-6 cart-btn">
                     <select name="color_id" id="color"

@@ -15,7 +15,6 @@ class Product extends PrimaryModel
         'active' => 'boolean',
         'home_delivery_availability' => 'boolean'
     ];
-    protected $with = ['gallery.images'];
 
     /**
      * MorphRelation

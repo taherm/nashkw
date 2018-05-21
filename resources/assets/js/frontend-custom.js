@@ -50,16 +50,14 @@ $(document).ready(function() {
     $('.qty-increase').on('click', function(e) {
         let max = parseInt($('#qty').attr('maxlength') - 1);
         let currentyQty = parseInt($('#qty').attr('value'));
-        let qty = parseInt(currentyQty <= max  ? currentyQty + 1  : 1);
+        let qty = parseInt(currentyQty <= max ? currentyQty + 1 : 1);
         $('#qty').attr('value', qty);
-        console.log('qty',qty);
     });
 
     $('.qty-decrease').on('click', function(e) {
         let currentyQty = parseInt($('#qty').attr('value'));
-        let qty = (currentyQty > 0 ? currentyQty - 1  : currentyQty);
+        let qty = (currentyQty > 0 ? currentyQty - 1 : currentyQty);
         $('#qty').attr('value', qty);
-        console.log('qty',qty);
     });
 
 })

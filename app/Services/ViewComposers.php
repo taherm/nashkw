@@ -16,6 +16,7 @@ use App\Models\Post;
 use App\Models\Role;
 use App\Models\Size;
 use App\Models\Slider;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\View\View;
 
 class ViewComposers
@@ -24,14 +25,13 @@ class ViewComposers
 
     public function getCart(View $view)
     {
-        $cart = session()->get('cart');
+        $cart = Cart::content();
         return $view->with(compact('cart'));
     }
 
     public function getCartCount(View $view)
     {
-        $cart = session()->get('cart');
-        $cartCount = $cart ? $cart->count() : 0;
+        $cartCount = Cart::count();
         return $view->with(compact('cartCount'));
     }
 

@@ -22,7 +22,6 @@ class ProductController extends Controller
     public function index(Filters $filters)
     {
         $products = $this->product->filters($filters)->hasProductAttribute()->paginate(12);
-        dd($products);
         return view('frontend.modules.product.index', compact('products'));
     }
 
@@ -33,7 +32,7 @@ class ProductController extends Controller
             return redirect()->home()->withErrors($validator->messages());
         }
 
-        $elements = $this->product->filters($filters)->hasProductAttribute()->with('tags')->paginate(20);
+        $elements = $this->product->filters($filters)->hasProductAttribute()->with('tags','gallery.images')->paginate(20);
 
         $tags = $elements->pluck('tags')->unique()->flatten();
 
@@ -46,7 +45,7 @@ class ProductController extends Controller
 
     public function show($productId)
     {
-        $product = $this->product->whereId($productId)->with('product_attributes.color', 'gallery', 'tags', 'categories')->first();
+        $product = $this->product->whereId($productId)->with('product_attributes.color', 'gallery.images', 'tags', 'categories')->first();
         // return array of ['size_id', 'color', 'att_id','qty' ] for one product
         $data = $product->product_attributes->toArray();
         $products = $this->product->getRelatedProducts($product);

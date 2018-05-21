@@ -32,7 +32,6 @@
 @include('frontend.partials.header')
 
 @include('frontend.partials._notification')
-
 @section('content')
     @yield('body')
 @show

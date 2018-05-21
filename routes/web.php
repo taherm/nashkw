@@ -18,9 +18,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []], function () {
     Route::resource('product', 'ProductController');
     Route::resource('newsletter', 'NewsletterController');
+    Route::resource('cart', 'CartController')->only(['index','show']);
     Route::post('cart/add', 'CartController@addItem')->name('cart.add');
     Route::post('cart/remove', 'CartController@removeItem')->name('cart.remove');
-    Route::get('cart', 'CartController@show')->name('cart.show');
+    Route::post('cart/clear', 'CartController@clearCart')->name('cart.clear');
     Route::post('coupon', 'CouponController@makeDiscount');
     Route::resource('checkout', 'CheckoutController');
     Route::resource('category', 'CategoryController');
