@@ -92,4 +92,5 @@ trait ProductHelpers
             return $q;
         }, '>', 0);
     }
+
 }

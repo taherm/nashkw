@@ -12,14 +12,12 @@
 
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    @if(!$cart->getItemsCount() > 0)
+                    @if($cart->isEmpty())
                         <div class="text-center">
                             <h1>{{ trans('cart.empty') }}</h1>
                             <p><a href={{route('home')}}> {{trans('cart.browse')}} </a></p>
                         </div>
-                        @else
-                                <!-- table start -->
-                        {!! Form::open(['action' => ['Frontend\CartController@updateCart'], 'method' => 'post'], ['class'=>'']) !!}
+                    @else
                         <div class="table-content table-responsive">
                             <table>
                                 <thead>
@@ -36,47 +34,45 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach($cart->items as $product)
+                                @foreach($cart as $item)
                                     <tr>
                                         <td class="product-remove">
-                                            <a href="{{ route('cart.remove',$product->id) }}">
+                                            <a href="{{ route('frontend.cart.remove',$item->id) }}">
                                                 <i class="fa fa-times"></i>
                                             </a>
                                         </td>
 
                                         <td class="product-thumbnail">
-                                            <a href="{{ route('product.show',$product->product_id) }}">
-                                                <img src="{{ asset('img/uploads/thumbnail/').'/'.$product->image}}"
-                                                     width="140" height="180" alt=""/>
+                                            <a href="{{ route('frontend.product.show',$item->options->product->id) }}">
+                                                <img src="{{ asset('storage/uploads/images/thumbnail/'.$item->options->product->image) }}"
+                                                     width="100" height="100" alt="" class="img-rounded img-thumbnail"/>
                                             </a>
                                         </td>
 
                                         <td class="product-thumbnail">
-                                            <div class="col-lg-1"
-                                                 style="border: 1px solid lightgrey; min-height : 30px; margin: 3px; background-color : {!! $product->color_code !!}"></div>
+                                            <div class="col-lg-1 col-lg-push-4"
+                                                 style="text-align: center; border: 1px solid lightgrey; min-height : 30px; margin: 3px; background-color : {!! $item->options->colorName !!}"></div>
                                         </td>
 
                                         <td class="product-thumbnail">
-                                            <div class="col-lg-1">{{ $product->size_name }}</div>
+                                            <div class="col-lg-1">{{ $item->options->sizeName }}</div>
                                         </td>
 
                                         <td class="product-name">
-                                            <a href="{{ route('product.show',$product->product_id) }}">{{ $product->name }}</a>
+                                            <a href="{{ route('frontend.product.show',$item->options->product->id) }}">{{ $item->name }}</a>
                                         </td>
 
                                         <td class="real-product-price">
-                                            @if($product->price !== $product->sale_price)
-                                                <span class="sale_price">{{$product->price}} KD </span>
-                                            @endif
-                                            <span class="amounte">{{ $product->sale_price }} KD </span>
+                                            <span class="sale_price">{{$item->price}} {{ trans('general.kd') }} </span>
+                                                                                        {{--<span class="amounte">{{ $item->options->product->sale_price }} KD </span>--}}
                                         </td>
 
                                         <td class="product-quantity">
-                                            <input type="number" name="quantity_{{$product->id}}"
-                                                   value="{{ $product->quantity }}"/>
+                                            <input type="number" name="quantity_{{$item->options->product->id}}"
+                                                   value="{{ $item->qty }}"/>
                                         </td>
 
-                                        <td class="product-subtotal">{{ $product->grand_total }} KD</td>
+                                        <td class="product-subtotal">{{ $cart->sum('price') }} {{ trans('general.kd') }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -97,14 +93,13 @@
                                         </span>
                                         </div>
                                     </div>
-                                    {!! Form::close() !!}
                                     <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12 col-md-push-2">
                                         <div class="place-section" style="padding: 0px;">
-                                            {!! Form::open(['route' => 'cart.clear', 'method' => 'Post'], ['class'=>'']) !!}
-                                            <button type="submit"
-                                                    class="col-lg-12 btn custom-button">{{ trans('cart.clear_cart') }}
-                                            </button>
-                                            {!! Form::close() !!}
+                                            <Form action="{{ route('frontend.cart.clear') }}" method="get">
+                                                <button type="submit"
+                                                        class="col-lg-12 btn custom-button">{{ trans('cart.clear_cart') }}
+                                                </button>
+                                            </Form>
                                         </div>
                                     </div>
                                 </div>
@@ -114,81 +109,83 @@
 
 
                         @if(Auth::user())
-                                <!-- Coupon -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="check-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
-                                        <span class="number"></span>{{ trans('cart.use_coupon') }}</a>
-                                </h4>
-                            </div>
+                        <!-- Coupon -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="check-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
+                                            <span class="number"></span>{{ trans('cart.use_coupon') }}</a>
+                                    </h4>
+                                </div>
 
-                            <div id="checkut5" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="hidden" id="grandTotal"
-                                         value="{!! $cart->grandTotal  !!}">{!! $cart->grandTotal !!}</div>
-                                    <div class="hidden" id="api_token">{!! auth()->user()->api_token !!}</div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12" id="couponApp">
+                                <div id="checkut5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="hidden" id="grandTotal"
+                                             value="{!! $cart->sum('price')  !!}">{!! $cart->sum('price') !!} {{ trans('general.kd') }}</div>
+                                        <div class="hidden" id="api_token">{!! auth()->user()->api_token !!}</div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12" id="couponApp">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- End Panel Default -->
+                            <!-- End Panel Default -->
                         @endif
 
-                                <!-- table end -->
+                    <!-- table end -->
                         <!-- place selection start -->
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
                                 <div class="place-section">
-                                    {!! Form::open(['route' => ['cart.checkout'], 'method' => 'POST'], ['class'=>'']) !!}
-                                    <div class="place-headline">
-                                        <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
-                                        <p>
-                                            <span>{{ trans('cart.enter_ur_destination') }}</span></br>
-                                            <span class="pull-left">
+                                    {{--                                    {!! Form::open(['route' => ['cart.checkout'], 'method' => 'POST'], ['class'=>'']) !!}--}}
+                                    <Form action="{{ route('frontend.cart.checkout') }}">
+                                        <div class="place-headline">
+                                            <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
+                                            <p>
+                                                <span>{{ trans('cart.enter_ur_destination') }}</span></br>
+                                                <span class="pull-left">
                                                 {{ trans('general.delivery_within_4_days') }}</br>
                                             </span>
-                                        <span class="pull-right">
+                                                <span class="pull-right">
                                             <img src="/meem/frontend/img/aramex.png" alt=""
                                                  class="img-responsive" style="max-width: 60px;">
                                         </span>
-                                        </p>
-                                        </br>
-                                        </br>
-                                    </div>
-                                    <div class="search-categori">
-                                        <h5>{{ trans('general.country') }}</h5>
-                                        <div class="category">
-                                            <select class="orderby" name="shipping_country" id="country"
-                                                    style="min-width: 80px;" placeholder='Choose Shipping Country'>
-                                                <option value="">Select Country</option>
-                                                @foreach($countries as $k => $v)
-                                                    <option value="{{ $k }}">{{ $v }}</option>
-                                                @endforeach
-                                            </select>
-                                            {{--                                            {{ Form::select('shipping_country',$countries,null,['id' => 'country','class'=>'orderby','placeholder'=>'Choose Shipping Country']) }}--}}
+                                            </p>
+                                            </br>
+                                            </br>
                                         </div>
-                                    </div>
+                                        <div class="search-categori">
+                                            <h5>{{ trans('general.country') }}</h5>
+                                            <div class="category">
+                                                <select class="orderby" name="shipping_country" id="country"
+                                                        style="min-width: 80px;" placeholder='Choose Shipping Country'>
+                                                    <option value="">Select Country</option>
+                                                    @foreach($countries as $k => $v)
+                                                        <option value="{{ $k }}">{{ $v }}</option>
+                                                    @endforeach
+                                                </select>
+                                                {{--                                            {{ Form::select('shipping_country',$countries,null,['id' => 'country','class'=>'orderby','placeholder'=>'Choose Shipping Country']) }}--}}
+                                            </div>
+                                        </div>
 
-                                    <div class="search-categori">
-                                        <h5>{{ trans('general.area') }}</h5>
-                                        <div class="category">
-                                            <select class="disabled" name="area" id="areas" style="min-width: 80px;">
-                                                <option value="">Select Area</option>
-                                            </select>
+                                        <div class="search-categori">
+                                            <h5>{{ trans('general.area') }}</h5>
+                                            <div class="category">
+                                                <select class="disabled" name="area" id="areas"
+                                                        style="min-width: 80px;">
+                                                    <option value="">Select Area</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="rate-subtotal">
-                                        {{--<h4>Subtotal <span>{{ $cart->subTotal }} KD</span></h4>--}}
-                                        <h2>{{ trans('general.grand_total') }}
-                                            <span>{{ $cart->grandTotal }} KD</span></h2>
-                                        <button type="submit" id="forward" disabled
-                                                class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
-                                        </button>
-                                    </div>
-                                    {!! Form::close() !!}
+                                        <div class="rate-subtotal">
+                                            {{--<h4>Subtotal <span>{{ $cart->subTotal }} KD</span></h4>--}}
+                                            <h2>{{ trans('general.grand_total') }}
+                                                <span>{{ $cart->sum('price') }} {{ trans('general.kd') }}</span></h2>
+                                            <button type="submit" id="forward" disabled
+                                                    class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
+                                            </button>
+                                        </div>
+                                    </Form>
 
 
                                 </div>
@@ -205,12 +202,8 @@
 @endsection
 
 
-@section('customScripts')
+@section('scripts')
     @parent
-    {{--REACT COUPON APP HERE--}}
-    @if(Auth::user())
-        <script type="text/javascript" src="{{ asset('js/coupon-app.js') }}"></script>
-    @endif
     <script type="text/javascript">
         $(document).ready(function() {
             $('#areas').html('<option value="">Select Area</option>');
@@ -226,6 +219,7 @@
             $('#areas').on('change', function() {
                 return setTimeout($('#forward').removeAttr('disabled'), 2000);
             })
+
             function injectAreas(data) {
                 for (var i in data) {
                     data[i].map(function(v, index) {

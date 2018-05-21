@@ -3,11 +3,11 @@
 namespace App\Models;
 
 
-
 class ProductAttribute extends PrimaryModel
 {
 
-    public function products() {
+    public function products()
+    {
         return $this->belongsTo(Product::class);
     }
 
@@ -19,5 +19,15 @@ class ProductAttribute extends PrimaryModel
     public function size()
     {
         return $this->belongsTo(Size::class);
+    }
+
+    public function getSizeNameAttribute()
+    {
+        return $this->size->name;
+    }
+
+    public function getColorNameAttribute()
+    {
+        return $this->color->name;
     }
 }

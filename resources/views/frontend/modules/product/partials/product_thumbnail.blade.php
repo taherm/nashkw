@@ -32,11 +32,11 @@
                                  src="{{ asset('uploads/images/thumbnail/'.$product->image) }} "
                                  alt="{{ $product->name }}">
 
-                            @if(isset($product->gallery->images->first()->thumb_url))
-                                <img class="secondary-img"
-                                     src="{{ asset('uploads/images/thumbnail/'.$product->gallery->images->first()->thumb_url) }} "
-                                     alt="{{ $product->name }}">
-                            @endif
+                            {{--@if(isset($product->gallery->images->first()->thumb_url))--}}
+                                {{--<img class="secondary-img"--}}
+                                     {{--src="{{ asset('uploads/images/thumbnail/'.$product->gallery->images->first()->thumb_url) }} "--}}
+                                     {{--alt="{{ $product->name }}">--}}
+                            {{--@endif--}}
                         </a>
                         <div class="add-action">
                             <ul>

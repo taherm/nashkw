@@ -32,7 +32,6 @@
                        class="currency-code">{{ $currency->name }}</a>
                 </li>
             @endforeach
-            <li><a href="#">eur</a></li>
         </ul>
     </li>
 </ul>
