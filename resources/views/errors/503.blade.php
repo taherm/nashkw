@@ -4,7 +4,6 @@
     <title>{{ config('app.name') }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <style>
         html, body {
             height: 100%;
@@ -30,7 +29,6 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            width: 100%;
 
         }
 
@@ -55,13 +53,22 @@
             color: darkgoldenrod;
         }
 
-        .pdf-frame {
-            width: 100%;
-            height: 1000px;
+        @media only screen and (max-width: 400px) {
+            .pdf-frame {
+                width: 200px;
+                min-height: 500px;
+            }
+        }
+        @media screen and (max-width: 400px) and (min-width: 1000px), (min-width: 1100px) {
+            .pdf-frame {
+                width: 600px;
+                min-height: 500px;
+            }
         }
 
+
         footer {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             width: 100%;
             height: 3%;
@@ -83,21 +90,20 @@
             text-align: center;
             margin: 20px
         }
-
         .img-logo {
-            width: 100px;
+            width: 150px;
+            /*width: 60%;*/
             height: auto;
             border-radius: 10px;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 </head>
 <body>
 <div class="container">
     <div class="content">
-        <a href="#"><img src="{{asset('images/logo.jpg')}}" class="img-logo"
-                         alt=""></a>
         <a href="{{ asset('images/brochure.pdf') }}">
-            <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" style="max-width: 700px;"/>
+            <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
         </a>
         <div class="title">
             <a href="{{ asset('images/brochure.pdf') }}" class="link">View Our Brochure</a>
