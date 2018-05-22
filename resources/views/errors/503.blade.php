@@ -66,7 +66,6 @@
             }
         }
 
-
         footer {
             position: fixed;
             bottom: 0;
@@ -91,8 +90,7 @@
             margin: 20px
         }
         .img-logo {
-            width: 150px;
-            /*width: 60%;*/
+            width: 40%;
             height: auto;
             border-radius: 10px;
         }
