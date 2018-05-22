@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -50,13 +51,11 @@ class CartController extends Controller
                 'size_id' => $productAttribute->size_id,
                 'color_id' => $productAttribute->color_id,
                 'sizeName' => $productAttribute->sizeName,
-                'color_name' => $productAttribute->colorName,
+                'colorName' => $productAttribute->colorName,
                 'product' => $product
             ]
         );
-
         return redirect()->back()->with('success', trans('message.item_added_to_cart'));
-
     }
 
 
@@ -70,13 +69,24 @@ class CartController extends Controller
 
     public function clearCart()
     {
-        $this->cart->destroy();
+        Cart::destroy();
         return redirect()->home()->with('success', trans('message.cart_destroyed'));
     }
 
     public function checkout()
     {
         return 'from checkout';
+    }
+
+    public function applyCoupon(Request $request) {
+        $validate = validator($request->all(), [
+            'code' => 'required'
+        ]);
+        if($validate->fails()) {
+            return redirect()->back()->with('error', trans('general.coupon_not_correct'));
+        }
+        $coupon = Coupon::where('code', $request->code)->first();
+        dd($coupon);
     }
 
 }

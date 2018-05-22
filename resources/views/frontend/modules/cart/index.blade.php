@@ -50,6 +50,7 @@
                                         </td>
 
                                         <td class="product-thumbnail">
+                                            {{--{{ dd($item->options->colorName) }}--}}
                                             <div class="col-lg-1 col-lg-push-4"
                                                  style="text-align: center; border: 1px solid lightgrey; min-height : 30px; margin: 3px; background-color : {!! $item->options->colorName !!}"></div>
                                         </td>
@@ -64,7 +65,7 @@
 
                                         <td class="real-product-price">
                                             <span class="sale_price">{{$item->price}} {{ trans('general.kd') }} </span>
-                                                                                        {{--<span class="amounte">{{ $item->options->product->sale_price }} KD </span>--}}
+                                            {{--<span class="amounte">{{ $item->options->product->sale_price }} KD </span>--}}
                                         </td>
 
                                         <td class="product-quantity">
@@ -72,7 +73,7 @@
                                                    value="{{ $item->qty }}"/>
                                         </td>
 
-                                        <td class="product-subtotal">{{ $cart->sum('price') }} {{ trans('general.kd') }}</td>
+                                        <td class="product-subtotal">{{ $item->price * $item->qty }} {{ trans('general.kd') }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -85,13 +86,13 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12 col-md-push-2">
-                                        <div class="buttons-cart button-cart-right">
-                                        <span class="shopping-btn">
-                                            <button type="submit"
-                                                    class="btn custom-button">{{ trans('cart.update_shopping_cart') }}
-                                            </button>
-                                        </span>
-                                        </div>
+                                        {{--<div class="buttons-cart button-cart-right">--}}
+                                        {{--<span class="shopping-btn">--}}
+                                        {{--<button type="submit"--}}
+                                        {{--class="btn custom-button">{{ trans('cart.update_shopping_cart') }}--}}
+                                        {{--</button>--}}
+                                        {{--</span>--}}
+                                        {{--</div>--}}
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12 col-md-push-2">
                                         <div class="place-section" style="padding: 0px;">
@@ -107,38 +108,27 @@
                         </div>
 
 
-
-                        @if(Auth::user())
-                        <!-- Coupon -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="check-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
-                                            <span class="number"></span>{{ trans('cart.use_coupon') }}</a>
-                                    </h4>
-                                </div>
-
-                                <div id="checkut5" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="hidden" id="grandTotal"
-                                             value="{!! $cart->sum('price')  !!}">{!! $cart->sum('price') !!} {{ trans('general.kd') }}</div>
-                                        <div class="hidden" id="api_token">{!! auth()->user()->api_token !!}</div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12" id="couponApp">
-
-                                        </div>
+                        <!-- table end -->
+                        <!-- place selection start -->
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="place-section">
+                                    <div class="place-headline">
+                                        <h4>{{ trans('general.coupon') }}</h4>
+                                        <p>{{ trans('message.have_coupon_message') }}</p>
+                                        <form action="{{ route('frontend.cart.coupon') }}">
+                                            <div class="code-search">
+                                                <input type="text" name="code" value="" placeholder="{{ trans('general.coupon_code') }}">
+                                                <button type="submit">{{ trans('general.apply_coupon') }}</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Panel Default -->
-                        @endif
-
-                    <!-- table end -->
-                        <!-- place selection start -->
-                        <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
                                 <div class="place-section">
                                     {{--                                    {!! Form::open(['route' => ['cart.checkout'], 'method' => 'POST'], ['class'=>'']) !!}--}}
-                                    <Form action="{{ route('frontend.cart.checkout') }}">
+                                    <Form action="{{ route('frontend.cart.checkout') }}" method="get">
                                         <div class="place-headline">
                                             <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
                                             <p>
@@ -157,30 +147,28 @@
                                         <div class="search-categori">
                                             <h5>{{ trans('general.country') }}</h5>
                                             <div class="category">
-                                                <select class="orderby" name="shipping_country" id="country"
-                                                        style="min-width: 80px;" placeholder='Choose Shipping Country'>
-                                                    <option value="">Select Country</option>
-                                                    @foreach($countries as $k => $v)
-                                                        <option value="{{ $k }}">{{ $v }}</option>
+                                                <select class="orderby country-dropdown"
+                                                        name="shipping_country" id="country"
+                                                        placeholder='{{ trans('general.select_country') }}'>
+                                                    <option value="">{{ trans('general.country') }}</option>
+                                                    @foreach($countries as $country)
+                                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
                                                     @endforeach
                                                 </select>
-                                                {{--                                            {{ Form::select('shipping_country',$countries,null,['id' => 'country','class'=>'orderby','placeholder'=>'Choose Shipping Country']) }}--}}
                                             </div>
                                         </div>
 
                                         <div class="search-categori">
                                             <h5>{{ trans('general.area') }}</h5>
                                             <div class="category">
-                                                <select class="disabled" name="area" id="areas"
-                                                        style="min-width: 80px;">
-                                                    <option value="">Select Area</option>
+                                                <select class="disabled country-dropdown" name="area" id="areas">
+                                                    <option value="">{{ trans('general.area') }}</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="rate-subtotal">
-                                            {{--<h4>Subtotal <span>{{ $cart->subTotal }} KD</span></h4>--}}
                                             <h2>{{ trans('general.grand_total') }}
-                                                <span>{{ $cart->sum('price') }} {{ trans('general.kd') }}</span></h2>
+                                                <span>{{ Cart::subTotal() }} {{ trans('general.kd') }}</span></h2>
                                             <button type="submit" id="forward" disabled
                                                     class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
                                             </button>

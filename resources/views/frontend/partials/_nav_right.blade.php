@@ -43,7 +43,7 @@
                 </nav>
             </div>
         @else
-            <a href="{{URL('login')}}" style="color: #b2dab7;">{{ trans('general.login') }}</a>
+            <a href="{{URL('login')}}" class="golden-link">{{ trans('general.login') }}</a>
         @endif
     </div>
 

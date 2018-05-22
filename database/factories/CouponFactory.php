@@ -13,5 +13,6 @@ $factory->define(Coupon::class, function (Faker $faker) {
         'consumed' => $faker->boolean,
         'code' => $faker->numberBetween(999999, 99999999999),
         'minimum_charge' => $faker->randomDigit,
+        'due_date' => $faker->dateTimeBetween('now', '1 year')
     ];
 });

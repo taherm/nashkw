@@ -645,4 +645,27 @@ $(document).ready(function() {
         $('#qty').attr('value', qty);
     });
 
+    // cart.index
+    $('#areas').html('<option value="">Select Area</option>');
+    $('#country').on('change', function(e) {
+        countryCode = e.target.value;
+        console.log('countryCode', countryCode);
+        $('#areas').html('').toggleClass('disabled');
+        $('#forward').attr('disabled', 'disabled');
+        $.get('/api/country/' + countryCode, function(data) {
+            return setTimeout(injectAreas(data), 4000);
+        });
+    });
+    $('#areas').on('change', function() {
+        return setTimeout($('#forward').removeAttr('disabled'), 2000);
+    })
+    function injectAreas(data) {
+        for (var i in data) {
+            data[i].map(function(v, index) {
+                $('#areas').append(`<option value="${v}">${v}</option>`)
+            });
+
+        }
+    }
+
 })
