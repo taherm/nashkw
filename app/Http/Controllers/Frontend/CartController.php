@@ -73,8 +73,9 @@ class CartController extends Controller
         return redirect()->home()->with('success', trans('message.cart_destroyed'));
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
+        dd($request->all());
         return view('frontend.modules.checkout.index');
     }
 

@@ -4,7 +4,7 @@
     <title>{{ config('app.name') }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <style>
         html, body {
             height: 100%;
@@ -73,18 +73,20 @@
             align-items: center;
             align-self: center;
         }
+
         a {
             color: darkgoldenrod;
         }
+
         .social {
             font-size: 25px;
             text-align: center;
             margin: 20px
         }
+
         .img-logo {
-            width : 100px;
-            height : auto;
-            padding: 20px;
+            width: 100px;
+            height: auto;
             border-radius: 10px;
         }
     </style>
@@ -100,9 +102,9 @@
         <div class="title">
             <a href="{{ asset('images/brochure.pdf') }}" class="link">View Our Brochure</a>
         </div>
-        {{--<div>--}}
-        {{--<iframe id="iframepdf" src="{{ asset('images/brochure.pdf') }}" class="pdf-frame"></iframe>--}}
-        {{--</div>--}}
+        <div>
+            <iframe id="iframepdf" src="{{ asset('images/brochure.pdf') }}" class="pdf-frame"></iframe>
+        </div>
         <div class="title">
             {{ $exception->getMessage() }}
         </div>
