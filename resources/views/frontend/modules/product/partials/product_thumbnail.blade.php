@@ -24,7 +24,7 @@
                     <div class="product-img">
                         @if($product->on_sale)
                             <span class="sale-text">{{ trans('general.sale') }}</span>
-                        @elseif($product->created_at)
+                        @else
                             <span class="sale-text new-sale">{{ trans('general.new') }}</span>
                         @endif
                         <a href="{{ route('frontend.product.show',$product->id) }}">
@@ -32,11 +32,11 @@
                                  src="{{ asset('uploads/images/thumbnail/'.$product->image) }} "
                                  alt="{{ $product->name }}">
 
-                            {{--@if(isset($product->gallery->images->first()->thumb_url))--}}
-                                {{--<img class="secondary-img"--}}
-                                     {{--src="{{ asset('uploads/images/thumbnail/'.$product->gallery->images->first()->thumb_url) }} "--}}
-                                     {{--alt="{{ $product->name }}">--}}
-                            {{--@endif--}}
+                            @if(!$product->gallery->images->isEmpty()))
+                                <img class="secondary-img"
+                                     src="{{ asset('storage/uploads/images/thumbnail/'.$product->gallery->images->sortBy('order')->first()->path) }} "
+                                     alt="{{ $product->name }}">
+                            @endif
                         </a>
                         <div class="add-action">
                             <ul>

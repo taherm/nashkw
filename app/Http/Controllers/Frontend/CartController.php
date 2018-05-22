@@ -75,18 +75,23 @@ class CartController extends Controller
 
     public function checkout()
     {
-        return 'from checkout';
+        return view('frontend.modules.checkout.index');
     }
 
-    public function applyCoupon(Request $request) {
+    public function applyCoupon(Request $request)
+    {
         $validate = validator($request->all(), [
             'code' => 'required'
         ]);
-        if($validate->fails()) {
+        if ($validate->fails()) {
             return redirect()->back()->with('error', trans('general.coupon_not_correct'));
         }
-        $coupon = Coupon::where('code', $request->code)->first();
-        dd($coupon);
+        $coupon = Coupon::active()->where(['code' => $request->code, 'consumed' => false])->first();
+        if ($coupon) {
+            session()->put('coupon', $coupon);
+            return redirect()->back()->with('success', trans('message.coupon_shall_be_applied'));
+        }
+        return redirect()->back()->with('error', trans('general.coupon_not_correct'));
     }
 
 }

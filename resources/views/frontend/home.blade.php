@@ -21,7 +21,7 @@
 @include('frontend.modules.product.partials.product_carousel',['products'=>$bestSalesProducts,'heading'=>trans('general.best_sale_products'),'backgroundColor'=>'#e7e7e7','cols' => 'col-lg-3 col-md-3 col-sm-3'])
 
 <!--news letter-->
-@include('frontend.partials.newsletter')
+{{--@include('frontend.partials.newsletter')--}}
 <!--slider-area end-->
 
 @endsection

@@ -116,7 +116,8 @@
                                     <div class="place-headline">
                                         <h4>{{ trans('general.coupon') }}</h4>
                                         <p>{{ trans('message.have_coupon_message') }}</p>
-                                        <form action="{{ route('frontend.cart.coupon') }}">
+                                        <form action="{{ route('frontend.cart.coupon') }}" method="post">
+                                            @csrf
                                             <div class="code-search">
                                                 <input type="text" name="code" value="" placeholder="{{ trans('general.coupon_code') }}">
                                                 <button type="submit">{{ trans('general.apply_coupon') }}</button>
