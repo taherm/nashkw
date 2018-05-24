@@ -119,7 +119,8 @@
                                         <form action="{{ route('frontend.cart.coupon') }}" method="post">
                                             @csrf
                                             <div class="code-search">
-                                                <input type="text" name="code" value="" placeholder="{{ trans('general.coupon_code') }}">
+                                                <input type="text" name="code" value=""
+                                                       placeholder="{{ trans('general.coupon_code') }}">
                                                 <button type="submit">{{ trans('general.apply_coupon') }}</button>
                                             </div>
                                         </form>
@@ -168,8 +169,17 @@
                                             </div>
                                         </div>
                                         <div class="rate-subtotal">
-                                            <h2>{{ trans('general.grand_total') }}
-                                                <span>{{ Cart::subTotal() }} {{ trans('general.kd') }}</span></h2>
+                                            @if(getCouponValue())
+                                                <div class="col-lg-12">
+                                                    <h2>{{ trans('general.discount') }}
+                                                        <span>{{ getCouponValue() }} {{ trans('general.kd') }}</span>
+                                                    </h2>
+                                                </div>
+                                            @endif
+                                            <div class="col-lg-12">
+                                                <h2>{{ trans('general.grand_total') }}
+                                                    <span>{{ getCartNetTotal() }} {{ trans('general.kd') }}</span></h2>
+                                            </div>
                                             <button type="submit" id="forward" disabled
                                                     class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
                                             </button>

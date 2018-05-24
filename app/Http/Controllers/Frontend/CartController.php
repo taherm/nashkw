@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductAttribute;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,11 @@ class CartController extends Controller
     public function index()
     {
         $cart = Cart::content();
-        return view('frontend.modules.cart.index', compact('cart'));
+        $coupon = session()->has('coupon') ? session('coupon') : null;
+        return view('frontend.modules.cart.index', compact('cart', 'coupon'));
     }
+
+
 
     public function addItem(Request $request)
     {
@@ -82,17 +86,23 @@ class CartController extends Controller
     public function applyCoupon(Request $request)
     {
         $validate = validator($request->all(), [
-            'code' => 'required'
+            'code' => 'required',
         ]);
         if ($validate->fails()) {
             return redirect()->back()->with('error', trans('general.coupon_not_correct'));
         }
-        $coupon = Coupon::active()->where(['code' => $request->code, 'consumed' => false])->first();
+        $coupon = Coupon::active()->where(['code' => $request->code, 'consumed' => false])
+            ->where('due_date', '>=', Carbon::now())
+            ->where('minimum_charge', '>=', Cart::subTotal())
+            ->first();
         if ($coupon) {
             session()->put('coupon', $coupon);
             return redirect()->back()->with('success', trans('message.coupon_shall_be_applied'));
+        } else {
+            session()->forget('coupon');
+            return redirect()->back()->with('error', trans('general.coupon_not_correct'));
         }
-        return redirect()->back()->with('error', trans('general.coupon_not_correct'));
+
     }
 
 }

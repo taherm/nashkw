@@ -5,6 +5,7 @@
  * Date: 7/23/17
  * Time: 9:02 AM
  */
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,4 +48,19 @@ function activeText($element, $text = 'Active')
 {
     $element ? $text = $text : $text = 'N/A';
     return $text;
+}
+
+
+function getCouponValue()
+{
+    $coupon = session()->has('coupon') ? session()->get('coupon') : null;
+    if (!is_null($coupon)) {
+        return $coupon->is_percentage ? (Cart::subTotal() * ($coupon->value / 100)) : $coupon->value;
+    }
+    return 0;
+}
+
+function getCartNetTotal()
+{
+    return Cart::subTotal() - getCouponValue();
 }
