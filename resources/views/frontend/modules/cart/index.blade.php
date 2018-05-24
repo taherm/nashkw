@@ -130,7 +130,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
                                 <div class="place-section">
                                     {{--                                    {!! Form::open(['route' => ['cart.checkout'], 'method' => 'POST'], ['class'=>'']) !!}--}}
-                                    <Form action="{{ route('frontend.cart.checkout') }}" method="get">
+                                    <Form action="{{ route('frontend.cart.checkout') }}" method="post">
+                                        @csrf
                                         <div class="place-headline">
                                             <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
                                             <p>
@@ -139,7 +140,7 @@
                                                 {{ trans('general.delivery_within_4_days') }}</br>
                                             </span>
                                                 <span class="pull-right">
-                                            <img src="/meem/frontend/img/aramex.png" alt=""
+                                            <img src="{{ asset('images/aramex.png') }}" alt=""
                                                  class="img-responsive" style="max-width: 60px;">
                                         </span>
                                             </p>
@@ -150,7 +151,7 @@
                                             <h5>{{ trans('general.country') }}</h5>
                                             <div class="category">
                                                 <select class="orderby country-dropdown"
-                                                        name="shipping_country" id="country"
+                                                        name="country_id" id="country"
                                                         placeholder='{{ trans('general.select_country') }}'>
                                                     <option value="">{{ trans('general.country') }}</option>
                                                     @foreach($countries as $country)
@@ -212,7 +213,8 @@
                 $('#areas').html('').toggleClass('disabled');
                 $('#forward').attr('disabled', 'disabled');
                 $.get('/api/country/' + countryCode, function(data) {
-                    return setTimeout(injectAreas(data), 4000);
+                    console.log('the data', data);
+                    return setTimeout(injectAreas(data), 2000);
                 });
             });
             $('#areas').on('change', function() {

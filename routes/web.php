@@ -22,9 +22,9 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::post('cart/add', 'CartController@addItem')->name('cart.add');
     Route::get('cart/remove/{id}', 'CartController@removeItem')->name('cart.remove');
     Route::get('cart/clear', 'CartController@clearCart')->name('cart.clear');
-    Route::get('cart/checkout', 'CartController@checkout')->name('cart.checkout');
     Route::post('cart/coupon', 'CartController@applyCoupon')->name('cart.coupon');
-    Route::resource('checkout', 'CheckoutController');
+    Route::post('cart/checkout', 'CartController@checkout')->name('cart.checkout');
+    Route::post('cart/review', 'CartController@checkout')->name('cart.review');
     Route::resource('category', 'CategoryController');
     Route::resource('page', 'PageController');
     Route::resource('user', 'UserController');

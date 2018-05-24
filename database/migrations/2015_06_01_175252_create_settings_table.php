@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactusTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateContactusTable extends Migration
      */
     public function up()
     {
-        Schema::create('contactus', function(Blueprint $table) {
+        Schema::create('settings', function(Blueprint $table) {
             $table->increments('id');
             $table->string('company_ar')->nullable();
             $table->string('company_en')->nullable();
@@ -28,6 +28,7 @@ class CreateContactusTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('twitter')->nullable();
             $table->string('logo')->nullable();
+            $table->boolean('aramex_service')->default(0);
             $table->timestamps();
         });
     }
@@ -39,6 +40,6 @@ class CreateContactusTable extends Migration
      */
     public function down()
     {
-        Schema::drop('contactus');
+        Schema::drop('settings');
     }
 }

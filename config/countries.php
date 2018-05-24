@@ -10,7 +10,7 @@ return [
     [
         'name_ar' => 'kuwait',
         'name_en' => 'kuwait',
-        'code' => 'KWT',
+        'code' => 'KW',
         'currency' => 'Kuwait Dinar',
         'symbol' => "KWD",
         'exchange_rate' => 1

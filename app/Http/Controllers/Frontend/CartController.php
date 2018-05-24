@@ -7,25 +7,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductAttribute;
+use App\Services\ShippingManager;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public $cart;
+    use ShippingManager;
 
-    public function __construct()
+    public function __construct(\Gloudemans\Shoppingcart\Cart $cart)
     {
+        $this->cart = $cart;
     }
-
 
     public function index()
     {
-        $cart = Cart::content();
+        $cart = $this->cart->content();
         $coupon = session()->has('coupon') ? session('coupon') : null;
         return view('frontend.modules.cart.index', compact('cart', 'coupon'));
     }
-
 
 
     public function addItem(Request $request)
@@ -50,7 +52,7 @@ class CartController extends Controller
             'product_id' => $request->product_id
         ])->with('size', 'color')->first();
 
-        Cart::add($productAttribute->id, $product->name, $request->qty, $product->finalPrice,
+        $this->cart->add($productAttribute->id, $product->name, $request->qty, $product->finalPrice,
             [
                 'size_id' => $productAttribute->size_id,
                 'color_id' => $productAttribute->color_id,
@@ -73,14 +75,17 @@ class CartController extends Controller
 
     public function clearCart()
     {
-        Cart::destroy();
+        $this->cart->destroy();
         return redirect()->home()->with('success', trans('message.cart_destroyed'));
     }
 
     public function checkout(Request $request)
     {
-        dd($request->all());
-        return view('frontend.modules.checkout.index');
+        $cartWeight = $this->cart->content()->pluck('options.product')->sum('weight');
+        $shippingCost = $this->calculateCost($cartWeight, $request->country_id, $request->area);
+        dd($shippingCost);
+        $cart = $this->cart->content();
+        return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart'));
     }
 
     public function applyCoupon(Request $request)
@@ -93,7 +98,7 @@ class CartController extends Controller
         }
         $coupon = Coupon::active()->where(['code' => $request->code, 'consumed' => false])
             ->where('due_date', '>=', Carbon::now())
-            ->where('minimum_charge', '>=', Cart::subTotal())
+            ->where('minimum_charge', '<=', $this->cart->subTotal())
             ->first();
         if ($coupon) {
             session()->put('coupon', $coupon);

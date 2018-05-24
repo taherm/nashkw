@@ -43,7 +43,7 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer([
             'frontend.partials.footer',
             'frontend.partials.header'
-        ], 'App\Services\ViewComposers@getContactus');
+        ], 'App\Services\ViewComposers@getSettings');
         view()->composer([
             'frontend.partials.footer',
             'frontend.partials.header'

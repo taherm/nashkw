@@ -4,10 +4,9 @@ namespace App\Services;
 
 use App\Models\Category;
 use App\Models\Color;
-use App\Models\Contactus;
+use App\Models\Setting;
 use App\Models\Currency;
 use App\Models\Page;
-use App\Models\Setting;
 use App\Models\Country;
 use App\Models\Field;
 use App\Models\Group;
@@ -90,9 +89,9 @@ class ViewComposers
         return $view->with(compact('countries'));
     }
 
-    public function getContactus(View $view)
+    public function getSettings(View $view)
     {
-        $contact = Contactus::first();
+        $contact = Setting::first();
         return $view->with(compact('contact'));
     }
 

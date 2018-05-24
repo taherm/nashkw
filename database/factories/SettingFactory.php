@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Contactus;
+use App\Models\Setting;
 use Faker\Generator as Faker;
 
-$factory->define(Contactus::class, function (Faker $faker) {
+$factory->define(Setting::class, function (Faker $faker) {
     return [
         'company_ar' => $faker->name,
         'company_en' => $faker->name,
