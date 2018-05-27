@@ -73,7 +73,7 @@ trait ShippingManager
                 $calcSoapClient = new \SoapClient(env('ARAMEX_CALC_URL'), array('trace' => 1));
                 $results = $calcSoapClient->CalculateRate($params);
                 if($results->HasErrors) {
-                    dd($results);
+                    return 0;
                     throw  new \Exception($results->Notifications->Notification->Message);
                 }
                 return $results->TotalAmount->Value;

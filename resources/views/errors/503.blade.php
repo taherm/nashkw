@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <style>
         html, body {
-            height: 100%;
+            height: auto;
         }
 
         body {
@@ -17,7 +17,7 @@
             font-family: 'Lato', sans-serif;
             display: flex;
             width: 100%;
-            height: 100%;
+            height: auto;
             flex-direction: column;
             justify-content: center;
             align-content: center;
@@ -44,7 +44,7 @@
 
         .title {
             font-size: 72px;
-            margin: 40px;
+            margin-top: 13%;
         }
 
         .link {
@@ -59,11 +59,23 @@
                 min-height: 500px;
             }
         }
+
         @media screen and (max-width: 400px) and (min-width: 1000px), (min-width: 1100px) {
             .pdf-frame {
                 width: 600px;
                 min-height: 500px;
             }
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 20%;
+            background-color: white;
+            margin-bottom: 10px;
+            clear: both;
+            border-bottom: 1px solid darkgoldenrod;
         }
 
         footer {
@@ -89,10 +101,17 @@
             text-align: center;
             margin: 20px
         }
+
         .img-logo {
-            width: 40%;
+            width: 20%;
             height: auto;
+            max-height: 150px;
             border-radius: 10px;
+        }
+
+        .img-brochure {
+            width: 50%;
+            height: auto;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
@@ -100,18 +119,31 @@
 <body>
 <div class="container">
     <div class="content">
-        <a href="{{ asset('images/brochure.pdf') }}">
-            <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
-        </a>
+        <div class="header">
+            <a href="{{ asset('images/brochure.pdf') }}">
+                <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
+            </a>
+        </div>
         <div class="title">
-            <a href="{{ asset('images/brochure.pdf') }}" class="link">View Our Brochure</a>
+            <div>
+                <a href="{{ asset('images/brochure.pdf') }}" class="link">View Our Brochure</a>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 10px; flex-wrap: nowrap">
+                @for($i=1;$i<=14;$i++)
+                    <img class="img-brochure" src="{{ asset('images/brochure/brochure-' . $i .'.jpg') }}"
+                         alt="{{ env('APP_NAME') }}">
+                @endfor
+            </div>
+
         </div>
-        <div>
-            <iframe id="iframepdf" src="{{ asset('images/brochure.pdf') }}" class="pdf-frame"></iframe>
-        </div>
+        {{--<div>--}}
+        {{--<iframe id="iframepdf" src="{{ asset('images/brochure.pdf') }}" class="pdf-frame"></iframe>--}}
+        {{--</div>--}}
         <div class="title">
             {{ $exception->getMessage() }}
+
         </div>
+
     </div>
 </div>
 <footer>

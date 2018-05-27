@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('body')
+    <!-- Checkout area -->
     <div class="checkout-area">
         <div class="container">
             <div class="row">
@@ -13,11 +14,11 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="check-title">
-                                        <a data-toggle="collapse" class="active" data-parent="#accordion" href="#checkut1">
+                                        <a data-toggle="collapse" class="" data-parent="#accordion" href="#checkut1">
                                             <span class="number">1</span>Checkout Method</a>
                                     </h4>
                                 </div>
-                                <div id="checkut1" class="panel-collapse collapse in">
+                                <div id="checkut1" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6">
@@ -321,4 +322,5 @@
             </div>
         </div>
     </div>
+    <!-- end discount area -->
 @endsection

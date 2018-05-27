@@ -83,7 +83,6 @@ class CartController extends Controller
     {
         $cartWeight = $this->cart->content()->pluck('options.product')->sum('weight');
         $shippingCost = $this->calculateCost($cartWeight, $request->country_id, $request->area);
-        dd($shippingCost);
         $cart = $this->cart->content();
         return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart'));
     }
