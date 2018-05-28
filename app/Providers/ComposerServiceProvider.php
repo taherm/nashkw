@@ -42,7 +42,9 @@ class ComposerServiceProvider extends ServiceProvider
         ], 'App\Services\ViewComposers@getCategories');
         view()->composer([
             'frontend.partials.footer',
-            'frontend.partials.header'
+            'frontend.partials.header',
+            'frontend.modules.cart.index',
+            'frontend.modules.checkout.index'
         ], 'App\Services\ViewComposers@getSettings');
         view()->composer([
             'frontend.partials.footer',

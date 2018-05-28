@@ -91,8 +91,8 @@ class ViewComposers
 
     public function getSettings(View $view)
     {
-        $contact = Setting::first();
-        return $view->with(compact('contact'));
+        $settings = Setting::first();
+        return $view->with(compact('settings'));
     }
 
     public function getSizes(View $view)

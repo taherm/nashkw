@@ -76,7 +76,7 @@
                             <!-- middle-footer-text start-->
                             <div class="middle-footer-text middle-footer-text4">
                                 <div class="footer-logo">
-                                    <a href="#"><img src="{{asset('storage/uploads/images/medium/'.$contact->logo)}}"
+                                    <a href="#"><img src="{{asset('storage/uploads/images/medium/'.$settings->logo)}}"
                                                      alt=""></a>
                                 </div>
                                 <div class="middle-text">
@@ -98,10 +98,10 @@
                                 <div class="footer-address">
                                     <ul>
                                         <li><i class="fa fa-map-marker"> </i>{{ trans('general.address') }}
-                                            : {{$contact->address}}</li>
+                                            : {{$settings->address}}</li>
                                         {{--<li><i class="fa fa-phone"> </i> </li>--}}
                                         <li><i class="fa fa-envelope-o"> </i> {{ trans('general.email') }}
-                                            : {{$contact->email}}</li>
+                                            : {{$settings->email}}</li>
                                     </ul>
                                 </div>
                             </div>

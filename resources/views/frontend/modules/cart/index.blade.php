@@ -129,46 +129,46 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
                                 <div class="place-section">
-                                    {{--                                    {!! Form::open(['route' => ['cart.checkout'], 'method' => 'POST'], ['class'=>'']) !!}--}}
                                     <Form action="{{ route('frontend.cart.checkout') }}" method="post">
                                         @csrf
-                                        <div class="place-headline">
-                                            <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
-                                            <p>
-                                                <span>{{ trans('cart.enter_ur_destination') }}</span></br>
-                                                <span class="pull-left">
+                                        @if($settings->aramex_service)
+                                            <div class="place-headline">
+                                                <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
+                                                <p>
+                                                    <span>{{ trans('cart.enter_ur_destination') }}</span></br>
+                                                    <span class="pull-left">
                                                 {{ trans('general.delivery_within_4_days') }}</br>
                                             </span>
-                                                <span class="pull-right">
+                                                    <span class="pull-right">
                                             <img src="{{ asset('images/aramex.png') }}" alt=""
                                                  class="img-responsive" style="max-width: 60px;">
                                         </span>
-                                            </p>
-                                            </br>
-                                            </br>
-                                        </div>
-                                        <div class="search-categori">
-                                            <h5>{{ trans('general.country') }}</h5>
-                                            <div class="category">
-                                                <select class="orderby country-dropdown"
-                                                        name="country_id" id="country"
-                                                        placeholder='{{ trans('general.select_country') }}'>
-                                                    <option value="">{{ trans('general.country') }}</option>
-                                                    @foreach($countries as $country)
-                                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                </p>
+                                                </br>
+                                                </br>
                                             </div>
-                                        </div>
-
-                                        <div class="search-categori">
-                                            <h5>{{ trans('general.area') }}</h5>
-                                            <div class="category">
-                                                <select class="disabled country-dropdown" name="area" id="areas">
-                                                    <option value="">{{ trans('general.area') }}</option>
-                                                </select>
+                                            <div class="search-categori">
+                                                <h5>{{ trans('general.country') }}</h5>
+                                                <div class="category">
+                                                    <select class="orderby country-dropdown"
+                                                            name="country_id" id="country"
+                                                            placeholder='{{ trans('general.select_country') }}'>
+                                                        <option value="">{{ trans('general.country') }}</option>
+                                                        @foreach($countries as $country)
+                                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="search-categori">
+                                                <h5>{{ trans('general.area') }}</h5>
+                                                <div class="category">
+                                                    <select class="disabled country-dropdown" name="area" id="areas">
+                                                        <option value="">{{ trans('general.area') }}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div class="rate-subtotal">
                                             @if(getCouponValue())
                                                 <div class="col-lg-12">
@@ -181,7 +181,7 @@
                                                 <h2>{{ trans('general.grand_total') }}
                                                     <span>{{ getCartNetTotal() }} {{ trans('general.kd') }}</span></h2>
                                             </div>
-                                            <button type="submit" id="forward" disabled
+                                            <button type="submit" id="forward" {{ $settings->aramex_service ? 'disabled' : null }}
                                                     class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
                                             </button>
                                         </div>

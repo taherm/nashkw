@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::get('cart/clear', 'CartController@clearCart')->name('cart.clear');
     Route::post('cart/coupon', 'CartController@applyCoupon')->name('cart.coupon');
     Route::post('cart/checkout', 'CartController@checkout')->name('cart.checkout');
+    Route::post('cart/store', 'CartController@checkout')->name('cart.store');
     Route::post('cart/review', 'CartController@checkout')->name('cart.review');
     Route::resource('category', 'CategoryController');
     Route::resource('page', 'PageController');

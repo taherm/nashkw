@@ -19,5 +19,6 @@ $factory->define(Setting::class, function (Faker $faker) {
         'instagram' => $faker->url,
         'twitter' => $faker->name,
         'logo' => $faker->numberBetween(1, 10) . '.jpg',
+        'aramex_service' => $faker->boolean(true)
     ];
 });

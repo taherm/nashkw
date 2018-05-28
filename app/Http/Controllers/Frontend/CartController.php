@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductAttribute;
@@ -81,10 +82,20 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
-        $cartWeight = $this->cart->content()->pluck('options.product')->sum('weight');
-        $shippingCost = $this->calculateCost($cartWeight, $request->country_id, $request->area);
+        $validate = validator($request->all(), [
+            'country_id' => 'exists:countries,id',
+            'area' => 'required_with:country_id'
+        ]);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate);
+        }
+        if ($request->has('country_id')) {
+            $country = Country::whereId(request()->country_id)->first();
+            $cartWeight = $this->cart->content()->pluck('options.product')->sum('weight');
+            $shippingCost = $this->calculateCost($cartWeight, $request->country_id, $request->area);
+        }
         $cart = $this->cart->content();
-        return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart'));
+        return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart','country'));
     }
 
     public function applyCoupon(Request $request)

@@ -11,7 +11,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="logo">
                             <a href="{{ route('home') }}"><img class="img-responsive" style="max-height: 100px;"
-                                                               src="{{asset('storage/uploads/images/medium/'.$contact->logo)}}"
+                                                               src="{{asset('storage/uploads/images/medium/'.$settings->logo)}}"
                                                                alt=""></a>
                         </div>
                     </div>
