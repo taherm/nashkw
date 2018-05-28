@@ -177,7 +177,8 @@
             font-size: large;
             color: darkgoldenrod;
         }
-        a, div , h1, h2, span {
+
+        a, div, h1, h2, span {
             color: darkgoldenrod;
         }
 
@@ -191,7 +192,7 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            height: 17%;
+            height: 20%;
             padding: 20px;
             border-top: 1px solid whitesmoke;
             background-color: lightgrey;
@@ -213,7 +214,7 @@
                 </a>
             </div>
             <div class="col-lg-12" style="text-align: center">
-                    <a href="{{ asset('images/brochure/BROCHURE -2.pdf') }}" class="link">View Our Brochure</a>
+                <a href="{{ asset('images/brochure/BROCHURE -2.pdf') }}" class="link">View Our Brochure</a>
             </div>
             <div class="img-wrapper">
                 @for($i=1;$i<=14;$i++)
@@ -236,7 +237,9 @@
         <a href="mailto:info@harayer7.com" class="social" target="_blank"><i
                     class="fa fa-fw fa-inbox"></i></a>
         <hr>
-        <div style="margin: auto; height: 50px; text-decoration: none; font-size: large; color: black; font-weight: bolder;">info@harayer7.com لمزيد من المعلومات </div>
+        <div style="margin: auto; height: 50px; text-decoration: none; font-size: large; color: black; font-weight: bolder;">
+            info@harayer7.com لمزيد من المعلومات
+        </div>
         </div>
     </footer>
 @stop
