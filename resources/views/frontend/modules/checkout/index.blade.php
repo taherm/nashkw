@@ -5,7 +5,7 @@
     <div class="checkout-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 col-sm-12">
+                <div class="col-lg-12 col-sm-12">
                     <!-- Payment Method -->
                     <div class="payment-method">
                         <!-- Panel Gropup -->
@@ -15,7 +15,7 @@
                                 <div class="panel-heading">
                                     <h4 class="check-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#checkut1">
-                                            <span class="number">1</span>Checkout Method</a>
+                                            <span class="number">1</span>{{ trans('general.login') }}</a>
                                     </h4>
                                 </div>
                                 <div id="checkut1" class="panel-collapse collapse">
@@ -34,30 +34,30 @@
                                             @guest
                                                 <div class="col-lg-6 col-sm-6">
                                                     <form class="checkout-form product-form">
-                                                        <h2>Checkout as a Guest or Register</h2>
+                                                        <h2>{{ trans("general.check_in_as_guest_or_user") }}</h2>
                                                         <div class="checkout-form-inner">
-                                                            <p>Register with us for future convenience:</p>
+                                                            <p>{{ trans("message.register_with_us") }}</p>
                                                             <div class="i-boxb">
                                                                 <input class="checkout-radio" type="radio" name="tag"
                                                                        id="credio"/>
-                                                                <label class="cradio" for="credio">Checkout as
-                                                                    Guest</label>
+                                                                <label class="cradio"
+                                                                       for="credio">{{ trans('checkout_as_guest') }}</label>
                                                             </div>
                                                             <div class="i-boxb">
                                                                 <input class="checkout-radio" type="radio" name="tag"
                                                                        id="craiot"/>
-                                                                <label class="cradio" for="craiot">Register</label>
+                                                                <label class="cradio"
+                                                                       for="craiot">{{ trans('general.register') }}</label>
                                                             </div>
                                                             <p>
-                                                                <span>Register and save time!</span><br/>
-                                                                Register with us for future convenience:<br/>
-                                                                Fast and easy check out<br/>
-                                                                Easy access to your order history and status<br/>
+                                                                <span>{{ trans("message.register_and_save_time") }}</span><br/>
                                                             </p>
                                                         </div>
-                                                        <div class="user-bottom fix">
-                                                            <button class="btn custom-button" type="button">continue
-                                                            </button>
+                                                        <div class="user-bottom fix pull-right">
+                                                            <a class="btn btn-lg btn-default btn-theme"
+                                                               href="{{ route('register') }}"
+                                                            >{{ trans('general.register') }}
+                                                            </a>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -118,7 +118,7 @@
                                                                         <input type="text" class=" border-color"
                                                                                name="name"
                                                                                value="{{ auth()->check() ? auth()->user()->name : old('first_name') }}"
-                                                                               id="first" required/>
+                                                                               id="first" required>
                                                                     </div>
                                                                     <div class="input-box">
                                                                         <label class="label" for="email">Email Address
@@ -126,7 +126,7 @@
                                                                         <input type="email" class=" border-color"
                                                                                name="email"
                                                                                value="{{ auth()->check() ? auth()->user()->email : old('email') }}"
-                                                                               id="email" required/>
+                                                                               id="email" required>
                                                                     </div>
                                                                     <div class="input-box">
                                                                         <label class="label"
@@ -136,7 +136,7 @@
                                                                                name="email"
                                                                                placeholder="+96566666666"
                                                                                value="{{ auth()->check() ? auth()->user()->mobile : old('mobile') }}"
-                                                                               id="email" required/>
+                                                                               id="email" required>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -144,8 +144,7 @@
                                                                 <div class="field fix">
                                                                     <div class="input-box">
                                                                         <label class="label"
-                                                                               for="Telephone">{{ trans("general.phone") }}
-                                                                            <em>*</em></label>
+                                                                               for="Telephone">{{ trans("general.phone") }}</label>
                                                                         <input type="text" class=" border-color"
                                                                                name="phone"
                                                                                value="{{ auth()->check() ? auth()->user()->phone : old('phone') }}"
@@ -226,8 +225,7 @@
                                                     <div class="button-check">
                                                         <div class="">
                                                             <span class="left-btn"><a
-                                                                        href="{{ route('frontend.cart.index') }}"><i
-                                                                            class="fa fa-long-arrow-left"></i>{{ trans('general.back') }}</a></span>
+                                                                        href="{{ route('frontend.cart.index') }}">{{ trans('general.back') }}</a></span>
                                                             <button type="submit" class="btn right-btn custom-button">
                                                                 {{ trans('general.save_information') }}
                                                             </button>
@@ -249,135 +247,148 @@
                                 </div>
                                 <div id="checkut4" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="flatrate">
-                                                {{ trans('message.shipping_method') }}
-                                            </div>
-                                        </div>
-                                        @if(request()->has('country_id') && $settings->aramex_service)
+                                        <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <div class="place-headline">
-                                                    <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
-                                                    <span>{{ trans('cart.destination') }}</span></br>
-                                                    <span class="pull-left">
-                                                {{ trans('general.delivery_within_4_days') }}</br>
-                                                        {{ trans('general.country') }} : {{  $country->name }}
-                                            </span>
-                                                    <span class="pull-right">
-                                            <img src="{{ asset('images/aramex.png') }}" alt=""
-                                                 class="img-responsive" style="max-width: 60px;">
+                                                @if(request()->has('country_id') && $settings->aramex_service)
+                                                    <div class="place-headline">
+                                                        <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
+                                                        <p>{{ trans('cart.destination') }}</p></br>
+                                                        <p class="pull-left">
+                                                            {{ trans('general.delivery_within_4_days') }}
+                                                        </p>
+                                                        <p>
+                                                            {{ trans('general.country') }} : {{  $country->name }}
+                                                        </p>
                                                         </span>
-                                                </div>
+                                                        <span class="pull-right">
+                                                            <img src="{{ asset('images/aramex.png') }}" alt=""
+                                                                 class="img-responsive" style="max-width: 60px;">
+                                                        </span>
+                                                    </div>
+                                                @else
+                                                    {{ trans('message.shipping_method_message_with_no_aramex') }}
                                                 @endif
                                             </div>
-                                    </div>
-                                </div><!-- End Panel Default -->
-                                <!-- Panel Default -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="check-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
-                                                <span class="number">4</span>Payment Information</a>
-                                        </h4>
-                                    </div>
-                                    <div id="checkut5" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <div class="flatrate">
-                                                    <p><input type="radio" id="Money"/><label for="Money">Check / Money
-                                                            order </label></p>
-                                                    <p><input type="radio" id="Credit"/><label for="Credit">Credit Card
-                                                            (saved) </label></p>
-                                                </div>
-                                                <div class="button-check">
-                                                    <div class="">
-                                                    <span class="left-btn"><a href=""><i
-                                                                    class="fa fa-long-arrow-up"></i>Back</a></span>
-                                                        <button type="submit" class="btn right-btn custom-button">
-                                                            Continue
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                </div><!-- End Panel Default -->
-                                <!-- Panel Default -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="check-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#checkut6">
-                                                <span class="number">5</span>Order Review</a>
-                                        </h4>
-                                    </div>
-                                    <div id="checkut6" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <div class="table-responsive">
-                                                    <table class="tablec">
-                                                        <tr>
-                                                            <td>Product Name</td>
-                                                            <td>Price</td>
-                                                            <td>Qty</td>
-                                                            <td>Subtotal</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Cras neque metus</td>
-                                                            <td><p class="tabletextp">&dollar;155</p></td>
-                                                            <td>1</td>
-                                                            <td><p class="tabletextp">&dollar;155.00</p></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3">
-                                                                <p class="tabletext">Subtotal</p>
-                                                                <p class="tabletext">Shipping & Handling (Flat Rate -
-                                                                    Fixed)</p>
-                                                                <p class="tabletext">Grand Total</p>
-                                                            </td>
-                                                            <td>
-                                                                <p class="tabletextp">&dollar;155.00</p>
-                                                                <p class="tabletextp">&dollar;5.00</p>
-                                                                <p class="tabletextp">&dollar;160.00</p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="4">
-                                                                <div class="button-check">
-                                                                    <div class="">
-                                                                        <span class="left-btn"><a href="">Forgot an Item? Edit Your Cart</a></span>
-                                                                        <button type="submit"
-                                                                                class="btn right-btn custom-button">
-                                                                            Continue
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+                                    </div><!-- End Panel Default -->
+                                    <!-- Panel Default -->
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="check-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
+                                            <span class="number">4</span>Payment Information</a>
+                                    </h4>
+                                </div>
+                                <div id="checkut5" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="">
+                                                <p><input type="radio" id="knet" name="payment_method" checked/>
+                                                    <img class="img-xs"
+                                                         src="{{asset('img/k-net-icon.png')}}"
+                                                         alt="">
+                                                    <label for="knet">{{ trans('general.knet') }}</label>
+                                                </p>
+                                                <p><input type="radio" id="master" name="payment_method"/>
+                                                    <img class="img-xs-visa"
+                                                         src="{{asset('img/payment.png')}}" alt="payment">
+                                                    <label for="master">{{ trans("general.master_or_visa") }}</label>
+                                                </p>
+                                                @if($country->code === 'KW' && $settings->delivery_service)
+                                                    <p><input type="radio" id="delivery" name="payment_method"/>
+                                                        <img class="img-xs"
+                                                             src="{{asset('img/cash-icon.png')}}"
+                                                             alt="cash">
+                                                        <label
+                                                                for="delivery">{{ trans("general.cash_on_delivery") }}</label>
+                                                    </p>
+                                                @endif
+                                            </div>
+                                            <div class="button-check">
+                                                <div class="">
+                                                    <span class="left-btn"><a
+                                                                href="{{ route('frontend.cart.index') }}">{{ trans("general.back") }}</a></span>
+                                                    <button type="submit" class="btn right-btn custom-button">
+                                                        Continue
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Panel Default -->
+                            </div><!-- End Panel Default -->
+                            <!-- Panel Default -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="check-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#checkut6">
+                                            <span class="number">5</span>Order Review</a>
+                                    </h4>
+                                </div>
+                                <div id="checkut6" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="table-responsive">
+                                                <table class="tablec">
+                                                    <tr>
+                                                        <td>Product Name</td>
+                                                        <td>Price</td>
+                                                        <td>Qty</td>
+                                                        <td>Subtotal</td>
+                                                    </tr>
+                                                    @foreach($cart as $item)
+                                                        <tr>
+                                                            <td>{{ $item->options->product->name }}</td>
+                                                            <td><p class="tabletextp">{{ $item->price }}</p></td>
+                                                            <td>{{ $item->qty }}</td>
+                                                            <td>
+                                                                <p class="tabletextp">{{ session()->get('currency')->symbol }}  {{ $item->price }}</p>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <p class="tabletext">Subtotal</p>
+                                                            <p class="tabletext">Shipping & Handling (Flat Rate
+                                                                -
+                                                                Fixed)</p>
+                                                            <p class="tabletext">Grand Total</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="tabletextp">&dollar;155.00</p>
+                                                            <p class="tabletextp">&dollar;5.00</p>
+                                                            <p class="tabletextp">&dollar;160.00</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4">
+                                                            <div class="button-check">
+                                                                <div class="">
+                                                                    <span class="left-btn"><a href="">Forgot an Item? Edit Your Cart</a></span>
+                                                                    <button type="submit"
+                                                                            class="btn right-btn custom-button">
+                                                                        Continue
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- End Panel Gropup -->
+                            <!-- End Panel Default -->
                         </div>
-                        <!-- End Payment Method -->
-                    </div>
-                    <div class="col-md-3 col-sm-12">
-                        <div class="checkout-sidebar">
-                            <h4>Checkout Progress</h4>
-                            <ul>
-                                <li><a href="#">Billing Address</a></li>
-                                <li><a href="#">Shipping Address</a></li>
-                                <li><a href="#">Shipping Method</a></li>
-                                <li><a href="#">Payment Method</a></li>
-                            </ul>
-                        </div>
+                        <!-- End Panel Gropup -->
                     </div>
                 </div>
             </div>
+            <!-- End Payment Method -->
         </div>
-        <!-- end discount area -->
+    </div>
+    <!-- end discount area -->
 @endsection

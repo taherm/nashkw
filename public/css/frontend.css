@@ -4619,3 +4619,24 @@ body, div, a, span, table, p, form, input, h1, h2, h3, h4 {
 .middle-footer-text2 h3 {
     color : gray;
 }
+
+.btn-theme {
+    border-radius: 0px;
+    border: 1px solid black;
+    background-color: white;
+    color : black;
+}
+
+.img-xs {
+    margin-right: 3px;
+    margin-left: 3px;
+    width: 30px;
+    height : 25px;
+}
+
+.img-xs-visa {
+    margin-right: 3px;
+    margin-left: 3px;
+    width: 75px;
+    height : 25px;
+}

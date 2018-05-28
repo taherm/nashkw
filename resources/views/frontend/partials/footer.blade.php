@@ -182,17 +182,17 @@
                             <ul>
                                 @if($currency->symbol === 'KWD')
                                     <li>
-                                        <a href="#"><img style="width: 35px; height : 23px;"
+                                        <a href="#"><img class="img-xs"
                                                          src="{{asset('img/k-net-icon.png')}}"
-                                                         alt=""></a>
-                                        <a href="#"><img style="width: 70px; height : 23px;"
-                                                         src="{{asset('img/payment.png')}}" alt=""></a>
-                                        <a href="#"><img style="width: 35px; height : 23px;"
+                                                         alt="knet"></a>
+                                        <a href="#"><img class="img-xs-visa"
+                                                         src="{{asset('img/payment.png')}}" alt="payment"></a>
+                                        <a href="#"><img class="img-xs"
                                                          src="{{asset('img/cash-icon.png')}}"
-                                                         alt=""></a></li>
+                                                         alt="cash"></a></li>
                                 @else
-                                    <li><a href="#"><img style="width: 80px; height : auto;"
-                                                         src="{{asset('img/payment.png')}}" alt=""></a>
+                                    <li><a href="#"><img class="img-xs"
+                                                         src="{{asset('img/payment.png')}}" alt="payment"></a>
                                     </li>
                                 @endif
                             </ul>

@@ -15,17 +15,17 @@
                 <div class="shop-product-view">
                     <!-- Shop Product Tab Area -->
                     <div class="product-tab-area">
-                        @include('frontend.modules.category.partials._top_toolbar')
+                        {{--@include('frontend.modules.category.partials._top_toolbar')--}}
                                 <!-- Tab Content -->
                         <div class="clearfix"></div>
                         <div class="tab-content">
                             <div id="shop-grid" class="tab-pane active" role="tabpanel">
                                 <div class="row">
-                                    @include('frontend.modules.product.partials.product_thumbnail',['products' => $elements ,'cols' => 'col-lg-3 col-md-3 col-sm-3'])
+                                    @include('frontend.modules.product.partials.product_category',['products' => $elements ,'cols' => 'col-lg-3 col-md-3 col-sm-3'])
                                 </div>
                             </div>
                         </div>
-                        @include('frontend.modules.category.partials._bottom_toolbar')
+{{--                        @include('frontend.modules.category.partials._bottom_toolbar')--}}
                     </div>
                 </div>
             </div>

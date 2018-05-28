@@ -29,6 +29,7 @@ class CreateSettingsTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('logo')->nullable();
             $table->boolean('aramex_service')->default(0);
+            $table->boolean('delivery_service')->default(0);
             $table->timestamps();
         });
     }
