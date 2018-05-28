@@ -58,6 +58,25 @@
                 width: 200px;
                 min-height: 500px;
             }
+
+            .header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                height: 10%;
+                background-color: white;
+                margin-bottom: 10px;
+                clear: both;
+                border-bottom: 1px solid darkgoldenrod;
+            }
+
+            .img-logo {
+                width: 40%;
+                height: auto;
+                max-height: 220px;
+                border-radius: 10px;
+            }
+
         }
 
         @media screen and (max-width: 400px) and (min-width: 1000px), (min-width: 1100px) {
@@ -65,17 +84,24 @@
                 width: 600px;
                 min-height: 500px;
             }
-        }
 
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 25%;
-            background-color: white;
-            margin-bottom: 10px;
-            clear: both;
-            border-bottom: 1px solid darkgoldenrod;
+            .header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                height: 25%;
+                background-color: white;
+                margin-bottom: 10px;
+                clear: both;
+                border-bottom: 1px solid darkgoldenrod;
+            }
+
+            .img-logo {
+                width: 25%;
+                height: auto;
+                max-height: 220px;
+                border-radius: 10px;
+            }
         }
 
         footer {
@@ -100,13 +126,6 @@
             font-size: 25px;
             text-align: center;
             margin: 20px
-        }
-
-        .img-logo {
-            width: 25%;
-            height: auto;
-            max-height: 220px;
-            border-radius: 10px;
         }
 
         .img-brochure {
