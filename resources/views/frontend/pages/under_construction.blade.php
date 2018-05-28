@@ -183,16 +183,16 @@
         }
 
         .social {
-            font-size: 25px;
+            font-size: 20px;
             text-align: center;
-            margin: 20px
+            margin: 15px
         }
 
         footer {
             position: fixed;
             bottom: 0;
             width: 100%;
-            height: 20%;
+            height: 16%;
             padding: 20px;
             border-top: 1px solid whitesmoke;
             background-color: lightgrey;
@@ -200,6 +200,7 @@
             justify-content: center;
             align-items: center;
             align-self: center;
+            margin-top: 10px;
         }
     </style>
 @endsection
@@ -209,12 +210,12 @@
     <div class="container">
         <div class="content">
             <div class="header">
-                <a href="{{ asset('images/brochure.pdf') }}">
+                <a href="{{ asset('images/brochure/BROCHURE-2.pdf') }}">
                     <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
                 </a>
             </div>
             <div class="col-lg-12" style="text-align: center">
-                <a href="{{ asset('images/brochure/BROCHURE -2.pdf') }}" class="link">View Our Brochure</a>
+                <a href="{{ asset('images/brochure/BROCHURE-2.pdf') }}" class="link">View Our Brochure</a>
             </div>
             <div class="img-wrapper">
                 @for($i=1;$i<=14;$i++)
@@ -223,6 +224,7 @@
                 @endfor
             </div>
         </div>
+        </br>
     </div>
 @endsection
 
@@ -234,12 +236,14 @@
                     class="fa fa-fw fa-twitter"></i></a>
         <a href="https://www.youtube.com/watch?v=Rn1i3vRhU7s" class="social" target="_blank"><i
                     class="fa fa-fw fa-youtube"></i></a>
+        <a href="https://www.snapchat.com/add/harayer7" class="social" target="_blank"><i
+                    class="fa fa-fw fa-snapchat"></i></a>
         <a href="mailto:info@harayer7.com" class="social" target="_blank"><i
                     class="fa fa-fw fa-inbox"></i></a>
-        <hr>
-        <div style="margin: auto; height: 50px; text-decoration: none; font-size: large; color: black; font-weight: bolder;">
-            info@harayer7.com لمزيد من المعلومات
-        </div>
+        {{--<hr>--}}
+        {{--<div style="margin: auto; height: 50px; text-decoration: none; font-size: large; color: black; font-weight: bolder;">--}}
+            {{--info@harayer7.com لمزيد من المعلومات--}}
+        {{--</div>--}}
         </div>
     </footer>
 @stop
