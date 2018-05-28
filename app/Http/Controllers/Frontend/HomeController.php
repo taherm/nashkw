@@ -28,6 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(!auth()->check()) {
+            return view('frontend.pages.under_construction');
+        }
         $newArrivals = $this->product->active()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images')->take(app()->isLocale('ar') ? 7 : 12)->get();
         $onSaleProducts = $this->product->active()->onSaleOnHomePage()->with('gallery.images')->take(app()->isLocale('ar') ? 7 : 12)->get();
         $bestSalesProducts = $this->product->whereIn('id', $this->product->bestSalesProducts())->with('gallery.images')->get();

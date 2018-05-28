@@ -68,6 +68,8 @@
         }
 
         .header {
+            position: fixed;
+            top: 0;
             width: 100%;
             height: 20%;
             background-color: white;
@@ -123,7 +125,16 @@
             </a>
         </div>
         <div class="title">
-                {{ $exception->getMessage() }}
+            <div>
+                <a href="{{ asset('images/brochure.pdf') }}" class="link">View Our Brochure</a>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 10px; flex-wrap: nowrap">
+                @for($i=1;$i<=14;$i++)
+                    <img class="img-brochure" src="{{ asset('images/brochure/brochure-' . $i .'.jpg') }}"
+                         alt="{{ env('APP_NAME') }}">
+                @endfor
+            </div>
+
         </div>
     </div>
 </div>
