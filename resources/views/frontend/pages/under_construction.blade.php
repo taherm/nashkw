@@ -71,7 +71,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            height: 20%;
+            height: 25%;
             background-color: white;
             margin-bottom: 10px;
             clear: both;
@@ -82,7 +82,7 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            height: 3%;
+            height: 6%;
             padding: 20px;
             border-top: 1px solid whitesmoke;
             background-color: lightgrey;
@@ -103,15 +103,24 @@
         }
 
         .img-logo {
-            width: 20%;
+            width: 25%;
             height: auto;
-            max-height: 150px;
+            max-height: 220px;
             border-radius: 10px;
         }
 
         .img-brochure {
-            width: 50%;
+            width: 100%;
             height: auto;
+        }
+
+        .img-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: nowrap
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
@@ -126,11 +135,11 @@
         </div>
         <div class="title">
             <div>
-                <a href="{{ asset('images/brochure.pdf') }}" class="link">View Our Brochure</a>
+                <a href="{{ asset('images/brochure/BROCHURE -2.pdf') }}" class="link">View Our Brochure</a>
             </div>
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 10px; flex-wrap: nowrap">
+            <div class="img-wrapper">
                 @for($i=1;$i<=14;$i++)
-                    <img class="img-brochure" src="{{ asset('images/brochure/brochure-' . $i .'.jpg') }}"
+                    <img class="img-brochure" src="{{ asset('images/brochure/BROCHURE -2-' . $i .'.jpg') }}"
                          alt="{{ env('APP_NAME') }}">
                 @endfor
             </div>
@@ -140,10 +149,17 @@
 </div>
 <footer>
     <a href="https://www.instagram.com/harayer7/" class="social" target="_blank"><i
-                class="fa fa-instagram"></i></a>
+                class="fa fa-fw fa-instagram"></i></a>
     <a href="https://www.twitter.com/harayer7/" class="social" target="_blank"><i
-                class="fa fa-twitter"></i></a>
+                class="fa fa-fw fa-twitter"></i></a>
+    <a href="https://www.youtube.com/watch?v=Rn1i3vRhU7s" class="social" target="_blank"><i
+                class="fa fa-fw fa-youtube"></i></a>
+    <a href="mailto:info@harayer7.com" class="social" target="_blank"><i
+                class="fa fa-fw fa-inbox"></i></a>
+    <hr>
+    <span style="text-decoration: none; font-size: large; color: black; font-weight: bolder; margin : 15px;">info@harayer7.com لمزيد من المعلومات </span>
+    <br>
     </div>
-</footer>
+    </br>
 </body>
 </html>
