@@ -17,7 +17,7 @@ class CreateProductAttributesTable extends Migration
             $table->integer('product_id')->unsigned()->index();
             $table->integer('size_id')->unsigned()->index();
             $table->integer('color_id')->unsigned()->index();
-            $table->string('qty');
+            $table->integer('qty')->unsigned()->default(0);
             $table->text('notes_ar');
             $table->text('notes_en');
 

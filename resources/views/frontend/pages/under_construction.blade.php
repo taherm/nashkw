@@ -1,177 +1,27 @@
-{{--<!DOCTYPE html>--}}
-{{--<html>--}}
-{{--<head>--}}
-{{--<title>{{ config('app.name') }}</title>--}}
-
-{{--<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">--}}
-{{--<style>--}}
-{{--html, body {--}}
-{{--height: auto;--}}
-{{--}--}}
-
-{{--body {--}}
-{{--margin: 0;--}}
-{{--padding: 0;--}}
-{{--color: #B0BEC5;--}}
-{{--font-weight: 100;--}}
-{{--font-family: 'Lato', sans-serif;--}}
-{{--display: flex;--}}
-{{--width: 100%;--}}
-{{--height: auto;--}}
-{{--flex-direction: column;--}}
-{{--justify-content: center;--}}
-{{--align-content: center;--}}
-{{--align-items: center;--}}
-{{--flex-wrap: nowrap;--}}
-{{--}--}}
-
-{{--.container {--}}
-{{--flex-direction: row;--}}
-{{--justify-content: center;--}}
-{{--align-items: center;--}}
-{{--width: 100%;--}}
-{{--overflow: hidden;--}}
-
-{{--}--}}
-
-{{--.content {--}}
-{{--display: flex;--}}
-{{--flex-direction: column;--}}
-{{--justify-content: center;--}}
-{{--align-items: center;--}}
-{{--align-self: center;--}}
-{{--text-align: center;--}}
-{{--flex-wrap: nowrap;--}}
-{{--}--}}
-
-{{--.title {--}}
-{{--font-size: 72px;--}}
-{{--margin-top: 13%;--}}
-{{--text-align: center;--}}
-{{--}--}}
-
-{{--.link {--}}
-{{--text-decoration: none;--}}
-{{--font-size: 72px;--}}
-{{--color: darkgoldenrod;--}}
-{{--}--}}
-
-{{--@media only screen and (max-width: 400px) {--}}
-{{--.pdf-frame {--}}
-{{--width: 200px;--}}
-{{--min-height: 500px;--}}
-{{--}--}}
-
-{{--.header {--}}
-{{--position: fixed;--}}
-{{--top: 0;--}}
-{{--width: 100%;--}}
-{{--height: 10%;--}}
-{{--background-color: white;--}}
-{{--margin-bottom: 10px;--}}
-{{--clear: both;--}}
-{{--border-bottom: 1px solid darkgoldenrod;--}}
-{{--}--}}
-
-{{--.img-logo {--}}
-{{--width: 100%;--}}
-{{--height: auto;--}}
-{{--max-height: 220px;--}}
-{{--border-radius: 10px;--}}
-{{--}--}}
-
-{{--.img-brochure {--}}
-{{--width: 46%;--}}
-{{--height: auto;--}}
-{{--}--}}
-
-{{--.img-wrapper {--}}
-{{--display: flex;--}}
-{{--flex-direction: column;--}}
-{{--justify-content: center;--}}
-{{--align-items: center;--}}
-{{--margin-top: 10px;--}}
-{{--flex-wrap: nowrap;--}}
-{{--width: 46%;--}}
-{{--}--}}
-
-{{--}--}}
-
-{{--@media screen and (min-width: 1000px) {--}}
-{{--.pdf-frame {--}}
-{{--width: 600px;--}}
-{{--min-height: 500px;--}}
-{{--}--}}
-
-{{--.header {--}}
-{{--position: fixed;--}}
-{{--top: 0;--}}
-{{--width: 100%;--}}
-{{--height: 25%;--}}
-{{--background-color: white;--}}
-{{--margin-bottom: 10px;--}}
-{{--clear: both;--}}
-{{--border-bottom: 1px solid darkgoldenrod;--}}
-{{--}--}}
-
-{{--.img-logo {--}}
-{{--width: 25%;--}}
-{{--height: auto;--}}
-{{--max-height: 220px;--}}
-{{--border-radius: 10px;--}}
-{{--}--}}
-
-{{--.img-brochure {--}}
-{{--width: 100%;--}}
-{{--height: auto;--}}
-{{--}--}}
-
-{{--.img-wrapper {--}}
-{{--display: flex;--}}
-{{--flex-direction: column;--}}
-{{--justify-content: center;--}}
-{{--align-items: center;--}}
-{{--margin-top: 10px;--}}
-{{--flex-wrap: nowrap;--}}
-{{--width: 100%;--}}
-{{--}--}}
-{{--}--}}
-
-{{--footer {--}}
-{{--position: fixed;--}}
-{{--bottom: 0;--}}
-{{--width: 100%;--}}
-{{--height: 6%;--}}
-{{--padding: 20px;--}}
-{{--border-top: 1px solid whitesmoke;--}}
-{{--background-color: lightgrey;--}}
-{{--text-align: center;--}}
-{{--justify-content: center;--}}
-{{--align-items: center;--}}
-{{--align-self: center;--}}
-{{--}--}}
-
-{{--a {--}}
-{{--color: darkgoldenrod;--}}
-{{--}--}}
-
-{{--.social {--}}
-{{--font-size: 25px;--}}
-{{--text-align: center;--}}
-{{--margin: 20px--}}
-{{--}--}}
-{{--</style>--}}
-{{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>--}}
-{{--</head>--}}
-{{--<body>--}}
-
 @extends('frontend.layouts.master')
 
 @section('styles')
     @parent
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal:500" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <style>
+        html, body, div, span, p, a, h1, h2, h3, h4, h5 {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-logo {
+            max-width: 360px;
+        }
+
+
         .link {
             text-decoration: none;
             font-size: large;
@@ -183,16 +33,16 @@
         }
 
         .social {
-            font-size: 20px;
+            font-size: 30px;
             text-align: center;
-            margin: 15px
+            margin: 8px
         }
 
         footer {
             position: fixed;
             bottom: 0;
             width: 100%;
-            height: 16%;
+            height: 15%;
             padding: 20px;
             border-top: 1px solid whitesmoke;
             background-color: lightgrey;
@@ -201,35 +51,43 @@
             align-items: center;
             align-self: center;
             margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .text-follow-us {
+            height: auto; margin-bottom: 3px; text-decoration: none; font-size: small; color: black; font-weight: bolder; width: 100%;
         }
     </style>
 @endsection
 @section('header')
 @stop
 @section('content')
-    <div class="container">
-        <div class="content">
-            <div class="header">
-                <a href="{{ asset('images/brochure/BROCHURE-2.pdf') }}">
-                    <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
-                </a>
-            </div>
-            <div class="col-lg-12" style="text-align: center">
-                <a href="{{ asset('images/brochure/BROCHURE-2.pdf') }}" class="link">View Our Brochure</a>
-            </div>
-            <div class="img-wrapper">
-                @for($i=1;$i<=14;$i++)
-                    <img class="img-brochure" src="{{ asset('images/brochure/BROCHURE -2-' . $i .'.jpg') }}"
-                         alt="{{ env('APP_NAME') }}">
-                @endfor
-            </div>
-        </div>
-        </br>
+
+    <div class="header">
+    <a href="{{ asset('images/brochure/BROCHURE-2.pdf') }}">
+        <img src="{{ asset('images/soon_1.jpeg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
+    </a>
     </div>
+    <div class="col-lg-12" style="margin: 20px; text-align: center">
+        <h3>
+            <a href="{{ asset('images/brochure/BROCHURE-2.pdf') }}" class="link">اضغط من هنا لمشاهدة الكتالوج</a>
+        </h3>
+    </div>
+    <div class="img-wrapper">
+        @for($i=1;$i<=14;$i++)
+            <img class="img-brochure" src="{{ asset('images/brochure/BROCHURE -2-' . $i .'.jpg') }}"
+                 alt="{{ env('APP_NAME') }}">
+        @endfor
+    </div>
+
 @endsection
 
 @section('footer')
     <footer>
+        <div class="text-follow-us">
+            تابعونا على مواقع التواصل الإجتماعي
+        </div>
+        {{--<hr>--}}
         <a href="https://www.instagram.com/harayer7/" class="social" target="_blank"><i
                     class="fa fa-fw fa-instagram"></i></a>
         <a href="https://www.twitter.com/harayer7/" class="social" target="_blank"><i
@@ -238,12 +96,8 @@
                     class="fa fa-fw fa-youtube"></i></a>
         <a href="https://www.snapchat.com/add/harayer7" class="social" target="_blank"><i
                     class="fa fa-fw fa-snapchat"></i></a>
-        <a href="mailto:info@harayer7.com" class="social" target="_blank"><i
-                    class="fa fa-fw fa-inbox"></i></a>
-        {{--<hr>--}}
-        {{--<div style="margin: auto; height: 50px; text-decoration: none; font-size: large; color: black; font-weight: bolder;">--}}
-            {{--info@harayer7.com لمزيد من المعلومات--}}
-        {{--</div>--}}
+        <a href="https://api.whatsapp.com/send?phone=96596967707" class="social" target="_blank"><i
+                    class="fa fa-fw fa-whatsapp"></i></a>
         </div>
     </footer>
 @stop
