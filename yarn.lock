@@ -943,6 +943,10 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bootstrap3-rtl@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bootstrap3-rtl/-/bootstrap3-rtl-1.1.0.tgz#51cdc82a49581ed3bf3c294729ef9d053764dbd4"
+
 bootstrap@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"

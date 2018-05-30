@@ -133,6 +133,7 @@ mix.styles([
     ]
     , 'public/css/frontend.css').version();
 mix.styles('./resources/assets/css/frontend-custom-ar.css', 'public/css/frontend-custom-ar.css')
+mix.styles('./node_modules/bootstrap3-rtl/dist/bootstrap-rtl-min.css', 'public/css/rtl.css')
 mix.styles([
         '../../Documents/Home/expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
         '../../Documents/Home/expert-theme/expert/js/bootstrap.min.js',

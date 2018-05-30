@@ -1,7 +1,7 @@
 <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 single-product-details">
     <div class="product-details shop-review">
-        <div class="col-lg-12" style="padding-left: 0px;padding-right: 0px;">
-            <div class="col-lg-10" style="padding-left: 0px;padding-right: 0px;">
+        <div class="col-lg-12">
+            <div class="col-lg-10">
                 <div class="product-name">
                     <h3>{{$product->name}}</h3>
                 </div>

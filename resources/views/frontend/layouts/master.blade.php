@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js"
       lang="{{ app()->getLocale() }}"
-      {{--dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr'}}"--}}
+      dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr'}}"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://ogp.me/ns/fb#"
 >

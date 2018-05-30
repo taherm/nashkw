@@ -19,7 +19,8 @@
                                         <span class="old-price">
                                     {{ $product->convertedPrice }} - {{ $currency->symbol }}
                                 </span>
-                                        <span class="new-price">{{ $product->convertedSalePrice }}
+                                        <span class="new-price">
+                                            {{ $product->convertedSalePrice }}
                                             {{ $product->symbol }}
                                 </span>
                                     @else
@@ -36,12 +37,12 @@
                                 @endif
                                 <a href="{{ route('frontend.product.show',$product->id) }}">
                                     <img class="primary-img"
-                                         src="{{ asset('uploads/images/thumbnail/'.$product->image) }} "
+                                         src="{{ asset('uploads/images/thumbnail/'.$product->image) }}"
                                          alt="{{ $product->name }}">
 
-                                    @if(!$product->gallery->images->isEmpty()))
+                                    @if(!$product->gallery->images->isEmpty())
                                     <img class="secondary-img"
-                                         src="{{ asset('storage/uploads/images/thumbnail/'.$product->gallery->images->sortBy('order')->first()->path) }} "
+                                         src="{{ asset('storage/uploads/images/thumbnail/'.$product->gallery->images->sortBy('order')->first()->path) }}"
                                          alt="{{ $product->name }}">
                                     @endif
                                 </a>
