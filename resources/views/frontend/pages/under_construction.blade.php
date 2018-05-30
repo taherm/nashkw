@@ -90,6 +90,7 @@
                 <img class="img-brochure" src="{{ asset('images/brochure/BROCHURE -2-' . $i .'.jpg') }}"
                      alt="{{ env('APP_NAME') }}">
             @endfor
+            <hr>
         </div>
     </div>
 @endsection
