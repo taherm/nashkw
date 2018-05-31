@@ -132,9 +132,13 @@ mix.styles([
         './resources/assets/css/frontend-custom.css'
     ]
     , 'public/css/frontend.css').version();
-mix.styles('./resources/assets/css/frontend-custom-ar.css', 'public/css/frontend-custom-ar.css')
-mix.styles('./node_modules/bootstrap3-rtl/dist/bootstrap-rtl-min.css', 'public/css/rtl.css')
 mix.styles([
+    'resources/assets/css/style_rtl.css',
+    './node_modules/bootstrap3-rtl/dist/bootstrap-rtl-min.css',
+    'resources/assets/css/frontend-custom-ar.css',
+
+], 'public/css/rtl.css').version();
+mix.scripts([
         '../../Documents/Home/expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
         '../../Documents/Home/expert-theme/expert/js/bootstrap.min.js',
         '../../Documents/Home/expert-theme/expert/js/jquery.nivo.slider.pack.js',
@@ -150,6 +154,8 @@ mix.styles([
         './resources/assets/js/frontend-custom.js',
     ]
     , 'public/js/frontend.js').version();
+
+mix.scripts('resource/js/frontend-custom-ar', 'public/js/frontend-custom-ar.js').version();
 
 mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/simple-line-icons/fonts', 'public/css/fonts');
 mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/datatables/images', 'public/plugins/datatables/images');

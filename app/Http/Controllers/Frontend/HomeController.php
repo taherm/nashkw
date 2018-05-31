@@ -10,6 +10,7 @@ use App\Services\Search\Filters;
 class HomeController extends Controller
 {
     public $product;
+    const take = 7;
 
     /**
      * Create a new controller instance.
@@ -31,8 +32,8 @@ class HomeController extends Controller
         if(!auth()->check()) {
             return view('frontend.pages.under_construction');
         }
-        $newArrivals = $this->product->active()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images')->take(app()->isLocale('ar') ? 7 : 12)->get();
-        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->with('gallery.images')->take(app()->isLocale('ar') ? 7 : 12)->get();
+        $newArrivals = $this->product->active()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images')->take(self::take)->get();
+        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->with('gallery.images')->take(self::take)->get();
         $bestSalesProducts = $this->product->whereIn('id', $this->product->bestSalesProducts())->with('gallery.images')->get();
         return view('frontend.home', compact(
             'newArrivals',

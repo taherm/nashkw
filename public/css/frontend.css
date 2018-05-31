@@ -4640,3 +4640,8 @@ body, div, a, span, table, p, form, input, h1, h2, h3, h4 {
     width: 75px;
     height : 25px;
 }
+
+img-sm {
+    height: 100px;
+    width: auto;
+}

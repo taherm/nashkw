@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    // Fix Carousal click
+    $('.owl-item img').on('click', function() {
+        $('.owl-item li').removeClass('active');
+        $(this).addClass('active');
+    });
+
     var language = $('#language').val();
     var name = 'name_' + language;
     console.log('the language', language);

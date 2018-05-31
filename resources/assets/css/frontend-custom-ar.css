@@ -1,61 +1,48 @@
-p {
-    text-align : right;
-}
+/*p {*/
+    /*text-align : right;*/
+/*}*/
 
-.button-minus, .button-plus {
-    position: absolute;
-    display: inline-block;
-    top: 23px;
-    right: 11px;
-}
+/*.button-minus, .button-plus {*/
+    /*position: absolute;*/
+    /*display: inline-block;*/
+    /*top: 23px;*/
+    /*right: 11px;*/
+/*}*/
 
-footer {
-    text-align: right;
-}
+/*footer {*/
+    /*text-align: right;*/
+/*}*/
 
 /*.middle-footer-text2 .footer-address ul li, .middle-footer-text2 .footer-menu ul li a, .middle-footer-text2 > p {*/
     /*text-align : right;*/
 /*}*/
 
-/*.owl-carousel, .owl-carousel .owl-wrapper {*/
-    /*position: initial;*/
-
-/*}*/
-.owl-carousel .owl-item {
-    float: right;
-
-}
-.owl-wrapper-outer{
-    z-index: 99;
-}
-.owl-buttons{
-    margin-top: -33%;
-    position: relative;
-    padding-bottom: 33%;
-    z-index: 0;
-
-}
-.owl-prev {
-    left: -3% !important;
-    top: 36% !important;
-}
-.owl-next {
-    right: -3% !important;
-    top: 36% !important;
-}
-
-.single-procuct-view .simpleLens-big-image-container, .single-procuct-view .simpleLens-lens-image{
+.simpleLens-big-image-container, .simpleLens-lens-image{
     direction: ltr;
-    float: right;
+    /*float: right;*/
 }
 div.simpleLens-lens-element {
     left: -112%;
 }
 
-.shop-review {
-    padding-right: 30px;
-    text-align: right;
+.button-plus {
+    display: inline-block;
+    position: relative;
+    left: 92px;
+    bottom: 7px;
 }
+
+.button-minus {
+    display: inline-block;
+    position: relative;
+    left: 109px;
+    bottom: 7px;
+}
+
+/*.shop-review {*/
+    /*padding-right: 30px;*/
+    /*text-align: right;*/
+/*}*/
 /*.add-action ul li {*/
     /*left: 10%;*/
     /*float: left;*/
