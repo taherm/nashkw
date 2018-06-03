@@ -1,9 +1,9 @@
 <div class="row">
-    {{--<div class="feature-product-4 product-carousel derection-key">--}}
-        <div class="bestseller-product product-carousel derection-key">
+    <div class="feature-product-4 {{ isset($carousel) && $carousel ? 'product-carousel' : null }} derection-key">
+        {{--<div class="bestseller-product product-carousel derection-key">--}}
         <!-- single-product start -->
         @foreach($products as $product)
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                 <!-- single-product end -->
                 <div class="single-product">
                     <div class="product-details">

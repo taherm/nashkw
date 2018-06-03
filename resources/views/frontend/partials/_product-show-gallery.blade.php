@@ -3,7 +3,7 @@
     <style>
         .owl-wrapper {
             width: 1189px !important;
-            left: 900px !important;
+            left: 900px;
         }
         .owl-prev {
             display: none !important;
@@ -13,7 +13,7 @@
 <div class="simpleLens-gallery-container" id="p-view">
     <div class="simpleLens-container tab-content">
         <div class="tab-pane active" id="p-view-{{ $product->id }}">
-            <div class="simpleLens-big-image-container">
+            <div class="simpleLens-big-image-container" >
                 <a class="simpleLens-lens-image" data-lens-image="{{ asset(env('LARGE').$product->image) }}">
                     <img src="{{ asset(env('THUMBNAIL').$product->image) }}" class="simpleLens-big-image"
                          alt="{{ $product->name }}">

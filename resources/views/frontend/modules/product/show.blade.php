@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('head')
+    @parent
     <title>{{ $product->name }}</title>
     <!-- You can use Open Graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
@@ -48,16 +49,12 @@
 
     <!--related-products-area start-->
         @if(!$products->isEmpty())
-            @include('frontend.modules.product.partials.product_carousel',[$products ,'heading'=>'Related Products','backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-3 col-md-3 col-sm-3'])
+
+            @include('frontend.modules.product.partials.product_carousel',[$products ,'heading'=> trans('general.related_products'),'backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-3 col-md-3 col-sm-3'])
         @endif
     </div>
     </div>
     <!-- Single Product Area end -->
     <!-- Creates the bootstrap modal where the image will appear -->
     {{-- moved to modal blade quick view--}}
-@endsection
-
-@section('scripts')
-    @parent
-    <script async src="https://static.addtoany.com/menu/page.js"></script>
 @endsection

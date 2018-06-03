@@ -12,7 +12,7 @@
             </div>
         </div>
         <!-- Area-heading end -->
-        @include('frontend.modules.product.partials.product_thumbnail',['carousel' => true])
+        @include('frontend.modules.product.partials.product_thumbnail')
     </div>
 </div>
 
