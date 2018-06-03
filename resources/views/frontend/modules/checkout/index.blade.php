@@ -342,7 +342,7 @@
                                                     <span class="left-btn"><a
                                                                 href="{{ route('frontend.cart.index') }}">{{ trans("general.back") }}</a></span>
                                             <button type="submit" class="btn right-btn custom-button">
-                                                Continue
+                                                {{ trans('general.continue') }}
                                             </button>
                                         </div>
                                     </div>
@@ -382,13 +382,24 @@
                                             <tr>
                                                 <td colspan="3">
                                                     <p class="tabletext">{{ trans('general.subtotal') }}</p>
+
                                                     <p class="tabletext">{{ trans('general.shipping_cost') }}</p>
                                                     <p class="tabletext">{{ trans('general.grand_total') }}</p>
                                                 </td>
                                                 <td>
-                                                    <p class="tabletextp">{{ getCartNetTotal() }} {{ trans('general.kd') }}</p>
                                                     <p class="tabletextp">
-                                                        <span id="finalDeliveryCost"></span> {{ trans('general.kd') }}
+                                                        <span id="subtotal" value="{{ getCartNetTotal() }}">{{ getCartNetTotal() }}
+                                                        </span>{{ trans('general.kd') }}
+                                                        <input type="hidden" name="subtotal" value="">
+                                                    </p>
+                                                    <p class="tabletextp">
+                                                        <span id="finalDeliveryCost"
+                                                              value=""></span> {{ trans('general.kd') }}
+                                                        <input type="hidden" name="shipping_cost" value="">
+                                                    </p>
+                                                    <p class="tabletextp">
+                                                        <span id="grandtotal" value=""></span> {{ trans('general.kd') }}
+                                                        <input type="hidden" name="grandtotall" value="">
                                                     </p>
                                                 </td>
                                             </tr>
