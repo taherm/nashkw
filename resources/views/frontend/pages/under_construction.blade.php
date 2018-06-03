@@ -46,7 +46,7 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            height: 18%;
+            height: 23%;
             padding: 10px;
             border-top: 1px solid whitesmoke;
             background-color: whitesmoke;
