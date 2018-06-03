@@ -60,7 +60,7 @@ class PageController extends PrimaryController
             return redirect()->back()->with('info', $e->getMessage());
         }
 
-        return redirect('home')->with('success', trans('general.mail_sent'));
+        return redirect('frontend.home')->with('success', trans('general.mail_sent'));
     }
 
 

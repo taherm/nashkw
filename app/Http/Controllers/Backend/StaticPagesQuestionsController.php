@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PagesQuestions;
 use App\Src\PagesQuestions\StaticPagesQuestionsRepository;
 
-class StaticPagesQuestionsController extends PrimaryController
+class StaticPagesQuestionsController extends Controller
 {
     protected $pagesQuestions;
 

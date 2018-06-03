@@ -4,23 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
 use App\Core\Services\Image\PrimaryImageService;
+use App\Http\Controllers\Controller;
 use App\Src\Category\CategoryRepository;
 use App\Http\Requests\Backend\CategoryUpdate;
 use App\Http\Requests\Backend\CategoryCreate;
 use Illuminate\Support\Facades\Cache;
 
-class CategoryController extends PrimaryController
+class CategoryController extends Controller
 {
-    protected $category;
-    protected $imageService;
-
-
-    public function __construct(CategoryRepository $category, PrimaryImageService $imageService)
-    {
-        $this->category = $category;
-        $this->imageService = $imageService;
-    }
-
     /**
      * Display a listing of the resource.
      *

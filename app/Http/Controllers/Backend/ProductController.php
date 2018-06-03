@@ -2,24 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Src\Product\Product;
-use App\Src\User\UserRepository;
-use App\Http\Requests;
-use App\Core\PrimaryController;
-use App\Src\Product\ProductRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
-class ProductController extends PrimaryController
+class ProductController extends Controller
 {
 
-    protected $productRepository;
-    protected $userRepository;
 
-    public function __construct(ProductRepository $productRepository, UserRepository $userRepository)
+    public function __construct()
     {
-        $this->productRepository = $productRepository;
-        $this->userRepository = $userRepository;
+
     }
 
     /**
@@ -30,17 +21,6 @@ class ProductController extends PrimaryController
     public function index()
     {
 
-        if (request()->get('trashed') == 1) {
-
-            $products = Product::withoutGlobalScopes()->orderBy('created_at','desc')->onlyTrashed()->with('categories')->get();
-            return view('backend.modules.product.trashed', compact('products'));
-
-        } else {
-
-            $products = $this->productRepository->model->orderBy('created_at', 'desc')->has('product_meta')->with('categories')->get();
-
-        }
-        return view('backend.modules.product.index', compact('products'));
     }
 
     /**
@@ -61,12 +41,8 @@ class ProductController extends PrimaryController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\Backend\ProductStore $request)
+    public function store()
     {
-        $productId = $request->persist($this->productRepository);
-
-        return redirect()->route('backend.meta.create', ['product_id' => $productId])
-            ->with('success', 'product created successfully');
     }
 
     /**

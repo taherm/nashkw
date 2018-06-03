@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
+use App\Http\Controllers\Controller;
 use App\Src\Currency\Currency;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Artisan;
 
-class CurrencyController extends PrimaryController
+class CurrencyController extends Controller
 {
 
     public function index()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Core\PrimaryController;
 use App\Src\Slider\Slider;
@@ -9,7 +10,7 @@ use App\Core\Services\Image\PrimaryImageService;
 
 use App\Http\Requests;
 
-class SliderController extends PrimaryController
+class SliderController extends Controller
 {
     public $slider;
     public $image;

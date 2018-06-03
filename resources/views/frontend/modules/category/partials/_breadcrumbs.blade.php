@@ -1,7 +1,7 @@
 <div class="shop-head">
     <ul class="shop-head-menu">
         <li><i class="fa fa-home"></i><a class="home"
-                                         href="{{ route('home') }}"><span>{{ trans('general.home') }}</span></a>
+                                         href="{{ route('frontend.home') }}"><span>{{ trans('general.home') }}</span></a>
         </li>
         @if(!is_null($categories))
             @if(\Request::route()->getName() == 'category.show')

@@ -4,7 +4,7 @@
             <div class="col-md-12 hidden-lg hidden-md">
                 <nav id="dropdown">
                     <ul>
-                        <li><a href="{{ route('home')  }}">home</a></li>
+                        <li><a href="{{ route('frontend.home')  }}">home</a></li>
                         @foreach($categories->sortBy('order') as $category)
                             <li>
                                 <a href="{{ route('frontend.product.search',['category_id' => $category->id]) }}">{{ $category->name }}</a>

@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
 use App\Core\Services\Image\PrimaryImageService;
+use App\Http\Controllers\Controller;
 use App\Src\Category\Category;
 use App\Src\Category\CategoryRepository;
 use App\Http\Requests\Backend\SubCategoryUpdate;
 use App\Http\Requests\Backend\SubCategoryCreate;
 use Illuminate\Support\Facades\Cache;
 
-class SubCategoryController extends PrimaryController
+class SubCategoryController extends Controller
 {
     protected $category;
     protected $imageService;

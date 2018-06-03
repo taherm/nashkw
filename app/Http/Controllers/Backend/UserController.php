@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Jobs\SendEmail;
-use App\Src\User\UserRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Core\PrimaryController;
 
-class UserController extends PrimaryController
+class UserController extends Controller
 {
 
     protected $userRepository;
@@ -48,7 +46,7 @@ class UserController extends PrimaryController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\Backend\UserStore $request, $id)
+    public function store()
     {
 
     }
@@ -62,9 +60,6 @@ class UserController extends PrimaryController
      */
     public function show($id)
     {
-        $user = $this->userRepository->getById($id);
-
-        return 'show user working';
     }
 
     /**
@@ -75,8 +70,6 @@ class UserController extends PrimaryController
      */
     public function edit($id)
     {
-        $element = User::whereId($id)->first();
-        return view('backend.modules.user.edit', compact('element'));
     }
 
     /**

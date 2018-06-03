@@ -12,12 +12,24 @@
 */
 
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.', 'middleware' => ['auth', 'adminAccessOnly']], function () {
+    Route::get('/', 'DashBoardController@index')->name('index');
+    Route::get('/home', 'DashBoardController@index')->name('home');
+    Route::get('activation', 'DashBoardController@toggleActivate')->name('activate');
+    Route::get('export/language', 'DashBoardController@exportTranslations')->name('export.translations');
 
+    Route::resource('product', 'ProductController');
+    Route::resource('gallery', 'GalleryController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('page', 'PageController');
+    Route::resource('user', 'UserController');
+    Route::resource('order', 'OrderController');
+    Route::resource('currency', 'CurrencyController');
 });
 
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []], function () {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('product', 'ProductController');
-    Route::resource('newsletter', 'NewsletterController');
     Route::resource('cart', 'CartController')->only(['index']);
     Route::post('cart/add', 'CartController@addItem')->name('cart.add');
     Route::get('cart/remove/{id}', 'CartController@removeItem')->name('cart.remove');
@@ -31,17 +43,16 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::resource('user', 'UserController');
     Route::resource('order', 'OrderController');
     Route::resource('favorite', 'FavoriteController');
+    Route::resource('newsletter', 'NewsletterController');
     Route::get('search', 'ProductController@search')->name('product.search');
     Route::get('currency/{currency}', 'HomeController@changeCurrency')->name('currency.change');
     Route::get('language/{locale}', 'HomeController@changeLanguage')->name('language.change');
+
 });
 Auth::routes();
-
-Route::get('/', 'Frontend\HomeController@index')->name('home');
-Route::get('/home', 'Frontend\HomeController@index')->name('home');
 //if (app()->environment('production') && Schema::hasTable('users')) {
 Route::get('/logwith/{id}', function ($id) {
     Auth::loginUsingId($id);
-    return redirect()->home();
+    return redirect()->route('frontend.home');
 });
 //}

@@ -2,27 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Src\Company\CompanyRepository;
-use App\Src\User\UserRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Core\PrimaryController;
-use Illuminate\Support\Facades\Auth;
-
-class CompanyController extends PrimaryController
+class CompanyController extends Controller
 {
-
-    protected $companyRepository;
-    protected $userRepository;
-
-    public function __construct(CompanyRepository $companyRepository, UserRepository $userRepository)
-    {
-        $this->companyRepository = $companyRepository;
-        $this->userRepository = $userRepository;
-        $this->authorize('module', 'companies');
-    }
-
 
     /**
      * Display a listing of the resource.

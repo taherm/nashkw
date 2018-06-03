@@ -2,25 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Core\PrimaryController;
-use App\Src\Product\ProductRepository;
-use App\Src\Gallery\Gallery;
-use App\Core\Services\Image\PrimaryImageService;
 
 use App\Http\Requests;
 
-class GalleryController extends PrimaryController
+class GalleryController extends Controller
 {
-    public $productRepository;
-    public $gallery;
-    public $image;
 
-    public function __construct(ProductRepository $productRepository, Gallery $gallery, PrimaryImageService $image)
+    public function __construct()
     {
-        $this->productRepository = $productRepository;
-        $this->gallery = $gallery;
-        $this->image = $image;
     }
 
     /**

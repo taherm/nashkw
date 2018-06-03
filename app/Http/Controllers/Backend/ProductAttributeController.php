@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
+use App\Http\Controllers\Controller;
 use App\Src\Order\OrderMeta;
 use App\Src\Product\Color;
 use App\Src\Product\ProductAttribute;
@@ -13,7 +14,7 @@ use App\Src\Product\ProductRepository;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
-class ProductAttributeController extends PrimaryController
+class ProductAttributeController extends Controller
 {
     public $productAttribute;
     public $productRepository;

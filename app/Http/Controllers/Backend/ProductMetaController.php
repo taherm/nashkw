@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
 use App\Core\Services\Image\PrimaryImageService;
+use App\Http\Controllers\Controller;
 use App\Models\ProductMeta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use App\Http\Requests;
 use App\Http\Requests\Backend\ProductMetaUpdate;
 use App\Http\Requests\Backend\ProductMetaStore;
 
-class ProductMetaController extends PrimaryController
+class ProductMetaController extends Controller
 {
 
     public $productMeta;

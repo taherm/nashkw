@@ -14,18 +14,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-class OrderController extends PrimaryController
+class OrderController extends Controller
 {
-    protected $orderRepository;
-    protected $userRepository;
-
-    public function __construct(OrderRepository $orderRepository, UserRepository $userRepository)
-    {
-        //$this->authorize('module','orders');
-        $this->orderRepository = $orderRepository;
-        $this->userRepository = $userRepository;
-    }
-
     /**
      * Display a listing of the resource.
      *

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AboutUsUpdate;
 use App\Http\Requests\Backend\ContactUpdate;
 use App\Http\Requests\Backend\PrivacyUpdate;
@@ -14,7 +15,7 @@ use App\Src\User\Contactus;
 use Guzzle\Http\Message\Response;
 use Illuminate\Http\Request;
 
-class PageController extends PrimaryController
+class PageController extends Controller
 {
 
     public function getAboutUs(Aboutus $aboutUs)
@@ -195,7 +196,7 @@ class PageController extends PrimaryController
             return redirect()->back()->with('info', 'Sorry Couldnt Send you Mail this time. Please try again later');
         }
 
-        return redirect('home')->with('success', trans('word.mail_sent'));
+        return redirect('frontend.home')->with('success', trans('word.mail_sent'));
     }
 
     public function getFaq()

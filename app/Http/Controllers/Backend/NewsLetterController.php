@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
 use App\Core\Services\Email\PrimaryEmailService;
+use App\Http\Controllers\Controller;
 use App\Mail\sendEmailCampaign;
 use App\Src\Newsletter\Newsletter;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class NewsLetterController extends PrimaryController
+class NewsLetterController extends Controller
 {
 
 //    protected $mailchimp;

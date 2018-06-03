@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
+use App\Http\Controllers\Controller;
 use App\Src\User\UserRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class ProfileController extends PrimaryController
+class ProfileController extends Controller
 {
 
     public $userRepository;

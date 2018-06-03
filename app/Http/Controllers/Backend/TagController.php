@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Core\PrimaryController;
+use App\Http\Controllers\Controller;
 use Conner\Tagging\Model\Tag;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Cache;
 
-class TagController extends PrimaryController
+class TagController extends Controller
 {
     public $tag;
 
