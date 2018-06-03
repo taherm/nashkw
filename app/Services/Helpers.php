@@ -6,6 +6,8 @@
  * Time: 9:02 AM
  */
 
+use App\Models\Setting;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
 
 
@@ -55,12 +57,23 @@ function getCouponValue()
 {
     $coupon = session()->has('coupon') ? session()->get('coupon') : null;
     if (!is_null($coupon)) {
-        return $coupon->is_percentage ? (Cart::subTotal() * ($coupon->value / 100)) : $coupon->value;
+        return $coupon->is_percentage ? (Cart::subtotal() * ($coupon->value / 100)) : $coupon->value;
     }
     return 0;
 }
 
 function getCartNetTotal()
 {
-    return Cart::subTotal() - getCouponValue();
+    return Cart::subtotal() - getCouponValue();
 }
+
+
+function getDeliveryServiceCost() {
+    $settings = Setting::first();
+    $cartValue = Cart::subtotal();
+    if($cartValue >= $settings->delivery_service_minimum_charge) {
+        return 0;
+    }
+    return $settings->delivery_service_cost;
+}
+

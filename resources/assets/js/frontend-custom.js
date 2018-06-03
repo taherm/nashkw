@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    console.log('jquery loaded');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     // Fix Carousal click
     $('.owl-item img').on('click', function() {
         $('.owl-item li').removeClass('active');
@@ -73,13 +79,14 @@ $(document).ready(function() {
         console.log('countryCode', countryCode);
         $('#areas').html('').toggleClass('disabled');
         $('#forward').attr('disabled', 'disabled');
-        $.get('/api/country/' + countryCode, function(data) {
+        return axios.get('/api/country/' + countryCode, function(data) {
             return setTimeout(injectAreas(data), 4000);
         });
     });
     $('#areas').on('change', function() {
         return setTimeout($('#forward').removeAttr('disabled'), 2000);
     })
+
     function injectAreas(data) {
         for (var i in data) {
             data[i].map(function(v, index) {

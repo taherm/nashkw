@@ -94,3 +94,20 @@ img-sm {
     height: 100px;
     width: auto;
 }
+nav > ul > li > a:hover , .mega-menu mega-menu3 > a:hover {
+    color : darkgoldenrod !important;
+}
+.product-img span.sale-text , .cart-item a span.total-cart {
+    background-color: darkgoldenrod !important;
+}
+.price-box {
+    padding: 10px;
+}
+.price-box .new-price {
+    color : darkgoldenrod !important;
+    padding: 10px;
+}
+
+.border-below {
+    border-bottom: 1px solid lightgray;
+}

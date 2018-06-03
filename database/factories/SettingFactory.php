@@ -20,6 +20,8 @@ $factory->define(Setting::class, function (Faker $faker) {
         'twitter' => $faker->name,
         'logo' => $faker->numberBetween(1, 10) . '.jpg',
         'aramex_service' => $faker->boolean(true),
-        'delivery_service' => $faker->boolean(false)
+        'delivery_service' => $faker->boolean(false),
+        'delivery_service_cost' => 5,
+        'delivery_service_minimum_charge' => 10
     ];
 });

@@ -30,6 +30,8 @@ class CreateSettingsTable extends Migration
             $table->string('logo')->nullable();
             $table->boolean('aramex_service')->default(0);
             $table->boolean('delivery_service')->default(0);
+            $table->boolean('delivery_service_cost')->default(0);
+            $table->boolean('delivery_service_minimum_charge')->default(0);
             $table->timestamps();
         });
     }

@@ -245,150 +245,188 @@
                                             <span class="number">3</span>{{ trans('general.shipping_method') }}</a>
                                     </h4>
                                 </div>
-                                <div id="checkut4" class="panel-collapse collapse">
+                                <div id="checkut4" class="panel-collapse collapse in">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 @if(request()->has('country_id') && $settings->aramex_service)
-                                                    <div class="place-headline">
-                                                        <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
-                                                        <p>{{ trans('cart.destination') }}</p></br>
-                                                        <p class="pull-left">
-                                                            {{ trans('general.delivery_within_4_days') }}
-                                                        </p>
-                                                        <p>
-                                                            {{ trans('general.country') }} : {{  $country->name }}
-                                                        </p>
-                                                        </span>
-                                                        <span class="pull-right">
+                                                    <div id="shipping_aramex_cost hidden">{{ $shippingCost }}</div>
+                                                    <div class="place-headline border-below">
+                                                        <h5>{{ trans('cart.estimate_shipping_and_tax') }}</h5>
+                                                    </div>
+                                                <br>
+                                                    <p>{{ trans('cart.destination') }}</p>
+
+                                                    <p class="pull-left">
+                                                        <input type="radio" id="aramex" name="shipping_cost"
+                                                               checked/>
+                                                        {{ trans('general.delivery_within_4_days') }}
+                                                    </p>
+                                                    <p>
+                                                        {{ trans('general.country') }} : {{  $country->name }}
+                                                    </p>
+                                                    <p>
+                                                        {{ trans("general.cost") }}
+                                                        : {{ $shippingCost }} {{ trans('general.kd') }}
+                                                    </p>
+                                                    </span>
+                                                    <span class="pull-left">
                                                             <img src="{{ asset('images/aramex.png') }}" alt=""
                                                                  class="img-responsive" style="max-width: 60px;">
                                                         </span>
+                                                    <label for="shipping_cost">{{ trans('general.aramex') }}</label>
+                                            </div>
+                                            @endif
+                                            @if($settings->delivery_service)
+                                                <div class="col-lg-12">
+                                                    <div class="place-headline border-below">
+                                                        <h5>{{ trans('cart.delivery_charge_cost') }}</h5>
                                                     </div>
-                                                @else
-                                                    {{ trans('message.shipping_method_message_with_no_aramex') }}
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div><!-- End Panel Default -->
-                                    <!-- Panel Default -->
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="check-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
-                                            <span class="number">4</span>Payment Information</a>
-                                    </h4>
-                                </div>
-                                <div id="checkut5" class="panel-collapse collapse in show">
-                                    <div class="panel-body">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="">
-                                                <p><input type="radio" id="knet" name="payment_method" checked/>
-                                                    <img class="img-xs"
-                                                         src="{{asset('img/k-net-icon.png')}}"
-                                                         alt="">
-                                                    <label for="knet">{{ trans('general.knet') }}</label>
-                                                </p>
-                                                <p><input type="radio" id="master" name="payment_method"/>
-                                                    <img class="img-xs-visa"
-                                                         src="{{asset('img/payment.png')}}" alt="payment">
-                                                    <label for="master">{{ trans("general.master_or_visa") }}</label>
-                                                </p>
-                                                @if($country->code === 'KW' && $settings->delivery_service)
-                                                    <p><input type="radio" id="delivery" name="payment_method"/>
-                                                        <img class="img-xs"
-                                                             src="{{asset('img/cash-icon.png')}}"
-                                                             alt="cash">
-                                                        <label
-                                                                for="delivery">{{ trans("general.cash_on_delivery") }}</label>
+                                                    <br>
+                                                    <p class="pull-left">
+                                                        <input type="radio" id="delivery" name="shipping_cost"/>
+                                                        {{ trans('message.shipping_method_message_with_no_aramex') }}
                                                     </p>
-                                                @endif
-                                            </div>
-                                            <div class="button-check">
-                                                <div class="">
-                                                    <span class="left-btn"><a
-                                                                href="{{ route('frontend.cart.index') }}">{{ trans("general.back") }}</a></span>
-                                                    <button type="submit" class="btn right-btn custom-button">
-                                                        Continue
-                                                    </button>
+                                                    <p>
+                                                        {{ trans('general.country') }} : {{  $country->name }}
+                                                    </p>
+                                                    <label for="shipping_cost" class="pull-right">{{ trans('general.delivery_inside_kuwait') }}  : </label>
+                                                    <span class="">{{ getDeliveryServiceCost() }} </span>
                                                 </div>
-                                            </div>
                                         </div>
+
+                                        @endif
                                     </div>
                                 </div>
                             </div><!-- End Panel Default -->
                             <!-- Panel Default -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="check-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#checkut6">
-                                            <span class="number">5</span>Order Review</a>
-                                    </h4>
-                                </div>
-                                <div id="checkut6" class="panel-collapse collapse in show">
-                                    <div class="panel-body">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="tablec">
-                                                    <tr>
-                                                        <td>Product Name</td>
-                                                        <td>Price</td>
-                                                        <td>Qty</td>
-                                                        <td>Subtotal</td>
-                                                    </tr>
-                                                    @foreach($cart as $item)
-                                                        <tr>
-                                                            <td>{{ $item->options->product->name }}</td>
-                                                            <td><p class="tabletextp">{{ $item->price }}</p></td>
-                                                            <td>{{ $item->qty }}</td>
-                                                            <td>
-                                                                <p class="tabletextp">{{ session()->get('currency')->symbol }}  {{ $item->price }}</p>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                    <tr>
-                                                        <td colspan="3">
-                                                            <p class="tabletext">Subtotal</p>
-                                                            <p class="tabletext">Shipping & Handling (Flat Rate
-                                                                -
-                                                                Fixed)</p>
-                                                            <p class="tabletext">Grand Total</p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="tabletextp">&dollar;155.00</p>
-                                                            <p class="tabletextp">&dollar;5.00</p>
-                                                            <p class="tabletextp">&dollar;160.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="4">
-                                                            <div class="button-check">
-                                                                <div class="">
-                                                                    <span class="left-btn"><a href="">Forgot an Item? Edit Your Cart</a></span>
-                                                                    <button type="submit"
-                                                                            class="btn right-btn custom-button">
-                                                                        Continue
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="check-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
+                                    <span class="number">4</span>Payment Information</a>
+                            </h4>
+                        </div>
+                        <div id="checkut5" class="panel-collapse collapse in show">
+                            <div class="panel-body">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="">
+                                        <p><input type="radio" id="knet" name="payment_method" checked/>
+                                            <img class="img-xs"
+                                                 src="{{asset('img/k-net-icon.png')}}"
+                                                 alt="">
+                                            <label for="knet">{{ trans('general.knet') }}</label>
+                                        </p>
+                                        <p><input type="radio" id="master" name="payment_method"/>
+                                            <img class="img-xs-visa"
+                                                 src="{{asset('img/payment.png')}}" alt="payment">
+                                            <label for="master">{{ trans("general.master_or_visa") }}</label>
+                                        </p>
+                                        @if($country->code === 'KW' && $settings->delivery_service)
+                                            <p><input type="radio" id="delivery" name="payment_method"/>
+                                                <img class="img-xs"
+                                                     src="{{asset('img/cash-icon.png')}}"
+                                                     alt="cash">
+                                                <label
+                                                        for="delivery">{{ trans("general.cash_on_delivery") }}</label>
+                                            </p>
+                                        @endif
+                                    </div>
+                                    <div class="button-check">
+                                        <div class="">
+                                                    <span class="left-btn"><a
+                                                                href="{{ route('frontend.cart.index') }}">{{ trans("general.back") }}</a></span>
+                                            <button type="submit" class="btn right-btn custom-button">
+                                                Continue
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Panel Default -->
                         </div>
-                        <!-- End Panel Gropup -->
+                    </div><!-- End Panel Default -->
+                    <!-- Panel Default -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="check-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#checkut6">
+                                    <span class="number">5</span>Order Review</a>
+                            </h4>
+                        </div>
+                        <div id="checkut6" class="panel-collapse collapse in show">
+                            <div class="panel-body">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="table-responsive">
+                                        <table class="tablec">
+                                            <tr>
+                                                <td>{{ trans('general.product_name') }}</td>
+                                                <td>{{ trans('general.price') }}</td>
+                                                <td>{{ trans('general.qty') }}</td>
+                                                <td>{{ trans('general.subtotal') }}</td>
+                                            </tr>
+                                            @foreach($cart as $item)
+                                                <tr>
+                                                    <td>{{ $item->options->product->name }}</td>
+                                                    <td><p class="tabletextp">{{ $item->price }}</p></td>
+                                                    <td>{{ $item->qty }}</td>
+                                                    <td>
+                                                        <p class="tabletextp">{{ session()->get('currency')->symbol }}  {{ $item->price }}</p>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="3">
+                                                    <p class="tabletext">{{ trans('general.subtotal') }}</p>
+                                                    <p class="tabletext">{{ trans('general.shipping_cost') }}</p>
+                                                    <p class="tabletext">{{ trans('general.grand_total') }}</p>
+                                                </td>
+                                                <td>
+                                                    <p class="tabletextp">{{ getCartNetTotal() }} {{ trans('general.kd') }}</p>
+                                                    @if($settings->aramex_service && $shippingCost > 0)
+                                                        <p class="tabletextp">{{ trans("general.aramex_service") }}
+                                                            : <span id="deliveryCost">{{ $shippingCost }}</span>
+                                                        </p>
+                                                    @elseif($settings->delivery_service)
+                                                        <p class="tabletextp"><span
+                                                                    id="deliveryCost">{{ getDeliveryServiceCost() }}</span>
+                                                        </p>
+                                                    @else
+                                                        <p class="tabletextp">
+                                                            <span id="deliveryCost"></span>
+                                                        </p>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <div class="button-check">
+                                                        <div class="">
+                                                                    <span class="left-btn"><a
+                                                                                href="{{ route('frontend.cart.index') }}">{{ trans('general.forget_item_edit_here') }}</a></span>
+                                                            <button type="submit"
+                                                                    class="btn right-btn custom-button">
+                                                                {{ trans('general.continue') }}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- End Panel Default -->
                 </div>
+                <!-- End Panel Gropup -->
             </div>
-            <!-- End Payment Method -->
         </div>
+    </div>
+    <!-- End Payment Method -->
+    </div>
     </div>
     <!-- end discount area -->
 @endsection
