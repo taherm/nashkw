@@ -37,12 +37,12 @@
                                 @endif
                                 <a href="{{ route('frontend.product.show',$product->id) }}">
                                     <img class="primary-img"
-                                         src="{{ asset('storage/uploads/images/thumbnail/'.$product->image) }}"
+                                         src="{{ asset(env('THUMBNAIL').$product->image) }}"
                                          alt="{{ $product->name }}">
 
                                     @if(!$product->gallery->images->isEmpty())
                                     <img class="secondary-img"
-                                         src="{{ asset('storage/uploads/images/thumbnail/'.$product->gallery->images->sortBy('order')->first()->path) }}"
+                                         src="{{ asset(env('THUMBNAIL').$product->gallery->images->sortBy('order')->first()->path) }}"
                                          alt="{{ $product->name }}">
                                     @endif
                                 </a>
@@ -70,7 +70,7 @@
                                                data-saleprice="{{ $product->convertedFinalPrice  }} KD"
                                                data-price="{{ $product->price }} KD"
                                                data-link="{{ route('frontend.product.show',$product->id) }}"
-                                               data-image="{{ asset('storage/uploads/images/medium/'.$product->image) }}"
+                                               data-image="{{ asset(env('MEDIUM').$product->image) }}"
                                                data-description="{{ $product->description }}">
 
                                                 <i class="fa fa-eye"></i>
@@ -108,25 +108,25 @@
                                     <span class="sale-text new-sale">{{ trans('general.new') }}</span>
                                 @endif
                                 <a href="#">
-                                    @if(file_exists(url('storage/uploads/images/medium/'.$product->image)))
+                                    @if(file_exists(env('MEDIUM').$product->image)))
                                         <img class="primary-img"
-                                             src="{{ url('storage/uploads/images/medium/'.$product->image) }} "
+                                             src="{{ asset(env('MEDIUM').$product->image) }} "
                                              alt=""
                                              style="width: 261px;height: 300px;">
                                     @else
                                         <img class="primary-img"
-                                             src="{{ url('storage/uploads/images/medium/'.$product->image) }} "
+                                             src="{{ asset(env('THUMBNAIL').$product->image) }} "
                                              alt="" style="width: 261px;height: 300px;">
                                     @endif
 
                                     @if(isset($product->gallery->images->first()->path))
-                                        @if(file_exists(url('storage/uploads/images/thumbnail/'.$product->gallery->images->first()->path)))
+                                        @if(file_exists(env('THUMBNAIL').$product->gallery->images->first()->path)))
                                             <img class="secondary-img"
-                                                 src="{{ url('storage/uploads/images/medium/'.$product->gallery->images->first()->path) }} "
+                                                 src="{{ asset(env('MEDIUM').$product->gallery->images->first()->path) }} "
                                                  alt="" style="width: 261px;height: 300px;">
                                         @else
                                             <img class="secondary-img"
-                                                 src="{{ url('storage/uploads/images/medium/'.$product->image) }} "
+                                                 src="{{ asset(env("MEDIUM").$product->image) }} "
                                                  alt=""
                                                  style="width: 261px;height: 300px;">
                                         @endif
@@ -156,7 +156,7 @@
                                                data-saleprice="{{ $product->finalPrice  }} KD"
                                                data-price="{{ $product->price }} KD"
                                                data-link="{{ route('frontend.product.show',$product->id) }}"
-                                               data-image="{{ asset('storage/uploads/images/medium/'.$product->image) }}"
+                                               data-image="{{ asset(env('MEDIUM').$product->image) }}"
                                                data-description="{!! $product->description !!}"
                                             >
                                                 <i class="fa fa-eye"></i>
