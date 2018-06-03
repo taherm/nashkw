@@ -29,7 +29,7 @@
                         @endif
                         <a href="{{ route('frontend.product.show',$product->id) }}">
                             <img class="primary-img"
-                                 src="{{ asset('uploads/images/thumbnail/'.$product->image) }} "
+                                 src="{{ asset('storage/uploads/images/thumbnail/'.$product->image) }} "
                                  alt="{{ $product->name }}">
 
                             @if(!$product->gallery->images->isEmpty())
@@ -61,7 +61,7 @@
                                        data-saleprice="{{ $product->convertedFinalPrice  }} KD"
                                        data-price="{{ $product->price }} KD"
                                        data-link="{{ route('frontend.product.show',$product->id) }}"
-                                       data-image="{{ asset('uploads/images/medium/'.$product->image) }}"
+                                       data-image="{{ asset('storage/uploads/images/medium/'.$product->image) }}"
                                        data-description="{{ $product->description }}">
 
                                         <i class="fa fa-eye"></i>
