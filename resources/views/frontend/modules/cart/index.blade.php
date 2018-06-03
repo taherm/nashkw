@@ -50,7 +50,6 @@
                                         </td>
 
                                         <td class="product-thumbnail">
-                                            {{--{{ dd($item->options->colorName) }}--}}
                                             <div class="col-lg-1 col-lg-push-4"
                                                  style="text-align: center; border: 1px solid lightgrey; min-height : 30px; margin: 3px; background-color : {!! $item->options->colorName !!}"></div>
                                         </td>
@@ -64,13 +63,14 @@
                                         </td>
 
                                         <td class="real-product-price">
-                                            <span class="sale_price">{{$item->price}} {{ trans('general.kd') }} </span>
+                                            <span class="price">{{$item->price}} {{ trans('general.kd') }} </span>
                                             {{--<span class="amounte">{{ $item->options->product->sale_price }} KD </span>--}}
                                         </td>
 
                                         <td class="product-quantity">
-                                            <input type="number" name="quantity_{{$item->options->product->id}}"
-                                                   value="{{ $item->qty }}"/>
+                                            {{--<input type="number" name="quantity_{{$item->options->product->id}}" disabled="disabled"--}}
+                                            {{--value="{{ $item->qty }}"/>--}}
+                                            {{ $item->qty }}
                                         </td>
 
                                         <td class="product-subtotal">{{ $item->price * $item->qty }} {{ trans('general.kd') }}</td>
@@ -111,85 +111,102 @@
                         <!-- table end -->
                         <!-- place selection start -->
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="place-section">
-                                    <div class="place-headline">
-                                        <h4>{{ trans('general.coupon') }}</h4>
-                                        <p>{{ trans('message.have_coupon_message') }}</p>
-                                        <form action="{{ route('frontend.cart.coupon') }}" method="post">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-8">
+                                    <div class="place-section">
+                                        <Form action="{{ route('frontend.cart.checkout') }}" method="post">
                                             @csrf
-                                            <div class="code-search">
-                                                <input type="text" name="code" value=""
-                                                       placeholder="{{ trans('general.coupon_code') }}">
-                                                <button type="submit">{{ trans('general.apply_coupon') }}</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
-                                <div class="place-section">
-                                    <Form action="{{ route('frontend.cart.checkout') }}" method="post">
-                                        @csrf
-                                        @if($settings->aramex_service)
-                                            <div class="place-headline">
-                                                <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
-                                                <p>
-                                                    <span>{{ trans('cart.enter_ur_destination') }}</span></br>
-                                                    <span class="pull-left">
-                                                {{ trans('general.delivery_within_4_days') }}</br>
-                                            </span>
-                                                    <span class="pull-right">
-                                            <img src="{{ asset('images/aramex.png') }}" alt=""
-                                                 class="img-responsive" style="max-width: 60px;">
-                                        </span>
-                                                </p>
-                                                </br>
-                                                </br>
-                                            </div>
-                                            <div class="search-categori">
-                                                <h5>{{ trans('general.country') }}</h5>
-                                                <div class="category">
-                                                    <select class="orderby country-dropdown"
-                                                            name="country_id" id="country"
-                                                            placeholder='{{ trans('general.select_country') }}'>
-                                                        <option value="">{{ trans('general.country') }}</option>
-                                                        @foreach($countries as $country)
-                                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="search-categori">
-                                                <h5>{{ trans('general.area') }}</h5>
-                                                <div class="category">
-                                                    <select class="disabled country-dropdown" name="area" id="areas">
-                                                        <option value="">{{ trans('general.area') }}</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        @endif
-                                        <div class="rate-subtotal">
-                                            @if(getCouponValue())
+                                            @if($settings->aramex_service)
                                                 <div class="col-lg-12">
-                                                    <h2>{{ trans('general.discount') }}
-                                                        <span>{{ getCouponValue() }} {{ trans('general.kd') }}</span>
-                                                    </h2>
+                                                    <div class="place-headline">
+                                                        <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
+                                                        <div class="col-lg-12">
+                                                            <p>
+                                                                <span>{{ trans('cart.enter_ur_destination') }}</span>
+                                                            </p>
+                                                            <p class="{{ app()->isLocale('ar') ? 'pull-right' : 'pull-left' }} ">{{ trans('general.delivery_message') }}</p>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <img src="{{ asset('images/aramex.png') }}" alt=""
+                                                                 class="{{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }} img-responsive"
+                                                                 style="width: 60px; padding: 5px;">
+                                                            <img src="{{ asset('img/cash-delivery.png') }}" alt=""
+                                                                 class="{{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }} img-responsive"
+                                                                 style="width: 60px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="search-categori">
+                                                        <h5>{{ trans('general.country') }}</h5>
+                                                        <div class="category">
+                                                            <select class="orderby country-dropdown"
+                                                                    name="country_id" id="country"
+                                                                    placeholder='{{ trans('general.select_country') }}'>
+                                                                <option value="">{{ trans('general.country') }}</option>
+                                                                @foreach($countries as $country)
+                                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="search-categori">
+                                                        <h5>{{ trans('general.area') }}</h5>
+                                                        <div class="category">
+                                                            <select class="disabled country-dropdown" name="area"
+                                                                    id="areas">
+                                                                <option value="">{{ trans('general.area') }}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             @endif
                                             <div class="col-lg-12">
-                                                <h2>{{ trans('general.grand_total') }}
-                                                    <span>{{ getCartNetTotal() }} {{ trans('general.kd') }}</span></h2>
+                                                <div class="rate-subtotal">
+                                                    @if(getCouponValue())
+                                                        <div class="col-lg-12">
+                                                            <h2 class="{{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }}">{{ trans('general.discount') }}
+                                                            </h2>
+                                                            <h2>
+                                                                <span>{{ getCouponValue() }} {{ trans('general.kd') }}</span>
+                                                            </h2>
+                                                        </div>
+                                                    @endif
+                                                    <div class="col-lg-12">
+                                                        <h2 style="text-align: right;">{{ trans('general.grand_total') }}</h2>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <p style="font-size: large">{{ trans('general.sub_total') }}
+                                                            {{ getCartNetTotal() }} {{ trans('general.kd') }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" id="forward"
+                                                        {{ $settings->aramex_service ? 'disabled' : null }}
+                                                        class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
+                                                </button>
                                             </div>
-                                            <button type="submit" id="forward" {{ $settings->aramex_service ? 'disabled' : null }}
-                                                    class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
-                                            </button>
-                                        </div>
-                                    </Form>
-
-
+                                        </Form>
+                                    </div>
                                 </div>
-
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="place-section">
+                                        <div class="place-headline">
+                                            <h4>{{ trans('general.coupon') }}</h4>
+                                            <p>{{ trans('message.have_coupon_message') }}</p>
+                                            <form action="{{ route('frontend.cart.coupon') }}" method="post">
+                                                @csrf
+                                                <div class="code-search">
+                                                    <input type="text" name="code" value=""
+                                                           placeholder="{{ trans('general.coupon_code') }}">
+                                                    <button type="submit">{{ trans('general.apply_coupon') }}</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -202,36 +219,6 @@
 @endsection
 
 
-@section('scripts')
-    @parent
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#areas').html('<option value="">Select Area</option>');
-            $('#country').on('change', function(e) {
-                countryCode = e.target.value;
-                console.log('countryCode', countryCode);
-                $('#areas').html('').toggleClass('disabled');
-                $('#forward').attr('disabled', 'disabled');
-                $.get('/api/country/' + countryCode, function(data) {
-                    console.log('the data', data);
-                    return setTimeout(injectAreas(data), 2000);
-                });
-            });
-            $('#areas').on('change', function() {
-                return setTimeout($('#forward').removeAttr('disabled'), 2000);
-            })
-
-            function injectAreas(data) {
-                for (var i in data) {
-                    data[i].map(function(v, index) {
-                        $('#areas').append(`<option value="${v}">${v}</option>`)
-                    });
-
-                }
-            }
-        });
-    </script>
-@endsection
 
 
 

@@ -22,6 +22,6 @@ $factory->define(Setting::class, function (Faker $faker) {
         'aramex_service' => $faker->boolean(true),
         'delivery_service' => $faker->boolean(false),
         'delivery_service_cost' => 5,
-        'delivery_service_minimum_charge' => 10
+        'delivery_service_minimum_charge' => 100
     ];
 });

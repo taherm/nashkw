@@ -114,9 +114,9 @@
                                 <div class="footer-menu">
                                     <ul>
                                         @foreach($pages as $page)
-                                        <li>
-                                            <a href="{{ $page->url }}">{{ $page->slug }}</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ $page->url }}">{{ $page->slug }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -146,9 +146,9 @@
                                 <div class="footer-menu">
                                     <ul>
                                         @auth
-                                        <li>
-                                            <a href="{{ route('frontend.user.show', auth()->user()->id) }}">{{ trans('general.my_account') }}</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ route('frontend.user.show', auth()->user()->id) }}">{{ trans('general.my_account') }}</a>
+                                            </li>
                                         @endauth
                                         <li>
                                             <a href="{{ route('frontend.order.index') }}">{{ trans('general.order_history') }}</a>
@@ -182,14 +182,14 @@
                             <ul>
                                 @if($currency->symbol === 'KWD')
                                     <li>
-                                        <a href="#"><img class="img-xs"
-                                                         src="{{asset('img/k-net-icon.png')}}"
-                                                         alt="knet"></a>
-                                        <a href="#"><img class="img-xs-visa"
-                                                         src="{{asset('img/payment.png')}}" alt="payment"></a>
-                                        <a href="#"><img class="img-xs"
-                                                         src="{{asset('img/cash-icon.png')}}"
-                                                         alt="cash"></a></li>
+                                        <a href="#">
+                                            <img class="img-xs" src="{{asset('img/k-net-icon.png')}}" alt="knet">
+                                        </a>
+                                        <a href="#"><img class="img-xs-visa" src="{{asset('img/payment.png')}}"
+                                                         alt="payment">
+                                        </a>
+                                        <a href="#"><img class="img-xs" src="{{asset('img/cash-icon.png')}}" alt="cash"></a>
+                                    </li>
                                 @else
                                     <li><a href="#"><img class="img-xs"
                                                          src="{{asset('img/payment.png')}}" alt="payment"></a>

@@ -250,15 +250,16 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 @if(request()->has('country_id') && $settings->aramex_service)
-                                                    <div id="shipping_aramex_cost hidden">{{ $shippingCost }}</div>
+                                                    <div id="shipping_aramex_cost" class="hidden"
+                                                         value="{{ $shippingCost }}">{{ $shippingCost }}</div>
                                                     <div class="place-headline border-below">
                                                         <h5>{{ trans('cart.estimate_shipping_and_tax') }}</h5>
                                                     </div>
-                                                <br>
+                                                    <br>
                                                     <p>{{ trans('cart.destination') }}</p>
 
                                                     <p class="pull-left">
-                                                        <input type="radio" id="aramex" name="shipping_cost"
+                                                        <input type="radio" name="delivery_method" value="aramex"
                                                                checked/>
                                                         {{ trans('general.delivery_within_4_days') }}
                                                     </p>
@@ -277,25 +278,27 @@
                                                     <label for="shipping_cost">{{ trans('general.aramex') }}</label>
                                             </div>
                                             @endif
-                                            @if($settings->delivery_service)
+                                            @if($country->code === 'KW' && $settings->delivery_service)
                                                 <div class="col-lg-12">
                                                     <div class="place-headline border-below">
                                                         <h5>{{ trans('cart.delivery_charge_cost') }}</h5>
                                                     </div>
                                                     <br>
                                                     <p class="pull-left">
-                                                        <input type="radio" id="delivery" name="shipping_cost"/>
+                                                        <input type="radio" name="delivery_method" value="normal"/>
                                                         {{ trans('message.shipping_method_message_with_no_aramex') }}
                                                     </p>
                                                     <p>
                                                         {{ trans('general.country') }} : {{  $country->name }}
                                                     </p>
-                                                    <label for="shipping_cost" class="pull-right">{{ trans('general.delivery_inside_kuwait') }}  : </label>
-                                                    <span class="">{{ getDeliveryServiceCost() }} </span>
+                                                    <label for="shipping_cost"
+                                                           class="pull-right">{{ trans('general.delivery_inside_kuwait') }}
+                                                        : </label>
+                                                    <span id="delivery_cost" class=""
+                                                          value="{{ getDeliveryServiceCost() }}">{{ getDeliveryServiceCost() }}  {{ trans("general.kd") }} </span>
                                                 </div>
+                                            @endif
                                         </div>
-
-                                        @endif
                                     </div>
                                 </div>
                             </div><!-- End Panel Default -->
@@ -384,19 +387,9 @@
                                                 </td>
                                                 <td>
                                                     <p class="tabletextp">{{ getCartNetTotal() }} {{ trans('general.kd') }}</p>
-                                                    @if($settings->aramex_service && $shippingCost > 0)
-                                                        <p class="tabletextp">{{ trans("general.aramex_service") }}
-                                                            : <span id="deliveryCost">{{ $shippingCost }}</span>
-                                                        </p>
-                                                    @elseif($settings->delivery_service)
-                                                        <p class="tabletextp"><span
-                                                                    id="deliveryCost">{{ getDeliveryServiceCost() }}</span>
-                                                        </p>
-                                                    @else
-                                                        <p class="tabletextp">
-                                                            <span id="deliveryCost"></span>
-                                                        </p>
-                                                    @endif
+                                                    <p class="tabletextp">
+                                                        <span id="finalDeliveryCost"></span> {{ trans('general.kd') }}
+                                                    </p>
                                                 </td>
                                             </tr>
                                             <tr>

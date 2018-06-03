@@ -96,4 +96,48 @@ $(document).ready(function() {
         }
     }
 
+    //checkout.index
+    // shipping cost or delievery cost
+    let shippingCost = $('#shipping_aramex_cost').attr('value');
+    let deliveryCost = $('#delivery_cost').attr('value');
+    if (shippingCost > 0) {
+        $('#finalDeliveryCost').html(shippingCost);
+    } else {
+        $('#finalDeliveryCost').html(deliveryCost);
+    }
+
+    $("input[name='delivery_method']").on('click', function() {
+        let deliveryMethod = $("input[name='delivery_method']:checked").val();
+        if (deliveryMethod === 'aramex') {
+            $('#finalDeliveryCost').html(shippingCost);
+        } else {
+            $('#finalDeliveryCost').html(deliveryCost);
+        }
+    });
+
+
+    // for aramex dropdown menu
+    $('#areas').html('<option value="">Select Area</option>');
+    $('#country').on('change', function(e) {
+        countryCode = e.target.value;
+        console.log('countryCode', countryCode);
+        $('#areas').html('').toggleClass('disabled');
+        $('#forward').attr('disabled', 'disabled');
+        $.get('/api/country/' + countryCode, function(data) {
+            console.log('the data', data);
+            return setTimeout(injectAreas(data), 2000);
+        });
+    });
+    $('#areas').on('change', function() {
+        return setTimeout($('#forward').removeAttr('disabled'), 2000);
+    })
+
+    function injectAreas(data) {
+        for (var i in data) {
+            data[i].map(function(v, index) {
+                $('#areas').append(`<option value="${v}">${v}</option>`)
+            });
+
+        }
+    }
 })
