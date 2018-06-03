@@ -102,16 +102,21 @@
         </div>
         <hr>
 
-        <a href="https://www.instagram.com/harayer7/" class="social" style="color: #e4405f" target="_blank"><i
-                    class="fa fa-fw fa-instagram"></i></a>
-        <a href="https://www.snapchat.com/add/harayer7" class="social" style="color: #FFFC00" target="_blank"><i
-                    class="fa fa-fw fa-snapchat"></i></a>
-        <a href="https://www.twitter.com/harayer7/" class="social" style="color: #55acee" target="_blank"><i
-                    class="fa fa-fw fa-twitter"></i></a>
-        <a href="https://api.whatsapp.com/send?phone=96596967707" class="social" style="color: #25D366" target="_blank"><i
-                    class="fa fa-fw fa-whatsapp"></i></a>
-        <a href="https://www.youtube.com/watch?v=Rn1i3vRhU7s" class="social" style="color: #cd201f" target="_blank"><i
-                    class="fa fa-fw fa-youtube"></i></a>
+        <a href="https://www.instagram.com/harayer7/" class="social" style="color: #e4405f" target="_blank">
+            <img src="{{ asset('images/instagram.png') }}" alt="" class="img-xs">
+        </a>
+        <a href="https://www.snapchat.com/add/harayer7" class="social" style="color: #FFFC00" target="_blank">
+            <img src="{{ asset('images/snap.png') }}" alt="" class="img-xs">
+        </a>
+        <a href="https://www.twitter.com/harayer7/" class="social" style="color: #55acee" target="_blank">
+            <img src="{{ asset('images/twitter.png') }}" alt="" class="img-xs">
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=96596967707" class="social" style="color: #25D366" target="_blank">
+            <img src="{{ asset('images/whatsapp.png') }}" alt="" class="img-xs">
+            </a>
+        <a href="https://www.youtube.com/watch?v=Rn1i3vRhU7s" class="social" style="color: #cd201f" target="_blank">
+            <img src="{{ asset('images/youtube.png') }}" alt="" class="img-xs">
+        </a>
         </div>
     </footer>
 @stop
