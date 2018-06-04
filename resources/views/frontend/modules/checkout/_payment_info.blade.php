@@ -1,39 +1,35 @@
-<!-- Panel Default -->
-<!-- Panel Default -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="check-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
-                <span class="number">{{ $order }}</span>{{ trans('general.payment_information') }}</a>
-        </h4>
-    </div>
-    <div id="checkut5" class="panel-collapse collapse in ">
-        <div class="panel-body">
-            <div class="col-xs-5">
-                <div class="form-group">
-                    <input type="radio" name="payment" checked="checked" value="my_fatoorah" style="width: 15%;float: left;"/>
-                    <label for="payment"><img class="img-responsive" src="{{asset('img/payment.png')}}" alt=""></label>
-                    <div>Processed by My Fatorrah</div>
-
-                </div>
-            </div>
-            {{--<div class="col-xs-5">--}}
-                {{--<div class="form-group">--}}
-                    {{--@if($shippingCountry->id == '414')--}}
-                        {{--<input type="radio" name="payment" value="cash" style="width: 15%;"/>--}}
-                    {{--@else--}}
-                        {{--<input type="radio" name="payment" value="no" style="width: 15%;" disabled="disabled"/>--}}
-                    {{--@endif--}}
-                        {{--<label for="payment">{{ trans('general.cash_on_delivery') }}</label>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            <p>
-            {{--<ol style="direction: ltr;">--}}
-                {{--<li>K-net,Visa,master card (processed by MyFatoorah)</li>--}}
-                {{--<li>Cash on delivery. Other than Kuwait: Visa,master card (Processed by MyFatoorah).</li>--}}
-            {{--</ol>--}}
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="">
+            <p><input type="radio" id="knet" name="payment_method" checked/>
+                <img class="img-xs"
+                     src="{{asset('img/k-net-icon.png')}}"
+                     alt="">
+                <label for="knet">{{ trans('general.knet') }}</label>
             </p>
+            <p><input type="radio" id="master" name="payment_method"/>
+                <img class="img-xs-visa"
+                     src="{{asset('img/payment.png')}}" alt="payment">
+                <label for="master">{{ trans("general.master_or_visa") }}</label>
+            </p>
+            @if($country->code === 'KW' && $settings->delivery_service)
+                <p><input type="radio" id="delivery" name="payment_method"/>
+                    <img class="img-xs"
+                         src="{{asset('img/cash-icon.png')}}"
+                         alt="cash">
+                    <label
+                            for="delivery">{{ trans("general.cash_on_delivery") }}</label>
+                </p>
+            @endif
+        </div>
+        <div class="button-check">
+            <div class="">
+                                                    <span class="left-btn"><a
+                                                                href="{{ route('frontend.cart.index') }}">{{ trans("general.back") }}</a></span>
+                <button type="submit" class="btn right-btn custom-button">
+                    {{ trans('general.continue') }}
+                </button>
+            </div>
         </div>
     </div>
 </div>
-</div><!-- End Panel Default -->

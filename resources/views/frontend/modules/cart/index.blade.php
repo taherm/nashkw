@@ -82,7 +82,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
                                         <div class="buttons-cart">
-                                            <a href="{{ route('home') }}">{{ trans('cart.continue_shopping') }}</a>
+                                            <a href="{{ route('frontend.home') }}">{{ trans('cart.continue_shopping') }}</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12 col-md-push-2">
