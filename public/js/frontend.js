@@ -687,11 +687,11 @@ $(document).ready(function() {
     let deliveryCost = $('#delivery_cost').attr('value');
     if (shippingCost > 0) {
         $('#finalDeliveryCost').html(shippingCost);
-        $('#finalDeliveryCost').attr('value', shippingCost);
+        $('.shipping_cost').attr('value', shippingCost);
         var finalDeliveryCost = shippingCost;
     } else {
         $('#finalDeliveryCost').html(deliveryCost);
-        $('#finalDeliveryCost').attr('value', deliveryCost);
+        $('.shipping_cost').attr('value', deliveryCost);
         var finalDeliveryCost = deliveryCost;
     }
 
@@ -699,22 +699,22 @@ $(document).ready(function() {
         let deliveryMethod = $("input[name='delivery_method']:checked").val();
         if (deliveryMethod === 'aramex') {
             $('#finalDeliveryCost').html(shippingCost);
-            $('#finalDeliveryCost').attr('value', shippingCost);
+            $('.shipping_cost').attr('value', shippingCost);
             var finalDeliveryCost = shippingCost;
         } else {
             $('#finalDeliveryCost').html(deliveryCost);
-            $('#finalDeliveryCost').attr('value', deliveryCost);
+            $('.shipping_cost').attr('value', deliveryCost);
             var finalDeliveryCost = deliveryCost;
         }
         let grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
-        $('#grandtotal').attr('value', grandtotal);
+        $('.grandtotal').attr('value', grandtotal);
         $('#grandtotal').html(grandtotal);
     });
 
     let subtotal = $('#subtotal').attr('value');
     let grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
     console.log('the val of final', finalDeliveryCost);
-    $('#grandtotal').attr('value', grandtotal);
+    $('.grandtotal').attr('value', grandtotal);
     $('#grandtotal').html(grandtotal);
 
 

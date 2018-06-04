@@ -31,12 +31,6 @@ class CartController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
-        dd($request->all());
-    }
-
-
     public function addItem(Request $request)
     {
         $validator = validator($request->all(),
@@ -99,9 +93,10 @@ class CartController extends Controller
             $country = Country::whereId(request()->country_id)->first();
             $cartWeight = $this->cart->content()->pluck('options.product')->sum('weight');
             $shippingCost = $this->calculateCost($cartWeight, $request->country_id, $request->area);
+            $area = request()->area;
         }
         $cart = $this->cart->content();
-        return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart', 'country'));
+        return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart', 'country','area'));
     }
 
     public function applyCoupon(Request $request)

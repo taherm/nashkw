@@ -26,19 +26,15 @@
                         <p class="tabletext">{{ trans('general.grand_total') }}</p>
                     </td>
                     <td>
-                        <p class="tabletextp">
-                                                        <span id="subtotal" value="{{ getCartNetTotal() }}">{{ getCartNetTotal() }}
-                                                        </span>{{ trans('general.kd') }}
-                            <input type="hidden" name="subtotal" value="">
+                        <p class="tabletextp"><span id="subtotal" value="{{ getCartNetTotal() }}">{{ getCartNetTotal() }}</span>{{ trans('general.kd') }}
+                            <input type="hidden" name="subtotal" value="{{ getCartNetTotal() }}">
                         </p>
-                        <p class="tabletextp">
-                                                        <span id="finalDeliveryCost"
-                                                              value=""></span> {{ trans('general.kd') }}
-                            <input type="hidden" name="shipping_cost" value="">
+                        <p class="tabletextp"><span id="finalDeliveryCost" class="shipping_cost" value=""></span> {{ trans('general.kd') }}
+                            <input type="hidden" name="shipping_cost" value="" class="shipping_cost">
                         </p>
                         <p class="tabletextp">
                             <span id="grandtotal" value=""></span> {{ trans('general.kd') }}
-                            <input type="hidden" name="grandtotall" value="">
+                            <input type="hidden" name="grandtotal" class="grandtotal" value="">
                         </p>
                     </td>
                 </tr>

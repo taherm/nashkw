@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
-        @if(request()->has('country_id') && $settings->aramex_service)
+        @if(request()->has('country_id') && $settings->aramex_service && $shippingCost > 0)
             <div class="col-lg-12">
-                <div id="shipping_aramex_cost" class="hidden"
-                     value="{{ $shippingCost }}">{{ $shippingCost }}</div>
+                <input type="hidden" id="shipping_aramex_cost" class="hidden"
+                     value="{{ $shippingCost }}"/>
                 <div class="place-headline border-below">
                     <h5>{{ trans('cart.estimate_shipping_and_tax') }}</h5>
                 </div>
@@ -12,8 +12,7 @@
             </div>
             <div class="col-lg-6">
                 <p>
-                    <input type="radio" name="delivery_method" value="aramex"
-                           checked/>
+                    <input type="radio" name="delivery_method" value="aramex" {{ $shippingCost > 0 ? 'checked' : null }}/>
                     {{ trans('general.delivery_within_4_days') }}
 
                 </p>
@@ -39,7 +38,7 @@
             </div>
             <div class="col-lg-12">
                 <p>
-                    <input type="radio" name="delivery_method" value="normal"/>
+                    <input type="radio" name="delivery_method" value="delivery" {{ !$shippingCost > 0  ? 'checked' : null }}/>
                     {{ trans('message.shipping_method_message_with_no_aramex') }}
                 </p>
             </div>

@@ -40,32 +40,28 @@
             </form>
         </div>
         <div class="col-lg-6 col-sm-6">
-            <form method="POST" action="{{ route('login') }}"
-                  class="checkout-form product-form">
-                @csrf
                 <h2>Login</h2>
                 <div class="submit-review">
-                    <p class="title"><b>Already registered?</b></p>
-                    <p>Please log in below</p>
+                    <p class="title"><b>{{ trans('general.already_registered') }}</b></p>
+                    <p>{{ trans('general.plz_login_below') }}</p>
                     <div class="account-form">
                         <div class="form-goroup">
-                            <label>Email Address <sup>*</sup></label>
-                            <input type="text" required="required"
+                            <label>{{ trans('email') }}<sup>*</sup></label>
+                            <input type="text"
                                    class="form-control">
                         </div>
                         <div class="form-goroup">
-                            <label>Password <sup>*</sup></label>
-                            <input type="password" required="required"
+                            <label>{{ trans('general.password') }} <sup>*</sup></label>
+                            <input type="password"
                                    class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="user-bottom fix">
-                    <a href="#">Forgot Your Password?</a>
-                    <button class="btn custom-button" type="button">login
-                    </button>
+                    <a href="#">{{ trans('general.forget_password') }}</a>
+                    <a  href="{{ route('login') }}" class="btn custom-button" type="button">{{ trans('general.login') }}
+                    </a>
                 </div>
-            </form>
         </div>
     @endguest
 </div>
