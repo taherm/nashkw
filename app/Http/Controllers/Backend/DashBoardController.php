@@ -13,7 +13,7 @@ class DashBoardController extends Controller
 {
     public function index()
     {
-        return view('backend.modules.home.main');
+        return view('backend.home');
     }
 
     public function toggleActivate(Request $request)

@@ -19,7 +19,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'sale_price' => function ($array) {
             return $array['price'] - rand(1, 5);
         },
-        'home_delivery_fees' => $faker->boolean,
+//        'home_delivery_fees' => $faker->boolean,
         'size_chart_image' => $faker->numberBetween(1, 10) . '.jpg',
         'description_en' => $faker->paragraph,
         'description_ar' => $faker->paragraph,

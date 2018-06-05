@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Services\Search\QueryFilters;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends PrimaryModel
 {
-    use ProductHelpers;
+    use ProductHelpers, SoftDeletes;
     protected $localeStrings = ['name', 'description', 'notes'];
     protected $guarded = [''];
+    protected $appends = ['isOnSale'];
     protected $casts = [
         'on_sale' => 'boolean',
         'on_sale_on_homepage' => 'boolean',

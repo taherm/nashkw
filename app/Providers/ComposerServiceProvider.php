@@ -25,7 +25,8 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.partials._nav_right'
         ],'App\Services\ViewComposers@getCartCount');
         view()->composer([
-            'frontend.modules.cart.index'
+            'frontend.modules.cart.index',
+            'backend.partials.sidebar'
         ],'App\Services\ViewComposers@getCountries');
         view()->composer([
             'frontend.home',
@@ -44,7 +45,9 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.partials.footer',
             'frontend.partials.header',
             'frontend.modules.cart.index',
-            'frontend.modules.checkout.index'
+            'frontend.modules.checkout.index',
+            'backend.home',
+            'backend.partials.nav'
         ], 'App\Services\ViewComposers@getSettings');
         view()->composer([
             'frontend.partials.footer',

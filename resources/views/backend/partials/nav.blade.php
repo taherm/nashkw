@@ -5,7 +5,7 @@
         <div class="page-logo">
             <a href="{{ route('backend.index') }}">
                 <img src="{{ asset('storage/uploads/images/medium/'.$settings->logo) }}" alt="logo"
-                     class="img-xs logo-default"/> </a>
+                     class="img-sm logo-default"/> </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
@@ -27,28 +27,10 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="{{ route('backend.country.create') }}">
-                            <i class="icon-docs"></i> New Country </a>
+                        <a href="{{ route('backend.product.create') }}">
+                            <i class="icon-docs"></i> New Product</a>
                     </li>
                     <li class="divider"></li>
-                    <li>
-                        <a href="{{ route('backend.user.create',['role' => 'company']) }}">
-                            <i class="icon-docs"></i> New Company</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('backend.user.create',['role' => 'individual']) }}">
-                            <i class="icon-docs"></i> New Individual</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('backend.plan.create') }}">
-                            <i class="icon-flag"></i> New Plan
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('backend.category.create') }}">
-                            <i class="icon-flag"></i> New Category
-                        </a>
-                    </li>
                     <li>
                         <a href="{{ route('backend.setting.index') }}">
                             <i class="icon-users"></i> Settings
@@ -398,18 +380,16 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
+                                <a href="{{ route('frontend.home') }}">
+                                    <i class="icon-home"></i>Home</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('backend.index') }}">
                                     <i class="icon-home"></i>Dashboard</a>
                             </li>
                             <li>
                                 <a href="{{ route('backend.setting.index') }}">
                                     <i class="icon-settings"></i> App Settings </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('backend.deal.index',['status' => 'success']) }}">
-                                    <i class="icon-diamond"></i> Valid Deals
-                                    {{--<span class="badge badge-success"> {{  }} </span>--}}
-                                </a>
                             </li>
                             <li class="divider"></li>
                             <li>

@@ -8,6 +8,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 trait ProductHelpers
@@ -15,6 +16,10 @@ trait ProductHelpers
     public function scopeOnSale($q)
     {
         return $q->where('on_sale', true);
+    }
+
+    public function getIsOnSaleAttribute() {
+        return $this->on_sale && $this->end_sale > Carbon::now() ? true : false;
     }
 
     public function scopeOnHomePage($q)

@@ -24,6 +24,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::resource('user', 'UserController');
     Route::resource('order', 'OrderController');
     Route::resource('currency', 'CurrencyController');
+    Route::resource('setting', 'SettingController');
+    Route::resource('country', 'CountryController');
 });
 
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []], function () {

@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix').mix;
 
 /*
  |--------------------------------------------------------------------------
@@ -14,6 +14,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css');
 // backend
 mix.styles([
+    './node_modules/font-awesome/css/font-awesome.min.css',
     '../Documents/home/metronic_v4.5.6/theme/assets/global/plugins/simple-line-icons/simple-line-icons.min.css',
     '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap/css/bootstrap.min.css',
     '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
@@ -45,79 +46,34 @@ mix.styles([
     '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/layout2/css/themes/grey.min.css',
     '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/layout2/css/custom.min.css',
     './node_modules/jquery.minicolors/jquery.minicolors.css',
-    './node_modules/font-awesome/css/font-awesome.min.css',
     './resources/assets/css/backend-custom.css',
 
 ], 'public/css/backend.css').version();
 mix.scripts([
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/respond.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/excanvas.min.js',
-
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/jquery.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap/js/bootstrap.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/select2/js/select2.full.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/pages/scripts/components-multi-select.min.js',
 
-
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/scripts/datatable.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/datatables/datatables.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/pages/scripts/table-datatables-managed.min.js',
 
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/js.cookie.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/jquery.blockui.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
-
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/moment.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/morris/morris.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/morris/raphael-min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/counterup/jquery.waypoints.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/counterup/jquery.counterup.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amcharts/amcharts.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amcharts/serial.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amcharts/pie.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amcharts/radar.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amcharts/themes/light.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amcharts/themes/patterns.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amcharts/themes/chalk.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/ammap/ammap.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/ammap/maps/js/worldLow.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/amcharts/amstockcharts/amstock.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/fullcalendar/fullcalendar.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/horizontal-timeline/horozontal-timeline.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/flot/jquery.flot.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/flot/jquery.flot.resize.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/flot/jquery.flot.categories.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/jquery.sparkline.min.js',
-
-
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/ckeditor/ckeditor.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/autosize/autosize.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/pages/scripts/components-color-pickers.min.js',
-
         '../../Documents/Home/metronic_v4.5.6/theme/assets/global/scripts/app.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/pages/scripts/dashboard.min.js',
-        '../../Documents/Home/metronic_v4.5.6/theme/assets/pages/scripts/components-form-tools.min.js',
-
+        '../../Documents/Home/metronic_v4.5.6/theme/assets/pages/scripts/components-color-pickers.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/layout2/scripts/layout.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/layout2/scripts/demo.min.js',
         '../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/global/scripts/quick-sidebar.min.js',
-        './node_modules/tinymce/tinymce.min.js',
-        './node_modules/jquery-minicolors/jquery.minicolors.min.js',
-        './resources/assets/js/backend-custom.js',
     ],
     'public/js/backend.js').version();
+mix.scripts('./node_modules/tinymce/tinymce.min.js', 'public/js/tinymce.min.js').version();
+mix.scripts('resources/assets/js/backend-custom.js', 'public/js/backend-custom.js').version();
 mix.styles([
         '../../Documents/Home/expert-theme/expert/css/bootstrap.min.css',
         '../../Documents/Home/expert-theme/expert/css/nivo-slider.css',
@@ -155,12 +111,12 @@ mix.scripts([
     ]
     , 'public/js/frontend.js').version();
 
-mix.babel('resource/js/frontend-custom-ar', 'public/js/frontend-custom-ar.js').version();
+mix.scripts('resource/js/frontend-custom-ar.js', 'public/js/frontend-custom-ar.js').version();
 
-mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/simple-line-icons/fonts', 'public/css/fonts');
-mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/global/plugins/datatables/images', 'public/plugins/datatables/images');
-mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/global/img', 'public/img');
-mix.copyDirectory('../../Documents/Home/metronic_v4.5.6/theme/assets/layouts/layout/img', 'public/img');
+mix.copyDirectory('../metronic_v4.5.6/theme/assets/global/plugins/simple-line-icons/fonts', 'public/css/fonts');
+mix.copyDirectory('..//metronic_v4.5.6/theme/assets/global/plugins/datatables/images', 'public/plugins/datatables/images');
+mix.copyDirectory('../metronic_v4.5.6/theme/assets/global/img', 'public/img');
+mix.copyDirectory('../metronic_v4.5.6/theme/assets/layouts/layout/img', 'public/img');
 mix.copyDirectory('./node_modules/font-awesome/fonts', 'public/fonts');
 mix.copyDirectory('./node_modules/tinymce/plugins', 'public/js/plugins');
 mix.copyDirectory('./node_modules/tinymce/skins', 'public/js/skins');

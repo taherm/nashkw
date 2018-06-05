@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price',6,2)->unsigned();
             $table->float('weight',3,2)->unsigned();
             $table->decimal('sale_price',6,2)->unsigned()->nullable();
-            $table->decimal('home_delivery_fees',3,2)->unsigned()->nullable(0);
+//            $table->decimal('home_delivery_fees',3,2)->unsigned()->nullable(0);
             $table->string('size_chart_image')->nullable();
             $table->text('description_en')->nullable();
             $table->text('description_ar')->nullable();

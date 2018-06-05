@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -20,7 +21,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        $elements = Product::all();
+        return view('backend.modules.product.index', compact('elements'));
     }
 
     /**
@@ -30,9 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categoriesList = [];
-        $productTagsNameList = [];
-        return view('backend.modules.product.create', compact('categoriesList', 'productTagsNameList'));
+        return view('backend.modules.product.create');
     }
 
 

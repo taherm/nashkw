@@ -11,6 +11,9 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
     @section('styles')
         @include('backend.partials.styles')
     @show
@@ -19,8 +22,8 @@
 </head>
 
 {{--<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">--}}
-{{--<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">--}}
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">
+{{--<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">--}}
 @include('backend.partials.nav')
 <div class="clearfix"></div>
 <div class="page-container">

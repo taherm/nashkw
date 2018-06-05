@@ -9,7 +9,7 @@
                     </div>
                     <div class="details">
                         <div class="number">
-                            <span data-counter="counterup" data-value="{{ $companies }}">1</span>
+                            <span data-counter="counterup" data-value="100">users</span>
                         </div>
                         <div class="desc ">Total Companies With Valid Deal</div>
                     </div>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="details">
                         <div class="number">
-                            <span data-counter="counterup" data-value="{{ $individuals }}">{{ $individuals }}</span>
+                            <span data-counter="counterup" data-value="100">products</span>
                         </div>
                         <div class="desc"> Total Individuals with Valid Deal</div>
                     </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="details">
                         <div class="number">
-                            <span data-counter="counterup" data-value="{{ $deals }}">{{ $deals }}</span></div>
+                            <span data-counter="counterup" data-value="1000">orders</span></div>
                         <div class="desc"> Total Active Valid Deals paid by Tap Service</div>
                     </div>
                 </a>
@@ -48,7 +48,7 @@
                     <div class="details">
                         <div class="number">
                             <span data-counter="counterup"
-                                  data-value="{{ $totalProfileViews }}">{{ $totalProfileViews }}</span>
+                                  data-value="100">products</span>
                         </div>
                         <div class="desc">Views Counter</div>
                     </div>

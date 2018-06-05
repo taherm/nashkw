@@ -13,96 +13,18 @@
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu page-sidebar-menu-closed"
             data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-            <li class="nav-item {{ activeItem('user') }}">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-user-circle"></i>
-                    <span class="title">Users</span>
+            <li class="nav-item {{ activeItem('product') }}">
+                <a href="{{ route('backend.product.index')}}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-product-hunt"></i>
+                    <span class="title">Products</span>
                     <span class="selected"></span>
                     <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
-                    @foreach($roles as $r)
-                        <li class="nav-item start ">
-                            <a href="{{ route('backend.user.index', ['role' => $r->id]) }}" class="nav-link ">
-                                <i class="fa fa-fw fa-arrow-circle-o-right"></i>
-                                <span class="title">{{ $r->name }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </li>
-            <li class="nav-item {{ activeItem('plan') }}">
-                <a href="{{ route('backend.plan.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-newspaper-o"></i>
-                    <span class="title">Plans</span>
-                    <span class="selected"></span>
-                    <span class="arrow open"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item start ">
-                        <a href="{{ route('backend.plan.index') }}" class="nav-link ">
-                            <i class="icon-lock-open"></i>
-                            <span class="title">Plans</span>
-                        </a>
-                    </li>
-                    <li class="nav-item start ">
-                        <a href="{{ route('backend.plan.create') }}" class="nav-link ">
-                            <i class="icon-plus"></i>
-                            <span class="title">Create Plans</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item {{ activeItem('role') }}">
-                <a href="{{ route('backend.role.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-user-plus"></i>
-                    <span class="title">Roles</span>
-                    <span class="selected"></span>
-                    <span class="arrow open"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item start ">
-                        <a href="{{ route('backend.role.index') }}" class="nav-link ">
-                            <i class="icon-pencil"></i>
-                            <span class="title">Roles Settings</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item {{ activeItem('deal') }}">
-                <a href="{{ route('backend.deal.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-money"></i>
-                    <span class="title">Deals</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
                     <li class="nav-item ">
-                        <a href="{{ route('backend.deal.index',['status' => 'success']) }}" class="nav-link ">
-                            Successful Deal</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item {{ activeItem('commercial') }}">
-                <a href="{{ route('backend.commercial.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-eye-slash"></i>
-                    <span class="title">Commercials</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.commercial.index') }}" class="nav-link ">
-                            <i class="fa fa-fw fa-eye-slash"></i>
-                            <span class="title">Commercials</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.commercial.create') }}" class="nav-link ">
-                            <i class="fa fa-fw fa-plus-circle"></i>
-                            <span class="title">Create Commercial</span>
+                        <a href="{{ route('backend.product.create') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-plus-square"></i>
+                            <span class="title">Create New Product</span>
                             <span class="arrow"></span>
                         </a>
                     </li>
