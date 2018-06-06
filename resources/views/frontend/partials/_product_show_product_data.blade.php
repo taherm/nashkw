@@ -10,19 +10,31 @@
                 <div class="sin-product-icons fix">
                     <div class="add-action">
                         <ul>
+
                             <li>
-                                @if($product->favorited)
-                                    <a href="{{ route('frontend.favorite.remove',$product->id) }}"
-                                       data-toggle="tooltip" title="Remove from Wishlist">
-                                        <i class="fa fa-heart" style="color: red"></i>
-                                    </a>
+                                @auth
+                                    @if($product->isFavorited)
+                                        <a href="{{ route('frontend.favorite.remove',$product->id) }}"
+                                           data-toggle="tooltip"
+                                           title="{{ trans('general.remove_from_favorite') }}">
+                                            <i class="fa fa-heart" style="color: red"></i>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('frontend.favorite.add',$product->id) }}"
+                                           data-toggle="tooltip"
+                                           title="{{ trans('general.add_to_favorite') }}">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    @endif
                                 @else
-                                    <a href="{{ route('frontend.favorite.store',$product->id) }}"
-                                       data-toggle="tooltip" title="Add to Wishlist">
+                                    <a href="{{ route('login') }}"
+                                       data-toggle="tooltip"
+                                       title="{{ trans('general.add_to_favorite') }}">
                                         <i class="fa fa-heart-o"></i>
                                     </a>
-                                @endif
+                                @endauth
                             </li>
+
                         </ul>
                     </div>
                 </div>
