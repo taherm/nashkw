@@ -3,7 +3,7 @@
 
     <div class="header-right-link">
 
-        @if(Auth::check())
+        @auth
             <div class="top-menu wishlist">
                 <nav>
                     <ul>
@@ -25,7 +25,6 @@
                                 <li>
                                     <a href="{{ route('frontend.cart.index') }}">{{ trans('general.shopping_cart') }}</a>
                                 </li>
-                                <li><a href="/checkout">{{ trans('general.checkout') }}</a></li>
                                 <li style="display: block;">
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
@@ -34,7 +33,7 @@
                                     </a>
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                                           style="display: none;">
-                                        {{ csrf_field() }}
+                                        @csrf
                                     </form>
                                 </li>
                             </ul>

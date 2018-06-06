@@ -15,7 +15,7 @@
                     @if($cart->isEmpty())
                         <div class="text-center">
                             <h1>{{ trans('cart.empty') }}</h1>
-                            <p><a href={{route('home')}}> {{trans('cart.browse')}} </a></p>
+                            <p><a href={{route('frontend.home')}}> {{trans('cart.browse')}} </a></p>
                         </div>
                     @else
                         <div class="table-content table-responsive">

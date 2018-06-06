@@ -1,7 +1,7 @@
 <div class="row">
     <div class="feature-product-4 {{ isset($carousel) && $carousel ? 'product-carousel' : null }} derection-key">
-        {{--<div class="bestseller-product product-carousel derection-key">--}}
-        <!-- single-product start -->
+    {{--<div class="bestseller-product product-carousel derection-key">--}}
+    <!-- single-product start -->
         @foreach($products as $product)
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                 <!-- single-product end -->
@@ -41,17 +41,27 @@
                         <div class="add-action">
                             <ul>
                                 <li>
-                                    {{--@if($product->liked())--}}
-                                    {{--<a href="{{ route('wishlist.remove',$product->id) }}" data-toggle="tooltip"--}}
-                                    {{--title="Remove from Wishlist">--}}
-                                    {{--<i class="fa fa-heart" style="color: red"></i>--}}
-                                    {{--</a>--}}
-                                    {{--@else--}}
-                                    {{--<a href="{{ route('wishlist.add',$product->id) }}" data-toggle="tooltip"--}}
-                                    {{--title="Add to Wishlist">--}}
-                                    {{--<i class="fa fa-heart-o"></i>--}}
-                                    {{--</a>--}}
-                                    {{--@endif--}}
+                                    @auth
+                                        @if($product->isFavorited)
+                                            <a href="{{ route('frontend.favorite.remove',$product->id) }}"
+                                               data-toggle="tooltip"
+                                               title="{{ trans('general.remove_from_favorite') }}">
+                                                <i class="fa fa-heart" style="color: red"></i>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('frontend.favorite.add',$product->id) }}"
+                                               data-toggle="tooltip"
+                                               title="{{ trans('general.add_to_favorite') }}">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                        @endif
+                                    @else
+                                        <a href="{{ route('login') }}"
+                                           data-toggle="tooltip"
+                                           title="{{ trans('general.add_to_favorite') }}">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    @endauth
                                 </li>
                                 <li class="quickview" data-toggle="tooltip" title="Quick view">
                                     <a href="#" title="Quick view"

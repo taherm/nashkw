@@ -29,9 +29,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <!-- main-menu start -->
                         <div class="main-menu">
-                            <nav
-                                    dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr'}}"
-                            >
+                            <nav>
                                 <ul>
                                     <li><a class="no-child" href="{{URL('/')}}">{{ trans('general.home') }}</a></li>
                                     @foreach($categories->sortBy('order') as $category)

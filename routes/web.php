@@ -44,7 +44,9 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::resource('page', 'PageController');
     Route::resource('user', 'UserController');
     Route::resource('order', 'OrderController');
-    Route::resource('favorite', 'FavoriteController');
+    Route::get('favorite', 'FavoriteController@add')->name('favorite.index');
+    Route::get('favorite/add/{id}', 'FavoriteController@add')->name('favorite.add');
+    Route::get('favorite/remove/{id}', 'FavoriteController@remove')->name('favorite.remove');
     Route::resource('newsletter', 'NewsletterController');
     Route::get('search', 'ProductController@search')->name('product.search');
     Route::get('currency/{currency}', 'HomeController@changeCurrency')->name('currency.change');

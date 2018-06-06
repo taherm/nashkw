@@ -11,13 +11,13 @@ return array(
     |
     */
     'route' => [
-        'prefix' => 'translations',
-        'middleware' => 'auth',
+        'prefix' => 'backend/translations',
+        'middleware' => ['web','adminAccessOnly','auth'],
     ],
 
 	/**
 	 * Enable deletion of translations
-	 *
+	 *co
 	 * @type boolean
 	 */
 	'delete_enabled' => true,
@@ -35,18 +35,6 @@ return array(
 	 *	)
 	 */
 	'exclude_groups' => array(),
-    
-    /**
-     * Exclude specific languages from Laravel Translation Manager.
-     *
-     * @type array
-     *
-     * 	array(
-     *		'fr',
-     *		'de',
-     *	)
-     */
-    'exclude_langs' => array(),
 
 	/**
 	 * Export translations with keys output alphabetically.

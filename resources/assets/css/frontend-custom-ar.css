@@ -1,21 +1,16 @@
-/*p {*/
-    /*text-align : right;*/
+/*@font-face {*/
+    /*font-family: 'Tajawal';*/
+    /*src: url('fonts/Tajawal-Medium.ttf') format('truetype');*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
 /*}*/
+/*body, div, a, span, table, p, form, input, h1, h2, h3, h4 , input , tr , td , ul , li {*/
+    /*font-family: 'Tajawal', 'sans-serif' !important;*/
+/*}*/
+.main-menu nav ul li a::after {
+    display: none;
+}
 
-/*.button-minus, .button-plus {*/
-    /*position: absolute;*/
-    /*display: inline-block;*/
-    /*top: 23px;*/
-    /*right: 11px;*/
-/*}*/
-
-/*footer {*/
-    /*text-align: right;*/
-/*}*/
-
-/*.middle-footer-text2 .footer-address ul li, .middle-footer-text2 .footer-menu ul li a, .middle-footer-text2 > p {*/
-    /*text-align : right;*/
-/*}*/
 
 .simpleLens-big-image-container, .simpleLens-lens-image{
     direction: ltr;
@@ -38,20 +33,3 @@ div.simpleLens-lens-element {
     left: 109px;
     bottom: 7px;
 }
-
-/*.shop-review {*/
-    /*padding-right: 30px;*/
-    /*text-align: right;*/
-/*}*/
-/*.add-action ul li {*/
-    /*left: 10%;*/
-    /*float: left;*/
-/*}*/
-/*div.add-action ul {*/
-    /*width: 115%;*/
-/*}*/
-/*#size{*/
-    /*margin-bottom: 8%;*/
-/*}*/
-
-

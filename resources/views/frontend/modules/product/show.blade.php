@@ -15,22 +15,7 @@
 
 @section('body')
     <div class="single-page-area shop-product-area">
-        <div class="container">
-            <div class="row">
-                <div class="shop-head">
-                    <ul class="shop-head-menu">
-                        <li><i class="fa fa-home"></i>
-                            <a class="home" href="{{ url('/') }}">
-                                <span>{{ trans('general.home') }}
-                                </span>
-                            </a>
-                        </li>
-                        <li>{{ $product->name }}</li>
-                    </ul>
-                </div>
-                <!-- shop head end -->
-            </div>
-        </div>
+        @include('frontend.partials._breadcrumbs')
 
         <!-- Single Product details Area -->
         <div class="single-product-details-area">

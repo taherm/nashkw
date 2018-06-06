@@ -1,10 +1,11 @@
 @font-face {
-    font-family: cairo;
-    src: url('fonts/Cairo-SemiBold.otf');
+    font-family: 'Tajawal';
+    src: url('fonts/Tajawal-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
-
-body, div, a, span, table, p, form, input, h1, h2, h3, h4 {
-    font-family: 'cairo', sans-serif !important;
+body, div, a, span, table, p, form, input, h1, h2, h3, h4 , input , tr , td , ul , li {
+    font-family: 'Tajawal', 'sans-serif' !important;
 }
 
 .main-menu4 nav ul li a {

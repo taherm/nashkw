@@ -98,4 +98,8 @@ trait ProductHelpers
         }, '>', 0);
     }
 
+    public function getIsFavoritedAttribute() {
+        return in_array(auth()->user()->id,$this->favorites->pluck('id')->toArray());
+    }
+
 }
