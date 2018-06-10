@@ -84,11 +84,11 @@
                                             </li>
                                             @if($elements->where('active', true)->count() > 1)
                                                 <li>
-                                                    <a href="{{ route('backend.activation',['model' => 'country','id' => $element->id]) }}">
+                                                    <a href="{{ route('backend.activate',['model' => 'country','id' => $element->id]) }}">
                                                         <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
                                                 </li>
                                             @endif
-                                            @if($element->governates->isEmpty())
+                                            @if(!$element->currency)
                                                 <li>
                                                     <form method="post"
                                                           action="{{ route('backend.country.destroy',$element->id) }}">

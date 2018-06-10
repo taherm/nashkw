@@ -22,5 +22,13 @@ return [
         'currency' => 'Riyal Qatari',
         'symbol' => "QAT",
         'exchange_rate' => 0.3
+    ],
+    [
+        'name_ar' => 'UAE',
+        'name_en' => 'UAE',
+        'code' => 'DAR',
+        'currency' => 'Darham',
+        'symbol' => "DAR",
+        'exchange_rate' => 0.8
     ]
 ];

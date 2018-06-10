@@ -12,10 +12,13 @@ class CurrencyController extends Controller
 
     public function index()
     {
-
         $elements = Currency::all();
-
         return view('backend.modules.currency.index', compact('elements'));
+    }
+
+
+    public function create() {
+        return view('backend.modules.currency.create');
     }
 
     public function edit($id)
