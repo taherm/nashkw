@@ -3,20 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
 class UserController extends Controller
 {
-
-    protected $userRepository;
-
-    public function __construct(UserRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,10 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->userRepository->model->all();
-        return view('backend.modules.user.index', compact(
-            'users'
-        ));
+        $elements = User::all();
+        return view("backend.modules.user.index", compact('elements'));
     }
 
     /**
@@ -91,26 +81,6 @@ class UserController extends Controller
         return redirect()->route('backend.user.index')->with('success', 'user updated');
     }
 
-    /**
-     * Suspend/Activate User
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function suspendStatus($id)
-    {
-        if ($this->userRepository->getById($id)->active) {
-            $this->userRepository->getById($id)->update(['active' => 0]);
-            return redirect()->back()->with('success', trans('messages.success.user-status-suspended'));
-        } else {
-            $this->userRepository->getById($id)->update(['active' => 1]);
-            return redirect()->back()->with('success', trans('messages.success.user-status-activated'));
-        }
-
-        return redirect()->back()->with('error', 'System Error!!');
-
-
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -120,21 +90,48 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        /*
-         * IMPORTANT : NOTE THAT BY DELETING A USER
-         * A COMPANY WILL BE DELETED
-         * ALL BRANCHES FOR THIS COMPANY SHALL BE DELETED
-         * ALL PRODUCTS FOR THIS USER SHALL BE DLEETED
-         * */
-        $user = $this->userRepository->getById($id);
+        $element = User::whereId($id)->first();
 
-        if ($user->orders) {
-            $user->orders()->delete();
+        if($element->delete()) {
+            return redirect()->back()->with('success', 'User deleted.');
         }
+        return redirect()->back()->with('error', 'user not deleted !!!');
+    }
 
-        $user->delete();
+    public function getResetPassword(Request $request)
+    {
+        $validator = validator(request()->all(), [
+            'email' => 'required|email|exists:users,email',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+        $email = $request->email;
+        return view('backend.modules.user.reset', compact('email'));
 
-        return redirect()->back()->with('success', trans('messages.success.user-delete'));
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postResetPassword(Request $request)
+    {
+        $validator = validator(request()->all(), [
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'error occurred')->withInputs();
+        }
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            $user->password = bcrypt(request()->password);
+            $user->save();
+            return redirect()->route('backend.user.index', ['role' => session()->has('role') ? session()->get('role') : 3])->with('success', 'password changed');
+        }
+        return redirect()->back()->with('error', 'error occurred')->withInputs();
     }
 
 }

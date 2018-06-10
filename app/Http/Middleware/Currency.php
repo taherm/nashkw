@@ -19,7 +19,6 @@ class Currency
             $currency = \App\Models\Currency::where('symbol', 'KWD')->first();
             session()->put('currency', $currency);
         }
-
         return $next($request);
     }
 }

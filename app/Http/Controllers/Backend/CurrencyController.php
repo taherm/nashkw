@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Core\PrimaryController;
 use App\Http\Controllers\Controller;
-use App\Src\Currency\Currency;
-use App\Http\Requests;
+use App\Models\Currency;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
 class CurrencyController extends Controller
@@ -14,9 +13,29 @@ class CurrencyController extends Controller
     public function index()
     {
 
-        $currencies = Currency::all();
+        $elements = Currency::all();
 
-        return view('backend.modules.currency.index', compact('currencies'));
+        return view('backend.modules.currency.index', compact('elements'));
+    }
+
+    public function edit($id)
+    {
+        $element = Currency::whereId($id)->first();
+        return view('backend.modules.currency.edit', compact('element'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validate = validator($request->all(), [
+            'exchange_rate' => 'required|numeric|min:0.1|max:.9'
+        ]);
+        if ($validate->failed()) {
+            return redirect()->back()->withErrors($validate);
+        }
+
+        $element = Currency::whereId($id)->first();
+        $element->update(['exchange_rate' => $request->exchange_rate]);
+        return redirect()->back()->with('success', 'rate updateded successfully');
     }
 
     public function updateRates()

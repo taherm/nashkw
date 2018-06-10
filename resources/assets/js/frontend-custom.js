@@ -31,8 +31,8 @@ $(document).ready(function() {
     });
     // when the color changes .. fetch all sizes related according to the product attribute.
     $('#color').on('change', function(e) {
-        let product_id = $('#product_id').val();
-        let color_id = e.target.value;
+        var product_id = $('#product_id').val();
+        var color_id = e.target.value;
         console.log('productid', product_id);
         console.log('color id', color_id);
         $('#size').html('<option value="">select size</option>');
@@ -45,9 +45,9 @@ $(document).ready(function() {
     })
     // when the size changes .. should fetch the qty of the current attribute and inject it in max qty.
     $('#size').on('change', function(e) {
-        let size_id = e.target.value;
-        let color_id = $('#color').val();
-        let product_id = $('#product_id').val();
+        var size_id = e.target.value;
+        var color_id = $('#color').val();
+        var product_id = $('#product_id').val();
         return axios.get('/api/qty', {
             params: {
                 product_id,
@@ -60,15 +60,15 @@ $(document).ready(function() {
         }).catch(e => console.log(e));
     });
     $('.qty-increase').on('click', function(e) {
-        let max = parseInt($('#qty').attr('maxlength') - 1);
-        let currentyQty = parseInt($('#qty').attr('value'));
-        let qty = parseInt(currentyQty <= max ? currentyQty + 1 : 1);
+        var max = parseInt($('#qty').attr('maxlength') - 1);
+        var currentyQty = parseInt($('#qty').attr('value'));
+        var qty = parseInt(currentyQty <= max ? currentyQty + 1 : 1);
         $('#qty').attr('value', qty);
     });
 
     $('.qty-decrease').on('click', function(e) {
-        let currentyQty = parseInt($('#qty').attr('value'));
-        let qty = (currentyQty > 0 ? currentyQty - 1 : currentyQty);
+        var currentyQty = parseInt($('#qty').attr('value'));
+        var qty = (currentyQty > 0 ? currentyQty - 1 : currentyQty);
         $('#qty').attr('value', qty);
     });
 
@@ -98,8 +98,8 @@ $(document).ready(function() {
 
     //checkout.index
     // shipping cost or delievery cost
-    let shippingCost = $('#shipping_aramex_cost').attr('value');
-    let deliveryCost = $('#delivery_cost').attr('value');
+    var shippingCost = $('#shipping_aramex_cost').attr('value');
+    var deliveryCost = $('#delivery_cost').attr('value');
     if (shippingCost > 0) {
         $('#finalDeliveryCost').html(shippingCost);
         $('.shipping_cost').attr('value', shippingCost);
@@ -111,7 +111,7 @@ $(document).ready(function() {
     }
 
     $("input[name='delivery_method']").on('click', function() {
-        let deliveryMethod = $("input[name='delivery_method']:checked").val();
+        var deliveryMethod = $("input[name='delivery_method']:checked").val();
         if (deliveryMethod === 'aramex') {
             $('#finalDeliveryCost').html(shippingCost);
             $('.shipping_cost').attr('value', shippingCost);
@@ -121,13 +121,13 @@ $(document).ready(function() {
             $('.shipping_cost').attr('value', deliveryCost);
             var finalDeliveryCost = deliveryCost;
         }
-        let grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
+        var grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
         $('.grandtotal').attr('value', grandtotal);
         $('#grandtotal').html(grandtotal);
     });
 
-    let subtotal = $('#subtotal').attr('value');
-    let grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
+    var subtotal = $('#subtotal').attr('value');
+    var grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
     console.log('the val of final', finalDeliveryCost);
     $('.grandtotal').attr('value', grandtotal);
     $('#grandtotal').html(grandtotal);

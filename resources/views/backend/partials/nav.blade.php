@@ -5,7 +5,7 @@
         <div class="page-logo">
             <a href="{{ route('backend.index') }}">
                 <img src="{{ asset('storage/uploads/images/medium/'.$settings->logo) }}" alt="logo"
-                     class="img-sm logo-default"/> </a>
+                     class="img-logo logo-default"/> </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>

@@ -6,7 +6,19 @@
     width : 60px;
 }
 
+.img-med {
+    width : 120px;
+}
+
+.img-logo {
+    max-height : 40px;
+}
+
 .btn-del {
     color : #6f6f6f;
     padding-left: 15px;
+}
+
+.page-header.navbar .page-logo .logo-default {
+    margin: 27px 30px 0px;
 }

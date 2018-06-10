@@ -30,8 +30,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item {{ activeItem('user') }}">
+                <a href="{{ route('backend.user.index')}}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="title">Users</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
 
             {{--categories about us--}}
+            <li class="nav-item {{ activeItem('currency') }}">
+                <a href="{{ route('backend.currency.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-dollar"></i>
+                    <span class="title">Currencies</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
             <li class="nav-item {{ activeItem('category') }}">
                 <a href="{{ route('backend.category.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-list-ol"></i>
@@ -74,7 +90,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item {{ activeItem('country',['governate','area']) }}">
+            <li class="nav-item {{ activeItem('country') }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-globe"></i>
                     <span class="title">Countries</span>

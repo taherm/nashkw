@@ -28,8 +28,11 @@ class CreateUsersTable extends Migration
             $table->string('building')->nullable();
             $table->string('floor')->nullable();
             $table->string('apartment')->nullable();
+            $table->string('country')->nullable();
+            $table->boolean('active')->default(1);
             $table->string('api_token')->nullable();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

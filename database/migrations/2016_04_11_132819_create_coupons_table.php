@@ -16,14 +16,15 @@ class CreateCouponsTable extends Migration
             $table->increments('id');
             $table->integer('value')->unsigned();
             $table->boolean('is_percentage')->default(0);
-            $table->integer('customer_id')->unsigned()->index();
             $table->boolean('active')->default(0);
             $table->boolean('consumed')->default(0);
             $table->string('code');
             // price after sale
             $table->integer('minimum_charge')->nullable();
 
-            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamp('due_date')->nullable();
             $table->timestamps();
         });

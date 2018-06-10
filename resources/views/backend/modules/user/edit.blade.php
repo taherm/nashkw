@@ -5,7 +5,7 @@
         <div class="portlet-body form">
             <form class="horizontal-form" role="form" method="POST"
                   action="{{ route('backend.user.update',$element->id) }}" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
                 <div class="form-body">
                     <input type="hidden" name="_method" value="put">
                     <h3 class="form-section">Edit User</h3>

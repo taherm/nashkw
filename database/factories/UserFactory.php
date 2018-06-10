@@ -31,6 +31,7 @@ $factory->define(User::class, function (Faker $faker) {
         'building' => $faker->randomDigit,
         'floor' => $faker->randomDigit,
         'apartment' => $faker->name,
+        'country' => $faker->country,
         'api_token' => $faker->bankAccountNumber,
     ];
 });

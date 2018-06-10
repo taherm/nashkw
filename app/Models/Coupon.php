@@ -12,7 +12,7 @@ class Coupon extends PrimaryModel
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'customer_id');
+        return $this->belongsTo(User::class);
     }
 
     public function order()

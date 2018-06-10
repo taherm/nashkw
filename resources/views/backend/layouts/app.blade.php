@@ -32,6 +32,7 @@
         <div class="page-content" style="min-height: 800px;">
             {{--@include('backend.partials.breadcrumbs')--}}
             @include('backend.partials.notifications')
+            @include('backend.partials._confirm_delete_modal')
             @section('content')
             @show
         </div>

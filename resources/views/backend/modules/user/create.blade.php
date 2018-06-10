@@ -5,7 +5,7 @@
         <div class="portlet-body form">
             <form class="horizontal-form" role="form" method="POST"
                   action="{{ route('backend.user.store') }}" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
                 <input type="hidden" name="api_token" value="{{ str_random(rand(10,99)) }}">
                 <div class="form-body">
                     <h3 class="form-section">Create Company</h3>

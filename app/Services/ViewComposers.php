@@ -85,7 +85,9 @@ class ViewComposers
 
     public function getCountries(View $view)
     {
-        $countries = Country::active()->get();
+        $countries = Country::active()->whereHas('currency', function ($q) {
+            return $q->where('exchange_rate', '>', 0);
+        }, '>', 0)->get();
         return $view->with(compact('countries'));
     }
 

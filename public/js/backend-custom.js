@@ -3,14 +3,14 @@
  */
 
 $(document).ready(function() {
-    console.log('from inside the backend.custom js');
     $('#dataTable').DataTable({
         "order": [[0, "desc"]],
         "bPaginate": true,
         "bLengthChange": true,
         "bFilter": true,
         "bInfo": true,
-        "bAutoWidth": true
+        "bAutoWidth": true,
+        "pageLength": 20
     });
     $('#secondDataTable').DataTable({
         "order": [[0, "desc"]],
@@ -18,7 +18,18 @@ $(document).ready(function() {
         "bLengthChange": true,
         "bFilter": true,
         "bInfo": true,
-        "bAutoWidth": true
+        "bAutoWidth": true,
+        "pageLength": 20
+    });
+    $(document).on('show.bs.modal', function(event) {
+        var element = $(event.relatedTarget) // Button that triggered the modal
+        console.log('the element', element)
+        $('.modal-body').html(element.data('content'));
+        $('.modal-title').html(element.data('title'));
+        formId = element.data('form_id');
+        $('.modal-save').on('click', function () {
+            $('#' + formId).submit();
+        });
     });
 });
 tinymce.init({

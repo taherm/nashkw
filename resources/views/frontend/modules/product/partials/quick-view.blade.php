@@ -79,10 +79,4 @@
     <!-- END quickview product -->
 @endif
 
-@section('scripts')
-    @parent
-    <script type="text/javascript">
-
-    </script>
-@endsection
 

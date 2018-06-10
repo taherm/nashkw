@@ -23,13 +23,13 @@
                         <tr>
                             <th>Id</th>
                             <th>name</th>
-                            <th>active</th>
+                            <th>email</th>
                             <th>mobile</th>
-                            <th>sms verified</th>
-                            <th>deal type</th>
+                            <th>phone</th>
+                            <th>address</th>
+                            <th>area</th>
                             <th>country</th>
-                            <th>logo</th>
-                            <th>branches</th>
+                            <th>active</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -37,13 +37,13 @@
                         <tr>
                             <th>Id</th>
                             <th>name</th>
-                            <th>active</th>
+                            <th>email</th>
                             <th>mobile</th>
-                            <th>sms verified</th>
-                            <th>Deal Type</th>
+                            <th>phone</th>
+                            <th>address</th>
+                            <th>area</th>
                             <th>country</th>
-                            <th>logo</th>
-                            <th>branches</th>
+                            <th>active</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -52,76 +52,14 @@
                             <tr>
                                 <td>{{ $element->id }}</td>
                                 <td>{{ $element->name }}</td>
+                                <td>{{ $element->email  }}</td>
+                                <td>{{ $element->mobile }}</td>
+                                <td>{{ $element->phone }}</td>
+                                <td>{{ $element->address }}</td>
+                                <td>{{ $element->area }}</td>
+                                <td>{{ $element->country }}</td>
                                 <td>
                                     <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
-                                </td>
-                                <td>
-                                    {{ $element->mobile }}
-                                </td>
-                                <td>
-                                    <span class="label {{ activeLabel($element->verified) }}">{{ activeText($element->verified)}}</span>
-                                </td>
-                                <td>
-                                    @if($element->deal)
-                                        <span class="label {{ activeLabel($element->deal->isValid) }}">{{ activeText($element->deal->isValid,$element->deal->plan->name)}}</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($element->country)
-                                    {{ $element->country->name }} </br>
-                                    @endif
-                                    @if($element->governate)
-                                    {{ $element->governate->name }} </br>
-                                    @endif
-                                    @if($element->area)
-                                        {{ $element->area->name }}
-                                    @endif
-                                </td>
-                                <td><img src="{{ asset('storage/uploads/images/thumbnail/'.$element->logo) }}"
-                                         class="img-xs img-rounded img-circle" style="max-width: 50px;" alt="">
-                                </td>
-                                <td style="min-width: 200px">
-                                    @if($element->role->is_company && !$element->branches->isEmpty())
-                                        <ol>
-                                            @foreach($element->branches as $branch)
-                                                <li style="margin: 5px;">
-                                                    <div class="keep-open btn-group" title="Columns">
-                                                        <button type="button"
-                                                                class="btn {{ $branch->active ? "btn-success" : "btn-danger" }} dropdown-toggle"
-                                                                data-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                            {{ $branch->name }}
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu pull-right" role="menu">
-                                                            <li>
-                                                                <a href="{{ route('backend.branch.show',$branch->id) }}">
-                                                                    <i class="fa fa-fw fa-edit"></i>View Branch</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="{{ route('backend.activation',['model' => 'branch','id' => $branch->id]) }}">
-                                                                    <i class="fa fa-fw fa-check-circle"></i> toggle
-                                                                    active</a>
-                                                            </li>
-                                                            {{--<li>--}}
-                                                            {{--<form method="post"--}}
-                                                            {{--action="{{ route('backend.branch.destroy',$branch->id) }}"--}}
-                                                            {{--class="col-lg-12">--}}
-                                                            {{--{{ csrf_field() }}--}}
-                                                            {{--<input type="hidden" name="_method" value="delete"/>--}}
-                                                            {{--<button type="submit" class="btn btn-sm">--}}
-                                                            {{--<i class="fa fa-remove"></i> Delete Branch--}}
-                                                            {{--</button>--}}
-                                                            {{--</form>--}}
-                                                            {{--</li>--}}
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            @endforeach
-                                        </ol>
-                                    @else
-                                        <span class="label {{ activeLabel($element->role->is_company) }}">{{ activeText($element->role->isCompany)}}</span>
-                                    @endif
                                 </td>
                                 <td>
                                     <div class="btn-group">
@@ -131,36 +69,28 @@
                                         </button>
                                         <ul class="dropdown-menu pull-right" role="menu">
                                             <li>
-                                                <a href="{{ route('backend.user.edit',$element->id) }}">
-                                                    <i class="fa fa-fw fa-edit"></i> Edit User</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('backend.gallery.show',$element->id) }}">
-                                                    <i class="fa fa-fw fa-edit"></i> View Gallery</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('backend.reset.password',['mobile' => $element->mobile]) }}">
+                                                <a href="{{ route('backend.reset.password',['email' => $element->email]) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Reset Password</a>
                                             </li>
-                                            {{--<li>--}}
-                                            {{--<a href="{{ route('backend.branch.create',['user_id' => $element->id]) }}">--}}
-                                            {{--<i class="fa fa-fw fa-edit"></i> Add Branch</a>--}}
-                                            {{--</li>--}}
                                             <li>
-                                                <a href="{{ route('backend.activation',['model' => 'user','id' => $element->id]) }}">
+                                                <a href="{{ route('backend.activate',['model' => 'user','id' => $element->id]) }}">
                                                     <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('backend.validation',['model' => 'user','id' => $element->id]) }}">
-                                                    <i class="fa fa-fw fa-check-circle"></i> toggle deal validation</a>
-                                            </li>
-                                            <li>
-                                                <form method="post"
+                                                <a data-toggle="modal" href="#" data-target="#basic"
+                                                   data-title="Delete"
+                                                   data-content="Are you sure you want to delete {{ $element->name  }}?
+                                                   </br> <h3 class='text-danger'>please note that all favorites / coupons shall be deleted accordingly.</h3>
+                                                    "
+                                                   data-form_id="delete-{{ $element->id }}"
+                                                >
+                                                    <i class="fa fa-fw fa-recycle"></i> delete</a>
+                                                <form method="post" id="delete-{{ $element->id }}"
                                                       action="{{ route('backend.user.destroy',$element->id) }}">
-                                                    {{ csrf_field() }}
+                                                    @csrf
                                                     <input type="hidden" name="_method" value="delete"/>
-                                                    <button type="submit" class="btn btn-outline btn-sm red">
-                                                        <i class="fa fa-remove"></i>delete user
+                                                    <button type="submit" class="btn btn-del hidden">
+                                                        <i class="fa fa-fw fa-times-circle"></i> delete
                                                     </button>
                                                 </form>
                                             </li>

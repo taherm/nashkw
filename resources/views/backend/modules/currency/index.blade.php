@@ -12,6 +12,8 @@
                 <th>symbol</th>
                 <th>format</th>
                 <th>exchange_rate</th>
+                <th>active</th>
+                <th>actions</th>
             </tr>
             </thead>
             <tfoot>
@@ -22,6 +24,8 @@
                 <th>symbol</th>
                 <th>format</th>
                 <th>exchange_rate</th>
+                <th>active</th>
+                <th>actions</th>
             </tr>
             </tfoot>
             <tbody>
@@ -33,6 +37,27 @@
                     <td>{{ $element->symbol }}</td>
                     <td>{{ $element->format }}</td>
                     <td>{{ $element->exchange_rate }}</td>
+                    <td>
+                        <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn green btn-xs btn-outline dropdown-toggle"
+                                    data-toggle="dropdown"> Actions
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="{{ route('backend.currency.edit',$element->id) }}">
+                                        <i class="fa fa-fw fa-edit"></i> Edit</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('backend.activate',['model' => 'currency','id' => $element->id]) }}">
+                                        <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

@@ -2,17 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Core\PrimaryController;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\AboutUsUpdate;
-use App\Http\Requests\Backend\ContactUpdate;
-use App\Http\Requests\Backend\PrivacyUpdate;
-use App\Http\Requests\Backend\TermsUpdate;
-use App\Src\User\Aboutus;
-use App\Src\User\Privacy;
-use App\Src\User\Terms;
-use App\Src\User\Contactus;
-use Guzzle\Http\Message\Response;
 use Illuminate\Http\Request;
 
 class PageController extends Controller

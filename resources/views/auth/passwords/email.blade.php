@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('frontend.layouts.master')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding: 50px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -33,7 +33,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-theme">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

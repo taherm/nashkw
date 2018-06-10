@@ -2,29 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Core\PrimaryController;
+use App\Http\Controllers\Controller;
 use App\Mail\SendContactus;
-use App\Src\Newsletter\Newsletter;
-use App\Src\User\Aboutus;
-use App\Src\User\Contactus;
-use App\Src\User\Terms;
-use App\Src\User\Privacy;
+
 use App\Http\Requests;
 use App\Jobs\SendContactMail;
 use Illuminate\Http\Request;
-use App\Src\PagesQuestions\StaticPagesQuestionsRepository;
 use Illuminate\Support\Facades\Mail;
 
-class PageController extends PrimaryController
+class PageController extends Controller
 {
-
-    protected $pagesQuestions;
-
-
-    public function __construct(StaticPagesQuestionsRepository $pagesQuestions)
-    {
-        $this->pagesQuestions = $pagesQuestions;
-    }
 
     public function getConditions()
     {

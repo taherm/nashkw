@@ -19,7 +19,7 @@
                         <input class="checkout-radio" type="radio" name="tag"
                                id="credio"/>
                         <label class="cradio"
-                               for="credio">{{ trans('checkout_as_guest') }}</label>
+                               for="credio">{{ trans('checkout_as_guest') }}</label>l
                     </div>
                     <div class="i-boxb">
                         <input class="checkout-radio" type="radio" name="tag"
