@@ -5,7 +5,7 @@ namespace App\Models;
 
 class Currency extends PrimaryModel
 {
-    protected $fillable = ['exchange_rate','active'];
+    protected $guarded = [''];
 
     public function country()
     {

@@ -51,7 +51,7 @@ Route::get('country/{id}', function ($id) {
         'Transaction' => [
             'Reference1' => '001',
         ],
-        'Code' => $destinationCountry->code,
+        'Code' => $destinationCountry->country_iso_alpha3,
     ];
     $area = [
         'ClientInfo' => [
@@ -66,7 +66,7 @@ Route::get('country/{id}', function ($id) {
         ],
 
         'Transaction' => ['Reference1' => '001'],
-        'CountryCode' => $destinationCountry->code,
+        'CountryCode' => $destinationCountry->country_iso_alpha3,
     ];
     try {
         $countriesSoapClient = new \SoapClient(env('ARAMEX_COUNTRY_URL'), array('trace' => 1));

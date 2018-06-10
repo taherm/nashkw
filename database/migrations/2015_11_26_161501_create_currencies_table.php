@@ -21,7 +21,7 @@ class CreateCurrenciesTable extends Migration
             $table->boolean('active')->default(1);
 
             $table->integer('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('restrict');
 
             $table->rememberToken();
             $table->timestamps();

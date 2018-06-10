@@ -16,21 +16,14 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         $countries = config('countries');
-        foreach($countries as $country) {
+        foreach ($countries as $country) {
             factory(Country::class)->create(
                 [
                     'name_ar' => $country['name_ar'],
                     'name_en' => $country['name_en'],
-                    'code' => $country['code'],
+                    'country_iso_alpha3' => $country['country_iso_alpha3'],
                 ]
-            )->each(function ($c) use ($country) {
-                $c->currency()->save(factory(Currency::class)->create(
-                    [
-                        'symbol' => $country['symbol'],
-                        'exchange_rate' => $country['exchange_rate']
-                    ]
-                ));
-            });
+            );
         }
     }
 }

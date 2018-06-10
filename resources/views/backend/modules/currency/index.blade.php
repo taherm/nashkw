@@ -8,10 +8,9 @@
             <tr>
                 <th>Id</th>
                 <th>name</th>
-                <th>code</th>
                 <th>symbol</th>
-                <th>format</th>
                 <th>exchange_rate</th>
+                <th>country</th>
                 <th>active</th>
                 <th>actions</th>
             </tr>
@@ -20,10 +19,9 @@
             <tr>
                 <th>Id</th>
                 <th>name</th>
-                <th>code</th>
                 <th>symbol</th>
-                <th>format</th>
                 <th>exchange_rate</th>
+                <th>country</th>
                 <th>active</th>
                 <th>actions</th>
             </tr>
@@ -33,10 +31,9 @@
                 <tr>
                     <td>{{ $element->id }}</td>
                     <td>{{ $element->name }}</td>
-                    <td>{{ $element->code }}</td>
                     <td>{{ $element->symbol }}</td>
-                    <td>{{ $element->format }}</td>
                     <td>{{ $element->exchange_rate }}</td>
+                    <td>{{ $element->country->name }}</td>
                     <td>
                         <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
                     </td>

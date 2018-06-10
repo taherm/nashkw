@@ -39,14 +39,6 @@
                 </a>
             </li>
 
-            {{--categories about us--}}
-            <li class="nav-item {{ activeItem('currency') }}">
-                <a href="{{ route('backend.currency.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-dollar"></i>
-                    <span class="title">Currencies</span>
-                    <span class="arrow"></span>
-                </a>
-            </li>
 
             <li class="nav-item {{ activeItem('category') }}">
                 <a href="{{ route('backend.category.index') }}" class="nav-link nav-toggle">
@@ -91,39 +83,44 @@
             </li>
 
             <li class="nav-item {{ activeItem('country') }}">
-                <a href="javascript:;" class="nav-link nav-toggle">
+                <a href="{{ route('backend.country.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-globe"></i>
                     <span class="title">Countries</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item ">
+                        <a href="{{ route('backend.country.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-globe"></i>
+                            <span class="title">Countries Control</span>
+                            <span class="arrow"></span>
+                        </a>
+                        {{--<ul class="sub-menu always-open"> --}}
+                            {{--@foreach($countries as $country)--}}
+                                {{--<li class="nav-item">--}}
+                                    {{--<a href="{{ route('backend.country.show',$country->id) }}" class="nav-link ">--}}
+                                        {{--{{ $country->name }}</a>--}}
+                                {{--</li>--}}
+                            {{--@endforeach--}}
+                        {{--</ul>--}}
+                    </li>
+                    <li class="nav-item ">
                         <a href="{{ route('backend.country.create') }}" class="nav-link ">
                             <i class="fa fa-fw fa-plus-circle"></i>
                             <span class="title">Add New Country</span>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.country.index') }}" class="nav-link ">
-                            Countries List</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-globe"></i>
-                            <span class="title">Countries Control</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu always-open">
-                            @foreach($countries as $country)
-                                <li class="nav-item">
-                                    <a href="{{ route('backend.country.show',$country->id) }}" class="nav-link ">
-                                        {{ $country->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
                 </ul>
             </li>
+
+            <li class="nav-item {{ activeItem('currency') }}">
+                <a href="{{ route('backend.currency.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-dollar"></i>
+                    <span class="title">Currencies</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-folder"></i>

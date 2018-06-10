@@ -69,7 +69,7 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\Backend\UserUpdate $request, $id)
+    public function update(Request $request, $id)
     {
         $element = User::whereId($id)->first();
         if ($request->has('password')) {
@@ -92,7 +92,7 @@ class UserController extends Controller
     {
         $element = User::whereId($id)->first();
 
-        if($element->delete()) {
+        if ($element->delete()) {
             return redirect()->back()->with('success', 'User deleted.');
         }
         return redirect()->back()->with('error', 'user not deleted !!!');

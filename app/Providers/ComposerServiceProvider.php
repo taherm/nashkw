@@ -26,6 +26,8 @@ class ComposerServiceProvider extends ServiceProvider
         ],'App\Services\ViewComposers@getCartCount');
         view()->composer([
             'frontend.modules.cart.index',
+            'backend.modules.currency.create',
+            'backend.modules.currency.edit',
             'backend.partials.sidebar'
         ],'App\Services\ViewComposers@getCountries');
         view()->composer([

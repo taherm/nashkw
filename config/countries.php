@@ -10,7 +10,8 @@ return [
     [
         'name_ar' => 'kuwait',
         'name_en' => 'kuwait',
-        'code' => 'KW',
+        'mobile_code' => '00965',
+        'country_iso_alpha3' => 'KW',
         'currency' => 'Kuwait Dinar',
         'symbol' => "KWD",
         'exchange_rate' => 1
@@ -18,7 +19,8 @@ return [
     [
         'name_ar' => 'qatar',
         'name_en' => 'qatar',
-        'code' => 'QAT',
+        'mobile_code' => '00966',
+        'country_iso_alpha3' => 'QAT',
         'currency' => 'Riyal Qatari',
         'symbol' => "QAT",
         'exchange_rate' => 0.3
@@ -26,8 +28,9 @@ return [
     [
         'name_ar' => 'UAE',
         'name_en' => 'UAE',
-        'code' => 'DAR',
-        'currency' => 'Darham',
+        'mobile_code' => '00968',
+        'country_iso_alpha3' => 'DAR',
+        'currency' => 'Darham UAE',
         'symbol' => "DAR",
         'exchange_rate' => 0.8
     ]

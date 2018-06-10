@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -43,6 +44,7 @@ class ProductController extends Controller
      */
     public function store()
     {
+
     }
 
     /**
@@ -66,14 +68,6 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = $this->productRepository->getById($id);
-
-        $categoriesList = $product->categories()->pluck('id')->toArray();
-
-        $productTagsNameList = $product->tagged()->pluck('tag_slug')->toArray();
-
-        //dd($productTagsNameList);
-        return view('backend.modules.product.create', compact('product', 'categoriesList', 'tagsList', 'productId', 'productTagsNameList'));
     }
 
     /**
@@ -82,15 +76,9 @@ class ProductController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\Backend\ProductUpdate $request, $id)
+    public function update(Request $request, $id)
     {
-        $product = $this->productRepository->getById($id);
 
-        $request->persist($product);
-
-        session()->put('productId', $product->id);
-
-        return redirect()->back()->with('success', trans('general.message.success.product_update'));
     }
 
     /**
@@ -100,18 +88,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::whereId($id)->delete();
-//        DB::table('product_attributes')->where('product_id',$id)->delete();
-//        DB::table('order_metas')->where('product_id',$id)->delete();
-//        DB::table('product_metas')->where('product_id',$id)->delete();
-//        $product->forceDelete();
-        if($product) {
-            return redirect()->back()->with('success', 'product deleted');
-        }
-        return redirect()->back()->with('error', 'product not deleted');
     }
 
-    public function restore($id) {
+    public function restore($id)
+    {
         $element = Product::withTrashed()->whereId($id)->first();
         $element->restore();
         return redirect()->back()->with('success', 'product restored');

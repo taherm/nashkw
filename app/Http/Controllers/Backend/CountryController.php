@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Country;
+use App\Services\Traits\ImageHelpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class CountryController extends Controller
 {
+    use ImageHelpers;
+
     /**
      * Display a listing of the resource.
      *
@@ -38,13 +42,14 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $validate = validator($request->all(), [
-            'name_ar' => 'required|unique,countries,name_ar',
+            'name_ar' => 'required|unique:countries,name_ar',
             'name_en' => 'required|unique:countries,name_en',
-            'code' => 'required|unique:countries,code',
-            'order' => 'required|numeric|max:2|min:1',
+            'mobile_code' => 'required|unique:countries,mobile_code',
+            'country_iso_alpha3' => 'required|unique:countries,country_iso_alpha3',
+            'order' => 'required|numeric|max:99|min:1',
         ]);
         if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate);
+            return redirect()->back()->withInput(Input::all())->withErrors($validate);
         }
         $element = Country::create($request->request->all());
         if ($element) {
@@ -88,14 +93,15 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate = validator($request->all(), [
-            'name_ar' => 'required|unique:users,name_ar,' . $request->name_ar,
-            'name_en' => 'required|unique:countries,name_en,' . $request->name_en,
-            'code' => 'required|unique:countries,code,' . $request->code,
-            'order' => 'required|numeric|max:2|min:1',
+        $validate = validator($request->request->all(), [
+            'name_ar' => 'required|unique:countries,name_ar,' . $id,
+            'name_en' => 'required|unique:countries,name_en,' . $id,
+            'mobile_code' => 'required|unique:countries,mobile_code,' . $id,
+            'country_iso_alpha3' => 'required|unique:countries,country_iso_alpha3,' . $id,
+            'order' => 'required|numeric|max:99|min:1',
         ]);
         if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate);
+            return redirect()->back()->withInput(Input::all())->withErrors($validate);
         }
         $element = Country::whereId($id)->first();
         if ($element) {

@@ -5,7 +5,7 @@
         <div class="portlet-body form">
             <!-- BEGIN FORM-->
             <form action="{{ route('backend.country.update',$element->id) }}" role="form" method="post" class="horizontal-form" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
                 <input type="hidden" name="_method" value="patch"/>
                 <div class="form-body">
                     <h3 class="form-section">Edit {{ $element->name }} Country</h3>
@@ -38,18 +38,18 @@
                                 <span class="help-block"> flag size is 200 X 200 </span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label">Country Background</label>
-                                <input id="bg" type="file" class="form-control" name="bg">
-                                <span class="help-block"> flag size is ['1534', '586'] </span>
-                            </div>
-                        </div>
+                        {{--<div class="col-md-6">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label class="control-label">Country Background</label>--}}
+                                {{--<input id="bg" type="file" class="form-control" name="bg">--}}
+                                {{--<span class="help-block"> flag size is ['1534', '586'] </span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <!--/span-->
                     </div>
                     <!--/row-->
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="padding-left: 50px;">
                             <div class="form-group">
                                 <label class="control-label sbold">Is Active</label>
                                 <div class="radio-list">
@@ -68,8 +68,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Country Code</label>
-                                <input type="number" id="code" name="code" class="form-control" value="{{ $element->code }}"
-                                       placeholder="country code" required>
+                                <input type="number" id="mobile_code" name="mobile_code" class="form-control" value="{{ $element->mobile_code }}"
+                                       placeholder="country mobile_code" required>
                                 <span class="help-block"> ex. 00965 </span>
                             </div>
                         </div>
@@ -80,10 +80,10 @@
                     <div class="row">
                         <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">abbreviation</label>
-                                    <input type="text" id="abbreviation" name="abbreviation" class="form-control" placeholder="abbreviation" value="{{ $element->abbreviation }}"
+                                    <label class="control-label">country_iso_alpha3</label>
+                                    <input type="text" id="country_iso_alpha3" name="country_iso_alpha3" class="form-control" placeholder="country_iso_alpha3" value="{{ $element->country_iso_alpha3 }}"
                                            required>
-                                    <span class="help-block"> abbreviation ex. KWT </span>
+                                    <span class="help-block"> country_iso_alpha3 ex. KWT </span>
                                 </div>
                         </div>
                         <!--/span-->
