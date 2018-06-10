@@ -40,7 +40,7 @@ class CurrencyController extends Controller
     {
         $validate = validator($request->all(), [
             'name' => 'required|unique:currencies,name',
-            'symbol' => 'required|unique,currencies,symbol',
+            'symbol' => 'required|unique:currencies,symbol',
             'exchange_rate' => 'required|numeric',
             'country_id' => 'required|unique:currencies,country_id|exists:countries,id',
         ]);
@@ -88,7 +88,7 @@ class CurrencyController extends Controller
     {
         $validate = validator($request->all(), [
             'name' => 'required|unique:currencies,name,' . $id,
-            'symbol' => 'required|unique,currencies,symbol,' . $id,
+            'symbol' => 'required|unique:currencies,symbol,' . $id,
             'exchange_rate' => 'required|numeric',
             'country_id' => 'required|exists:countries,id|unique:currencies,country_id,' . $id,
         ]);
@@ -101,7 +101,7 @@ class CurrencyController extends Controller
         if ($updated) {
             return redirect()->route('backend.currency.index')->with('success', 'currency updated successfully');
         }
-        return redirect()->back()->with('error', 'currency did not update!!');
+        return redirect()->route('backend.currency.index')->with('error', 'currency did not update!!');
 
     }
 

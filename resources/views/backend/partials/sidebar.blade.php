@@ -96,12 +96,12 @@
                             <span class="arrow"></span>
                         </a>
                         {{--<ul class="sub-menu always-open"> --}}
-                            {{--@foreach($countries as $country)--}}
-                                {{--<li class="nav-item">--}}
-                                    {{--<a href="{{ route('backend.country.show',$country->id) }}" class="nav-link ">--}}
-                                        {{--{{ $country->name }}</a>--}}
-                                {{--</li>--}}
-                            {{--@endforeach--}}
+                        {{--@foreach($countries as $country)--}}
+                        {{--<li class="nav-item">--}}
+                        {{--<a href="{{ route('backend.country.show',$country->id) }}" class="nav-link ">--}}
+                        {{--{{ $country->name }}</a>--}}
+                        {{--</li>--}}
+                        {{--@endforeach--}}
                         {{--</ul>--}}
                     </li>
                     <li class="nav-item ">
@@ -119,6 +119,15 @@
                     <span class="title">Currencies</span>
                     <span class="arrow"></span>
                 </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.currency.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-plus-circle"></i>
+                            <span class="title">Create New Currency</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item">
