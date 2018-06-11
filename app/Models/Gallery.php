@@ -5,6 +5,7 @@ namespace App\Models;
 class Gallery extends PrimaryModel
 {
     protected $localeStrings = ['description'];
+    protected $guarded = [''];
 
 
     /**

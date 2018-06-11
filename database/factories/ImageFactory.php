@@ -10,5 +10,6 @@ $factory->define(Image::class, function (Faker $faker) {
         'path' => $faker->numberBetween(1, 10) . '.jpg',
         'caption_en' => $faker->paragraph(1),
         'caption_ar' => $faker->paragraph(1),
+        'order' => $faker->randomNumber(1, 10),
     ];
 });

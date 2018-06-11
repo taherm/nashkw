@@ -82,7 +82,7 @@ class ImageController extends Controller
         $element = Image::whereId($id)->first();
         $updated = $element->update($request->except('product_id'));
         if ($updated) {
-            return redirect()->back()->with('success', 'cover initialized for this album');
+            return redirect()->back()->with('success', 'image updated');
         }
         return redirect()->back()->with('error', 'not updated !!!');
     }

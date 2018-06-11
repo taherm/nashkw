@@ -34,7 +34,7 @@
             @foreach($elements as $element)
                 <tr>
                     <td>{{ $element->id }}</td>
-                    <td><img src="{{ asset('storage/uploads/images/thumbnail/'.$element->image) }}" alt=""
+                    <td><img src="{{ asset('storage/uploads/images/thumbnail/'.$element->path) }}" alt=""
                              style="max-width: 100px; max-height: 100px;" class="img-responsive img-thumbnail"></td>
                     <td>
                         <span class="label label-default">{{ class_basename($element->gallery->galleryable_type) }}</span>
@@ -49,16 +49,18 @@
                             </button>
                             <ul class="dropdown-menu pull-right" role="menu">
                                 <li>
-                                    <a href="{{ route('backend.activation',['model' => 'gallery', 'id' => $element->id]) }}">
-                                        <i class="fa fa-fw fa-user"></i>Deactivate Gallery</a>
-                                </li>
-                                <li>
-                                    <form method="post" action="{{ route('backend.image.destroy',$element->id) }}"
-                                          class="col-lg-12">
-                                        {{ csrf_field() }}
+                                    <a data-toggle="modal" href="#" data-target="#basic"
+                                       data-title="Delete"
+                                       data-content="Are you sure you want to delete  image ? "
+                                       data-form_id="delete-{{ $element->id }}"
+                                    >
+                                        <i class="fa fa-fw fa-recycle"></i> delete</a>
+                                    <form method="post" id="delete-{{ $element->id }}"
+                                          action="{{ route('backend.image.destroy',$element->id) }}">
+                                        @csrf
                                         <input type="hidden" name="_method" value="delete"/>
-                                        <button type="submit" class="btn btn-outline btn-sm red">
-                                            <i class="fa fa-remove"></i>delete image
+                                        <button type="submit" class="btn btn-del hidden">
+                                            <i class="fa fa-fw fa-times-circle"></i> delete
                                         </button>
                                     </form>
                                 </li>

@@ -15,13 +15,13 @@ class CreateGalleriesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->boolean('active')->default(1);
             $table->morphs('galleryable');
             $table->string('cover')->nullable();
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
             $table->string('description_ar')->nullable();
             $table->string('description_en')->nullable();
+            $table->boolean('active')->default(1);
 
             $table->timestamps();
             $table->softDeletes();

@@ -166,12 +166,12 @@ trait ImageHelpers
                     foreach ($request[$inputName] as $image) {
                         $imagePath = $this->saveImageForGallery($image, $dimensions, $ratio, $sizes, $model);
                         $model->images()->create([
-                            'image' => $imagePath,
+                            'path' => $imagePath,
                         ]);
                     }
                 } else {
                     $imagePath = $this->saveImageForGallery($request->images[0], $dimensions, $ratio, $sizes, $model);
-                    $model->images()->create([
+                    return $model->images()->create([
                         'image' => $imagePath,
                     ]);
                 }
@@ -198,30 +198,18 @@ trait ImageHelpers
         $img = Image::make(public_path('storage/uploads/images/' . $imagePath));
         foreach ($sizes as $key => $value) {
             if ($value === 'large') {
-                $img->resize($dimensions[0]);
+                $img->resize($dimensions[0], $dimensions[1]);
                 $img->save(public_path('storage/uploads/images/' . $value . '/' . $imagePath));
             } elseif ($value === 'medium') {
-                $img->resize($dimensions[0] / 2);
+                $img->resize($dimensions[0] / 2, $dimensions[1] / 2);
                 $img->save(public_path('storage/uploads/images/' . $value . '/' . $imagePath));
             } elseif ($value === 'thumbnail') {
-                $img->resize('300');
+                $img->resize('292', '347');
                 $img->save(public_path('storage/uploads/images/' . $value . '/' . $imagePath));
             }
         }
         Storage::delete(public_path('storage/uploads/images/' . $imagePath));
         return $imagePath;
-    }
-
-    public function storeImages($element, Request $request, $images, $size = ['1534', '586'])
-    {
-        foreach ($images as $k => $v) {
-            dd('k ==>' . $k . '   v===>' . $v);
-            if ($request->hasFile($v)) {
-                $this->saveMimes($element, $request, [$v], $size, false);
-            } else {
-                return response()->json(['message' => 'error store images'], 400);
-            }
-        }
     }
 
 

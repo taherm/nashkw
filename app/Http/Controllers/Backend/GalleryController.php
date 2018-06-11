@@ -22,9 +22,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $product = $this->productRepository->getById(request()->get('product_id'));
-        $gallery = $product->gallery()->with('images')->first();
-        return view('backend.modules.gallery.index', compact('product', 'gallery'));
+        $elements = Gallery::all();
+        return view('backend.modules.gallery.index', compact('elements'));
     }
 
     /**
@@ -65,15 +64,18 @@ class GalleryController extends Controller
         }
         if (request()->type === 'product') {
             $product = Product::whereId($request->element_id)->first();
-            $element = $product->gallery()->create($request->except('images', 'cover', 'type', 'element_id'));
+            $element = $product->gallery()->create($request->except('images', 'cover', 'type', 'element_id', '_token'));
         }
         if ($element) {
+            if ($request->hasFile('cover')) {
+                $this->saveMimes($element, $request, ['cover'], ['750', '1334'], false);
+            }
             if ($request->hasFile('images')) {
                 $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
             }
-            return redirect()->route('backend.gallery.index')->with('success', 'gallery saved success');
+            return redirect()->back()->with('success', 'gallery saved success');
         }
-        return redirect()->route('backend.gallery.index')->with('error', 'gallery update error');
+        return redirect()->back()->with('error', 'gallery update error');
     }
 
     /**
@@ -119,6 +121,9 @@ class GalleryController extends Controller
 
         $element->update($request->request->all());
         if ($element) {
+            if ($request->hasFile('cover')) {
+                $this->saveMimes($element, $request, ['cover'], ['750', '1334'], false);
+            }
             if ($request->hasFile('images')) {
                 $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
             }
@@ -135,7 +140,11 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $element = Gallery::whereId($id)->first();
+        if($element->delete()) {
+            return redirect()->back()->with('success', 'gallery deleted');
+        }
+        return redirect()->back()->with('error', 'gallery is not deleted');
     }
 
     public function deleteImage()
