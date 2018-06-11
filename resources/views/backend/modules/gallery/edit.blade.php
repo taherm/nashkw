@@ -11,22 +11,22 @@
             <form class="form-horizontal" role="form" method="post"
                   action="{{ route('backend.gallery.update',$element->id) }}"
                   enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
                 <input type="hidden" name="_method" value="put">
-                {{--<div class="form-group">--}}
-                    {{--<label class="col-md-2 control-label">Name Ar</label>--}}
-                    {{--<div class="col-md-10">--}}
-                        {{--<input type="text" name="name_ar" value="{{ $element->name_ar }}" class="form-control"--}}
-                               {{--placeholder="Enter text">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="form-group">--}}
-                    {{--<label class="col-md-2 control-label">Name En</label>--}}
-                    {{--<div class="col-md-10">--}}
-                        {{--<input type="text" name="name_en" value="{{ $element->name_en  }}" class="form-control"--}}
-                               {{--placeholder="Enter text">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Name Ar</label>
+                    <div class="col-md-10">
+                        <input type="text" name="name_ar" value="{{ $element->name_ar }}" class="form-control"
+                               placeholder="Enter text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Name En</label>
+                    <div class="col-md-10">
+                        <input type="text" name="name_en" value="{{ $element->name_en  }}" class="form-control"
+                               placeholder="Enter text">
+                    </div>
+                </div>
 
                 <div class="form-group">
                     {{--<label for="role_id" class="col-md-2 control-label">Shop*</label>--}}
@@ -82,7 +82,7 @@
                     <img class="img-responsive img-thumbnail" style="max-height: 120px;"
                          src="{{ asset('storage/uploads/images/thumbnail/'.$i->image) }}" alt="">
                     <form method="post" action="{{ route('backend.image.destroy',$i->id) }}">
-                        {{ csrf_field() }}
+                        @csrf
                         <input type="hidden" name="_method" value="delete"/>
                         <button type="submit" class="btn btn-circle btn-sm red">
                             <i class="fa fa-fw fa-xs fa-remove"></i>

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Src\Gallery\Image;
-use App\Src\Product\Product;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
@@ -83,7 +82,7 @@ class ImageController extends Controller
         $element = Image::whereId($id)->first();
         $updated = $element->update($request->except('product_id'));
         if ($updated) {
-            return redirect()->route('backend.gallery.index', ['product_id' => $request->product_id])->with('success', 'cover initialized for this album');
+            return redirect()->back()->with('success', 'cover initialized for this album');
         }
         return redirect()->back()->with('error', 'not updated !!!');
     }
@@ -97,11 +96,10 @@ class ImageController extends Controller
     public function destroy($id)
     {
         $element = Image::whereId($id)->first();
-        $product_id = $element->gallery->gallerable_id;
         Storage::delete(asset('storage/img/uploads/thumbnail/' . $element->image));
         Storage::delete(asset('storage/img/uploads/medium/' . $element->image));
         Storage::delete(asset('storage/img/uploads/large/' . $element->image));
         $element->delete();
-        return redirect()->route('backend.gallery.index', ['product_id' => $product_id])->with('success', 'image deleted');
+        return redirect()->back()->with('success', 'image deleted');
     }
 }

@@ -19,6 +19,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
 
     Route::resource('product', 'ProductController');
     Route::resource('gallery', 'GalleryController');
+    Route::resource('image', 'ImageController');
     Route::resource('category', 'CategoryController');
     Route::resource('page', 'PageController');
     Route::resource('user', 'UserController');

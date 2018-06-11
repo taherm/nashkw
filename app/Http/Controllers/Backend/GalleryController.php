@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
+use App\Models\Product;
+use App\Services\Traits\ImageHelpers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 class GalleryController extends Controller
 {
-
-    public function __construct()
-    {
-    }
+    use ImageHelpers;
 
     /**
      * Display a listing of the resource.
@@ -31,9 +31,16 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validate = validator($request->all(), [
+            'type' => 'required|alpha',
+            'element_id' => 'required|integer'
+        ]);
+        if ($validate->fails()) {
+            redirect()->back()->withErrors($validate);
+        }
+        return view('backend.modules.gallery.create');
     }
 
     /**
@@ -44,23 +51,26 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $product = $this->productRepository->getById($request->product_id);
+        $validate = validator($request->all(), [
+            'type' => 'required|alpha',
+            'element_id' => 'required|integer',
+            'cover' => 'image',
+            'images' => 'array',
+            'images.*' => 'image|max:1000'
 
-        $image = $this->image->CreateImage($request->file('image'));
-
-        if ($image) {
-            \DB::table('images')->insert([
-                'gallery_id' => $request->gallery_id,
-                'thumb_url' => $image,
-                'medium_url' => $image,
-                'large_url' => $image,
-                'caption_ar' => $request->caption_ar,
-                'order' => $request->order,
-                'caption_en' => $request->caption_en
-            ]);
-            return redirect()->back()->with('success','image saved');
+        ]);
+        if (request()->type === 'product') {
+            $product = Product::whereId($request->element_id)->first();
+            $element = $product->gallery()->create($request->except('images', 'cover', 'type', 'element_id'));
         }
-        return redirect()->back()->with('error','image not saved')->withInputs();
+
+        if ($element) {
+            if ($request->hasFile('images')) {
+                $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
+            }
+            return redirect()->route('backend.gallery.index')->with('success', 'gallery saved success');
+        }
+        return redirect()->route('backend.gallery.index')->with('error', 'gallery update error');
     }
 
     /**
@@ -82,7 +92,15 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $validate = validator(request()->all(), [
+            'type' => 'required|alpha',
+            'element_id' => 'required|integer'
+        ]);
+        if ($validate->fails()) {
+            redirect()->back()->withErrors($validate);
+        }
+        $element = Gallery::whereId($id)->first();
+        return view('backend.modules.gallery.edit', compact('element'));
     }
 
     /**
@@ -94,23 +112,16 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = $this->productRepository->getById($request->product_id);
+        $element = Gallery::whereId($id)->first();
 
-        $image = $this->image->CreateImage($request->file('image'));
-
-        if ($image) {
-            \DB::table('images')->insert([
-                'gallery_id' => $request->gallery_id,
-                'thumb_url' => $image,
-                'medium_url' => $image,
-                'large_url' => $image,
-                'order' => $request->order,
-                'caption_ar' => $request->caption_ar,
-                'caption_en' => $request->caption_en
-            ]);
-            return redirect()->back()->with('success','image saved');
+        $element->update($request->request->all());
+        if ($element) {
+            if ($request->hasFile('images')) {
+                $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
+            }
+            return redirect()->route('backend.gallery.index')->with('success', 'gallery saved success');
         }
-        return redirect()->back()->with('error','image not saved')->withInputs();
+        return redirect()->route('backend.gallery.index')->with('error', 'gallery update error');
     }
 
     /**

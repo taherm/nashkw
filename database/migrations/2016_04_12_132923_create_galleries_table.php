@@ -17,6 +17,9 @@ class CreateGalleriesTable extends Migration
             $table->increments('id');
             $table->boolean('active')->default(1);
             $table->morphs('galleryable');
+            $table->string('cover')->nullable();
+            $table->string('name_ar')->nullable();
+            $table->string('name_en')->nullable();
             $table->string('description_ar')->nullable();
             $table->string('description_en')->nullable();
 

@@ -101,10 +101,17 @@
                                                 <a href="{{ route('backend.product.edit',$element->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Edit</a>
                                             </li>
-                                            <li>
-                                                <a href="{{ route('backend.gallery.show',$element->id) }}">
-                                                    <i class="fa fa-fw fa-edit"></i> View Gallery</a>
-                                            </li>
+                                            @if($element->gallery)
+                                                <li>
+                                                    <a href="{{ route('backend.gallery.edit',['id' => $element->gallery->id, 'type' => 'product' , 'element_id' => $element->id]) }}">
+                                                        <i class="fa fa-fw fa-edit"></i> edit Gallery</a>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a href="{{ route('backend.gallery.create',['id' => $element->id, 'type' => 'product' , 'element_id' => $element->id]) }}">
+                                                        <i class="fa fa-fw fa-plus-square-o"></i> create Gallery</a>
+                                                </li>
+                                            @endif
                                             <li>
                                                 <a href="{{ route('backend.activate',['model' => 'product','id' => $element->id]) }}">
                                                     <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
@@ -132,7 +139,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                        {{ $elements->render() }}
+                    {{ $elements->render() }}
                 </div>
             </div>
         </div>

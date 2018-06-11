@@ -29,7 +29,7 @@
                     <td> {{$element->name_ar}} </td>
                     <td> {{$element->name_en}} </td>
                     <td>
-                        <span class="label {{ activeLabel($element->is_percentage) }}">{{ activeText($element->is_percentage,'Percentage') }}</span>
+                        <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
                     </td>
                     <td>
                         <div class="btn-group">
