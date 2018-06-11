@@ -64,24 +64,6 @@
                 </ul>
             </li>
 
-            {{--Settings--}}
-            <li class="nav-item {{ activeItem('setting', ['category','contactus', 'aboutus']) }}">
-                <a href="{{ route('backend.setting.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-cogs"></i>
-                    <span class="title">App Settings</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.setting.index') }}" class="nav-link ">
-                            <i class="fa fa-fw fa-edit"></i>
-                            <span class="title">Edit App Settings</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
             <li class="nav-item {{ activeItem('country') }}">
                 <a href="{{ route('backend.country.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-globe"></i>
@@ -147,6 +129,22 @@
                 </ul>
             </li>
 
+            <li class="nav-item {{ activeItem('tag') }}">
+                <a href="{{ route('backend.tag.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-tag"></i>
+                    <span class="title">Tags</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.tag.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-paint-brush"></i>
+                            <span class="title">Create New Tag</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item {{ activeItem('color') }}">
                 <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-paint-brush"></i>
@@ -177,6 +175,88 @@
                             <span class="title">Create New Size</span>
                             <span class="arrow"></span>
                         </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            {{--Settings--}}
+            <li class="nav-item {{ activeItem('setting', ['policy','term','faq','page','contactus', 'aboutus']) }}">
+                <a href="{{ route('backend.setting.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-cogs"></i>
+                    <span class="title">App Settings</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.setting.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-edit"></i>
+                            <span class="title">Edit App Settings</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.page.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <span class="title">pages</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('backend.page.index') }}" target="_blank" class="nav-link">
+                                    <i class="fa fa-fw fa-list-alt"></i> All Pages
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('backend.page.create') }}" target="_blank" class="nav-link">
+                                    <i class="icon-user"></i> Create New Page
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.term.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <span class="title">terms</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('backend.term.index') }}" target="_blank" class="nav-link">
+                                    <i class="fa fa-fw fa-list-alt"></i> All Terms
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('backend.term.create') }}" target="_blank" class="nav-link">
+                                    <i class="icon-user"></i> Create New term
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.faq.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <span class="title">faqs</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('backend.faq.index') }}" target="_blank" class="nav-link">
+                                    <i class="fa fa-fw fa-list-alt"></i> All Faqs
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('backend.faq.create') }}" target="_blank" class="nav-link">
+                                    <i class="icon-user"></i> Create New Faq
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
