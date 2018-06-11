@@ -9,6 +9,7 @@ use App\Services\Traits\ImageHelpers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class GalleryController extends Controller
 {
@@ -59,11 +60,13 @@ class GalleryController extends Controller
             'images.*' => 'image|max:1000'
 
         ]);
+        if ($validate->fails()) {
+            redirect()->back()->withInput(Input::all())->withErrors($validate);
+        }
         if (request()->type === 'product') {
             $product = Product::whereId($request->element_id)->first();
             $element = $product->gallery()->create($request->except('images', 'cover', 'type', 'element_id'));
         }
-
         if ($element) {
             if ($request->hasFile('images')) {
                 $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
