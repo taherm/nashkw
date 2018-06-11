@@ -56,7 +56,7 @@
                                 <input id="symbol"
                                        type="text"
                                        class="form-control"
-                                       symbol="symbol"
+                                       name="symbol"
                                        value="{{ $element->symbol }}"
                                        placeholder="symbol in arabic"
                                        maxlength="4"
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="duration" class="control-label">country *</label>
                                     <select class="form-control input-xlarge" name="country_id" id="country" required>
-                                        @foreach($countries as $country)
+                                        @foreach($allCountries as $country)
                                             <option value="{{ $country->id }}" {{ $country->id == $element->country_id ? 'selected' : null  }}>{{ $country->name }}</option>
                                         @endforeach
                                     </select>

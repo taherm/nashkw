@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Src\Product\Color;
+use App\Models\Color;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -16,9 +16,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        $colors = Color::all();
-
-        return view('backend.modules.color.index',compact('colors'));
+        $elements = Color::all();
+        return view('backend.modules.color.index',compact('elements'));
     }
 
     /**
@@ -37,9 +36,9 @@ class ColorController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\Backend\ColorStore $request)
+    public function store(Request $request)
     {
-        Color::create($request->request->all());
+
 
         return redirect()->route('backend.color.index')->with('success', 'color created');
     }
@@ -63,8 +62,8 @@ class ColorController extends Controller
      */
     public function edit($id)
     {
-        $color = Color::find($id);
-        return view('backend.modules.color.edit', compact('color'));
+        $element = Color::find($id);
+        return view('backend.modules.color.edit', compact('element'));
     }
 
     /**
@@ -76,7 +75,7 @@ class ColorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $color = Color::find($id)->update($request->request->all());
+        $element = Color::find($id)->update($request->request->all());
 
         return redirect()->route('backend.color.index')->with('success', 'color updated');
     }
@@ -89,9 +88,9 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        $color = Color::find($id)->delete();
+        $element = Color::find($id)->delete();
 
-        if ($color) {
+        if ($element) {
 
             return redirect()->route('backend.color.index')->with('success', 'color deleted');
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Src\Product\Size;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,8 +17,8 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $sizes = Size::all();
-        return view('backend.modules.size.index',compact('sizes'));
+        $elements = Size::all();
+        return view('backend.modules.size.index',compact('elements'));
     }
 
     /**
@@ -37,7 +37,7 @@ class SizeController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\Backend\SizeStore $request)
+    public function store(Request $request)
     {
         Size::create($request->request->all());
         return redirect()->route('backend.size.index')->with('success', 'size created');
@@ -62,8 +62,8 @@ class SizeController extends Controller
      */
     public function edit($id)
     {
-        $size = Size::find($id);
-        return view('backend.modules.size.edit', compact('size'));
+        $element = Size::find($id);
+        return view('backend.modules.size.edit', compact('element'));
     }
 
     /**
@@ -75,7 +75,7 @@ class SizeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $size = Size::find($id)->update($request->request->all());
+        $element = Size::find($id)->update($request->request->all());
         return redirect()->route('backend.size.index')->with('success', 'size updated');
     }
 
@@ -87,9 +87,9 @@ class SizeController extends Controller
      */
     public function destroy($id)
     {
-        $size = Size::find($id)->delete();
+        $element = Size::find($id)->delete();
 
-        if ($size) {
+        if ($element) {
 
             return redirect()->route('backend.size.index')->with('success', 'size deleted');
 

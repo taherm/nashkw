@@ -3,24 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class CouponController extends Controller
 {
-
-    public $coupon;
-
-    /**
-     * CouponController constructor.
-     * @param Coupon $coupon
-     */
-    public function __construct(Coupon $coupon)
-    {
-        $this->coupon = $coupon;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -28,9 +19,9 @@ class CouponController extends Controller
      */
     public function index()
     {
-        $coupons = $this->coupon->orderBy('created_at','desc')->get();
+        $elements = Coupon::with('user')->orderBy('created_at', 'desc')->get();
 
-        return view('backend.modules.coupon.index', compact('coupons'));
+        return view('backend.modules.coupon.index', compact('elements'));
     }
 
     /**
@@ -40,7 +31,8 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return view('backend.modules.coupon.create');
+        $users = User::active()->get();
+        return view('backend.modules.coupon.create', compact('users'));
     }
 
     /**
@@ -49,16 +41,24 @@ class CouponController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\Backend\CouponStore $request)
+    public function store(Request $request)
     {
-        $request->request->add(['due_date' => Carbon::parse($request->input('due_date'))]);
+        $validate = validator($request->all(), [
+            'is_percentage' => 'required|boolean',
+            'code' => 'required|min:5',
+            'value' => 'required|numeric|between:1,99',
+            'minimum_charge' => 'required|numeric|between:1,999',
+            'user_id' => 'required|exists:users,id',
+            'due_date' => 'required|date|after:yesterday',
+        ]);
 
-        $coupon = $this->coupon->create($request->request->all());
+        if ($validate->fails()) {
+            return redirect()->back()->withInput(Input::all())->withErrors($validate);
+        }
 
+        $coupon = Coupon::create($request->request->all());
         if ($coupon) {
-
             return redirect()->route('backend.coupon.index')->with('success', 'coupon saved');
-
         }
         return view('backend.modules.coupon.create')->with('error', 'not saved');
 
@@ -83,9 +83,9 @@ class CouponController extends Controller
      */
     public function edit($id)
     {
-        $coupon = $this->coupon->with('user', 'order')->whereId($id)->first();
-
-        return view('backend.modules.coupon.create', compact('coupon'));
+        $element = Coupon::whereId($id)->with('user')->first();
+        $users = User::active()->get();
+        return view('backend.modules.coupon.edit', compact('element', 'users'));
     }
 
     /**
@@ -95,15 +95,26 @@ class CouponController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\Backend\CouponUpdate $request, $id)
+    public function update(Request $request, $id)
     {
-        $updated = $this->coupon->whereId($id)->update($request->except('_token', '_method'));
+        $validate = validator($request->all(), [
+            'is_percentage' => 'required|boolean',
+            'code' => 'required|min:5',
+            'value' => 'required|numeric|between:1,99',
+            'minimum_charge' => 'required|numeric|between:1,999',
+            'user_id' => 'required|exists:users,id',
+            'due_date' => 'required|date|after:yesterday',
+        ]);
 
+        if ($validate->fails()) {
+            return redirect()->route('backend.coupon.edit', $id)->withErrors($validate);
+        }
+
+        $updated = Coupon::whereId($id)->first()->update($request->all());
         if ($updated) {
             return redirect()->route('backend.coupon.index')->with('success', 'coupon updated');
         }
-
-        return redirect()->back()->with('error', 'coupon not updated');
+        return view('backend.modules.coupon.create')->with('error', 'not not updated');
     }
 
     /**
@@ -114,10 +125,11 @@ class CouponController extends Controller
      */
     public function destroy($id)
     {
-        if($this->coupon->destroy($id)) {
+        $element = Coupon::whereId($id)->first();
+
+        if ($element->forceDelete()) {
             return redirect()->route('backend.coupon.index')->with('success', 'coupon deleted');
         }
-
         return redirect()->back()->with('error', 'coupon not deleted');
     }
 }

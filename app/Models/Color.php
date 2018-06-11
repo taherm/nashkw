@@ -6,6 +6,7 @@ namespace App\Models;
 class Color extends PrimaryModel
 {
     protected $localeStrings = ['name'];
+    protected $guarded = [''];
 
 
     public function product_attribute()

@@ -5,6 +5,7 @@ namespace App\Models;
 class Size extends PrimaryModel
 {
     protected $localeStrings = ['name'];
+    protected $guarded = [''];
 
     public function product_attribute()
     {

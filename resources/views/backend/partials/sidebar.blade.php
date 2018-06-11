@@ -130,6 +130,57 @@
                 </ul>
             </li>
 
+            <li class="nav-item {{ activeItem('coupon') }}">
+                <a href="{{ route('backend.coupon.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-credit-card"></i>
+                    <span class="title">Coupons</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.coupon.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-plus-circle"></i>
+                            <span class="title">Create New Coupon</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item {{ activeItem('color') }}">
+                <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-paint-brush"></i>
+                    <span class="title">Colors</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.color.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-paint-brush"></i>
+                            <span class="title">Create New Color</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item {{ activeItem('size') }}">
+                <a href="{{ route('backend.size.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-tags"></i>
+                    <span class="title">Sizes</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.size.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">Create New Size</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-folder"></i>

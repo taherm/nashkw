@@ -13,7 +13,6 @@
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->has('name_ar') ? ' has-error' : '' }}">
                                 <label for="name_ar" class="control-label">Name Arabic*</label>
-                                <input type="text" id="hue-demo" class="form-control demo" data-control="hue" value="#ff6161">
                                 <input id="name_ar"
                                        type="text"
                                        class="form-control"

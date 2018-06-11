@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <label for="duration" class="control-label">country *</label>
                                     <select class="form-control input-xlarge" name="country_id" id="country" required>
-                                        @foreach($countries as $country)
+                                        @foreach($allCountries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>

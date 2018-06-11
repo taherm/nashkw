@@ -24,8 +24,11 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::resource('user', 'UserController');
     Route::resource('order', 'OrderController');
     Route::resource('currency', 'CurrencyController');
+    Route::resource('coupon', 'CouponController');
     Route::resource('setting', 'SettingController');
     Route::resource('country', 'CountryController');
+    Route::resource('color', 'ColorController');
+    Route::resource('size', 'SizeController');
     Route::get('reset/password', 'UserController@getResetPassword')->name('reset.password');
     Route::post('reset/password', 'UserController@postResetPassword')->name('reset');
 });

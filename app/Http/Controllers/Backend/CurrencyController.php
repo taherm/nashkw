@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Country;
 use App\Models\Currency;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,8 @@ class CurrencyController extends Controller
      */
     public function create()
     {
-        return view('backend.modules.currency.create');
+        $allCountries = Country::all();
+        return view('backend.modules.currency.create', compact('allCountries'));
     }
 
     /**
@@ -40,7 +42,7 @@ class CurrencyController extends Controller
     {
         $validate = validator($request->all(), [
             'name' => 'required|unique:currencies,name',
-            'symbol' => 'required|unique:currencies,symbol',
+            'symbol' => 'required|alpha|unique:currencies,symbol',
             'exchange_rate' => 'required|numeric',
             'country_id' => 'required|unique:currencies,country_id|exists:countries,id',
         ]);
@@ -74,7 +76,8 @@ class CurrencyController extends Controller
     public function edit($id)
     {
         $element = Currency::whereId($id)->first();
-        return view('backend.modules.currency.edit', compact('element'));
+        $allCountries = Country::all();
+        return view('backend.modules.currency.edit', compact('element', 'allCountries'));
     }
 
     /**
@@ -88,11 +91,11 @@ class CurrencyController extends Controller
     {
         $validate = validator($request->all(), [
             'name' => 'required|unique:currencies,name,' . $id,
-            'symbol' => 'required|unique:currencies,symbol,' . $id,
+            'symbol' => 'required|alpha|unique:currencies,symbol,' . $id,
             'exchange_rate' => 'required|numeric',
             'country_id' => 'required|exists:countries,id|unique:currencies,country_id,' . $id,
         ]);
-        if ($validate->failed()) {
+        if ($validate->fails()) {
             return redirect()->back()->withErrors($validate);
         }
 
