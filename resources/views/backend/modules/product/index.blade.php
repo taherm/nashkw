@@ -103,12 +103,12 @@
                                             </li>
                                             @if($element->gallery)
                                                 <li>
-                                                    <a href="{{ route('backend.gallery.edit',['id' => $element->gallery->id, 'type' => 'product' , 'element_id' => $element->id]) }}">
+                                                    <a href="{{ route('backend.gallery.edit',['id' => $element->gallery->id, 'type' => 'product' , 'element_id' => $element->id]) }}" target="_blank">
                                                         <i class="fa fa-fw fa-edit"></i> edit Gallery</a>
                                                 </li>
                                             @else
                                                 <li>
-                                                    <a href="{{ route('backend.gallery.create',['id' => $element->id, 'type' => 'product' , 'element_id' => $element->id]) }}">
+                                                    <a href="{{ route('backend.gallery.create',['id' => $element->id, 'type' => 'product' , 'element_id' => $element->id]) }}" target="_blank">
                                                         <i class="fa fa-fw fa-plus-square-o"></i> create Gallery</a>
                                                 </li>
                                             @endif

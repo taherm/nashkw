@@ -52,9 +52,9 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="file"
-                                       class="control-label col-sm-2">main image*</label>
+                                       class="control-label col-sm-2">cover image*</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control tooltip-message" name="image"
+                                    <input class="form-control tooltip-message" name="cover"
                                            placeholder="main image"
                                            type="file"
                                     />
@@ -86,9 +86,7 @@
                                 <label for="description_ar" class="control-label">description arabic</label>
                                 <textarea type="text" class="form-control" id="description_ar" name="description_ar"
                                           aria-multiline="true"
-                                          maxlength="500">
-                                    {{ $element->description_ar }}
-                                </textarea>
+                                          maxlength="500">{{ $element->description_ar }}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -96,9 +94,7 @@
                                 <label for="description_en" class="control-label">description english</label>
                                 <textarea type="text" class="form-control" id="description_en" name="description_en"
                                           aria-multiline="true"
-                                          maxlength="500">
-                                    {{ $element->description_en }}
-                                </textarea>
+                                          maxlength="500">{{ $element->description_en }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -122,7 +118,7 @@
                                 </button>
                                 <ul class="dropdown-menu pull-right" role="menu">
                                     <li>
-                                        <a href="{{ route('backend.image.edit',$i->id) }}">
+                                        <a href="{{ route('backend.image.edit',$i->id) }}" target="_blank">
                                             <i class="fa fa-fw fa-user"></i>edit image</a>
                                     </li>
                                     <li>

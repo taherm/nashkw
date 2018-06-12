@@ -180,8 +180,41 @@
             </li>
 
 
+            <li class="nav-item {{ activeItem('order') }}">
+                <a href="{{ route('backend.order.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-money"></i>
+                    <span class="title">Orders</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.order.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">All Orders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.order.index',['status' => 'success']) }}"
+                           class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">Successful Orders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.order.index',['status' => 'failed']) }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">Failed Orders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
             {{--Settings--}}
-            <li class="nav-item {{ activeItem('setting', ['policy','term','faq','page','contactus', 'aboutus']) }}">
+            <li class="nav-item {{ activeItem('setting', ['policy','term','faq','page','contactus', 'aboutus','gallery','image']) }}">
                 <a href="{{ route('backend.setting.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-cogs"></i>
                     <span class="title">App Settings</span>
@@ -203,14 +236,35 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="{{ route('backend.page.index') }}" target="_blank" class="nav-link">
+                                <a href="{{ route('backend.page.index') }}" class="nav-link">
                                     <i class="fa fa-fw fa-list-alt"></i> All Pages
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('backend.page.create') }}" target="_blank" class="nav-link">
+                                <a href="{{ route('backend.page.create') }}" class="nav-link">
                                     <i class="icon-user"></i> Create New Page
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.gallery.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-file-image-o"></i>
+                            <span class="title">Galleries</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('backend.gallery.index') }}" class="nav-link">
+                                    <i class="fa fa-fw fa-file-image-o"></i> All Galleries
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('backend.image.index') }}" class="nav-link">
+                                    <i class="fa fa-fw fa-image"></i> All Images
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
@@ -224,13 +278,13 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="{{ route('backend.term.index') }}" target="_blank" class="nav-link">
+                                <a href="{{ route('backend.term.index') }}" class="nav-link">
                                     <i class="fa fa-fw fa-list-alt"></i> All Terms
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('backend.term.create') }}" target="_blank" class="nav-link">
+                                <a href="{{ route('backend.term.create') }}" class="nav-link">
                                     <i class="icon-user"></i> Create New term
                                     <span class="arrow nav-toggle"></span>
                                 </a>
@@ -245,13 +299,13 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="{{ route('backend.faq.index') }}" target="_blank" class="nav-link">
+                                <a href="{{ route('backend.faq.index') }}" class="nav-link">
                                     <i class="fa fa-fw fa-list-alt"></i> All Faqs
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('backend.faq.create') }}" target="_blank" class="nav-link">
+                                <a href="{{ route('backend.faq.create') }}" class="nav-link">
                                     <i class="icon-user"></i> Create New Faq
                                     <span class="arrow nav-toggle"></span>
                                 </a>
@@ -275,7 +329,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item">
-                                <a href="?p=dashboard-2" target="_blank" class="nav-link">
+                                <a href="?p=dashboard-2" class="nav-link">
                                     <i class="icon-user"></i> Arrow Toggle
                                     <span class="arrow nav-toggle"></span>
                                 </a>
@@ -309,7 +363,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="?p=dashboard-2" target="_blank" class="nav-link">
+                        <a href="?p=dashboard-2" class="nav-link">
                             <i class="icon-globe"></i> Arrow Toggle
                             <span class="arrow nav-toggle"></span>
                         </a>

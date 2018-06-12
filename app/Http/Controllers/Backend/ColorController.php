@@ -89,11 +89,8 @@ class ColorController extends Controller
     public function destroy($id)
     {
         $element = Color::find($id)->delete();
-
         if ($element) {
-
             return redirect()->route('backend.color.index')->with('success', 'color deleted');
-
         }
         return redirect()->route('backend.color.index')->with('error', 'color not deleted');
     }

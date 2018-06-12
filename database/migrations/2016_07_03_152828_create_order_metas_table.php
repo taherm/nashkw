@@ -21,8 +21,6 @@ class CreateOrderMetasTable extends Migration
             // price of the product on the time the order is made
             // shipping cost for specific product
             $table->decimal('price',6,2)->unsigned();
-            $table->boolean('on_sale')->default(0);
-            $table->decimal('sale_price',6,2)->unsigned();
             $table->decimal('shipping_cost',6,2)->unsigned();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');

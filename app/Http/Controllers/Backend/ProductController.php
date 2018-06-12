@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $elements = Product::paginate(20);
+        $elements = Product::paginate(100);
         return view('backend.modules.product.index', compact('elements'));
     }
 

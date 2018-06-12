@@ -127,9 +127,9 @@ class GalleryController extends Controller
             if ($request->hasFile('images')) {
                 $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
             }
-            return redirect()->route('backend.gallery.index')->with('success', 'gallery saved success');
+            return redirect()->back()->with('success', 'gallery saved success');
         }
-        return redirect()->route('backend.gallery.index')->with('error', 'gallery update error');
+        return redirect()->back()->with('error', 'gallery update error');
     }
 
     /**

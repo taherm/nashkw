@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Core\PrimaryController;
 use App\Mail\OrderShipped;
-use App\Src\Order\OrderRepository;
-use App\Src\User\UserRepository;
+use App\Models\Order;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
@@ -23,8 +17,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->orderRepository->model->with('user', 'order_metas', 'country')->orderBy('created_at','desc')->get();
-        return view('backend.modules.order.index', compact('orders'));
+        if (request()->has('status')) {
+            $elements = Order::with('order_metas.product', 'order_metas.product_attribute')->where('status', request()->status)->paginate(50);
+        } else {
+            $elements = Order::with('order_metas.product', 'order_metas.product_attribute')->paginate(50);
+        }
+
+        return view('backend.modules.order.index', compact('elements'));
     }
 
     /**
@@ -56,8 +55,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = $this->orderRepository->model->whereId($id)->with('order_metas.product', 'order_metas.product_attribute')->orderBy('created_at','desc')->first();
-
+        $order = Order::whereId($id)->first();
         return view('backend.modules.order.meta.index', compact('order'));
     }
 
@@ -88,15 +86,14 @@ class OrderController extends Controller
     public function changeStatus(Request $request)
     {
 
-        $this->orderRepository->model->whereId($request->id)->update(['status' => $request->status]);
-
+        $status = Order::whereId($request->id)->first()->update(['status' => $request->status]);
         return redirect()->back()->with('success', 'status changed successfully');
 
     }
 
     public function addOrderTrackId(Request $request)
     {
-        $order = $this->orderRepository->model->whereId($request->id)->first();
+        $order = Order::whereId($request->id)->first();
 
         $order->update([
             'status' => 'shipped',
@@ -111,7 +108,7 @@ class OrderController extends Controller
 
     public function ordersBetweenDates(Request $request)
     {
-        $orders = $this->orderRepository->model->with('user', 'order_metas', 'country')->whereBetween('created_at', array(Carbon::createFromFormat('m/d/Y', $request->from)->toDateString(), Carbon::createFromFormat('m/d/Y', $request->to)->toDateString()))->orderBy('created_at','desc')->get();
+        $orders = Order::with('user', 'order_metas', 'country')->whereBetween('created_at', array(Carbon::createFromFormat('m/d/Y', $request->from)->toDateString(), Carbon::createFromFormat('m/d/Y', $request->to)->toDateString()))->orderBy('created_at', 'desc')->get();
 
         return view('backend.modules.order.index', compact('orders'));
     }
@@ -124,6 +121,10 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $element = Order::whereId($id)->first();
+        if ($element->delete()) {
+            return redirect()->route('backend.order.index')->with('success', 'order deleted');
+        }
+        return redirect()->route('backend.order.index')->with('error', 'order not deleted');
     }
 }

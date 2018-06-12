@@ -17,20 +17,16 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->enum('status', ['pending', 'success', 'shipped', 'completed', 'failed','delivered']);
 
-            $table->float('coupon_value')->unsigned();
             $table->decimal('shipping_cost',6,2)->unsigned();
-            $table->decimal('amount',6,2)->unsigned();
-            $table->decimal('sale_amount',6,2)->unsigned(); //
-            $table->decimal('net_amount',6,2)->unsigned(); // used if coupon code exists
+            $table->decimal('price',6,2)->unsigned();
+            $table->decimal('discount',6,2)->unsigned(); //
+            $table->decimal('net_price',6,2)->unsigned(); // used if coupon code exists
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('mobile')->nullable();
             $table->string('phone')->nullable();
             $table->string('reference_id')->nullable()->deafult(0);
             $table->string('payment_method')->nullable();
-
-            $table->integer('coupon_id')->unsigned()->nullable();
-            $table->foreign('coupon_id')->references('id')->on('coupons');
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');

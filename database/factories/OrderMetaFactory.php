@@ -15,13 +15,8 @@ $factory->define(OrderMeta::class, function (Faker $faker) {
         },
         'quantity' => $faker->numberBetween(1, 3),
         'price' => function ($array) {
-            return Product::whereId($array['product_id'])->first()->price;
-        },
-        'on_sale' => function ($array) {
-            return Product::whereId($array['product_id'])->first()->on_sale;
-        },
-        'sale_price' => function ($array) {
-            return Product::whereId($array['product_id'])->first()->sale_price;
+            $product = Product::whereId($array['product_id'])->first();
+            return $product->on_sale ? $product->sale_price : $product->price;
         },
         'shipping_cost' => $faker->numberBetween(1, 3)
     ];

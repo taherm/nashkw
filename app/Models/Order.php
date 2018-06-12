@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Order extends PrimaryModel
 {
     use SoftDeletes;
+
     /**
      * Order OrderMeta
      * hasMany
@@ -39,14 +40,14 @@ class Order extends PrimaryModel
         return $this->belongsTo(Country::class);
     }
 
-    public function coupon()
-    {
-        return $this->belongsTo(Coupon::class);
-    }
-
     public function scopeOfStatus($query, $type)
     {
         return $query->where('status', $type);
 
+    }
+
+    public function getTotalPriceAttribute()
+    {
+        return $this->order_metas->sum('price');
     }
 }

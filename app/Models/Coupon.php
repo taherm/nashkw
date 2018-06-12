@@ -14,9 +14,4 @@ class Coupon extends PrimaryModel
     {
         return $this->belongsTo(User::class);
     }
-
-    public function order()
-    {
-        return $this->hasOne(Order::class);
-    }
 }

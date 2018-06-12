@@ -19,6 +19,7 @@ class OrderMeta extends PrimaryModel
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
+
     /**
      * Description : each orderMeta for a product has Only One array of (size , color and quantity)
      * Usage : backend.order.ordermeta.index
