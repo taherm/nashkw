@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Coupon;
 use Illuminate\Database\Seeder;
 
 class CouponsTableSeeder extends Seeder
@@ -11,6 +12,6 @@ class CouponsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Coupon::class, app()->environment('production') ? 2 : 50)->create();
     }
 }

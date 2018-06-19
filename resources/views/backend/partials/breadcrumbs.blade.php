@@ -1,19 +1,8 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
-        <li>
-            <i class="icon-home"></i>
-            <a href="{{ route('backend.index') }}">Home</a>
-            <i class="fa fa-angle-right"></i>
-        </li>
-        @if(request()->segment(2))
-            <li>
-                <a href="{{ route('backend.'.request()->segment(2).'.index') }}">{{ request()->segment(2) }}</a>
-            </li>
-            <li>
-                <i class="fa fa-angle-right"></i>
-                <span>{{ request()->segment(3) }}</span>
-            </li>
-        @endif
+        @section('breadcrumbs')
+            {{ Breadcrumbs::render('backend.home') }}
+        @show
     </ul>
     <div class="page-toolbar">
         <div class="btn-group pull-right">

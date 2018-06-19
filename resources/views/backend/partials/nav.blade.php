@@ -28,7 +28,20 @@
                 <ul class="dropdown-menu" role="menu">
                     <li>
                         <a href="{{ route('backend.product.create') }}">
-                            <i class="icon-docs"></i> New Product</a>
+                            <i class="icon-docs"></i> Create New Product</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('backend.tag.create') }}">
+                            <i class="icon-tag"></i> Create New Tag</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{{ route('backend.size.create') }}">
+                            <i class="icon-grid"></i> Create New Size</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('backend.color.create') }}">
+                            <i class="icon-camera"></i> Create New Color</a>
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -160,9 +173,9 @@
                             {{--</li>--}}
                         {{--</ul>--}}
                     {{--</li>--}}
-                    <!-- END NOTIFICATION DROPDOWN -->
-                    <!-- BEGIN INBOX DROPDOWN -->
-                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    {{--<!-- END NOTIFICATION DROPDOWN -->--}}
+                    {{--<!-- BEGIN INBOX DROPDOWN -->--}}
+                    {{--<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->--}}
                     {{--<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">--}}
                         {{--<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"--}}
                            {{--data-close-others="true">--}}
@@ -242,9 +255,9 @@
                             {{--</li>--}}
                         {{--</ul>--}}
                     {{--</li>--}}
-                    <!-- END INBOX DROPDOWN -->
-                    <!-- BEGIN TODO DROPDOWN -->
-                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    {{--<!-- END INBOX DROPDOWN -->--}}
+                    {{--<!-- BEGIN TODO DROPDOWN -->--}}
+                    {{--<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->--}}
                     {{--<li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">--}}
                         {{--<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"--}}
                            {{--data-close-others="true">--}}
@@ -400,7 +413,7 @@
                     </li>
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                           style="display: none;">
-                        {{ csrf_field() }}
+                        @csrf
                     </form>
                     <!-- END USER LOGIN DROPDOWN -->
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->

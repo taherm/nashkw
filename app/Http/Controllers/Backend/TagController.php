@@ -2,21 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Core\PrimaryController;
 use App\Http\Controllers\Controller;
-use Conner\Tagging\Model\Tag;
-use App\Http\Requests;
-use Illuminate\Support\Facades\Cache;
+use App\Models\Tag;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class TagController extends Controller
 {
-    public $tag;
-
-    public function __construct(Tag $tag)
-    {
-        $this->tag = $tag;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +16,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = $this->tag->orderBy('id', 'desc')->get();
-
-        return view('backend.modules.tag.index', compact('tags'));
+        $elements = Tag::all();
+        return view('backend.modules.tag.index', compact('elements'));
     }
 
     /**
@@ -45,30 +36,21 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\Backend\TagStore $request)
+    public function store(Request $request)
     {
-        Cache::forget('tags');
-
-        $tag = $this->tag->create([
-            'name' => $request->name,
+        $validate = validator($request->all(), [
+            'name' => 'required|alpha|min:3|unique,tags:name',
+            'slug_ar' => 'required|min:3',
+            'slug_en' => 'required|min:3',
         ]);
-
-        if ($request->has('name_en')) {
-            $tag = $this->tag->create([
-                'name' => $request->name_en,
-            ]);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate)->withInput(Input::all());
         }
-
-        if ($tag) {
-
-            Cache::forever('tags', $this->tag->all());
-
-            return redirect()->route('backend.tag.index')->with('success', 'successfully created');
-
+        $element = Tag::create($request->all());
+        if ($element) {
+            return redirect()->route('backend.tag.index')->with('sucess', 'created successfully!!');
         }
-
         return redirect()->back()->with('error', 'not created !!');
-
     }
 
     /**
@@ -90,9 +72,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = $this->tag->whereId($id)->first();
+        $element = Tag::whereId($id)->first();
 
-        return view('backend.modules.tag.edit', compact('tag'));
+        return view('backend.modules.tag.edit', compact('element'));
     }
 
     /**
@@ -102,14 +84,21 @@ class TagController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\Backend\TagUpdate $request, $id)
+    public function update(Request $request, $id)
     {
-        if ($this->tag->find($id)->update(['name' => $request->name, 'slug' => $request->slug])) {
-
-            return redirect()->route('backend.tag.index')->with('success', 'tag saved');
-
+        $validate = validator($request->all(), [
+            'name' => 'required|alpha|min:3|unique,tags:name,'.$id,
+            'slug_ar' => 'required|min:3',
+            'slug_en' => 'required|min:3',
+        ]);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate)->withInput(Input::all());
         }
-        return redirect()->back()->with('error', 'not saved !!');
+        $element = Tag::whereId($id)->first()->update($request->all());
+        if ($element) {
+            return redirect()->route('backend.tag.index')->with('sucess', 'created successfully!!');
+        }
+        return redirect()->back()->with('error', 'not created !!');
 
     }
 
@@ -121,7 +110,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->tag->whereId($id)->delete()) {
+        if (Tag::whereId($id)->first()->delete()) {
 
             return redirect()->route('backend.tag.index')->with('success', 'successful');
 

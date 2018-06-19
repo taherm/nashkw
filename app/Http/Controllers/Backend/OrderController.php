@@ -18,9 +18,9 @@ class OrderController extends Controller
     public function index()
     {
         if (request()->has('status')) {
-            $elements = Order::with('order_metas.product', 'order_metas.product_attribute')->where('status', request()->status)->paginate(50);
+            $elements = Order::with('order_metas.product', 'order_metas.product_attribute.size','order_metas.product_attribute.color')->where('status', request()->status)->paginate(50);
         } else {
-            $elements = Order::with('order_metas.product', 'order_metas.product_attribute')->paginate(50);
+            $elements = Order::with('order_metas.product', 'order_metas.product_attribute.size','order_metas.product_attribute.color')->paginate(50);
         }
 
         return view('backend.modules.order.index', compact('elements'));

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
-use App\Models\Product;
 use App\Services\Traits\ImageHelpers;
 use Illuminate\Http\Request;
 

@@ -69,9 +69,7 @@
                         <div class="form-group">
                             <label for="description_ar"
                                    class="control-label">description_ar</label>
-                            <textarea type="text" class="form-control" id="description_ar" name="description_ar"
-                                      aria-multiline="true"
-                                      maxlength="500"></textarea>
+                            <textarea type="text" class="form-control" id="description_ar" name="description_ar" aria-multiline="true" maxlength="500"></textarea>
                         </div>
                     </div>
 
@@ -79,8 +77,7 @@
                         <div class="form-group">
                             <label for="description" class="control-label">description english</label>
                             <textarea type="text" class="form-control" id="description_en" name="description_en"
-                                      aria-multiline="true"
-                                      maxlength="500"></textarea>
+                                      aria-multiline="true" maxlength="500"></textarea>
                         </div>
                     </div>
                 </div>
