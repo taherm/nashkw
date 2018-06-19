@@ -1,5 +1,8 @@
 @extends('backend.layouts.app')
 
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('backend.order.index') }}
+@endsection
 @section('content')
     <div class="portlet-body">
         <table id="dataTable" class="table table-striped table-bordered table-hover" cellspacing="0"

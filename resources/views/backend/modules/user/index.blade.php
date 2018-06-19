@@ -1,5 +1,8 @@
 @extends('backend.layouts.app')
 
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('backend.user.index') }}
+@endsection
 @section('content')
     <div class="row">
         <div class="col-md-12">

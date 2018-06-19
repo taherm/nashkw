@@ -6,7 +6,7 @@ Breadcrumbs::for('backend.home', function ($trail) {
 });
 
 // Home > About
-Breadcrumbs::for('backend.user.index', function ($trail, $element) {
+Breadcrumbs::for('backend.user.index', function ($trail) {
     $trail->parent('backend.home');
     $trail->push('user', route('backend.user.index'));
 });
@@ -16,13 +16,69 @@ Breadcrumbs::for('backend.user.index', function ($trail, $element) {
 // Home > Blog
 Breadcrumbs::for('backend.product.index', function ($trail) {
     $trail->parent('backend.home');
-    $trail->push('project', route('backend.product.index'));
+    $trail->push('products', route('backend.product.index'));
 });
 
 
 Breadcrumbs::for('backend.tag.index', function ($trail) {
     $trail->parent('backend.home');
     $trail->push('tags', route('backend.tag.index'));
+});
+
+Breadcrumbs::for('backend.color.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('color', route('backend.color.index'));
+});
+
+Breadcrumbs::for('backend.size.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('size', route('backend.size.index'));
+});
+
+Breadcrumbs::for('backend.country.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('country', route('backend.country.index'));
+});
+
+Breadcrumbs::for('backend.gallery.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('gallery', route('backend.gallery.index'));
+});
+
+Breadcrumbs::for('backend.role.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('role', route('backend.role.index'));
+});
+
+Breadcrumbs::for('backend.setting.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('setting', route('backend.setting.index'));
+});
+
+Breadcrumbs::for('backend.order.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('order', route('backend.order.index'));
+});
+
+Breadcrumbs::for('backend.currency.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('currency', route('backend.currency.index'));
+});
+
+Breadcrumbs::for('backend.coupon.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('coupon', route('backend.coupon.index'));
+});
+
+Breadcrumbs::for('backend.slider.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('slider', route('backend.slider.index'));
+});
+
+
+Breadcrumbs::for('backend.page.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('page', route('backend.page.index'));
 });
 
 Breadcrumbs::for('backend.tag.create', function ($trail) {
