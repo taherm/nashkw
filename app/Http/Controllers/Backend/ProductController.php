@@ -4,17 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Services\Traits\ImageHelpers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
-
-
-    public function __construct()
-    {
-
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -42,8 +37,41 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $validate = validator($request->all(), [
+            'sku' => 'required',
+            'name_ar' => 'required:min:3|max:200',
+            'name_en' => 'required|min:3|max:200',
+//            'home_delivery_availability' => 'required',
+//            'shipment_availability' => 'required',
+            'on_sale' => 'required|boolean',
+            'on_sale_on_homepage' => 'required|boolean',
+            'on_homepage' => 'required|boolean',
+            'price' => 'required|numeric',
+            'weight' => 'required|numeric',
+            'sale_price' => 'required|numeric',
+            'size_chart_image' => 'image',
+            'description_en' => 'min:3',
+            'description_ar' => 'min:3',
+            'notes_ar' => 'min:3',
+            'notes_en' => 'min:3',
+            'image' => 'required|image',
+            'start_sale' => 'required|date|after_or_equal:today',
+            'end_sale' => 'required|date|after_or_equal:today',
+            'active' => 'required|boolean',
+        ]);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate)->withInput(Input::all());
+        }
+        $element = Product::create($request->request->all());
+        if ($element) {
+            if ($request->hasFile('image')) {
+                $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
+            }
+            return redirect()->route('backend.product.index')->with('success', 'product saved.');
+        }
+        return redirect()->back()->with('error', 'unknown error');
 
     }
 

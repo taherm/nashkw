@@ -74,11 +74,22 @@ Breadcrumbs::for('backend.slider.index', function ($trail) {
     $trail->push('slider', route('backend.slider.index'));
 });
 
-
 Breadcrumbs::for('backend.page.index', function ($trail) {
     $trail->parent('backend.home');
     $trail->push('page', route('backend.page.index'));
 });
+
+
+Breadcrumbs::for('backend.product.create', function ($trail) {
+    $trail->parent('backend.product.index');
+    $trail->push('create product', route('backend.product.create'));
+});
+
+Breadcrumbs::for('backend.product.edit', function ($trail, $element) {
+    $trail->parent('backend.product.index');
+    $trail->push('edit product', route('backend.product.edit', $element->id));
+});
+
 
 Breadcrumbs::for('backend.tag.create', function ($trail) {
     $trail->parent('backend.tag.index');
@@ -90,14 +101,26 @@ Breadcrumbs::for('backend.tag.edit', function ($trail, $element) {
     $trail->push('edit tag', route('backend.tag.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.user.create', function ($trail) {
+    $trail->parent('backend.user.index');
+    $trail->push('create user', route('backend.user.create'));
+});
+
 Breadcrumbs::for('backend.user.edit', function ($trail, $element) {
     $trail->parent('backend.user.index');
     $trail->push('edit user', route('backend.user.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.gallery.create', function ($trail) {
+    $trail->parent('backend.gallery.index');
+    $trail->push(request()->type, route('backend.' . request()->type . '.index'));
+    return $trail->push('create gallery', route('backend.gallery.create', ['type' => request()->type, 'element_id' => request()->element_id]));
+});
+
 Breadcrumbs::for('backend.gallery.edit', function ($trail, $element) {
     $trail->parent('backend.gallery.index');
-    $className = class_basename($element->galleryable);
+    $className = strtolower(class_basename($element->galleryable));
+    $trail->push($className, route('backend.' . $className . '.index'));
     return $trail->push('edit gallery', route('backend.gallery.edit', ['id' => $element->id, 'type' => $className, 'element_id' => $element->galleryable->id]));
 
 });
@@ -105,11 +128,6 @@ Breadcrumbs::for('backend.gallery.edit', function ($trail, $element) {
 Breadcrumbs::for('backend.image.edit', function ($trail, $element) {
     $trail->parent('backend.gallery.edit', $element->gallery);
     return $trail->push('edit image', route('backend.image.edit', $element->id));
-});
-
-
-Breadcrumbs::for('backend.product.create', function ($trail) {
-    $trail->parent('backend.product.index');
 });
 
 

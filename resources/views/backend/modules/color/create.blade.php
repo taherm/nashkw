@@ -1,6 +1,9 @@
 @extends('backend.layouts.app')
 
 
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('backend.color.create') }}
+@endsection
 @section('content')
     <div class="portlet box blue">
         @include('backend.partials.forms.form_title')

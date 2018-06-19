@@ -1,4 +1,9 @@
 @extends('backend.layouts.app')
+
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('backend.gallery.create') }}
+@endsection
+
 @section('content')
     <div class="portlet light bordered">
         <div class="portlet-title">

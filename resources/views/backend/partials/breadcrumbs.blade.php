@@ -1,7 +1,13 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         @section('breadcrumbs')
-            {{ Breadcrumbs::render('backend.home') }}
+            @if(!isset($element))
+                {{ Breadcrumbs::render(Route::currentRouteName()) }}
+            @elseif(isset($elements))
+                {{ Breadcrumbs::render(Route::currentRouteName()) }}
+            @elseif(isset($element))
+                {{ Breadcrumbs::render(Route::currentRouteName(), $element) }}
+            @endif
         @show
     </ul>
     <div class="page-toolbar">

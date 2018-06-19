@@ -15,11 +15,11 @@ trait ProductHelpers
 {
     public function scopeOnSale($q)
     {
-        return $q->where('on_sale', true);
+        return $q->where('on_sale', true)->where('end_sale','>=', Carbon::today());
     }
 
     public function getIsOnSaleAttribute() {
-        return $this->on_sale && $this->end_sale > Carbon::now() ? true : false;
+        return $this->on_sale && $this->end_sale >= Carbon::today() ? true : false;
     }
 
     public function scopeOnHomePage($q)

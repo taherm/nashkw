@@ -4,16 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
-use App\Services\Traits\ImageHelpers;
+use App\Models\Product;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 
 class GalleryController extends Controller
 {
-    use ImageHelpers;
-
     /**
      * Display a listing of the resource.
      *
