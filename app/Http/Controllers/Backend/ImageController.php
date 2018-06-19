@@ -61,8 +61,8 @@ class ImageController extends Controller
      */
     public function edit($id)
     {
-        $element = Image::whereId($id)->first();
-        return view('backend.modules.image.edit', compact('element', 'gallery_id'));
+        $element = Image::whereId($id)->with('gallery')->first();
+        return view('backend.modules.image.edit', compact('element'));
     }
 
     /**

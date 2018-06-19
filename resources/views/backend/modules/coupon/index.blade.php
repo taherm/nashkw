@@ -2,7 +2,7 @@
 
 @section('breadcrumbs')
     {{ Breadcrumbs::render('backend.coupon.index') }}
-@show
+@endsection
 @section('content')
     <div class="portlet-body">
         <table id="dataTable" class="table table-striped table-bordered table-hover" cellspacing="0"

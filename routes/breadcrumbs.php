@@ -12,7 +12,6 @@ Breadcrumbs::for('backend.user.index', function ($trail) {
 });
 
 
-
 // Home > Blog
 Breadcrumbs::for('backend.product.index', function ($trail) {
     $trail->parent('backend.home');
@@ -91,11 +90,27 @@ Breadcrumbs::for('backend.tag.edit', function ($trail, $element) {
     $trail->push('edit tag', route('backend.tag.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.user.edit', function ($trail, $element) {
+    $trail->parent('backend.user.index');
+    $trail->push('edit user', route('backend.user.edit', $element->id));
+});
+
+Breadcrumbs::for('backend.gallery.edit', function ($trail, $element) {
+    $trail->parent('backend.gallery.index');
+    $className = class_basename($element->galleryable);
+    return $trail->push('edit gallery', route('backend.gallery.edit', ['id' => $element->id, 'type' => $className, 'element_id' => $element->galleryable->id]));
+
+});
+
+Breadcrumbs::for('backend.image.edit', function ($trail, $element) {
+    $trail->parent('backend.gallery.edit', $element->gallery);
+    return $trail->push('edit image', route('backend.image.edit', $element->id));
+});
+
 
 Breadcrumbs::for('backend.product.create', function ($trail) {
     $trail->parent('backend.product.index');
 });
-
 
 
 // Home > Blog > [Category]

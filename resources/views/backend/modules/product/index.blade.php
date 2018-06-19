@@ -27,8 +27,8 @@
                             <th>id</th>
                             <th>sku</th>
                             <th>name_ar</th>
-                            <th>HomeDeliveryAvail</th>
-                            <th>ShipmentAvail</th>
+                            {{--<th>HomeDeliveryAvail</th>--}}
+                            {{--<th>ShipmentAvail</th>--}}
                             <th>on_sale</th>
                             <th>OnHome</th>
                             <th>price</th>
@@ -45,8 +45,8 @@
                             <th>id</th>
                             <th>sku</th>
                             <th>name_ar</th>
-                            <th>HomeDeliverAvailability</th>
-                            <th>shipment_availability</th>
+                            {{--<th>HomeDeliverAvailability</th>--}}
+                            {{--<th>shipment_availability</th>--}}
                             <th>on_sale</th>
                             <th>OnHome</th>
                             <th>price</th>
@@ -64,12 +64,12 @@
                                 <td>{{ $element->id }}</td>
                                 <td>{{ $element->sku }}</td>
                                 <td>{{ $element->name_ar }}</td>
-                                <td>
-                                    <span class="label {{ activeLabel($element->home_delivery_availability) }}">{{ activeText($element->home_delivery_availability,'Yes') }}</span>
-                                </td>
-                                <td>
-                                    <span class="label {{ activeLabel($element->shipment_availability) }}">{{ activeText($element->shipment_availability,'Yes') }}</span>
-                                </td>
+                                {{--<td>--}}
+                                    {{--<span class="label {{ activeLabel($element->home_delivery_availability) }}">{{ activeText($element->home_delivery_availability,'Yes') }}</span>--}}
+                                {{--</td>--}}
+                                {{--<td>--}}
+                                    {{--<span class="label {{ activeLabel($element->shipment_availability) }}">{{ activeText($element->shipment_availability,'Yes') }}</span>--}}
+                                {{--</td>--}}
                                 <td>
                                     <span class="label {{ activeLabel($element->on_sale) }}">{{ activeText($element->on_sale,'OnSale') }}</span>
                                 </td>

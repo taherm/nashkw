@@ -2,7 +2,7 @@
 
 @section('breadcrumbs')
     {{ Breadcrumbs::render('backend.gallery.index') }}
-@show
+@endsection
 
 @section('content')
     <div class="portlet-body">

@@ -1,4 +1,9 @@
 @extends('backend.layouts.app')
+
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('backend.gallery.edit', $element) }}
+@endsection
+
 @section('content')
     <div class="portlet box blue">
         @include('backend.partials.forms.form_title')
@@ -102,52 +107,59 @@
                 @include('backend.partials.forms._btn-group')
             </form>
         </div>
-    </div>
-    <div class="col-lg-12">
-        @foreach($element->images->chunk(4) as $set)
-            @foreach($set as $i)
-                <div class="col-sm-3">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <img class="img-responsive img-thumbnail" style="max-height: 200px;"
-                                 src="{{ asset('storage/uploads/images/thumbnail/'.$i->path) }}" alt="">
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn green btn-sm btn-outline dropdown-toggle"
-                                        data-toggle="dropdown"> Actions
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right" role="menu">
-                                    <li>
-                                        <a href="{{ route('backend.image.edit',$i->id) }}" target="_blank">
-                                            <i class="fa fa-fw fa-user"></i>edit image</a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="modal" href="#" data-target="#basic"
-                                           data-title="Delete"
-                                           data-content="Are you sure you want to delete image ? "
-                                           data-form_id="delete-{{ $element->id }}"
-                                        >
-                                            <i class="fa fa-fw fa-recycle"></i> delete</a>
-                                        <form method="post" id="delete-{{ $element->id }}"
-                                              action="{{ route('backend.image.destroy',$i->id) }}">
-                                            @csrf
-                                            <input type="hidden" name="_method" value="delete"/>
-                                            <button type="submit" class="btn btn-del hidden">
-                                                <i class="fa fa-fw fa-times-circle"></i> delete image
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                            <ul style="padding: 20px;">
-                                <li>
-                                    order : {{ $i->order }} </br>
-                                </li>
-                            </ul>
-                        </div>
+        <div class="portlet box blue">
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @foreach($element->images->chunk(4) as $set)
+                            @foreach($set as $i)
+                                <div class="col-sm-3">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <img class="img-responsive img-thumbnail" style="max-height: 200px;"
+                                                 src="{{ asset('storage/uploads/images/thumbnail/'.$i->path) }}" alt="">
+                                            <div class="btn-group pull-right">
+                                                <button type="button" class="btn green btn-sm btn-outline dropdown-toggle"
+                                                        data-toggle="dropdown"> Actions
+                                                    <i class="fa fa-angle-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu pull-right" role="menu">
+                                                    <li>
+                                                        <a href="{{ route('backend.image.edit',$i->id) }}" target="_blank">
+                                                            <i class="fa fa-fw fa-user"></i>edit image</a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-toggle="modal" href="#" data-target="#basic"
+                                                           data-title="Delete"
+                                                           data-content="Are you sure you want to delete image ? "
+                                                           data-form_id="delete-{{ $element->id }}"
+                                                        >
+                                                            <i class="fa fa-fw fa-recycle"></i> delete</a>
+                                                        <form method="post" id="delete-{{ $element->id }}"
+                                                              action="{{ route('backend.image.destroy',$i->id) }}">
+                                                            @csrf
+                                                            <input type="hidden" name="_method" value="delete"/>
+                                                            <button type="submit" class="btn btn-del hidden">
+                                                                <i class="fa fa-fw fa-times-circle"></i> delete image
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <ul style="padding: 20px;">
+                                                <li>
+                                                    order : {{ $i->order }} </br>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
                     </div>
                 </div>
-            @endforeach
-        @endforeach
+            </div>
+        </div>
     </div>
+
 @endsection
