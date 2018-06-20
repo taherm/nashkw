@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Term;
+use App\Models\Aboutus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TermController extends Controller
+class AboutusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TermController extends Controller
      */
     public function index()
     {
-        $elements = Term::all();
-        return view('backend.modules.term.index', compact('elements'));
+        $elements = Aboutus::all();
+        return view('backend.modules.aboutus.index', compact('elements'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TermController extends Controller
      */
     public function create()
     {
-        return view('backend.modules.term.create');
+        return view('backend.modules.aboutus.create');
     }
 
     /**
@@ -37,11 +37,11 @@ class TermController extends Controller
      */
     public function store(Request $request)
     {
-        $element = Term::create($request->all());
+        $element = Aboutus::create($request->all());
         if ($element) {
-            return redirect()->route('backend.term.index')->with('success', 'term added');
+            return redirect()->route('backend.aboutus.index')->with('success', 'Aboutus added');
         }
-        return redirect()->back()->with('error', 'term is not saved.');
+        return redirect()->back()->with('error', 'Aboutus is not saved.');
     }
 
     /**
@@ -63,8 +63,8 @@ class TermController extends Controller
      */
     public function edit($id)
     {
-        $element = Term::whereId($id)->first();
-        return view('backend.modules.term.edit', compact('element'));
+        $element = Aboutus::whereId($id)->first();
+        return view('backend.modules.aboutus.edit', compact('element'));
     }
 
     /**
@@ -76,12 +76,12 @@ class TermController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $element = Term::whereId($id)->first();
+        $element = Aboutus::whereId($id)->first();
         if ($element) {
             $element->update($request->all());
-            return redirect()->route('backend.term.index')->with('success', 'term added');
+            return redirect()->route('backend.aboutus.index')->with('success', 'Aboutus added');
         }
-        return redirect()->back()->with('error', 'term is not saved.');
+        return redirect()->back()->with('error', 'Aboutus is not saved.');
     }
 
     /**
@@ -92,10 +92,10 @@ class TermController extends Controller
      */
     public function destroy($id)
     {
-        $element = Term::whereId($id)->first();
+        $element = Aboutus::whereId($id)->first();
         if ($element->delete()) {
-            return redirect()->route('backend.term.index')->with('success', 'term deleted');
+            return redirect()->route('backend.aboutus.index')->with('success', 'aboutus deleted');
         }
-        return redirect()->back()->with('error', 'term is not deleted.');
+        return redirect()->back()->with('error', 'aboutus is not deleted.');
     }
 }

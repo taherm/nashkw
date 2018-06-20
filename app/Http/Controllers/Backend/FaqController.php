@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class FaqController extends Controller
      */
     public function index()
     {
-        //
+        $elements = Faq::all();
+        return view('backend.modules.faq.index', compact('elements'));
     }
 
     /**
@@ -24,24 +26,28 @@ class FaqController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.modules.faq.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $element = Faq::create($request->all());
+        if ($element) {
+            return redirect()->route('backend.faq.index')->with('success', 'Faq added');
+        }
+        return redirect()->back()->with('error', 'Faq is not saved.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,34 +58,44 @@ class FaqController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $element = Faq::whereId($id)->first();
+        return view('backend.modules.faq.edit', compact('element'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $element = Faq::whereId($id)->first();
+        if ($element) {
+            $element->update($request->all());
+            return redirect()->route('backend.faq.index')->with('success', 'Faq added');
+        }
+        return redirect()->back()->with('error', 'Faq is not saved.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $element = Faq::whereId($id)->first();
+        if ($element->delete()) {
+            return redirect()->route('backend.faq.index')->with('success', 'Faq deleted');
+        }
+        return redirect()->back()->with('error', 'Faq is not deleted.');
     }
 }

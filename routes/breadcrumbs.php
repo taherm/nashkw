@@ -72,6 +72,32 @@ Breadcrumbs::for('backend.order.index', function ($trail) {
     $trail->push('order', route('backend.order.index'));
 });
 
+Breadcrumbs::for('backend.page.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('page', route('backend.page.index'));
+});
+
+Breadcrumbs::for('backend.term.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('term', route('backend.term.index'));
+});
+
+Breadcrumbs::for('backend.faq.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('faq', route('backend.faq.index'));
+});
+
+Breadcrumbs::for('backend.policy.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('policy', route('backend.policy.index'));
+});
+
+
+Breadcrumbs::for('backend.aboutus.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('aboutus', route('backend.aboutus.index'));
+});
+
 Breadcrumbs::for('backend.currency.index', function ($trail) {
     $trail->parent('backend.home');
     $trail->push('currency', route('backend.currency.index'));
@@ -87,10 +113,6 @@ Breadcrumbs::for('backend.slider.index', function ($trail) {
     $trail->push('slider', route('backend.slider.index'));
 });
 
-Breadcrumbs::for('backend.page.index', function ($trail) {
-    $trail->parent('backend.home');
-    $trail->push('page', route('backend.page.index'));
-});
 
 
 Breadcrumbs::for('backend.attribute.create', function ($trail, $element) {
@@ -200,6 +222,16 @@ Breadcrumbs::for('backend.category.edit', function ($trail, $element) {
     $trail->push('edit category', route('backend.category.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.aboutus.create', function ($trail) {
+    $trail->parent('backend.aboutus.index');
+    $trail->push('create aboutus', route('backend.aboutus.create'));
+});
+
+Breadcrumbs::for('backend.aboutus.edit', function ($trail, $element) {
+    $trail->parent('backend.aboutus.index');
+    $trail->push('edit aboutus', route('backend.aboutus.edit', $element->id));
+});
+
 Breadcrumbs::for('backend.page.create', function ($trail) {
     $trail->parent('backend.page.index');
     $trail->push('create page', route('backend.page.create'));
@@ -208,6 +240,37 @@ Breadcrumbs::for('backend.page.create', function ($trail) {
 Breadcrumbs::for('backend.page.edit', function ($trail, $element) {
     $trail->parent('backend.page.index');
     $trail->push('edit page', route('backend.page.edit', $element->id));
+});
+
+Breadcrumbs::for('backend.term.create', function ($trail) {
+    $trail->parent('backend.term.index');
+    $trail->push('create term', route('backend.term.create'));
+});
+
+Breadcrumbs::for('backend.term.edit', function ($trail, $element) {
+    $trail->parent('backend.term.index');
+    $trail->push('edit term', route('backend.term.edit', $element->id));
+});
+
+Breadcrumbs::for('backend.faq.create', function ($trail) {
+    $trail->parent('backend.faq.index');
+    $trail->push('create faq', route('backend.faq.create'));
+});
+
+Breadcrumbs::for('backend.faq.edit', function ($trail, $element) {
+    $trail->parent('backend.faq.index');
+    $trail->push('edit faq', route('backend.faq.edit', $element->id));
+});
+
+
+Breadcrumbs::for('backend.policy.create', function ($trail) {
+    $trail->parent('backend.policy.index');
+    $trail->push('create policy', route('backend.policy.create'));
+});
+
+Breadcrumbs::for('backend.policy.edit', function ($trail, $element) {
+    $trail->parent('backend.policy.index');
+    $trail->push('edit policy', route('backend.policy.edit', $element->id));
 });
 
 

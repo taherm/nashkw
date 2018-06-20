@@ -1,43 +1,73 @@
 @extends('backend.layouts.app')
+
+
 @section('content')
-    <div class="clearfix"></div>
-    <div class="portlet-body form">
-        <form role="form" method="post" action="{{ route('backend.aboutus.update',$element->id) }}">
-            {{ csrf_field() }}
-            <input type="hidden" name="_method" value="patch">
-
-            <div class="form-body">
-                <div class="form-group form-md-line-input">
-                    <input type="text" class="form-control" name="title_ar" value="{{ $element->title_ar }}" required/>
-                    <label for="form_control_1">title ar*</label>
-                </div>
-            </div>
-            <div class="form-body">
-                <div class="form-group form-md-line-input">
-                    <input type="text" class="form-control" name="title_en" value="{{ $element->title_en }}" required/>
-                    <label for="form_control_1">title en*</label>
-                </div>
-            </div>
-
-            <div class="form-body">
-                <div class="form-group form-md-line-input">
-                    <textarea class="form-control" name="body_ar" placeholder="description ..." required>
-                        {{ $element->body_ar }}
-                    </textarea>
-                    <label for="form_control_1">Description Arabic*</label>
-                    <span class="help-block">description</span>
-                </div>
-            </div>
-            <div class="form-body">
-                <div class="form-group form-md-line-input">
-                    <textarea class="form-control" name="body_en" placeholder="description ..." required>
-                        {{ $element->body_en }}
-                    </textarea>
-                    <label for="form_control_1">Description English*</label>
-                    <span class="help-block">description</span>
-                </div>
-            </div>
-            @include('backend.partials.forms._btn-group')
-        </form>
+    <div class="portlet box blue">
+        @include('backend.partials.forms.form_title')
+        <div class="portlet-body form">
+            <form class="horizontal-form" role="form" method="POST"
+                  action="{{ route('backend.aboutus.update', $element->id) }}" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="_method" value="put">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->has('title_ar') ? ' has-error' : '' }}">
+                                <label for="title_ar" class="control-label">title Arabic*</label>
+                                <input id="title_ar"
+                                       type="text"
+                                       class="form-control"
+                                       name="title_ar"
+                                       value="{{ $element->title_ar }}"
+                                       placeholder="name in arabic"
+                                       required autofocus>
+                                @if ($errors->has('title_ar'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('title_ar') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group{{ $errors->has('title_en') ? ' has-error' : '' }}">
+                                <label for="title_en" class="control-label">title English*</label>
+                                <input id="title_en"
+                                       type="text"
+                                       class="form-control"
+                                       name="title_en"
+                                       value="{{ $element->title_en }}"
+                                       placeholder="name in english"
+                                       required autofocus>
+                                @if ($errors->has('title_en'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('title_en') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description" class="control-label">content arabic</label>
+                                <textarea type="text" class="form-control tinymce" id="content_ar" name="content_ar"
+                                          aria-multiline="true" maxlength="500">{{ $element->content_ar }}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description" class="control-label">content english</label>
+                                <textarea type="text" class="form-control tinymce" id="content_en" name="content_en"
+                                          aria-multiline="true" maxlength="500">{{ $element->content_en }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                @include('backend.partials.forms._btn-group')
+            </form>
+        </div>
     </div>
 @endsection

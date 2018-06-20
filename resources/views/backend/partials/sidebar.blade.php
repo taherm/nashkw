@@ -229,6 +229,27 @@
                         </a>
                     </li>
                     <li class="nav-item ">
+                        <a href="{{ route('backend.aboutus.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <span class="title">Aboutus</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('backend.aboutus.index') }}" class="nav-link">
+                                    <i class="fa fa-fw fa-list-alt"></i> Aboutus
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('backend.aboutus.create') }}" class="nav-link">
+                                    <i class="icon-user"></i> Create New Page
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
                         <a href="{{ route('backend.page.index') }}" class="nav-link ">
                             <i class="fa fa-fw fa-plus-square-o"></i>
                             <span class="title">pages</span>
@@ -243,7 +264,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('backend.page.create') }}" class="nav-link">
-                                    <i class="icon-user"></i> Create New Page
+                                    <i class="icon-user"></i> Create New aboutus
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
@@ -307,6 +328,27 @@
                             <li class="nav-item">
                                 <a href="{{ route('backend.faq.create') }}" class="nav-link">
                                     <i class="icon-user"></i> Create New Faq
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.policy.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <span class="title">polices</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('backend.policy.index') }}" class="nav-link">
+                                    <i class="fa fa-fw fa-list-alt"></i> All Policies
+                                    <span class="arrow nav-toggle"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('backend.policy.create') }}" class="nav-link">
+                                    <i class="icon-user"></i> Create New Policy
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>

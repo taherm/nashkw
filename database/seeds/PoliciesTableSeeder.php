@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Policy;
 use Illuminate\Database\Seeder;
 
 class PoliciesTableSeeder extends Seeder
@@ -11,6 +12,6 @@ class PoliciesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Policy::class, app()->environment('production') ? 1 : 10)->create();
     }
 }

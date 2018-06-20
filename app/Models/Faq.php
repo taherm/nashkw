@@ -5,5 +5,6 @@ namespace App\Models;
 
 class Faq extends PrimaryModel
 {
-    public $localeStrings = ['title','body'];
+    protected $guarded = [''];
+    public $localeStrings = ['title','content'];
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\Aboutus;
+use App\Models\Aboutus;
 use Illuminate\Database\Seeder;
 
 class AboutusTableSeeder extends Seeder

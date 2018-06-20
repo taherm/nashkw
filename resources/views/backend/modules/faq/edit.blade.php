@@ -6,8 +6,9 @@
         @include('backend.partials.forms.form_title')
         <div class="portlet-body form">
             <form class="horizontal-form" role="form" method="POST"
-                  action="{{ route('backend.aboutus.store') }}" enctype="multipart/form-data">
+                  action="{{ route('backend.faq.update', $element->id) }}" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="_method" value="put">
                 <div class="form-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -17,7 +18,7 @@
                                        type="text"
                                        class="form-control"
                                        name="title_ar"
-                                       value="{{ old('title_ar') }}"
+                                       value="{{ $element->title_ar }}"
                                        placeholder="name in arabic"
                                        required autofocus>
                                 @if ($errors->has('title_ar'))
@@ -36,7 +37,7 @@
                                        type="text"
                                        class="form-control"
                                        name="title_en"
-                                       value="{{ old('title_en') }}"
+                                       value="{{ $element->title_en }}"
                                        placeholder="name in english"
                                        required autofocus>
                                 @if ($errors->has('title_en'))
@@ -54,14 +55,14 @@
                             <div class="form-group">
                                 <label for="description" class="control-label">content arabic</label>
                                 <textarea type="text" class="form-control tinymce" id="content_ar" name="content_ar"
-                                          aria-multiline="true" maxlength="500"></textarea>
+                                          aria-multiline="true" maxlength="500">{{ $element->content_ar }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description" class="control-label">content english</label>
                                 <textarea type="text" class="form-control tinymce" id="content_en" name="content_en"
-                                          aria-multiline="true" maxlength="500"></textarea>
+                                          aria-multiline="true" maxlength="500">{{ $element->content_en }}</textarea>
                             </div>
                         </div>
                     </div>

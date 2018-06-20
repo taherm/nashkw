@@ -16,8 +16,8 @@ class CreateFaqsTable extends Migration
             $table->increments('id');
             $table->string('title_ar')->nullable();
             $table->string('title_en')->nullable();
-            $table->text('body_ar')->nullable();
-            $table->text('body_en')->nullable();
+            $table->text('content_ar')->nullable();
+            $table->text('content_en')->nullable();
             $table->timestamps();
         });
     }

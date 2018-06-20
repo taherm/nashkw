@@ -48,7 +48,7 @@
                                         </button>
                                         <ul class="dropdown-menu pull-right" role="menu">
                                             <li>
-                                                <a href="{{ route('backend.aboutus.edit',$element->id) }}">
+                                                <a href="{{ route('backend.faq.edit',$element->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Edit</a>
                                             </li>
                                             <li>
@@ -59,7 +59,7 @@
                                                 >
                                                     <i class="fa fa-fw fa-recycle"></i> delete</a>
                                                 <form method="post" id="delete-{{ $element->id }}"
-                                                      action="{{ route('backend.aboutus.destroy',$element->id) }}">
+                                                      action="{{ route('backend.faq.destroy',$element->id) }}">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete"/>
                                                     <button type="submit" class="btn btn-del hidden">

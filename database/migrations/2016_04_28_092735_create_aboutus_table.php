@@ -16,8 +16,8 @@ class CreateAboutusTable extends Migration
             $table->increments('id');
             $table->string('title_ar');
             $table->string('title_en');
-            $table->text('body_ar');
-            $table->text('body_en');
+            $table->text('content_ar');
+            $table->text('content_en');
             $table->timestamps();
 
         });

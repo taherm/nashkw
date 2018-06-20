@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Policy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class PolicyController extends Controller
      */
     public function index()
     {
-        //
+        $elements = Policy::all();
+        return view('backend.modules.policy.index', compact('elements'));
     }
 
     /**
@@ -24,24 +26,28 @@ class PolicyController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.modules.policy.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $element = Policy::create($request->all());
+        if ($element) {
+            return redirect()->route('backend.policy.index')->with('success', 'Policy added');
+        }
+        return redirect()->back()->with('error', 'Policy is not saved.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,34 +58,44 @@ class PolicyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $element = Policy::whereId($id)->first();
+        return view('backend.modules.policy.edit', compact('element'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $element = Policy::whereId($id)->first();
+        if ($element) {
+            $element->update($request->all());
+            return redirect()->route('backend.policy.index')->with('success', 'Policy added');
+        }
+        return redirect()->back()->with('error', 'Policy is not saved.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $element = Policy::whereId($id)->first();
+        if ($element->delete()) {
+            return redirect()->route('backend.policy.index')->with('success', 'Policy deleted');
+        }
+        return redirect()->back()->with('error', 'Policy is not deleted.');
     }
 }
