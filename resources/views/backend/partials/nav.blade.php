@@ -32,7 +32,7 @@
                     </li>
                     <li>
                         <a href="{{ route('backend.category.create',['parent_id' => 0]) }}">
-                            <i class="icon-docs"></i> Create New Parent Category</a>
+                            <i class="fa fa-fw fa-list-ul"></i> Create New Parent Category</a>
                     </li>
                     <li>
                         <a href="{{ route('backend.tag.create') }}">
@@ -56,6 +56,14 @@
                     <li>
                         <a href="{{ route('backend.page.create') }}">
                             <i class="icon-paper-clip"></i> Create New page</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('backend.term.create') }}">
+                            <i class="icon-book-open"></i> Create New term</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('backend.policy.create') }}">
+                            <i class="fa fa-fw fa-sticky-note-o"></i> Create New Policy</a>
                     </li>
                     <li>
                         <a href="{{ route('backend.setting.index') }}">

@@ -251,7 +251,7 @@
                     </li>
                     <li class="nav-item ">
                         <a href="{{ route('backend.page.index') }}" class="nav-link ">
-                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <i class="fa fa-fw fa-book"></i>
                             <span class="title">pages</span>
                             <span class="arrow"></span>
                         </a>
@@ -264,7 +264,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('backend.page.create') }}" class="nav-link">
-                                    <i class="icon-user"></i> Create New aboutus
+                                    <i class="icon-plus"></i> Create New Page
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
@@ -293,7 +293,7 @@
                     </li>
                     <li class="nav-item ">
                         <a href="{{ route('backend.term.index') }}" class="nav-link ">
-                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <i class="fa fa-fw fa-hand-paper-o"></i>
                             <span class="title">terms</span>
                             <span class="arrow"></span>
                         </a>
@@ -306,7 +306,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('backend.term.create') }}" class="nav-link">
-                                    <i class="icon-user"></i> Create New term
+                                    <i class="fa fa-fw fa-plus"></i> Create New term
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
@@ -314,7 +314,7 @@
                     </li>
                     <li class="nav-item ">
                         <a href="{{ route('backend.faq.index') }}" class="nav-link ">
-                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <i class="fa fa-fw fa-question-circle"></i>
                             <span class="title">faqs</span>
                             <span class="arrow"></span>
                         </a>
@@ -327,7 +327,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('backend.faq.create') }}" class="nav-link">
-                                    <i class="icon-user"></i> Create New Faq
+                                    <i class="icon-plus"></i> Create New Faq
                                     <span class="arrow nav-toggle"></span>
                                 </a>
                             </li>
