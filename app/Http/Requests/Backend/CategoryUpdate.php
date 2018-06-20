@@ -13,7 +13,7 @@ class CategoryUpdate extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,6 +26,7 @@ class CategoryUpdate extends FormRequest
         return [
             'name_ar' => 'required|min:3|unique:categories,name_ar,' . request('id'),
             'name_en' => 'required|min:3|unique:categories,name_en,' . request('id'),
+            'parent_id' => 'required|integer',
             'description_en' => 'min:3|nullable',
             'description_ar' => 'min:3|nullable',
             'image' => 'image|nullable',

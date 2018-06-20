@@ -20,30 +20,56 @@
                     <table id="dataTable" class="table table-striped table-bordered table-hover" cellspacing="0">
                         <thead>
                         <tr>
-                            <th> id</th>
-                            <th>name_ar</th>
-                            <th>name_en</th>
+                            <th>id</th>
+                            <th>title_ar</th>
+                            <th>title_en</th>
+                            <th>image</th>
+                            <th>url</th>
+                            <th>order</th>
                             <th>active</th>
+                            <th>on_menu_desktop</th>
+                            <th>on_menu_mobile</th>
+                            <th>on_footer</th>
                             <th>action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th> id</th>
-                            <th>name_ar</th>
-                            <th>name_en</th>
+                            <th>id</th>
+                            <th>title_ar</th>
+                            <th>title_en</th>
+                            <th>image</th>
+                            <th>url</th>
+                            <th>order</th>
                             <th>active</th>
-                            <th>edit</th>
+                            <th>on_menu_desktop</th>
+                            <th>on_menu_mobile</th>
+                            <th>on_footer</th>
+                            <th>action</th>
                         </tr>
                         </tfoot>
                         <tbody>
                         @foreach($elements as $element)
                             <tr>
                                 <td> {{$element->id}}</td>
-                                <td> {{$element->name_ar}} </td>
-                                <td> {{$element->name_en}} </td>
+                                <td> {{$element->title_ar}} </td>
+                                <td> {{$element->title_en}} </td>
+                                <td><img src="{{ asset('storage/uploads/images/thumbnail/'.$element->image) }}" alt=""
+                                         class="img-sm"></td>
+                                <td><a href="{{ $element->url }}" class="btn btn-default">{{ $element->title_en }}</a>
+                                </td>
+                                <td>{{ $element->order }}</td>
                                 <td>
                                     <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
+                                </td>
+                                <td>
+                                    <span class="label {{ activeLabel($element->on_menu_desktop) }}">{{ activeText($element->on_menu_desktop,'Desktop') }}</span>
+                                </td>
+                                <td>
+                                    <span class="label {{ activeLabel($element->on_menu_mobile) }}">{{ activeText($element->on_menu_mobile,'Mobile') }}</span>
+                                </td>
+                                <td>
+                                    <span class="label {{ activeLabel($element->on_footer) }}">{{ activeText($element->on_footer,'Footer') }}</span>
                                 </td>
                                 <td>
                                     <div class="btn-group">
@@ -53,22 +79,22 @@
                                         </button>
                                         <ul class="dropdown-menu pull-right" role="menu">
                                             <li>
-                                                <a href="{{ route('backend.size.edit',$element->id) }}">
+                                                <a href="{{ route('backend.page.edit',$element->id) }}">
                                                     <i class="fa fa-fw fa-edit"></i> Edit</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('backend.activate',['model' => 'size','id' => $element->id]) }}">
+                                                <a href="{{ route('backend.activate',['model' => 'page','id' => $element->id]) }}">
                                                     <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
                                             </li>
                                             <li>
                                                 <a data-toggle="modal" href="#" data-target="#basic"
                                                    data-title="Delete"
-                                                   data-content="Are you sure you want to delete size {{ $element->name }}? "
+                                                   data-content="Are you sure you want to delete page {{ $element->title_ar }}? "
                                                    data-form_id="delete-{{ $element->id }}"
                                                 >
                                                     <i class="fa fa-fw fa-recycle"></i> delete</a>
                                                 <form method="post" id="delete-{{ $element->id }}"
-                                                      action="{{ route('backend.size.destroy',$element->id) }}">
+                                                      action="{{ route('backend.page.destroy',$element->id) }}">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete"/>
                                                     <button type="submit" class="btn btn-del hidden">

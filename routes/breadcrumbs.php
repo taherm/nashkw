@@ -200,6 +200,16 @@ Breadcrumbs::for('backend.category.edit', function ($trail, $element) {
     $trail->push('edit category', route('backend.category.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.page.create', function ($trail) {
+    $trail->parent('backend.page.index');
+    $trail->push('create page', route('backend.page.create'));
+});
+
+Breadcrumbs::for('backend.page.edit', function ($trail, $element) {
+    $trail->parent('backend.page.index');
+    $trail->push('edit page', route('backend.page.edit', $element->id));
+});
+
 
 Breadcrumbs::for('backend.currency.create', function ($trail) {
     $trail->parent('backend.currency.index');

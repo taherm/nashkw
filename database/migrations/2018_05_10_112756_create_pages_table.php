@@ -18,8 +18,8 @@ class CreatePagesTable extends Migration
             $table->string('title_en')->nullable();
             $table->string('slug_ar')->nullable();
             $table->string('slug_en')->nullable();
-            $table->string('image')->nullble();
-            $table->string('url')->nullble();
+            $table->string('image')->nullable();
+            $table->string('url')->nullable();
             $table->text('content_ar')->nullable();
             $table->text('content_en')->nullable();
             $table->integer('order')->nullable();

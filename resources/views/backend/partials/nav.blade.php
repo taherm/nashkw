@@ -54,6 +54,10 @@
                     </li>
                     <li class="divider"></li>
                     <li>
+                        <a href="{{ route('backend.page.create') }}">
+                            <i class="icon-paper-clip"></i> Create New page</a>
+                    </li>
+                    <li>
                         <a href="{{ route('backend.setting.index') }}">
                             <i class="icon-users"></i> Settings
                         </a>

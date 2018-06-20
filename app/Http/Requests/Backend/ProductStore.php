@@ -44,8 +44,8 @@ class ProductStore extends FormRequest
             'start_sale' => 'date|after_or_equal:today|nullable',
             'end_sale' => 'date|after_or_equal:today|nullable',
             'active' => 'required|boolean',
-            'categories' => 'array',
-            'tags' => 'array'
+            'categories' => 'required|array',
+            'tags' => 'required|array'
         ];
     }
 }

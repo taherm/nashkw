@@ -48,10 +48,10 @@ class CategoryController extends Controller
     public function store(CategoryStore $request)
     {
         $element = Category::create($request->request->all());
-        if ($request->hasFile('image')) {
-            $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
-        }
         if ($element) {
+            if ($request->hasFile('image')) {
+                $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
+            }
             return redirect()->route('backend.category.index')->with('success', 'category created.');
         }
         return redirect()->route('backend.category.index')->with('error', 'category error.');
@@ -78,6 +78,15 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdate $request, $id)
     {
+        $element = Category::whereId($id)->first();
+        $updated = $element->update($request->request->all());
+        if ($updated) {
+            if ($request->hasFile('image')) {
+                $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
+            }
+            return redirect()->route('backend.category.index')->with('success', 'category created.');
+        }
+        return redirect()->route('backend.category.index')->with('error', 'category error.');
     }
 
     /**
@@ -88,20 +97,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //check if category not assigned to any of products
-        if ($this->category->getById($id)->products->count() > 0) {
-            return redirect()->back()->with('error', 'Category Assigned to Product!!');
-        }
-        //check if category has subcategories
-        if ($this->category->getById($id)->children->count() > 0) {
-            return redirect()->back()->with('error', 'Category Already has been Assigned To SubCategory!!');
-        }
-
-        if ($this->category->getById($id)->delete()) {
-
+        $element = Category::whereId($id)->with('products')->first();
+        if ($element->products->isEmpty()) {
+            $element->delete();
             return redirect()->route('backend.category.index')->with('success', 'Category Removed successfully!');
-
         }
-        return redirect()->back()->with('error', 'not successful !!');
+        return redirect()->back()->with('error', 'not deleted !!');
     }
 }

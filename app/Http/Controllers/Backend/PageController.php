@@ -2,236 +2,106 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Page;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-
-    public function getAboutUs(Aboutus $aboutUs)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $aboutData = $aboutUs->where('id',1)->first();
-
-        return view('backend.pages.about', compact('aboutData'));
-    }
-
-    public function postAboutUs(AboutUsUpdate $request, Aboutus $aboutUs)
-    {
-        $aboutData = $aboutUs->find('1');
-        if ($aboutData)
-        {
-            $aboutData->update([
-                'title_en' => $request->title_en,
-                'title_ar' => $request->title_ar,
-                'body_en' => $request->body_en,
-                'body_ar' => $request->body_ar
-                ]);
-
-            return redirect()->route('backend.pages.about.index')->with('success', 'successfully updated!!');
-
-        }
-        else
-        {
-            //add record id for static page
-            $request->request->add(['id' => 1]);
-            $aboutData = $aboutUs->create($request->except('_token', '_method'));
-
-            if ($aboutData)
-            {
-                return redirect()->route('backend.pages.about.index')->with('success', 'successfully created');
-            }
-
-            return redirect()->back()->with('error', 'System Error!!');
-        }
-    }
-
-    public function getTerms(Terms $terms)
-    {
-        $termsData = $terms->where('id',1)->first();
-
-        return view('backend.pages.terms', compact('termsData'));
-    }
-
-    public function postTerms(TermsUpdate $request, Terms $terms)
-    {
-        $termsData = $terms->find('1');
-        if ($termsData)
-        {
-            $termsData->update([
-                'title_en' => $request->title_en,
-                'title_ar' => $request->title_ar,
-                'body_en' => $request->body_en,
-                'body_ar' => $request->body_ar
-            ]);
-
-            return redirect()->route('backend.pages.terms.index')->with('success', 'successfully updated!!');
-
-        }
-        else
-        {
-            //add record id for static page
-            $request->request->add(['id' => 1]);
-            $termsData = $terms->create($request->except('_token', '_method'));
-
-            if ($termsData)
-            {
-                return redirect()->route('backend.pages.terms.index')->with('success', 'successfully created');
-            }
-
-            return redirect()->back()->with('error', 'System Error!!');
-        }
-    }
-
-    public function getPrivacy(Privacy $privacy)
-    {
-        $privacyData = $privacy->where('id',1)->first();
-
-        return view('backend.pages.privacy', compact('privacyData'));
-    }
-
-    public function postPrivacy(PrivacyUpdate $request, Privacy $privacy)
-    {
-        $privacyData = $privacy->find('1');
-        if ($privacyData)
-        {
-            $privacyData->update([
-                'title_en' => $request->title_en,
-                'title_ar' => $request->title_ar,
-                'body_en' => $request->body_en,
-                'body_ar' => $request->body_ar
-            ]);
-
-            return redirect()->route('backend.pages.privacy.index')->with('success', 'successfully updated!!');
-
-        }
-        else
-        {
-            //add record id for static page
-            $request->request->add(['id' => 1]);
-            $privacyData = $privacy->create($request->except('_token', '_method'));
-
-            if ($privacyData)
-            {
-                return redirect()->route('backend.pages.privacy.index')->with('success', 'successfully created');
-            }
-
-            return redirect()->back()->with('error', 'System Error!!');
-        }
-    }
-
-    public function getContact(Contactus $contact)
-    {
-        $contactData = $contact->where('id',1)->first();
-
-        return view('backend.pages.contact', compact('contactData'));
+        $elements = Page::all();
+        return view('backend.modules.page.index', compact('elements'));
     }
 
     /**
-     * add Contact Information
-     * @param ContactUpdate $request
-     * @param Contactus $contact
-     * @return Response
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function postContactInfo(ContactUpdate $request, Contactus $contact)
+    public function create()
     {
-        $contactData = $contact->find('1');
-        if ($contactData)
-        {
-            $contactData->update([
-                'address_en' => $request->address_en,
-                'address_ar' => $request->address_ar,
-                'email' => $request->email,
-                'phone' => $request->phone
-            ]);
-
-            return redirect()->route('backend.pages.contact.index')->with('success', 'successfully updated!!');
-
-        }
-        else
-        {
-            //add record id for static page
-            $request->request->add(['id' => 1]);
-
-            $contactData = $contact->create($request->except('_token', '_method'));
-
-            if ($contactData)
-            {
-                return redirect()->route('backend.pages.contact.index')->with('success', 'successfully created');
-            }
-
-            return redirect()->back()->with('error', 'System Error!!');
-        }
+        return view('backend.modules.page.create');
     }
 
     /**
-     * Post Contact Form
-     * @param Request $request
-     * @return Response
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
-    public function postContact(Request $request)
+    public function store(Request $request)
     {
-        $this->validate($request, [
-            'name'  => 'required',
-            'email' => 'required|email',
-            'body'  => 'required'
-        ]);
-
-        $job = (new SendContactMail($request));
-
-        try {
-            $this->dispatch($job);
-
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back()->with('info', 'Sorry Couldnt Send you Mail this time. Please try again later');
+        $element = Page::create($request->request->all());
+        if ($element) {
+            if ($request->hasFile('image')) {
+                $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
+            }
+            return redirect()->route('backend.page.index')->with('success', 'page saved.');
         }
-
-        return redirect('frontend.home')->with('success', trans('word.mail_sent'));
+        return redirect()->back()->with('error', 'error .. please try again');
     }
 
-    public function getFaq()
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        return view('backend.pages.faq');
+        //
     }
 
-    public function postFaq()
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        return view('backend.pages.faq');
+        $element = Page::whereId($id)->first();
+        return view('backend.modules.page.edit', compact('element'));
     }
 
-    public function updateFaq()
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        return view('backend.pages.faq');
+        $element = Page::whereId($id)->first();
+        $updated = $element->update($request->request->all());
+        if ($updated) {
+            if ($request->hasFile('image')) {
+                $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
+            }
+            return redirect()->route('backend.page.index')->with('success', 'page updated.');
+        }
+        return redirect()->back()->with('error', 'error .. please try again');
     }
 
-    public function getReturnPolicy()
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        return view('backend.pages.faq');
+        $element = Page::whereId($id)->first();
+        if ($element->delete()) {
+            return redirect()->back()->with('success', 'page deleted');
+        }
+        return redirect()->back()->with('success', 'page is not deleted.');
     }
-
-    public function postReturnPolicy()
-    {
-        return view('backend.pages.faq');
-    }
-
-    public function updateReturnPolicy()
-    {
-        return view('backend.pages.faq');
-    }
-
-    public function getOrdersShipping()
-    {
-        return view('backend.pages.faq');
-    }
-
-    public function postOrdersShipping()
-    {
-        return view('backend.pages.faq');
-    }
-
-    public function updateOrdersShipping()
-    {
-        return view('backend.pages.faq');
-    }
-
 }
