@@ -1,21 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('backend.product.create') }}
-@endsection
-
 @section('content')
-
-
-    size_chart_image
-    description_en
-    description_ar
-    notes_ar
-    notes_en
-    image
-    start_sale
-    end_sale
-
     <div class="portlet box blue">
         @include('backend.partials.forms.form_title')
         <div class="portlet-body form">
@@ -92,7 +77,7 @@
                             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
                                 <label for="price" class="control-label">price *</label>
                                 <input id="price"
-                                       type="text"
+                                       type="number"
                                        class="form-control"
                                        name="price"
                                        value="{{ old('price') }}"
@@ -118,7 +103,7 @@
                                        maxlength="4"
                                        value="{{ old('sale_price') }}"
                                        placeholder="sale_price"
-                                       required autofocus>
+                                       autofocus>
                                 @if ($errors->has('sale_price'))
                                     <span class="help-block">
                                         <strong>
@@ -135,7 +120,7 @@
                                        type="text"
                                        class="form-control"
                                        name="weight"
-                                       maxlength="4"
+                                       maxlength="2"
                                        minlength="1"
                                        value="{{ old('weight') }}"
                                        placeholder="weight"
@@ -151,170 +136,6 @@
                         </div>
                     </div>
 
-                    {{-- password + confirm password --}}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="control-label">password *</label>
-                                <input id="password"
-                                       type="password"
-                                       class="form-control"
-                                       name="password"
-                                       placeholder="password"
-                                       required autofocus>
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('password') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label for="password_confirmation" class="control-label">password_confirmation *</label>
-                                <input id="password_confirmation"
-                                       type="password"
-                                       class="form-control"
-                                       name="password_confirmation"
-                                       placeholder="password_confirmation"
-                                       required autofocus>
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('password_confirmation') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-
-                    {{-- phone + fax --}}
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                <label for="phone" class="control-label">phone</label>
-                                <input id="phone"
-                                       type="text"
-                                       class="form-control"
-                                       name="phone"
-                                       value="{{ old('phone') }}"
-                                       placeholder="phone"
-                                        autofocus>
-                                @if ($errors->has('phone'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('phone') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group{{ $errors->has('fax') ? ' has-error' : '' }}">
-                                <label for="fax" class="control-label">fax </label>
-                                <input id="fax"
-                                       type="text"
-                                       class="form-control"
-                                       name="fax"
-                                       value="{{ old('fax') }}"
-                                       placeholder="fax"
-                                        autofocus>
-                                @if ($errors->has('fax'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('fax') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group{{ $errors->has('whatsapp') ? ' has-error' : '' }}">
-                                <label for="whatsapp" class="control-label">whatsapp </label>
-                                <input id="whatsapp"
-                                       type="text"
-                                       class="form-control"
-                                       name="whatsapp"
-                                       value="{{ old('whatsapp') }}"
-                                       placeholder="whatsapp"
-                                       autofocus>
-                                @if ($errors->has('whatsapp'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('whatsapp') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- whatapp --}}
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="form-group{{ $errors->has('longitude') ? ' has-error' : '' }}">
-                                <label for="longitude" class="control-label">longitude </label>
-                                <input id="longitude"
-                                       type="text"
-                                       class="form-control"
-                                       name="longitude"
-                                       value="{{ old('longitude') }}"
-                                       placeholder="longitude"
-                                       autofocus>
-                                @if ($errors->has('longitude'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('longitude') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group{{ $errors->has('latitude') ? ' has-error' : '' }}">
-                                <label for="latitude" class="control-label">latitude </label>
-                                <input id="latitude"
-                                       type="text"
-                                       class="form-control"
-                                       name="latitude"
-                                       value="{{ old('latitude') }}"
-                                       placeholder="latitude"
-                                        autofocus>
-                                @if ($errors->has('latitude'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('latitude') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group{{ $errors->has('keywords') ? ' has-error' : '' }}">
-                                <label for="keywords" class="control-label">keywords </label>
-                                <input id="keywords"
-                                       type="text"
-                                       class="form-control"
-                                       name="keywords"
-                                       value="{{ old('keywords') }}"
-                                       placeholder="keywords"
-                                        autofocus>
-                                @if ($errors->has('keywords'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('keywords') }}
-                                        </strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group{{ $errors->has('start_sale') ? ' has-error' : '' }}">
@@ -325,7 +146,7 @@
                                        name="start_sale"
                                        value="{{ old('start_sale') }}"
                                        placeholder="name in arabic"
-                                        autofocus>
+                                       autofocus>
                                 @if ($errors->has('start_sale'))
                                     <span class="help-block">
                                         <strong>
@@ -344,7 +165,7 @@
                                        name="end_sale"
                                        value="{{ old('end_sale') }}"
                                        placeholder="name in english"
-                                        autofocus>
+                                       autofocus>
                                 @if ($errors->has('end_sale'))
                                     <span class="help-block">
                                         <strong>
@@ -354,10 +175,30 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="image" placeholder="image" required>
+                                <label for="form_control_1">Main Image</label>
+                                <div class="help-block text-left">
+                                    W * H - Best fit 1024 x 800 pixels
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="size_chart_image"
+                                       placeholder="size_chart_image">
+                                <label for="form_control_1">Image Chart</label>
+                                <div class="help-block text-left">
+                                    W * H - Best fit 500 x 500 pixels
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
                     <div class="row">
+                        <hr>
                         <div class="col-md-6">
                             <div class="form-group{{ $errors->has('notes_ar') ? ' has-error' : '' }}">
                                 <label for="notes_ar" class="control-label">notes_ar arabic</label>
@@ -401,28 +242,70 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description" class="control-label">description arabic</label>
-                                <textarea type="text" class="form-control" id="description_ar" name="description_ar" aria-multiline="true" maxlength="500"></textarea>
+                                <textarea type="text" class="form-control" id="description_ar" name="description_ar"
+                                          aria-multiline="true" maxlength="500"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description" class="control-label">description english</label>
-                                <textarea type="text" class="form-control" id="description_en" name="description_en" aria-multiline="true" maxlength="500"></textarea>
+                                <textarea type="text" class="form-control" id="description_en" name="description_en"
+                                          aria-multiline="true" maxlength="500"></textarea>
                             </div>
                         </div>
                     </div>
 
 
                     <div class="row">
+                        <hr>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="control-label">Categories</label>
+                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
+                                        name="categories[]">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                                style="background-color: {{ $category->isParent ? 'lightblue' : null  }}">{{ $category->name }}</option>
+                                        @if(!$category->children->isEmpty())
+                                            @foreach($category->children as $child)
+                                                <option value="{{ $child->id }}"
+                                                        style="padding-left: 15px">{{ $child->name }}</option>
+                                                @if(!$child->children->isEmpty())
+                                                    @foreach($child->children as $subChild)
+                                                        <option value="{{ $subChild->id }}"
+                                                                style="padding-left: 35px">{{ $subChild->name }}</option>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="control-label">Tags</label>
+                                <select multiple="multiple" class="multi-select" id="my_multi_select2"
+                                        name="tags[]">
+                                    @foreach($tags as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <hr>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label sbold">active</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="active" id="optionsRadios3"
+                                    <input type="radio" name="active" id="optionsRadios3" checked
                                            value="1"> active</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="active" id="optionsRadios4" checked
-                                    value="0">not active</label>
+                                    <input type="radio" name="active" id="optionsRadios4"
+                                           value="0">not active</label>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -444,7 +327,7 @@
                                            value="1"> on_sale_on_homepage</label>
                                 <label class="radio-inline">
                                     <input type="radio" name="on_sale_on_homepage" id="optionsRadios4" checked
-                                    value="0">not on_sale_on_homepage</label>
+                                           value="0">not on_sale_on_homepage</label>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -455,28 +338,7 @@
                                            value="1"> on_homepage</label>
                                 <label class="radio-inline">
                                     <input type="radio" name="on_homepage" id="optionsRadios4" checked
-                                    value="0">not on_homepage</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="file" class="form-control" name="image" placeholder="image" required>
-                                <label for="form_control_1">Main Image - ['500', '500']</label>
-                                <div class="help-block text-left">
-                                    W * H - Best fit 500 x 500 pixels
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="file" class="form-control" name="size_chart_image" placeholder="size_chart_image">
-                                <label for="form_control_1">Image Chart- ['500', '500']</label>
-                                <div class="help-block text-left">
-                                    W * H - Best fit 500 x 500 pixels
-                                </div>
+                                           value="0">not on_homepage</label>
                             </div>
                         </div>
                     </div>

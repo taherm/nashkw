@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->boolean('on_sale_on_homepage')->default(0);
             $table->boolean('on_homepage')->default(0);
             $table->decimal('price',6,2)->unsigned();
-            $table->float('weight',3,2)->unsigned();
+            $table->float('weight',4,2)->unsigned();
             $table->decimal('sale_price',6,2)->unsigned()->nullable();
 //            $table->decimal('home_delivery_fees',3,2)->unsigned()->nullable(0);
             $table->string('size_chart_image')->nullable();

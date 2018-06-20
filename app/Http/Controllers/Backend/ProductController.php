@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\ProductStore;
+use App\Http\Requests\Backend\ProductUpdate;
+use App\Models\Category;
 use App\Models\Product;
-use App\Services\Traits\ImageHelpers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
+use App\Models\Tag;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $elements = Product::with('gallery','product_attributes.size','product_attributes.color')->paginate(100);
+        $elements = Product::with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
         return view('backend.modules.product.index', compact('elements'));
     }
 
@@ -28,7 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.modules.product.create');
+        $categories = Category::active()->onlyParent()->with('children.children')->get();
+        $tags = Tag::active()->get();
+        return view('backend.modules.product.create', compact('categories', 'tags'));
     }
 
 
@@ -37,35 +40,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStore $request)
     {
-        $validate = validator($request->all(), [
-            'sku' => 'required',
-            'name_ar' => 'required:min:3|max:200',
-            'name_en' => 'required|min:3|max:200',
-//            'home_delivery_availability' => 'required',
-//            'shipment_availability' => 'required',
-            'on_sale' => 'required|boolean',
-            'on_sale_on_homepage' => 'required|boolean',
-            'on_homepage' => 'required|boolean',
-            'price' => 'required|numeric',
-            'weight' => 'required|numeric',
-            'sale_price' => 'required|numeric',
-            'size_chart_image' => 'image',
-            'description_en' => 'min:3',
-            'description_ar' => 'min:3',
-            'notes_ar' => 'min:3',
-            'notes_en' => 'min:3',
-            'image' => 'required|image',
-            'start_sale' => 'required|date|after_or_equal:today',
-            'end_sale' => 'required|date|after_or_equal:today',
-            'active' => 'required|boolean',
-        ]);
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput(Input::all());
-        }
-        $element = Product::create($request->request->all());
+        $element = Product::create($request->except(['_token', 'image', 'categories', 'tags']));
         if ($element) {
+            $element->tags()->sync($request->tags);
+            $element->categories()->sync($request->categories);
             if ($request->hasFile('image')) {
                 $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
             }
@@ -96,6 +76,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $element = Product::whereId($id)->first();
+        return view('backend.modules.product.edit', compact('element'));
     }
 
     /**
@@ -104,9 +86,17 @@ class ProductController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdate $request, $id)
     {
-
+        $element = Product::whereId($id)->first();
+        $updated = $element->update($request->request->all());
+        if ($request->hasFile('image')) {
+            $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
+        }
+        if ($updated) {
+            return redirect()->route('backend.product.index')->with('success', 'product saved.');
+        }
+        return redirect()->route('backend.product.edit', $id)->with('error', 'product not saved.');
     }
 
     /**

@@ -99,7 +99,7 @@
                                             <div class="btn-group">
 
                                                 <button type="button"
-                                                        style="background-color: {{ $attribute->color->name_en }}; color : black"
+                                                        style="background-color: {{ $attribute->color->name_en }}; color : black; font-weight: bolder"
                                                         class="btn green btn-sm btn-outline"
                                                         data-toggle="dropdown"> {{ $attribute->color->name_en }}
                                                     - {{ $attribute->size->name_en }} - {{ $attribute->qty }}

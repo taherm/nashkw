@@ -25,6 +25,7 @@ mix.styles([
     '../metronic_v4.5.6/theme/assets/global/plugins/jqvmap/jqvmap/jqvmap.css"',
 
 
+    '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
     '../metronic_v4.5.6/theme/assets/global/plugins/jquery-multi-select/css/multi-select.css',
     '../metronic_v4.5.6/theme/assets/global/plugins/select2/css/select2.min.css',
     '../metronic_v4.5.6/theme/assets/global/plugins/select2/css/select2-bootstrap.min.css',
@@ -57,6 +58,9 @@ mix.scripts([
 
         '../metronic_v4.5.6/theme/assets/global/plugins/datatables/datatables.min.js',
         '../metronic_v4.5.6/theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js',
+        '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
+        '../metronic_v4.5.6/theme/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js',
+        '../metronic_v4.5.6/theme/assets/global/plugins/select2/js/select2.full.min.js',
 
         '../metronic_v4.5.6/theme/assets/global/plugins/js.cookie.min.js',
         '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js',
@@ -66,6 +70,8 @@ mix.scripts([
         '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
         '../metronic_v4.5.6/theme/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js',
         '../metronic_v4.5.6/theme/assets/global/scripts/app.min.js',
+
+        '../metronic_v4.5.6/theme/assets/pages/scripts/components-multi-select.min.js',
         '../metronic_v4.5.6/theme/assets/pages/scripts/components-color-pickers.min.js',
         '../metronic_v4.5.6/theme/assets/layouts/layout2/scripts/layout.min.js',
         '../metronic_v4.5.6/theme/assets/layouts/layout2/scripts/demo.min.js',
