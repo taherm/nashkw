@@ -29,7 +29,7 @@ class ProductController extends Controller
     {
         $validator = validator(request()->all(), ['search' => 'nullable']);
         if ($validator->fails()) {
-            return redirect()->home()->withErrors($validator->messages());
+            return redirect()->route('frontend.home')->withErrors($validator->messages());
         }
 
         $elements = $this->product->filters($filters)->hasProductAttribute()->with('tags','gallery.images')->paginate(20);
