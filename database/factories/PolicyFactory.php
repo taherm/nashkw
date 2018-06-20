@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Policy;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Policy::class, function (Faker $faker) {
     return [
             'title_ar' => $faker->sentence(1),
             'title_en' => $faker->sentence(1),
