@@ -39,7 +39,7 @@ class ProductController extends Controller
         if (!$elements->isEmpty()) {
             return view('frontend.modules.product.index', compact('elements', 'tags'));
         } else {
-            return redirect()->home()->with('error', title_case('no items found .. plz try again'));
+            return redirect()->route('frontend.home')->with('error', trans('message.no_items_found'));
         }
     }
 
