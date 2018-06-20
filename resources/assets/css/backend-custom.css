@@ -26,3 +26,7 @@
 .breadcrumb {
     margin-bottom: 0px;
 }
+
+.page-breadcrumb {
+    padding: 2px !important;
+}

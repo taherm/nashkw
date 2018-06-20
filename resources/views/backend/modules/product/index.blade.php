@@ -34,6 +34,7 @@
                             <th>image</th>
                             <th>end_sale</th>
                             <th>active</th>
+                            <th>attributes x/clr/qty</th>
                             <th>actions</th>
                         </tr>
                         </thead>
@@ -52,6 +53,7 @@
                             <th>image</th>
                             <th>end_sale</th>
                             <th>active</th>
+                            <th>attributes</th>
                             <th>actions</th>
                         </tr>
                         </tfoot>
@@ -62,10 +64,10 @@
                                 <td>{{ $element->sku }}</td>
                                 <td>{{ $element->name_ar }}</td>
                                 {{--<td>--}}
-                                    {{--<span class="label {{ activeLabel($element->home_delivery_availability) }}">{{ activeText($element->home_delivery_availability,'Yes') }}</span>--}}
+                                {{--<span class="label {{ activeLabel($element->home_delivery_availability) }}">{{ activeText($element->home_delivery_availability,'Yes') }}</span>--}}
                                 {{--</td>--}}
                                 {{--<td>--}}
-                                    {{--<span class="label {{ activeLabel($element->shipment_availability) }}">{{ activeText($element->shipment_availability,'Yes') }}</span>--}}
+                                {{--<span class="label {{ activeLabel($element->shipment_availability) }}">{{ activeText($element->shipment_availability,'Yes') }}</span>--}}
                                 {{--</td>--}}
                                 <td>
                                     <span class="label {{ activeLabel($element->on_sale) }}">{{ activeText($element->on_sale,'OnSale') }}</span>
@@ -90,6 +92,48 @@
                                 <td>
                                     <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
                                 </td>
+
+                                <td>
+                                    @if(!$element->product_attributes->isEmpty())
+                                        @foreach($element->product_attributes as $attribute)
+                                            <div class="btn-group">
+
+                                                <button type="button"
+                                                        style="background-color: {{ $attribute->color->name_en }}; color : black"
+                                                        class="btn green btn-sm btn-outline"
+                                                        data-toggle="dropdown"> {{ $attribute->color->name_en }}
+                                                    - {{ $attribute->size->name_en }} - {{ $attribute->qty }}
+                                                    <i class="fa fa-angle-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="{{ route('backend.attribute.edit',$attribute->id) }}">
+                                                            <i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-toggle="modal" href="#" data-target="#basic"
+                                                           data-title="Delete"
+                                                           data-content="Are you sure you want to delete attribute ? "
+                                                           data-form_id="delete-{{ $attribute->id }}">
+                                                            <i class="fa fa-fw fa-recycle"></i> delete</a>
+                                                        <form method="post" id="delete-{{ $attribute->id }}"
+                                                              action="{{ route('backend.attribute.destroy',$attribute->id) }}">
+                                                            @csrf
+                                                            <input type="hidden" name="_method" value="delete"/>
+                                                            <button type="submit" class="btn btn-del hidden">
+                                                                <i class="fa fa-fw fa-times-circle"></i> delete
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <br>
+                                            <br>
+                                        @endforeach
+                                    @else
+                                        <span class="label label-danger">N/A</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" class="btn green btn-xs btn-outline dropdown-toggle"
@@ -103,18 +147,24 @@
                                             </li>
                                             @if($element->gallery)
                                                 <li>
-                                                    <a href="{{ route('backend.gallery.edit',['id' => $element->gallery->id, 'type' => 'product' , 'element_id' => $element->id]) }}" target="_blank">
-                                                        <i class="fa fa-fw fa-edit"></i> edit Gallery</a>
+                                                    <a href="{{ route('backend.gallery.edit',['id' => $element->gallery->id, 'type' => 'product' , 'element_id' => $element->id]) }}"
+                                                       target="_blank">
+                                                        <i class="fa fa-fw fa-image"></i> edit Gallery</a>
                                                 </li>
                                             @else
                                                 <li>
-                                                    <a href="{{ route('backend.gallery.create',['id' => $element->id, 'type' => 'product' , 'element_id' => $element->id]) }}" target="_blank">
+                                                    <a href="{{ route('backend.gallery.create',['id' => $element->id, 'type' => 'product' , 'element_id' => $element->id]) }}"
+                                                       target="_blank">
                                                         <i class="fa fa-fw fa-plus-square-o"></i> create Gallery</a>
                                                 </li>
                                             @endif
                                             <li>
                                                 <a href="{{ route('backend.activate',['model' => 'product','id' => $element->id]) }}">
                                                     <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('backend.attribute.create',['product_id' => $element->id]) }}">
+                                                    <i class="fa fa-fw fa-plus-square"></i> assign new attribute</a>
                                             </li>
                                             <li>
                                                 <a data-toggle="modal" href="#" data-target="#basic"

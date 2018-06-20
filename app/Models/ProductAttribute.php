@@ -5,7 +5,7 @@ namespace App\Models;
 
 class ProductAttribute extends PrimaryModel
 {
-
+    protected $guarded = [''];
     public function product()
     {
         return $this->belongsTo(Product::class);

@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $elements = Product::with('gallery')->paginate(100);
+        $elements = Product::with('gallery','product_attributes.size','product_attributes.color')->paginate(100);
         return view('backend.modules.product.index', compact('elements'));
     }
 

@@ -1,4 +1,6 @@
 @extends('backend.layouts.app')
+
+
 @section('content')
     <div class="portlet box blue">
         @include('backend.partials.forms.form_title')

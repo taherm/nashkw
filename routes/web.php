@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -18,6 +19,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::get('export/language', 'DashBoardController@exportTranslations')->name('export.translations');
 
     Route::resource('product', 'ProductController');
+    Route::resource('product/attribute', 'ProductAttributeController');
     Route::resource('gallery', 'GalleryController');
     Route::resource('image', 'ImageController');
     Route::resource('category', 'CategoryController');

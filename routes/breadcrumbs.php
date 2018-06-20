@@ -5,6 +5,10 @@ Breadcrumbs::for('backend.home', function ($trail) {
     $trail->push('Home', route('backend.home'));
 });
 
+Breadcrumbs::for('backend.index', function ($trail) {
+    $trail->push('Home', route('backend.home'));
+});
+
 // Home > About
 Breadcrumbs::for('backend.user.index', function ($trail) {
     $trail->parent('backend.home');
@@ -16,6 +20,11 @@ Breadcrumbs::for('backend.user.index', function ($trail) {
 Breadcrumbs::for('backend.product.index', function ($trail) {
     $trail->parent('backend.home');
     $trail->push('products', route('backend.product.index'));
+});
+
+Breadcrumbs::for('backend.attribute.index', function ($trail) {
+    $trail->parent('backend.product.index');
+//    $trail->push('products', route('backend.product.index'));
 });
 
 
@@ -80,6 +89,17 @@ Breadcrumbs::for('backend.page.index', function ($trail) {
 });
 
 
+
+Breadcrumbs::for('backend.attribute.create', function ($trail,$element) {
+    $trail->parent('backend.attribute.index');
+    $trail->push('create attribute', route('backend.attribute.create',['id' => $element->id]));
+});
+
+Breadcrumbs::for('backend.attribute.edit', function ($trail, $element) {
+    $trail->parent('backend.attribute.index');
+    $trail->push('edit attribute', route('backend.attribute.edit', $element->id));
+});
+
 Breadcrumbs::for('backend.product.create', function ($trail) {
     $trail->parent('backend.product.index');
     $trail->push('create product', route('backend.product.create'));
@@ -90,6 +110,37 @@ Breadcrumbs::for('backend.product.edit', function ($trail, $element) {
     $trail->push('edit product', route('backend.product.edit', $element->id));
 });
 
+
+Breadcrumbs::for('backend.color.create', function ($trail) {
+    $trail->parent('backend.color.index');
+    $trail->push('create color', route('backend.color.create'));
+});
+
+Breadcrumbs::for('backend.color.edit', function ($trail, $element) {
+    $trail->parent('backend.color.index');
+    $trail->push('edit color', route('backend.color.edit', $element->id));
+});
+
+
+Breadcrumbs::for('backend.size.create', function ($trail) {
+    $trail->parent('backend.size.index');
+    $trail->push('create size', route('backend.size.create'));
+});
+
+Breadcrumbs::for('backend.size.edit', function ($trail, $element) {
+    $trail->parent('backend.size.index');
+    $trail->push('edit size', route('backend.size.edit', $element->id));
+});
+
+Breadcrumbs::for('backend.country.create', function ($trail) {
+    $trail->parent('backend.country.index');
+    $trail->push('create country', route('backend.country.create'));
+});
+
+Breadcrumbs::for('backend.country.edit', function ($trail, $element) {
+    $trail->parent('backend.country.index');
+    $trail->push('edit country', route('backend.country.edit', $element->id));
+});
 
 Breadcrumbs::for('backend.tag.create', function ($trail) {
     $trail->parent('backend.tag.index');
@@ -124,6 +175,15 @@ Breadcrumbs::for('backend.gallery.edit', function ($trail, $element) {
     return $trail->push('edit gallery', route('backend.gallery.edit', ['id' => $element->id, 'type' => $className, 'element_id' => $element->galleryable->id]));
 
 });
+
+
+Breadcrumbs::for('backend.currency.edit', function ($trail, $element) {
+    $trail->parent('backend.currency.index');
+    return $trail->push('edit currency', route('backend.currency.edit',$element->id));
+});
+
+
+
 
 Breadcrumbs::for('backend.image.edit', function ($trail, $element) {
     $trail->parent('backend.gallery.edit', $element->gallery);

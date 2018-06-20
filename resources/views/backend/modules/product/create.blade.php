@@ -316,7 +316,7 @@
 
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group{{ $errors->has('start_sale') ? ' has-error' : '' }}">
                                 <label for="start_sale" class="control-label">start_sale Arabic</label>
                                 <input id="start_sale"
@@ -335,7 +335,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group{{ $errors->has('end_sale') ? ' has-error' : '' }}">
                                 <label for="end_sale" class="control-label">end_sale English</label>
                                 <input id="end_sale"
@@ -401,19 +401,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description" class="control-label">description arabic</label>
-                                <textarea type="text" class="form-control" id="description_ar" name="description_ar"
-                                          aria-multiline="true"
-                                          maxlength="500">
-                                </textarea>
+                                <textarea type="text" class="form-control" id="description_ar" name="description_ar" aria-multiline="true" maxlength="500"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description" class="control-label">description english</label>
-                                <textarea type="text" class="form-control" id="description_en" name="description_en"
-                                          aria-multiline="true"
-                                          maxlength="500">
-                                </textarea>
+                                <textarea type="text" class="form-control" id="description_en" name="description_en" aria-multiline="true" maxlength="500"></textarea>
                             </div>
                         </div>
                     </div>

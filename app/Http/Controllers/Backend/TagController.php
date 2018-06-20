@@ -39,7 +39,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $validate = validator($request->all(), [
-            'name' => 'required|alpha|min:3|unique,tags:name',
+            'name' => 'required|alpha|min:3|unique:tags,name',
             'slug_ar' => 'required|min:3',
             'slug_en' => 'required|min:3',
         ]);
@@ -87,7 +87,7 @@ class TagController extends Controller
     public function update(Request $request, $id)
     {
         $validate = validator($request->all(), [
-            'name' => 'required|alpha|min:3|unique,tags:name,'.$id,
+            'name' => 'required|alpha|min:3|unique:tags,name,'.$id,
             'slug_ar' => 'required|min:3',
             'slug_en' => 'required|min:3',
         ]);
@@ -96,7 +96,7 @@ class TagController extends Controller
         }
         $element = Tag::whereId($id)->first()->update($request->all());
         if ($element) {
-            return redirect()->route('backend.tag.index')->with('sucess', 'created successfully!!');
+            return redirect()->route('backend.tag.index')->with('success', 'created successfully!!');
         }
         return redirect()->back()->with('error', 'not created !!');
 
