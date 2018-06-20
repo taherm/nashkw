@@ -1,31 +1,27 @@
 @extends('backend.layouts.app')
 
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('backend.setting.index') }}
-@endsection
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN EXAMPLE TABLE PORTLET-->
-            <div class="portlet light ">
-                @include('backend.partials.forms.form_title')
-                <div class="portlet-body">
+    <div class="portlet light ">
+        @include('backend.partials.forms.form_title')
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-lg-12">
                     <div class="m-heading-1 border-green m-bordered">
                         <h3>Important Information</h3>
                         <p>
                             Roles are very important for the application.
                         </p>
                         <p> Some Information about roles.
-                            <a class="btn red btn-outline" href="http://datatables.net/" target="_blank">the official documentation</a>
+                            <a class="btn red btn-outline" href="http://datatables.net/" target="_blank">the official
+                                documentation</a>
                         </p>
                     </div>
-                    <section class="product-additional__box" id="Additional">
+                    <div class="col-lg-12">
                         <h3 class="text-uppercase">info Setting </h3>
                         <h5 class="text-uppercase">Contact us</h5>
-                        <div class="col-lg-10 col-lg-push-1" style="padding: 10px;">
-                            <a href="{{ route('backend.setting.edit',$element->id) }}"
-                               class="btn btn-primary pull-right">edit</a>
-                        </div>
+                        <hr>
+                        <a href="{{ route('backend.setting.edit',$element->id) }}"
+                           class="btn btn-primary pull-right">edit</a>
                         <div class="col-md-8">
                             <table class="table table-striped">
                                 <tbody>
@@ -103,7 +99,7 @@
                             <img src="{{ asset('storage/uploads/images/large/'.$element->logo) }}"
                                  alt="" class="img-responsive img-thumbnail">
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>

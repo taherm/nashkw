@@ -44,6 +44,8 @@ class ProductUpdate extends FormRequest
             'start_sale' => 'date|after_or_equal:today|nullable',
             'end_sale' => 'date|after_or_equal:today|nullable',
             'active' => 'required|boolean',
+            'categories' => 'array',
+            'tags' => 'array'
         ];
     }
 }

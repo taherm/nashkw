@@ -40,8 +40,6 @@
                                        class="form-control"
                                        name="exchange_rate"
                                        value="{{ $element->exchange_rate }}"
-                                       placeholder="name in arabic"
-                                       maxlength="4"
                                        required autofocus>
                                 @if ($errors->has('exchange_rate'))
                                     <span class="help-block">

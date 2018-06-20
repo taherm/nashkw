@@ -14,6 +14,4 @@ class PrimaryModel extends Model
 {
     use LocaleTrait, ModelHelpers;
     protected $localeStrings = [];
-
-
 }

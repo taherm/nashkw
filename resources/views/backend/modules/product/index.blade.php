@@ -17,7 +17,6 @@
                                 documentation</a>
                         </p>
                     </div>
-                    {{--<table id="dataTable" class="table table-striped table-bordered table-hover" cellspacing="0"--}}
                     <table id="dataTable" class="table table-striped table-bordered table-hover" cellspacing="0">
                         <thead>
                         <tr>

@@ -76,8 +76,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $element = Product::whereId($id)->first();
-        return view('backend.modules.product.edit', compact('element'));
+        $element = Product::whereId($id)->with('categories', 'tags')->first();
+        $categories = Category::active()->onlyParent()->with('children.children')->get();
+        $tags = Tag::active()->get();
+        return view('backend.modules.product.edit', compact('element', 'tags', 'categories'));
     }
 
     /**
@@ -89,11 +91,13 @@ class ProductController extends Controller
     public function update(ProductUpdate $request, $id)
     {
         $element = Product::whereId($id)->first();
-        $updated = $element->update($request->request->all());
+        $updated = $element->update($request->except(['_token', 'image', 'tags', 'categories']));
         if ($request->hasFile('image')) {
             $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
         }
         if ($updated) {
+            $element->categories()->sync($request->categories);
+            $element->tags()->sync($request->tags);
             return redirect()->route('backend.product.index')->with('success', 'product saved.');
         }
         return redirect()->route('backend.product.edit', $id)->with('error', 'product not saved.');

@@ -1,45 +1,70 @@
 @extends('backend.layouts.app')
+
 @section('content')
     <div class="portlet box blue">
         @include('backend.partials.forms.form_title')
         <div class="portlet-body form">
-            <form role="form" method="post" class="form-horizontal"
-                  action="{{ route('backend.category.store') }}"
-                  enctype="multipart/form-data">
+            <form class="horizontal-form" role="form" method="POST"
+                  action="{{ route('backend.category.store') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="parent_id" value="{{ request()->parent_id }}">
                 <div class="form-body">
-                    <h3 class="form-section">Create New Category</h3>
-                    {{ csrf_field() }}
+                    <h3 class="form-section">Create category</h3>
+                    {{--name arabic / name english --}}
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label class="col-md-2 control-label">name *</label>
-                                <div class="col-md-10">
-                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                           placeholder="Enter text"
-                                           required autofocus>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->has('name_ar') ? ' has-error' : '' }}">
+                                <label for="name_ar" class="control-label">Name Arabic*</label>
+                                <input id="name_ar"
+                                       type="text"
+                                       class="form-control"
+                                       name="name_ar"
+                                       value="{{ old('name_ar') }}"
+                                       placeholder="name in arabic"
+                                       required autofocus>
+                                @if ($errors->has('name_ar'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('name_ar') }}
+                                        </strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="form-group {{ $errors->has('slug_ar') ? ' has-error' : '' }}">
-                                <label class="col-md-2 control-label">slug_ar *</label>
-                                <div class="col-md-10">
-                                    <input type="text" name="slug_ar" value="{{ old('slug_ar') }}"
-                                           class="form-control"
-                                           placeholder="Enter text"
-                                           required autofocus>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
+                                <label for="name_en" class="control-label">Name English*</label>
+                                <input id="name_en"
+                                       type="text"
+                                       class="form-control"
+                                       name="name_en"
+                                       value="{{ old('name_en') }}"
+                                       placeholder="name in english"
+                                       required autofocus>
+                                @if ($errors->has('name_en'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('name_en') }}
+                                        </strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">slug_en *</label>
-                                <div class="col-md-10">
-                                    <input type="text" name="slug_en" value="{{ old('slug_en') }}"
-                                           class="form-control"
-                                           placeholder="Enter text"
-                                           required autofocus>
-                                </div>
+                                <label for="description" class="control-label">description arabic</label>
+                                <textarea type="text" class="form-control" id="description_ar" name="description_ar"
+                                          aria-multiline="true" maxlength="500"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description" class="control-label">description english</label>
+                                <textarea type="text" class="form-control" id="description_en" name="description_en"
+                                          aria-multiline="true" maxlength="500"></textarea>
                             </div>
                         </div>
                     </div>
@@ -47,74 +72,69 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="form-body">
-                                <label class="form-label">Active</label>
-                                <div class="md-radio-inline">
-                                    <div class="md-radio">
-                                        <input type="radio" id="radio53" name="active" value="1"
-                                               class="md-radiobtn" {{ old('active') ? "checked" : null }}>
-                                        <label for="radio53">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span>active</label>
-                                    </div>
-                                    <div class="md-radio">
-                                        <input type="radio" id="radio54" name="active" value="0"
-                                               class="md-radiobtn" {{ old('active') ? null : "checked" }}>
-                                        <label for="radio54">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span> N/A</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-body">
-                                <label class="form-label">is_home</label>
-                                <div class="md-radio-inline">
-                                    <div class="md-radio">
-                                        <input type="radio" id="radio55" name="is_home" value="1"
-                                               class="md-radiobtn" {{ old('is_home') ? "checked" : null }}>
-                                        <label for="radio55">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span> to show the category on SearchIndex page</label>
-                                    </div>
-                                    <div class="md-radio">
-                                        <input type="radio" id="radio56" name="is_home" value="0" checked
-                                               class="md-radiobtn" {{ !old('is_home') ? "checked" : null }}>
-                                        <label for="radio56">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span> N/A</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
                             <div class="form-group{{ $errors->has('order') ? ' has-error' : '' }}">
-                                <label class="col-md-2 control-label">Order *</label>
-                                <div class="col-md-10">
-                                    <input type="text" name="order" value="{{ old('order') }}" class="form-control"
-                                           placeholder="Enter text"
-                                           required autofocus>
+                                <label for="order" class="control-label">order *</label>
+                                <input id="order"
+                                       type="number"
+                                       class="form-control"
+                                       name="order"
+                                       value="{{ old('order') }}"
+                                       placeholder="order"
+                                       maxlength="2"
+                                       autofocus>
+                                @if ($errors->has('order'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('order') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="file" class="form-control" name="image" placeholder="image" required>
+                                <label for="form_control_1">Main Image</label>
+                                <div class="help-block text-left">
+                                    W * H - Best fit 1024 x 350 pixels
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        <hr>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">role *</label>
-                                <div class="col-md-10">
-                                    <select name="role_id" id="role" class="form-control" required>
-                                        @foreach($roles as $role)
-                                            <option value="{{ $role->id }}" {{ old('role_id') === $role->id  ? 'selected' : null  }}>{{ $role->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <label class="control-label sbold">active</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="active" id="optionsRadios3" checked
+                                           value="1"> active</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="active" id="optionsRadios4"
+                                           value="0">not active</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label sbold">limited</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limited" id="optionsRadios3"
+                                           value="1"> limited</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limited" id="optionsRadios4" checked
+                                           value="0">not limited</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label sbold">is_home</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_home" id="optionsRadios3"
+                                           value="1"> is_home</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_home" id="optionsRadios4" checked
+                                           value="0">not is_home</label>
                             </div>
                         </div>
                     </div>

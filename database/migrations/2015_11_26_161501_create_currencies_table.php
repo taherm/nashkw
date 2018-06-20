@@ -17,7 +17,7 @@ class CreateCurrenciesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('symbol', 25);
-            $table->float('exchange_rate',4);
+            $table->float('exchange_rate',4,2)->unsigned();
             $table->boolean('active')->default(1);
 
             $table->integer('country_id')->unsigned();

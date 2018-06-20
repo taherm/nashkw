@@ -31,6 +31,10 @@
                             <i class="icon-docs"></i> Create New Product</a>
                     </li>
                     <li>
+                        <a href="{{ route('backend.category.create',['parent_id' => 0]) }}">
+                            <i class="icon-docs"></i> Create New Parent Category</a>
+                    </li>
+                    <li>
                         <a href="{{ route('backend.tag.create') }}">
                             <i class="icon-tag"></i> Create New Tag</a>
                     </li>

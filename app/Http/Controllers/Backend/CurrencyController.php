@@ -28,7 +28,7 @@ class CurrencyController extends Controller
      */
     public function create()
     {
-        $allCountries = Country::all();
+        $allCountries = Country::active()->whereDoesntHave('currency')->get();
         return view('backend.modules.currency.create', compact('allCountries'));
     }
 
@@ -46,7 +46,7 @@ class CurrencyController extends Controller
             'exchange_rate' => 'required|numeric',
             'country_id' => 'required|unique:currencies,country_id|exists:countries,id',
         ]);
-        if ($validate->fails()) {
+        if ($validate->failed()) {
             return redirect()->back()->with(Input::all())->withErrors($validate);
         }
         $element = Currency::create($request->all());
@@ -76,7 +76,7 @@ class CurrencyController extends Controller
     public function edit($id)
     {
         $element = Currency::whereId($id)->first();
-        $allCountries = Country::all();
+        $allCountries = Country::active()->get();
         return view('backend.modules.currency.edit', compact('element', 'allCountries'));
     }
 

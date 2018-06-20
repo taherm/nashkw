@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Core\PrimaryController;
 use App\Core\Services\Image\PrimaryImageService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\CategoryStore;
+use App\Models\Category;
 use App\Src\Category\CategoryRepository;
 use App\Http\Requests\Backend\CategoryUpdate;
 use App\Http\Requests\Backend\CategoryCreate;
@@ -19,9 +21,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->category->model->where('parent_id', 0)->get();
-
-        return view('backend.modules.category.index', compact('categories'));
+        $elements = Category::onlyParent()->with('children.children')->get();
+        return view('backend.modules.category.index', compact('elements'));
     }
 
     /**
@@ -31,6 +32,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $validate = validator(request()->all(), ['parent_id' => 'required|integer']);
+        if ($validate->failed()) {
+            return redirect()->back()->with('error', 'missing Parent ID !!');
+        }
         return view('backend.modules.category.create');
     }
 
@@ -40,26 +45,16 @@ class CategoryController extends Controller
      * @param  CategoryCreate $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryCreate $request)
+    public function store(CategoryStore $request)
     {
-        try {
-            $image = $this->imageService->CreateImage($request->file('image'), ['1', '1'], ['1', '1'], ['1150', '290']);
-
-            $request->request->add(['image' => $image]);
-
-            $category = $this->category->model->create($request->request->all());
-
-            if ($category) {
-
-                return redirect()->route('backend.category.index')->with('success', 'successfully created');
-
-            }
-
-            return redirect()->back()->with('error', 'not created !!')->withInputs();
-
-        } catch (\Exception $e) {
-            dd($e->getMessage());
+        $element = Category::create($request->request->all());
+        if ($request->hasFile('image')) {
+            $this->saveMimes($element, $request, ['image'], ['1000', '1000'], false);
         }
+        if ($element) {
+            return redirect()->route('backend.category.index')->with('success', 'category created.');
+        }
+        return redirect()->route('backend.category.index')->with('error', 'category error.');
     }
 
     /**
@@ -70,9 +65,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->category->getById($id);
-
-        return view('backend.modules.category.edit', compact('category'));
+        $element = Category::whereId($id)->with('children')->first();
+        return view('backend.modules.category.edit', compact('element'));
     }
 
     /**
@@ -84,27 +78,6 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdate $request, $id)
     {
-        if ($request->hasFile('image')) {
-            $image = new PrimaryImageService();
-            $image = $image->CreateImage($request->file('image'), ['1', '1'], ['1', '1'], ['1150', '290']);
-            $this->category->getById($id)->update(['image' => $image]);
-        }
-
-        $category = $this->category->getById($id)->update([
-            'name_en' => $request->name_en,
-            'name_ar' => $request->name_ar,
-            'description_en' => $request->description_en,
-            'order' => $request->order,
-            'description_ar' => $request->description_ar,
-            'limited' => $request->limited
-        ]);
-
-        if ($category) {
-            return redirect()->route('backend.category.index')->with('success', 'category updated!!');
-        }
-
-        return redirect()->back()->with('error', 'not saved !!');
-
     }
 
     /**

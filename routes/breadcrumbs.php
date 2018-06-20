@@ -27,6 +27,10 @@ Breadcrumbs::for('backend.attribute.index', function ($trail) {
 //    $trail->push('products', route('backend.product.index'));
 });
 
+Breadcrumbs::for('backend.category.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('categories', route('backend.category.index'));
+});
 
 Breadcrumbs::for('backend.tag.index', function ($trail) {
     $trail->parent('backend.home');
@@ -89,15 +93,25 @@ Breadcrumbs::for('backend.page.index', function ($trail) {
 });
 
 
-
-Breadcrumbs::for('backend.attribute.create', function ($trail,$element) {
+Breadcrumbs::for('backend.attribute.create', function ($trail, $element) {
     $trail->parent('backend.attribute.index');
-    $trail->push('create attribute', route('backend.attribute.create',['id' => $element->id]));
+    $trail->push('create attribute', route('backend.attribute.create', ['id' => $element->id]));
 });
 
 Breadcrumbs::for('backend.attribute.edit', function ($trail, $element) {
     $trail->parent('backend.attribute.index');
     $trail->push('edit attribute', route('backend.attribute.edit', $element->id));
+});
+
+
+Breadcrumbs::for('backend.coupon.create', function ($trail) {
+    $trail->parent('backend.coupon.index');
+    $trail->push('create coupon', route('backend.coupon.create'));
+});
+
+Breadcrumbs::for('backend.coupon.edit', function ($trail, $element) {
+    $trail->parent('backend.coupon.index');
+    $trail->push('edit coupon', route('backend.coupon.edit', $element->id));
 });
 
 Breadcrumbs::for('backend.product.create', function ($trail) {
@@ -176,13 +190,26 @@ Breadcrumbs::for('backend.gallery.edit', function ($trail, $element) {
 
 });
 
+Breadcrumbs::for('backend.category.create', function ($trail) {
+    $trail->parent('backend.category.index');
+    $trail->push('create category', route('backend.category.create'));
+});
 
-Breadcrumbs::for('backend.currency.edit', function ($trail, $element) {
-    $trail->parent('backend.currency.index');
-    return $trail->push('edit currency', route('backend.currency.edit',$element->id));
+Breadcrumbs::for('backend.category.edit', function ($trail, $element) {
+    $trail->parent('backend.category.index');
+    $trail->push('edit category', route('backend.category.edit', $element->id));
 });
 
 
+Breadcrumbs::for('backend.currency.create', function ($trail) {
+    $trail->parent('backend.currency.index');
+    $trail->push('create currency', route('backend.currency.create'));
+});
+
+Breadcrumbs::for('backend.currency.edit', function ($trail, $element) {
+    $trail->parent('backend.currency.index');
+    return $trail->push('edit currency', route('backend.currency.edit', $element->id));
+});
 
 
 Breadcrumbs::for('backend.image.edit', function ($trail, $element) {
@@ -191,14 +218,4 @@ Breadcrumbs::for('backend.image.edit', function ($trail, $element) {
 });
 
 
-// Home > Blog > [Category]
-Breadcrumbs::for('category', function ($trail, $category) {
-    $trail->parent('blog');
-    $trail->push($category->title, route('category', $category->id));
-});
 
-// Home > Blog > [Category] > [Post]
-Breadcrumbs::for('post', function ($trail, $post) {
-    $trail->parent('category', $post->category);
-    $trail->push($post->title, route('post', $post->id));
-});
