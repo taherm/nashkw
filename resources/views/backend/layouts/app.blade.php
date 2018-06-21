@@ -21,8 +21,8 @@
     <link href="{{ asset('images/logo.png') }}" rel="shortcut icon" type="image/png">
 </head>
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
-{{--<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">--}}
+{{--<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">--}}
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">
 {{--<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">--}}
 @include('backend.partials.nav')
 <div class="clearfix"></div>

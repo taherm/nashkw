@@ -67,7 +67,7 @@
                     </li>
                     <li>
                         <a href="{{ route('backend.setting.index') }}">
-                            <i class="icon-users"></i> Settings
+                            <i class="icon-settings"></i> Settings
                         </a>
                     </li>
                 </ul>

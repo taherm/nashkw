@@ -18,7 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $elements = Product::with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
+        if(request()->has('type')) {
+            $elements = Product::where(request('type'), true)->with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
+        } else {
+            $elements = Product::with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
+        }
         return view('backend.modules.product.index', compact('elements'));
     }
 

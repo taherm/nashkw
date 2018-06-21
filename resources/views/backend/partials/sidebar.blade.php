@@ -22,6 +22,27 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item ">
+                        <a href="{{ route('backend.product.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-product-hunt"></i>
+                            <span class="title">All Products</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.product.index',['type' => 'active']) }}" class="nav-link ">
+                            <i class="fa fa-fw fa-product-hunt"></i>
+                            <span class="title">Active Products</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.product.index',['type' => 'on_sale']) }}" class="nav-link ">
+                            <i class="fa fa-fw fa-percent"></i>
+                            <span class="title">On Sale Products</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a href="{{ route('backend.product.create') }}" class="nav-link ">
                             <i class="fa fa-fw fa-plus-square"></i>
                             <span class="title">Create New Product</span>
@@ -103,6 +124,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item ">
+                        <a href="{{ route('backend.currency.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-euro"></i>
+                            <span class="title">All Currencies</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a href="{{ route('backend.currency.create') }}" class="nav-link nav-toggle">
                             <i class="fa fa-fw fa-plus-circle"></i>
                             <span class="title">Create New Currency</span>
@@ -119,6 +147,13 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.coupon.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-cc-discover"></i>
+                            <span class="title">All Coupons</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
                     <li class="nav-item ">
                         <a href="{{ route('backend.coupon.create') }}" class="nav-link nav-toggle">
                             <i class="fa fa-fw fa-plus-circle"></i>
@@ -137,8 +172,15 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item ">
+                        <a href="{{ route('backend.tag.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-tags"></i>
+                            <span class="title">All Tags</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a href="{{ route('backend.tag.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-paint-brush"></i>
+                            <i class="fa fa-fw fa-plus-square-o"></i>
                             <span class="title">Create New Tag</span>
                             <span class="arrow"></span>
                         </a>
@@ -152,6 +194,13 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-list-alt"></i>
+                            <span class="title">Colors List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
                     <li class="nav-item ">
                         <a href="{{ route('backend.color.create') }}" class="nav-link nav-toggle">
                             <i class="fa fa-fw fa-paint-brush"></i>
@@ -169,6 +218,13 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.size.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-list-ul"></i>
+                            <span class="title">Size List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
                     <li class="nav-item ">
                         <a href="{{ route('backend.size.create') }}" class="nav-link nav-toggle">
                             <i class="fa fa-fw fa-pie-chart"></i>
@@ -357,79 +413,79 @@
                 </ul>
             </li>
 
-            <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-folder"></i>
-                    <span class="title">Multi Level Menu</span>
-                    <span class="arrow "></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="icon-settings"></i> Item 1
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="?p=dashboard-2" class="nav-link">
-                                    <i class="icon-user"></i> Arrow Toggle
-                                    <span class="arrow nav-toggle"></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="icon-power"></i> Sample Link 1</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="icon-paper-plane"></i> Sample Link 1</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="icon-star"></i> Sample Link 1</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon-camera"></i> Sample Link 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon-link"></i> Sample Link 2</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon-pointer"></i> Sample Link 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="?p=dashboard-2" class="nav-link">
-                            <i class="icon-globe"></i> Arrow Toggle
-                            <span class="arrow nav-toggle"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon-tag"></i> Sample Link 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon-pencil"></i> Sample Link 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="icon-graph"></i> Sample Link 1</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="icon-bar-chart"></i> Item 3 </a>
-                    </li>
-                </ul>
-            </li>
+            {{--<li class="nav-item">--}}
+                {{--<a href="javascript:;" class="nav-link nav-toggle">--}}
+                    {{--<i class="icon-folder"></i>--}}
+                    {{--<span class="title">Multi Level Menu</span>--}}
+                    {{--<span class="arrow "></span>--}}
+                {{--</a>--}}
+                {{--<ul class="sub-menu">--}}
+                    {{--<li class="nav-item">--}}
+                        {{--<a href="javascript:;" class="nav-link nav-toggle">--}}
+                            {{--<i class="icon-settings"></i> Item 1--}}
+                            {{--<span class="arrow"></span>--}}
+                        {{--</a>--}}
+                        {{--<ul class="sub-menu">--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="?p=dashboard-2" class="nav-link">--}}
+                                    {{--<i class="icon-user"></i> Arrow Toggle--}}
+                                    {{--<span class="arrow nav-toggle"></span>--}}
+                                {{--</a>--}}
+                                {{--<ul class="sub-menu">--}}
+                                    {{--<li class="nav-item">--}}
+                                        {{--<a href="#" class="nav-link">--}}
+                                            {{--<i class="icon-power"></i> Sample Link 1</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li class="nav-item">--}}
+                                        {{--<a href="#" class="nav-link">--}}
+                                            {{--<i class="icon-paper-plane"></i> Sample Link 1</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li class="nav-item">--}}
+                                        {{--<a href="#" class="nav-link">--}}
+                                            {{--<i class="icon-star"></i> Sample Link 1</a>--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="#" class="nav-link">--}}
+                                    {{--<i class="icon-camera"></i> Sample Link 1</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="#" class="nav-link">--}}
+                                    {{--<i class="icon-link"></i> Sample Link 2</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="#" class="nav-link">--}}
+                                    {{--<i class="icon-pointer"></i> Sample Link 3</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                    {{--<li class="nav-item">--}}
+                        {{--<a href="?p=dashboard-2" class="nav-link">--}}
+                            {{--<i class="icon-globe"></i> Arrow Toggle--}}
+                            {{--<span class="arrow nav-toggle"></span>--}}
+                        {{--</a>--}}
+                        {{--<ul class="sub-menu">--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="#" class="nav-link">--}}
+                                    {{--<i class="icon-tag"></i> Sample Link 1</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="#" class="nav-link">--}}
+                                    {{--<i class="icon-pencil"></i> Sample Link 1</a>--}}
+                            {{--</li>--}}
+                            {{--<li class="nav-item">--}}
+                                {{--<a href="#" class="nav-link">--}}
+                                    {{--<i class="icon-graph"></i> Sample Link 1</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                    {{--<li class="nav-item">--}}
+                        {{--<a href="#" class="nav-link">--}}
+                            {{--<i class="icon-bar-chart"></i> Item 3 </a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

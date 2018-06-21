@@ -100,7 +100,7 @@ mix.styles([
     'resources/assets/css/frontend-custom-ar.css',
 
 ], 'public/css/rtl.css').version();
-mix.scripts([
+mix.babel([
         '../expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
         '../expert-theme/expert/js/bootstrap.min.js',
         '../expert-theme/expert/js/jquery.nivo.slider.pack.js',
