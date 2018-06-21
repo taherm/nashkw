@@ -12,7 +12,7 @@ class FavoriteController extends Controller
 
     public function index()
     {
-        $elements = User::whereId(auth()->user()->id)->first()->favorites()->paginate(12);
+        $elements = User::whereId(auth()->user()->id)->first()->favorites()->with('gallery.images','favorites')->paginate(12);
         return view('frontend.modules.product.index', compact('elements'));
     }
 

@@ -32,7 +32,7 @@ class ProductController extends Controller
             return redirect()->route('frontend.home')->withErrors($validator->messages());
         }
 
-        $elements = $this->product->filters($filters)->hasProductAttribute()->with('tags','gallery.images')->paginate(20);
+        $elements = $this->product->filters($filters)->hasProductAttribute()->with('tags','gallery.images','favorites')->paginate(20);
 
         $tags = $elements->pluck('tags')->unique()->flatten();
 
