@@ -83,7 +83,7 @@ trait ProductHelpers
         $categoriesId = $product->categories->pluck('id');
         return $this->whereHas('categories', function ($q) use ($categoriesId) {
             return $q->whereId($categoriesId);
-        })->with('gallery.images')->take(4)->get();
+        })->with('gallery.images','favorites')->take(4)->get();
     }
 
     public function getTotalQtyAttribute()
