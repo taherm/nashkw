@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="file" class="form-control" name="image" placeholder="image" required>
+                                <input type="file" class="form-control" name="image" placeholder="image">
                                 <label for="form_control_1">Main Image</label>
                                 <div class="help-block text-left">
                                     W * H - Best fit 1024 x 800 pixels
@@ -165,10 +165,10 @@
                             <div class="form-group">
                                 <label class="control-label sbold">active</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="active" id="optionsRadios3" checked
+                                    <input type="radio" name="active" id="optionsRadios3" {{ $element->active ? 'checked' : null }}
                                            value="1"> active</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="active" id="optionsRadios4"
+                                    <input type="radio" name="active" id="optionsRadios4" {{ !$element->active ? 'checked' : null  }}
                                            value="0">not active</label>
                             </div>
                         </div>
@@ -176,10 +176,10 @@
                             <div class="form-group">
                                 <label class="control-label sbold">on_menu_desktop</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_desktop" id="optionsRadios3"
+                                    <input type="radio" name="on_menu_desktop" id="optionsRadios3" {{ $element->on_menu_desktop ? 'checked' : null  }}
                                            value="1"> on_menu_desktop</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_desktop" id="optionsRadios4" checked
+                                    <input type="radio" name="on_menu_desktop" id="optionsRadios4" {{ !$element->on_menu_desktop ? 'checked' : null  }}
                                            value="0">not on_menu_desktop</label>
                             </div>
                         </div>
@@ -187,10 +187,10 @@
                             <div class="form-group">
                                 <label class="control-label sbold">on_menu_mobile</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_mobile" id="optionsRadios3"
+                                    <input type="radio" name="on_menu_mobile" id="optionsRadios3" {{ $element->on_menu_mobile ? 'checked' : null  }}
                                            value="1"> on_menu_mobile</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_mobile" id="optionsRadios4" checked
+                                    <input type="radio" name="on_menu_mobile" id="optionsRadios4" {{ !$element->on_menu_mobile ? 'checked' : null  }}
                                            value="0">not on_menu_mobile</label>
                             </div>
                         </div>
@@ -198,10 +198,10 @@
                             <div class="form-group">
                                 <label class="control-label sbold">on_footer</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_footer" id="optionsRadios3"
+                                    <input type="radio" name="on_footer" id="optionsRadios3" {{ $element->on_footer ? 'checked' : null  }}
                                            value="1"> on_footer</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_footer" id="optionsRadios4" checked
+                                    <input type="radio" name="on_footer" id="optionsRadios4" {{ !$element->on_footer ? 'checked' : null  }}
                                            value="0">not on_footer</label>
                             </div>
                         </div>

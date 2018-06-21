@@ -23,6 +23,8 @@
                             <th>id</th>
                             <th>title_ar</th>
                             <th>title_en</th>
+                            <th>slug_ar</th>
+                            <th>slug_en</th>
                             <th>image</th>
                             <th>url</th>
                             <th>order</th>
@@ -38,6 +40,8 @@
                             <th>id</th>
                             <th>title_ar</th>
                             <th>title_en</th>
+                            <th>slug_ar</th>
+                            <th>slug_en</th>
                             <th>image</th>
                             <th>url</th>
                             <th>order</th>
@@ -54,6 +58,8 @@
                                 <td> {{$element->id}}</td>
                                 <td> {{$element->title_ar}} </td>
                                 <td> {{$element->title_en}} </td>
+                                <td> {{$element->slug_ar}} </td>
+                                <td> {{$element->slug_en}} </td>
                                 <td><img src="{{ asset('storage/uploads/images/thumbnail/'.$element->image) }}" alt=""
                                          class="img-sm"></td>
                                 <td><a href="{{ $element->url }}" class="btn btn-default">{{ $element->title_en }}</a>
