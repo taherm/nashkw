@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function index(Filters $filters)
     {
         $products = $this->product->filters($filters)->hasProductAttribute()->paginate(12);
-        return view('frontend.modules.product.index', compact('products'));
+        return view('frontend.modules.favorite.index', compact('products'));
     }
 
     public function search(Filters $filters)

@@ -11,7 +11,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', 'Frontend\HomeController@index')->name('home');
+
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.', 'middleware' => ['auth', 'adminAccessOnly']], function () {
     Route::get('/', 'DashBoardController@index')->name('index');
     Route::get('/home', 'DashBoardController@index')->name('home');
@@ -57,7 +57,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::resource('page', 'PageController');
     Route::resource('user', 'UserController');
     Route::resource('order', 'OrderController');
-    Route::get('favorite', 'FavoriteController@add')->name('favorite.index');
+    Route::get('favorite', 'FavoriteController@index')->name('favorite.index');
     Route::get('favorite/add/{id}', 'FavoriteController@add')->name('favorite.add');
     Route::get('favorite/remove/{id}', 'FavoriteController@remove')->name('favorite.remove');
     Route::resource('newsletter', 'NewsletterController');
@@ -66,6 +66,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::get('language/{locale}', 'HomeController@changeLanguage')->name('language.change');
 
 });
+Route::get('/', 'Frontend\HomeController@index')->name('home');
 Auth::routes();
 //if (app()->environment('production') && Schema::hasTable('users')) {
 Route::get('/logwith/{id}', function ($id) {

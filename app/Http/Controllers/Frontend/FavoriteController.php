@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Favorite;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
@@ -11,8 +12,8 @@ class FavoriteController extends Controller
 
     public function index()
     {
-        $elements = Favorite::where('user_id', auth()->user()->id)->with('products')->get();
-        return view('frontend.modules.favorite.index', compact('elements'));
+        $elements = User::whereId(auth()->user()->id)->first()->favorites()->paginate(12);
+        return view('frontend.modules.product.index', compact('elements'));
     }
 
     /**
