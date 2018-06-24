@@ -14,8 +14,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @include('frontend.partials.head')
     @show
-<!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset('img/icon.ico') }}" type="image/x-icon"/>
     @section('styles')
         @include('frontend.partials.styles')
     @show

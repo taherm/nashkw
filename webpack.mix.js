@@ -48,7 +48,6 @@ mix.styles([
     '../metronic_v4.5.6/theme/assets/layouts/layout2/css/custom.min.css',
     './node_modules/jquery.minicolors/jquery.minicolors.css',
     './resources/assets/css/backend-custom.css'
-
 ], 'public/css/backend.css').version();
 mix.scripts([
         '../metronic_v4.5.6/theme/assets/global/plugins/respond.min.js',
@@ -98,7 +97,6 @@ mix.styles([
     'resources/assets/css/style_rtl.css',
     './node_modules/bootstrap3-rtl/dist/bootstrap-rtl-min.css',
     'resources/assets/css/frontend-custom-ar.css',
-
 ], 'public/css/rtl.css').version();
 mix.babel([
         '../expert-theme/expert/js/vendor/jquery-1.12.0.min.js',

@@ -22,5 +22,5 @@
 
     <!--news letter-->
     {{--@include('frontend.partials.newsletter')--}}
-    <!--slider-area end-->x
+    <!--slider-area end-->
 @endsection

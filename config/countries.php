@@ -14,7 +14,18 @@ return [
         'country_iso_alpha3' => 'KW',
         'currency' => 'Kuwait Dinar',
         'symbol' => "KWD",
-        'exchange_rate' => 1
+        'exchange_rate' => 1,
+        'governates' => [
+            [
+                'name_ar' => 'name',
+                'name_en' => 'name',
+                'areas' => [
+                    'name_ar' => 'name',
+                    'name_en' => 'name',
+                    'active' => ''
+                ]
+            ]
+        ]
     ],
     [
         'name_ar' => 'qatar',
