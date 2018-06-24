@@ -111,7 +111,7 @@ nav > ul > li > a:hover , .mega-menu mega-menu3 > a:hover {
 .border-below {
     border-bottom: 1px solid lightgray;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     .feature-product-4 {
         max-height: 500px !important;
     }
