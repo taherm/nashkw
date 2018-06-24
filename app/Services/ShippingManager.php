@@ -42,8 +42,8 @@ trait ShippingManager
             'Shipping Date' => Carbon::today(),
             'ShipmentDetails' => array(
                 'PaymentType' => 'P',
-                'ProductGroup' => ($destinationCountry->iso_3166_2 == 'KW') ? 'DOM' : 'EXP',
-                'ProductType' => ($destinationCountry->iso_3166_2 == 'KW') ? 'ONP' : 'EPX',
+                'ProductGroup' => ($destinationCountry->country_iso_alpha3 == 'KW') ? 'DOM' : 'EXP',
+                'ProductType' => ($destinationCountry->country_iso_alpha3 == 'KW') ? 'ONP' : 'EPX',
                 'ActualWeight' => array('Value' => $cartWeight, 'Unit' => 'KG'),
                 'ChargeableWeight' => array('Value' => $cartWeight, 'Unit' => 'KG'),
                 'NumberOfPieces' => 1
@@ -64,7 +64,7 @@ trait ShippingManager
                 'Reference1' => '001',
             ],
             'Code' => $destinationCountry->code ,
-//            'Code' => $destinationCountry->iso_3166_2 ,
+            'Code' => $destinationCountry->country_iso_alpha3 ,
         ];
         try {
             $countriesSoapClient = new \SoapClient(env('ARAMEX_COUNTRY_URL'), array('trace' => 1));
