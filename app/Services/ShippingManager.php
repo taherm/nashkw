@@ -63,7 +63,6 @@ trait ShippingManager
             'Transaction' => [
                 'Reference1' => '001',
             ],
-            'Code' => $destinationCountry->code ,
             'Code' => $destinationCountry->country_iso_alpha3 ,
         ];
         try {
