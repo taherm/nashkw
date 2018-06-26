@@ -116,3 +116,8 @@ nav > ul > li > a:hover , .mega-menu mega-menu3 > a:hover {
         max-height: 500px !important;
     }
 }
+
+.mean-container .mean-bar::after {
+    content : '' !important;
+}
+

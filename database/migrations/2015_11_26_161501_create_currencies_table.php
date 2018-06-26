@@ -15,9 +15,11 @@ class CreateCurrenciesTable extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('symbol', 25);
-            $table->float('exchange_rate',4,2)->unsigned();
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->string('currency_symbol_ar', 25);
+            $table->string('currency_symbol_en', 25);
+            $table->float('exchange_rate', 4, 2)->unsigned();
             $table->boolean('active')->default(1);
 
             $table->integer('country_id')->unsigned();

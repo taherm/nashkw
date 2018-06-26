@@ -16,7 +16,10 @@ class CurrenciesTableSeeder extends Seeder
         foreach ($countries as $country) {
             factory(Currency::class)->create(
                 [
-                    'symbol' => $country['symbol'],
+                    'name_ar' => $country['currency_ar'],
+                    'name_en' => $country['currency_en'],
+                    'currency_symbol_ar' => $country['currency_symbol_ar'],
+                    'currency_symbol_en' => $country['currency_symbol_en'],
                     'exchange_rate' => $country['exchange_rate']
                 ]
             );

@@ -13,7 +13,7 @@
                                     {{ $product->convertedPrice }} - {{ $currency->symbol }}
                                 </span>
                                 <span class="new-price">{{ $product->convertedSalePrice }}
-                                    {{ $product->symbol }}
+                                    {{ $currency->symbol }}
                                 </span>
                             @else
                                 <span class="new-price">{{ $product->convertedPrice }} - {{ $currency->symbol }}

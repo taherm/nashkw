@@ -28,9 +28,9 @@
                             <th>name_ar</th>
                             <th>name_en</th>
                             <th>flag</th>
-                            <th>code</th>
+                            <th>calling code</th>
                             <th>active</th>
-                            <th>country_iso_alpha3</th>
+                            <th>country code</th>
                             <th>order</th>
                             <th>Action</th>
                         </tr>
@@ -58,11 +58,11 @@
                                     <img class="img-xs img-rounded"
                                          src="{{ asset('storage/uploads/images/thumbnail/'.$element->flag) }}" alt="">
                                 </td>
-                                <td>{{ $element->mobile_code }}</td>
+                                <td>{{ $element->calling_code }}</td>
                                 <td>
                                     <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
                                 </td>
-                                <td>{{ $element->country_iso_alpha3 }}</td>
+                                <td>{{ $element->country_code }}</td>
                                 <td>{{ $element->order }}</td>
                                 <td>
                                     <div class="btn-group pull-right">

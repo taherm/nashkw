@@ -1,4 +1,3 @@
-{{--<link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
 <link rel="stylesheet" href="{{ mix('css/frontend.css') }}">
 @if (app()->isLocale('ar'))
         @section('arabic-css')

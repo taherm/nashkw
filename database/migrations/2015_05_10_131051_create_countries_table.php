@@ -16,8 +16,8 @@ class CreateCountriesTable extends Migration
             $table->increments('id');
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
-            $table->string('mobile_code')->nullable();
-            $table->string('country_iso_alpha3')->nullable();
+            $table->string('calling_code')->nullable();
+            $table->string('country_code')->nullable();
             $table->string('flag')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('active')->default(1);

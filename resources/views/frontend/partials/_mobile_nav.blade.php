@@ -39,6 +39,18 @@
                                 </li>
                             @endforeach
                         @endif
+
+                        <li>
+                            <a href="{{ route('frontend.language.change',['locale' => 'ar']) }}">
+                                {{ trans('general.arabic') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('frontend.language.change',['locale' => 'en']) }}">
+                                {{ trans('general.english') }}
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>

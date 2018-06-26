@@ -28,7 +28,7 @@
                          {{--src="{{asset('img/flags/'.strtolower($currency->country->flag).'.png')}}"--}}
                          {{--style="padding-right: 5px; float: left;padding-top: 9px;padding-left: 3px;"--}}
                          {{--class="currency-images"/>--}}
-                    <a href="{{ route('frontend.currency.change',['currency' => strtolower($currency->symbol)]) }}"
+                    <a href="{{ route('frontend.currency.change',['currency' => strtolower($currency->currency_symbol_en)]) }}"
                        class="currency-code">{{ $currency->name }}</a>
                 </li>
             @endforeach

@@ -21,7 +21,7 @@ class CountriesTableSeeder extends Seeder
                 [
                     'name_ar' => $country['name_ar'],
                     'name_en' => $country['name_en'],
-                    'country_iso_alpha3' => $country['country_iso_alpha3'],
+                    'country_code' => $country['country_code'],
                 ]
             );
         }
