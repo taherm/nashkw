@@ -72,7 +72,15 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $setting = Setting::first();
+
+        if ($setting->update($request->request->all())) {
+            if($request->has('logo')) {
+                $this->saveMimes($setting, $request, ['logo'], ['500', '500'], true);
+            }
+            return redirect()->route('backend.setting.index')->with('success','setting updated');
+        }
+        return redirect()->route('backend.setting.index')->with('error','setting error');
     }
 
     /**

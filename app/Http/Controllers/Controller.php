@@ -12,6 +12,5 @@ use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    use ImageHelpers;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ImageHelpers;
 }

@@ -146,6 +146,10 @@ Breadcrumbs::for('backend.product.edit', function ($trail, $element) {
     $trail->push('edit product', route('backend.product.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.setting.edit', function ($trail, $element) {
+    $trail->parent('backend.setting.index');
+    $trail->push('edit settings', route('backend.setting.edit', $element->id));
+});
 
 Breadcrumbs::for('backend.color.create', function ($trail) {
     $trail->parent('backend.color.index');
