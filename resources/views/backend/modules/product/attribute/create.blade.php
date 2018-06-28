@@ -10,28 +10,7 @@
                 <input type="hidden" name="product_id" value="{{ request()->product_id }}">
                 <div class="form-body">
                     <h3 class="form-section">Create Attribute</h3>
-                    <div class="mt-element-step">
-                        <div class="row step-default">
-                            <div class="col-md-4 bg-grey mt-step-col">
-                                <div class="mt-step-number bg-white font-grey">1</div>
-                                <div class="mt-step-title uppercase font-grey-cascade">Create Product</div>
-                                <div class="mt-step-content font-grey-cascade">products</div>
-                            </div>
-                            <div class="col-md-4 bg-grey mt-step-col active">
-                                <div class="mt-step-number bg-white font-grey">2</div>
-                                <div class="mt-step-title uppercase font-grey-cascade">Add Attribute</div>
-                                <div class="mt-step-content font-grey-cascade">different Colors , Sizes , Qunatities for each product</div>
-                            </div>
-                            <div class="col-md-4 bg-grey mt-step-col ">
-                                <div class="mt-step-number bg-white font-grey">3</div>
-                                <div class="mt-step-title uppercase font-grey-cascade">Add Galleries</div>
-                                <div class="mt-step-content font-grey-cascade">Receive item integration</div>
-                            </div>
-                        </div>
-                        <br/>
-                        <br/>
-                    </div>
-                    <br>
+                    @include('frontend.partials._product_steps')
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group{{ $errors->has('qty') ? ' has-error' : '' }}">
@@ -54,6 +33,28 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="size_id" class="control-label">size_id *</label>
+                                <select class="form-control input-xlarge" name="size_id" id="size_id" required>
+                                    @foreach($sizes as $size)
+                                        <option value="{{ $size->id }}">{{ $size->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="color_id" class="control-label">color_id *</label>
+                                <select class="form-control input-xlarge" name="color_id" id="color_id" required>
+                                    @foreach($colors as $color)
+                                        <option value="{{ $color->id }}">{{ $color->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group{{ $errors->has('notes_ar') ? ' has-error' : '' }}">
                                 <label for="notes_ar" class="control-label">notes_ar arabic</label>
@@ -90,28 +91,6 @@
                                         </strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="size_id" class="control-label">size_id *</label>
-                                <select class="form-control input-xlarge" name="size_id" id="size_id" required>
-                                    @foreach($sizes as $size)
-                                        <option value="{{ $size->id }}">{{ $size->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="color_id" class="control-label">color_id *</label>
-                                <select class="form-control input-xlarge" name="color_id" id="color_id" required>
-                                    @foreach($colors as $color)
-                                        <option value="{{ $color->id }}">{{ $color->name }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                         </div>
                     </div>

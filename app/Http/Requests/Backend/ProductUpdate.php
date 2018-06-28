@@ -33,7 +33,7 @@ class ProductUpdate extends FormRequest
             'on_sale_on_homepage' => 'boolean',
             'on_homepage' => 'boolean',
             'price' => 'required|numeric|min:0.5',
-            'weight' => 'required|numeric|min:0.3',
+            'weight' => 'required|numeric|min:0.1|max:50',
             'sale_price' => 'numeric|nullable',
             'size_chart_image' => 'image|nullable',
             'description_en' => 'min:3|nullable',

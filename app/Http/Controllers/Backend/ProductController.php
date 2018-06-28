@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if(request()->has('type')) {
+        if (request()->has('type')) {
             $elements = Product::where(request('type'), true)->with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
         } else {
             $elements = Product::with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
@@ -56,7 +56,7 @@ class ProductController extends Controller
             if ($request->hasFile('size_chart_image')) {
                 $this->saveMimes($element, $request, ['size_chart_image'], ['500', '500'], false);
             }
-            return redirect()->route('backend.product.attribute.create')->with('success', 'product saved.');
+            return redirect()->route('backend.attribute.create', ['product_id' => $element->id])->with('success', 'product saved.');
         }
         return redirect()->back()->with('error', 'unknown error');
 
@@ -117,6 +117,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+        $element = Product::whereId($id)->first();
+        $element->product_attributes()->delete();
+        if($element->delete()) {
+            return redirect()->back()->with('success', 'product deleted');
+        }
+        return redirect()->back()->with('error', 'product is not deleted');
     }
 
     public function restore($id)

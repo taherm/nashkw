@@ -59,7 +59,7 @@ class ProductAttributeController extends Controller
             return redirect()->back()->withErrors($validate)->withInput(Input::all());
         }
         $element = ProductAttribute::create($request->all());
-        return redirect()->route('backend.product.index')->with('success', 'saved successfully');
+        return redirect()->route('backend.attribute.create', ['product_id' => $element->product_id])->with('success', 'saved successfully');
     }
 
     /**
