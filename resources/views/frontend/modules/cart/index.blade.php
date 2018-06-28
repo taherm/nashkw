@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 @section('body')
     <div class="feature-product-area">
         <div class="container">

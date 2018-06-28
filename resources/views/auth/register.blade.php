@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 
 @section('content')
     <div class="container" style="padding: 50px;">

@@ -54,7 +54,7 @@
     <!-- END Modal -->
 </div>
 
-@if(isset($product))
+@if(isset($product) && !is_null($product->size_chart_image))
     <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -63,7 +63,7 @@
                     <button type="button" class="close" data-dismiss="modal"><span
                                 aria-hidden="true">&times;</span><span
                                 class="sr-only">{{ trans('general.close') }}</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Size Chart</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ trans('general.size_charts') }}</h4>
                 </div>
                 <div class="modal-body" style="text-align: center;">
                     <img src="{{ file_exists(asset(env('LARGE').$product->size_chart_image)) ? asset(env('LARGE').$product->size_chart_image) : asset('img/charts.png') }}"
@@ -71,7 +71,7 @@
                          style="width: 400px; height: 264px;">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('general.close') }}</button>
                 </div>
             </div>
         </div>

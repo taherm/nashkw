@@ -423,6 +423,14 @@
                                     <i class="icon-home"></i>Dashboard</a>
                             </li>
                             <li>
+                                <a href="{{ url('backend/translations') }}">
+                                    <i class="icon-pencil"></i>Translation Manger</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('backend.export.translation') }}">
+                                    <i class="icon-envelope-letter"></i>export_translations</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('backend.setting.index') }}">
                                     <i class="icon-settings"></i> App Settings </a>
                             </li>

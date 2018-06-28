@@ -6,6 +6,7 @@ namespace App\Models;
 class ProductAttribute extends PrimaryModel
 {
     protected $guarded = [''];
+    protected $localeStrings = ['notes'];
     public function product()
     {
         return $this->belongsTo(Product::class);

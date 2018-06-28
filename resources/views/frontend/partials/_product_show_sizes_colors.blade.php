@@ -16,6 +16,8 @@
                 <div class="col-lg-6">
                     @foreach($product->product_attributes->unique('color')->pluck('color') as $color)
                         <div class="col-lg-1"
+                             data-toggle="tooltip"
+                             title="{{ $product->product_attributes->where('color_id', $color->id)->first()->notes }}"
                              style="background-color: {{ $color->code }}; width : 42px; height : 42px; margin-left: 3px; margin-right: 3px;">
                         </div>
                     @endforeach
@@ -40,17 +42,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 cart-btn">
+                <div class="col-lg-3 cart-btn">
                     <div class="add-to-cart">
                         <button type="submit">{{ trans('general.add_to_cart') }}</button>
                     </div>
+                </div>
+                <div class="col-lg-3 cart-btn">
+                    <a href="#" data-toggle="modal" data-target="#imagemodal"
+                       title="Check Item Sizes!"
+                       style="text-decoration: none;border: navajowhite;color: #b2dab7;font-size: 12px;">
+                        {{ trans('general.size_charts') }}</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
-@section('scripts')
-    @parent
-@endsection

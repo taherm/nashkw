@@ -9,6 +9,28 @@
                 @csrf
                 <div class="form-body">
                     <h3 class="form-section">Create Product</h3>
+                    <div class="mt-element-step">
+                        <div class="row step-default">
+                            <div class="col-md-4 bg-grey mt-step-col active">
+                                <div class="mt-step-number bg-white font-grey">1</div>
+                                <div class="mt-step-title uppercase font-grey-cascade">Create Product</div>
+                                <div class="mt-step-content font-grey-cascade">products</div>
+                            </div>
+                            <div class="col-md-4 bg-grey mt-step-col">
+                                <div class="mt-step-number bg-white font-grey">2</div>
+                                <div class="mt-step-title uppercase font-grey-cascade">Add Attribute</div>
+                                <div class="mt-step-content font-grey-cascade">different Colors , Sizes , Qunatities for each product</div>
+                            </div>
+                            <div class="col-md-4 bg-grey mt-step-col ">
+                                <div class="mt-step-number bg-white font-grey">3</div>
+                                <div class="mt-step-title uppercase font-grey-cascade">Add Galleries</div>
+                                <div class="mt-step-content font-grey-cascade">Receive item integration</div>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                    </div>
+                    <br>
                     {{--name arabic / name english --}}
                     <div class="row">
                         <div class="col-md-4">
@@ -93,7 +115,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="form-group{{ $errors->has('sale_price') ? ' has-error' : '' }}">
                                 <label for="sale_price" class="control-label">sale_price *</label>
                                 <input id="sale_price"
@@ -111,6 +133,17 @@
                                         </strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label sbold">on_sale</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="on_sale" id="optionsRadios3"
+                                           value="1"> on_sale</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="on_sale" id="optionsRadios4" checked
+                                           value="0">not on_sale</label>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -177,18 +210,18 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="file" class="form-control" name="image" placeholder="image" required>
                                 <label for="form_control_1">Main Image</label>
+                                <input type="file" class="form-control" name="image" placeholder="image" required>
                                 <div class="help-block text-left">
-                                    W * H - Best fit 1024 x 800 pixels
+                                    W * H - Best fit ['750', '1334'] pixels
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
+                                <label for="form_control_1">Image Chart</label>
                                 <input type="file" class="form-control" name="size_chart_image"
                                        placeholder="size_chart_image">
-                                <label for="form_control_1">Image Chart</label>
                                 <div class="help-block text-left">
                                     W * H - Best fit 500 x 500 pixels
                                 </div>
@@ -297,7 +330,7 @@
 
                     <div class="row">
                         <hr>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label sbold">active</label></br>
                                 <label class="radio-inline">
@@ -308,18 +341,7 @@
                                            value="0">not active</label>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="control-label sbold">on_sale</label></br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="on_sale" id="optionsRadios3"
-                                           value="1"> on_sale</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="on_sale" id="optionsRadios4" checked
-                                           value="0">not on_sale</label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label sbold">on_sale_on_homepage</label></br>
                                 <label class="radio-inline">
@@ -330,7 +352,7 @@
                                            value="0">not on_sale_on_homepage</label>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label sbold">on_homepage</label></br>
                                 <label class="radio-inline">
@@ -342,7 +364,16 @@
                             </div>
                         </div>
                     </div>
-                    @include('backend.partials.forms._btn-group')
+                    <div class="form-actions right">
+                        {{--<button type="button" class="btn default">Cancel</button>--}}
+                        <a href="{!! url()->previous() !!}" class="btn default">Cancel</a>
+                        {{--<button type="submit" class="btn btn-warning">--}}
+                            {{--<i class="fa fa-check"></i> Save & Go Back--}}
+                        {{--</button>--}}
+                        <button type="submit" class="btn btn-info">
+                            <i class="fa fa-save"></i> Next
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

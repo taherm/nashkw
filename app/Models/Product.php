@@ -11,6 +11,7 @@ class Product extends PrimaryModel
     protected $localeStrings = ['name', 'description', 'notes'];
     protected $guarded = [''];
     protected $appends = ['isOnSale'];
+    protected $dates = ['created_at','deleted_at','start_sale','end_sale'];
     protected $casts = [
         'on_sale' => 'boolean',
         'on_sale_on_homepage' => 'boolean',

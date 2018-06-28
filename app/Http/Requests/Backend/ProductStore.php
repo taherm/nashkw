@@ -41,6 +41,7 @@ class ProductStore extends FormRequest
             'notes_ar' => 'min:3|nullable',
             'notes_en' => 'min:3|nullable',
             'image' => 'required|image',
+            'size_chart_image' => 'nullable|image',
             'start_sale' => 'date|after_or_equal:today|nullable',
             'end_sale' => 'date|after_or_equal:today|nullable',
             'active' => 'required|boolean',

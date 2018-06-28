@@ -41,8 +41,8 @@ class ProductUpdate extends FormRequest
             'notes_ar' => 'min:3|nullable',
             'notes_en' => 'min:3|nullable',
             'image' => 'image',
-            'start_sale' => 'date|after_or_equal:today|nullable',
-            'end_sale' => 'date|after_or_equal:today|nullable',
+            'start_sale' => 'sometimes|date|after_or_equal:today',
+            'end_sale' => 'sometimes|date|after_or_equal:today',
             'active' => 'required|boolean',
             'categories' => 'array',
             'tags' => 'array'

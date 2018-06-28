@@ -7,12 +7,19 @@
                     <!-- tab bar -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active"><a href="#product-des" data-toggle="tab">{{ trans('general.product_description') }}</a></li>
-                        <li><a href="#product-tag" data-toggle="tab">Product Tags</a></li>
+                        <li><a href="#product-tag" data-toggle="tab">{{ trans('general.product_tags') }}</a></li>
                     </ul>
                     <!-- Tab Content -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="product-des">
                             <p>{!! $product->description !!}</p>
+                        </div>
+                        <div class="tab-pane active" id="product-des">
+                            <h5>
+                                {{ trans('general.notes') }}
+                            </h5>
+                            <hr>
+                            <p>{!! $product->notes !!}</p>
                         </div>
                         <div class="tab-pane" id="product-tag">
                             <h2>{{ trans('general.product_tags') }}</h2>
@@ -21,20 +28,11 @@
                                     <ul>
                                         @foreach($product->tags as $tag)
                                             <li><a href="{{ route('frontend.product.search',['tag_id' => $tag->id]) }}"
-                                                   style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->slug }}</a></li>
+                                                   style="font-size: {!!rand(12,20)!!}px !important;">{{ $tag->slug }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
-                            {{--<ul class="product-action">--}}
-                                {{--@foreach($product->tagged as $tag)--}}
-                                {{--<ul>--}}
-                                    {{--<li>--}}
-                                        {{--<a href="{{ route('product.tags',[$tag->tag_name]) }}" style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->tag_name }}</a>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
-                                {{--@endforeach--}}
-                            {{--</ul>--}}
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 <?php
 
 return array (
+  'kwd' => 'KWD',
   'message' => 
   array (
     'warning' => 

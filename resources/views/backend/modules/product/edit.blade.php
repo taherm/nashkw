@@ -145,7 +145,7 @@
                                        type="date"
                                        class="form-control"
                                        name="start_sale"
-                                       value="{{ $element->start_sale }}"
+                                       value="{{ $element->start_sale->format('m-d-Y') }}"
                                        placeholder="name in arabic"
                                        autofocus>
                                 @if ($errors->has('start_sale'))
@@ -181,7 +181,7 @@
                                 <input type="file" class="form-control" name="image" placeholder="image">
                                 <label for="form_control_1">Main Image</label>
                                 <div class="help-block text-left">
-                                    W * H - Best fit 1024 x 800 pixels
+                                    W * H - Best fit ['750', '1334'] pixels
                                 </div>
                             </div>
                         </div>

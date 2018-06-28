@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 
 
 
@@ -12,13 +12,13 @@
     @show
     <!--feature-product-area start-->
     {{--col-lg-4 col-md-4 col-sm-4--}}
-    @include('frontend.modules.product.partials.product_carousel',['products'=>$newArrivals,'carousel' => true ,'heading'=> trans('general.new_arrival'),'backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-3 col-md-3 col-sm-3'])
+    @include('frontend.modules.product.partials.product_carousel',['products'=>$newArrivals,'carousel' => true ,'heading'=> trans('general.new_arrival'),'backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-4 col-md-4 col-sm-4'])
     <!--feature-product-area end-->
 
     <!--news-product-area start-->
-    @include('frontend.modules.product.partials.product_carousel',['products'=>$onSaleProducts,'carousel' => true , 'heading'=> trans('general.on_sale_products'), 'cols' => 'col-lg-3 col-md-3 col-sm-3'])
+    @include('frontend.modules.product.partials.product_carousel',['products'=>$onSaleProducts,'carousel' => true , 'heading'=> trans('general.on_sale_products'), 'cols' => 'col-lg-4 col-md-4 col-sm-4'])
 
-    @include('frontend.modules.product.partials.product_carousel',['products'=>$bestSalesProducts, 'carousel' => true , 'heading'=>trans('general.best_sale_products'),'backgroundColor'=>'#e7e7e7','cols' => 'col-lg-3 col-md-3 col-sm-3'])
+    @include('frontend.modules.product.partials.product_carousel',['products'=>$bestSalesProducts, 'carousel' => true , 'heading'=>trans('general.best_sale_products'),'backgroundColor'=>'#e7e7e7','cols' => 'col-lg-4 col-md-4 col-sm-4'])
 
     <!--news letter-->
     {{--@include('frontend.partials.newsletter')--}}

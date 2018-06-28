@@ -122,3 +122,61 @@ class CartController extends Controller
     }
 
 }
+
+/*
+$data = '<?xml version="1.0" encoding="UTF-8"?>
+<p:DCTRequest xmlns:p="http://www.dhl.com" xmlns:p1="http://www.dhl.com/datatypes" xmlns:p2="http://www.dhl.com/DCTRequestdatatypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dhl.com DCT-req.xsd ">
+  <GetQuote>
+    <Request>
+      <ServiceHeader>
+        <MessageTime>'.date('c').'</MessageTime>
+        <MessageReference>1234567890123456789012345678901</MessageReference>
+        <SiteID>YOUR_DHL_SITE_ID</SiteID>
+        <Password>YOUR_DHL_PASSWORD</Password>
+      </ServiceHeader>
+    </Request>
+    <From>
+        <CountryCode>KW</CountryCode>
+        <Postalcode>11211</Postalcode>
+    </From>
+    <BkgDetails>
+      <PaymentCountryCode>KW</PaymentCountryCode>
+      <Date>2011-06-06</Date>
+      <ReadyTime>PT10H21M</ReadyTime>
+            <ReadyTimeGMTOffset>+01:00</ReadyTimeGMTOffset>
+            <DimensionUnit>CM</DimensionUnit>
+
+            <WeightUnit>KG</WeightUnit>
+            <Pieces><Piece>
+                <PieceID>1</PieceID>
+                <Height>20</Height>
+                <Depth>20</Depth>
+                <Width>20</Width>
+                <Weight>19</Weight>
+            </Piece></Pieces>
+            <IsDutiable>N</IsDutiable>
+            <NetworkTypeCode>AL</NetworkTypeCode>
+        </BkgDetails>
+        <To>
+            <CountryCode>KW</CountryCode>
+            <Postalcode>10101</Postalcode>
+        </To>
+    </GetQuote>
+</p:DCTRequest>';
+$tuCurl = curl_init();
+curl_setopt($tuCurl, CURLOPT_URL, "https://xmlpitest-ea.dhl.com/XMLShippingServlet");
+curl_setopt($tuCurl, CURLOPT_PORT , 443);
+curl_setopt($tuCurl, CURLOPT_VERBOSE, 0);
+curl_setopt($tuCurl, CURLOPT_HEADER, 0);
+curl_setopt($tuCurl, CURLOPT_POST, 1);
+curl_setopt($tuCurl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($tuCurl, CURLOPT_POSTFIELDS, $data);
+curl_setopt($tuCurl, CURLOPT_HTTPHEADER, array("Content-Type: text/xml","SOAPAction: \"/soap/action/query\"", "Content-length: ".strlen($data)));
+
+$tuData = curl_exec($tuCurl);
+
+curl_close($tuCurl);
+$xml = simplexml_load_string($tuData);
+print "<pre>";
+print_r($xml);
+*/

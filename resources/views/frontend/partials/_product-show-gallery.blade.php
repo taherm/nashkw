@@ -15,7 +15,7 @@
         <div class="tab-pane active" id="p-view-{{ $product->id }}">
             <div class="simpleLens-big-image-container" >
                 <a class="simpleLens-lens-image" data-lens-image="{{ asset(env('LARGE').$product->image) }}">
-                    <img src="{{ asset(env('THUMBNAIL').$product->image) }}" class="simpleLens-big-image"
+                    <img src="{{ asset(env('THUMBNAIL').$product->image) }}" class="simpleLens-big-image img-mobile"
                          alt="{{ $product->name }}">
                 </a>
             </div>

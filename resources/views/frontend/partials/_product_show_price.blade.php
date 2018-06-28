@@ -23,7 +23,7 @@
             <div>
                 <p style="margin: 0px;padding-top: 15px;font-size: 10px;">{{ trans('general.approx') }}.</p>
                 <span class="new-price"
-                      style="font-size: 13px;">{{ $product->convertedSalePrice }} - {{ $currency->symbol }}
+                      style="font-size: 13px;">{{ $product->convertedSalePrice }} - {{ trans('general.kwd') }}
         </span>
             </div>
         @endif

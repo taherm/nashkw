@@ -39,6 +39,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::resource('aboutus', 'AboutusController');
     Route::get('reset/password', 'UserController@getResetPassword')->name('reset.password');
     Route::post('reset/password', 'UserController@postResetPassword')->name('reset');
+    Route::get('backup/db', ['as' => 'backup.db', 'uses' => 'HomeController@BackupDB']);
+    Route::get('export/translations', ['as' => 'export.translation', 'uses' => 'DashboardController@exportTranslations']);
 });
 
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []], function () {
