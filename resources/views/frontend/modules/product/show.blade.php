@@ -15,9 +15,9 @@
 
 @section('body')
     <div class="single-page-area shop-product-area">
-        @include('frontend.partials._breadcrumbs')
+    @include('frontend.partials._breadcrumbs')
 
-        <!-- Single Product details Area -->
+    <!-- Single Product details Area -->
         <div class="single-product-details-area">
             <div class="single-product-view-area">
                 <div class="container">
@@ -42,4 +42,8 @@
     <!-- Single Product Area end -->
     <!-- Creates the bootstrap modal where the image will appear -->
     {{-- moved to modal blade quick view--}}
+@section('scripts')
+    @parent
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+@endsection
 @endsection

@@ -133,3 +133,15 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     content: '' !important;
 }
 
+
+.btn-size-chart {
+    background: rgba(0,0,0,0) none repeat scroll 0 0 !important;
+    border: 2px solid #444 !important;
+    color: #444 !important;
+    display: inline-block;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    margin-right: 20px !important;
+    padding: 9px 20px !important;
+    text-transform: uppercase !important;
+}

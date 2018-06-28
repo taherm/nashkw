@@ -6,19 +6,22 @@
                 <div class="product-description-tab custom-tab">
                     <!-- tab bar -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="active"><a href="#product-des" data-toggle="tab">{{ trans('general.product_description') }}</a></li>
-                        <li><a href="#product-tag" data-toggle="tab">{{ trans('general.product_tags') }}</a></li>
+                        <li class="active">
+                            <a href="#product-des" data-toggle="tab">{{ trans('general.product_description') }}</a>
+                        </li>
+                        <li>
+                            <a href="#product-tag" data-toggle="tab">{{ trans('general.product_tags') }}</a>
+                        </li>
+                        <li>
+                            <a href="#product-notes" data-toggle="tab">{{ trans('general.notes') }}</a>
+                        </li>
                     </ul>
                     <!-- Tab Content -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="product-des">
                             <p>{!! $product->description !!}</p>
                         </div>
-                        <div class="tab-pane active" id="product-des">
-                            <h5>
-                                {{ trans('general.notes') }}
-                            </h5>
-                            <hr>
+                        <div class="tab-pane active" id="product-notes">
                             <p>{!! $product->notes !!}</p>
                         </div>
                         <div class="tab-pane" id="product-tag">

@@ -45,6 +45,7 @@
         </div>
         @include('frontend.partials._social_btns')
         @include('frontend.partials._product_show_price')
+        <hr>
         @if($product->totalQty > 0)
             <p class="availability in-stock">{{ trans('general.availability') }}:
                 <span>In stock</span></p>
@@ -56,7 +57,7 @@
             @include('frontend.partials._product_show_sizes_colors')
         @else
             <p class="availability in-stock">{{ trans('general.availability') }} : <span
-                        style="color: #ff0000;">Out stock</span>
+                        style="color: #ff0000;">{{ trans('general.out_of_stock') }}</span>
             </p>
         @endif
     </div>

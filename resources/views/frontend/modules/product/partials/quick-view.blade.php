@@ -60,9 +60,9 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
+                    <button type="button" class="close" data-dismiss="modal" style="padding-left: 15px; padding-right: 15px;"><span
                                 aria-hidden="true">&times;</span><span
-                                class="sr-only">{{ trans('general.close') }}</span></button>
+                                class="sr-only"> {{ trans('general.close') }}</span></button>
                     <h4 class="modal-title" id="myModalLabel">{{ trans('general.size_charts') }}</h4>
                 </div>
                 <div class="modal-body" style="text-align: center;">

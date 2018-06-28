@@ -27,7 +27,7 @@
                         <option value="">{{ trans('general.select_size') }}</option>
                     </select>
                 </div>
-                <div class="col-lg-6 cart-btn">
+                <div class="col-lg-3 cart-btn">
                     <div class="qty-button">
                         <input type="text" class="input-text qty" title="Qty" value="0" maxlength="1" id="qty"
                                name="qty">
@@ -42,16 +42,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 cart-btn">
+                <div class="col-lg-5 cart-btn">
                     <div class="add-to-cart">
                         <button type="submit">{{ trans('general.add_to_cart') }}</button>
                     </div>
                 </div>
-                <div class="col-lg-3 cart-btn">
-                    <a href="#" data-toggle="modal" data-target="#imagemodal"
-                       title="Check Item Sizes!"
-                       style="text-decoration: none;border: navajowhite;color: #b2dab7;font-size: 12px;">
-                        {{ trans('general.size_charts') }}</a>
+                <div class="col-lg-4 cart-btn">
+                        <a href="#" data-toggle="modal" data-target="#imagemodal"
+                           title="Check Item Sizes!" class="btn-size-chart">
+                            {{ trans('general.size_charts') }}</a>
                 </div>
             </form>
         </div>
