@@ -11,7 +11,7 @@
                             <div class="single-footer-service footer-2-service" style="min-height: 95px;">
                                 <div class="footer-service-icon">
                                     {{--<img class="box-icon" src="{{asset('meem/frontend/img/icons/ft-img_2.png')}}" alt="">--}}
-                                    <i class="fa fa-truck fa-fw fa-3x" aria-hidden="true"></i>
+                                    <i class="fa fa-truck fa-fw fa-3x" aria-hidden="true" style="color : white; opacity: 0.4"></i>
                                 </div>
                                 <div class="footer-service-text">
                                     <h2>{{ trans('general.free_shipping_in_kuwait') }}</h2>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="footer-service-text">
                                     <h2>{{ trans('general.customer_support') }}</h2>
-                                    <p>support[@]meemonoon.com</p>
+                                    <p>{{ $settings->email }}</p>
                                 </div>
                             </div>
                             <!-- single-footer-service end -->
@@ -171,9 +171,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="footer-copyright">
-                            <address>{{ trans('general.designed_by') }} <a
-                                        href="http://ideasowners.net/">IdeasOwners</a>{{ trans('general.all_rights_reserved') }}
+                        <div class="footer-copyright" style="color : white;">
+                            <address>{{ trans('general.all_rights_reserved') }} &nbsp; {{ trans('general.designed_by') }}  	&nbsp;
+                                <a href="http://ideasowners.net/">IdeasOwners</a>  	&nbsp;
                             </address>
                         </div>
                     </div>
@@ -183,15 +183,15 @@
                                 @if($currency->symbol === 'KWD')
                                     <li>
                                         <a href="#">
-                                            <img class="img-xs" src="{{asset('img/k-net-icon.png')}}" alt="knet">
+                                            <img class="img-sm" src="{{asset('img/k-net-icon.png')}}" alt="knet">
                                         </a>
-                                        <a href="#"><img class="img-xs-visa" src="{{asset('img/payment.png')}}"
+                                        <a href="#"><img class="img-sm-visa" src="{{asset('img/payment.png')}}"
                                                          alt="payment">
                                         </a>
-                                        <a href="#"><img class="img-xs" src="{{asset('img/cash-icon.png')}}" alt="cash"></a>
+                                        <a href="#"><img class="img-sm" src="{{asset('img/cash-icon.png')}}" alt="cash"></a>
                                     </li>
                                 @else
-                                    <li><a href="#"><img class="img-xs"
+                                    <li><a href="#"><img class="img-sm"
                                                          src="{{asset('img/payment.png')}}" alt="payment"></a>
                                     </li>
                                 @endif
