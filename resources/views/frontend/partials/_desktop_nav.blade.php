@@ -8,18 +8,18 @@
                         <ul>
                             <li><a class="no-child" href="{{URL('/')}}">{{ trans('general.home') }}</a></li>
                             @if(!$categories->isEmpty())
-                                @foreach($categories->sortBy('order') as $category)
+                                @foreach($categories->where('is_home',true)->sortBy('order') as $category)
                                     <li>
                                         <a href="{{ route('frontend.product.search',['category_id' => $category->id]) }}">{{ $category->name }}</a>
                                         <!-- mega menu start -->
-                                        @if(count($category->children) > 0)
+                                        @if(count($category->children->where('is_home', true)) > 0)
                                             <div class="mega-menu mega-menu3">
-                                                @foreach($category->children->sortBy('order') as $child)
+                                                @foreach($category->children->where('is_home', true)->sortBy('order') as $child)
                                                     <span>
                                                                 <a class="mega-headline"
                                                                    href="{{ route('frontend.product.search',['category_id' => $child->id]) }}">{{ $child->name }}</a>
-                                                        @if(count($child->children) > 0)
-                                                            @foreach($child->children->sortBy('order') as $subChild)
+                                                        @if(count($child->children->where('is_home', true)) > 0)
+                                                            @foreach($child->children->where('is_home',true)->sortBy('order') as $subChild)
                                                                 <a href="{{ route('frontend.product.search',['category_id' => $subChild->id]) }}">{{ $subChild->name }}</a>
                                                             @endforeach
                                                         @endif

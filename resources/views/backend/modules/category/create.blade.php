@@ -115,17 +115,17 @@
                                            value="0">not active</label>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="control-label sbold">limited</label></br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="limited" id="optionsRadios3"
-                                           value="1"> limited</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="limited" id="optionsRadios4" checked
-                                           value="0">not limited</label>
-                            </div>
-                        </div>
+                        {{--<div class="col-md-3">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label class="control-label sbold">limited</label></br>--}}
+                                {{--<label class="radio-inline">--}}
+                                    {{--<input type="radio" name="limited" id="optionsRadios3"--}}
+                                           {{--value="1"> limited</label>--}}
+                                {{--<label class="radio-inline">--}}
+                                    {{--<input type="radio" name="limited" id="optionsRadios4" checked--}}
+                                           {{--value="0">not limited</label>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label sbold">is_home</label></br>
