@@ -97,7 +97,7 @@ class CurrencyController extends Controller
             'currency_symbol_ar' => 'required|unique:currencies,currency_symbol_ar,' . $id,
             'currency_symbol_en' => 'required|unique:currencies,currency_symbol_en,' . $id,
             'exchange_rate' => 'required|numeric',
-            'country_id' => 'required|unique:currencies,country_id|exists:countries,id,' . $id,
+            'country_id' => 'required|exists:countries,id|unique:currencies,country_id,' . $id,
         ]);
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate);
