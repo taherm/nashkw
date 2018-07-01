@@ -10,7 +10,6 @@
                 <input type="hidden" name="product_id" value="{{ request()->product_id }}">
                 <div class="form-body">
                     <h3 class="form-section">Create Attribute</h3>
-                    @include('frontend.partials._product_steps')
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group{{ $errors->has('qty') ? ' has-error' : '' }}">
@@ -94,7 +93,17 @@
                             </div>
                         </div>
                     </div>
-                    @include('backend.partials.forms._btn-group')
+                    {{--@include('backend.partials.forms._btn-group')--}}
+                    <div class="form-actions right">
+                        <a href="{!! url()->previous() !!}" class="btn default">Cancel</a>
+                        <button type="submit" class="btn blue">
+                            <i class="fa fa-check"></i> Save
+                        </button>
+                        <a href="{{ route('backend.gallery.create',['type' => 'product' , 'element_id' => request('product_id')]) }}"
+                           class="btn blue">
+                            <i class="fa fa-check"></i> Next
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>

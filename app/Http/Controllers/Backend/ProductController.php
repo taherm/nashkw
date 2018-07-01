@@ -56,7 +56,7 @@ class ProductController extends Controller
             if ($request->hasFile('size_chart_image')) {
                 $this->saveMimes($element, $request, ['size_chart_image'], ['500', '500'], false);
             }
-            return redirect()->route('backend.attribute.create', ['product_id' => $element->id])->with('success', 'product saved.');
+            return redirect()->route('backend.attribute.create', ['product_id' => $element->id, 'type' => 'product'])->with('success', 'product saved.');
         }
         return redirect()->back()->with('error', 'unknown error');
 
@@ -119,7 +119,7 @@ class ProductController extends Controller
     {
         $element = Product::whereId($id)->first();
         $element->product_attributes()->delete();
-        if($element->delete()) {
+        if ($element->delete()) {
             return redirect()->back()->with('success', 'product deleted');
         }
         return redirect()->back()->with('error', 'product is not deleted');
