@@ -7,7 +7,6 @@ class Currency extends PrimaryModel
 {
     protected $guarded = [''];
     protected $localeStrings = ['currency_symbol', 'name'];
-    protected $appends = ['symbol'];
 
     public function country()
     {

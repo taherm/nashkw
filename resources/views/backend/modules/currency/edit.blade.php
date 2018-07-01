@@ -19,7 +19,7 @@
                                 <input id="name_ar"
                                        type="text"
                                        class="form-control"
-                                       name_ar="name_ar"
+                                       name="name_ar"
                                        value="{{ $element->name_ar }}"
                                        placeholder="name_ar"
                                        required autofocus>
@@ -38,7 +38,7 @@
                                 <input id="name_en"
                                        type="text"
                                        class="form-control"
-                                       name_en="name_en"
+                                       name="name_en"
                                        value="{{ $element->name_en }}"
                                        placeholder="name_en"
                                        required autofocus>
