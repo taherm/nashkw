@@ -31,7 +31,7 @@
                                  src="{{ asset('storage/uploads/images/thumbnail/'.$product->image) }} "
                                  alt="{{ $product->name }}">
 
-                            @if($product->gallery->isEmpty())
+                            @if($product->gallery)
                                 @if(!$product->gallery->images->isEmpty())
                                     <img class="secondary-img"
                                          src="{{ asset('storage/uploads/images/thumbnail/'.$product->gallery->images->sortBy('order')->first()->path) }} "
