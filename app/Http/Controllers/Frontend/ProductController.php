@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     public function index(Filters $filters)
     {
-        $products = $this->product->filters($filters)->hasProductAttribute()->paginate(12);
+        $products = $this->product->filters($filters)->hasProductAttribute()->hasGallery()->paginate(12);
         return view('frontend.modules.favorite.index', compact('products'));
     }
 
@@ -32,7 +32,7 @@ class ProductController extends Controller
             return redirect()->route('frontend.home')->withErrors($validator->messages());
         }
 
-        $elements = $this->product->filters($filters)->hasProductAttribute()->with('tags','gallery.images','favorites')->orderBy('id','desc')->paginate(20);
+        $elements = $this->product->filters($filters)->hasProductAttribute()->hasGallery()->with('tags','gallery.images','favorites')->orderBy('id','desc')->paginate(20);
 
         $tags = $elements->pluck('tags')->unique()->flatten();
 

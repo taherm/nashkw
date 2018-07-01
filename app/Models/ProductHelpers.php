@@ -15,10 +15,11 @@ trait ProductHelpers
 {
     public function scopeOnSale($q)
     {
-        return $q->where('on_sale', true)->where('end_sale','>=', Carbon::today());
+        return $q->where('on_sale', true)->where('end_sale', '>=', Carbon::today());
     }
 
-    public function getIsOnSaleAttribute() {
+    public function getIsOnSaleAttribute()
+    {
         return $this->on_sale && $this->end_sale >= Carbon::today() ? true : false;
     }
 
@@ -83,7 +84,7 @@ trait ProductHelpers
         $categoriesId = $product->categories->pluck('id');
         return $this->whereHas('categories', function ($q) use ($categoriesId) {
             return $q->whereId($categoriesId);
-        })->with('gallery.images','favorites')->take(4)->get();
+        })->with('gallery.images', 'favorites')->take(4)->get();
     }
 
     public function getTotalQtyAttribute()
@@ -98,8 +99,16 @@ trait ProductHelpers
         }, '>', 0);
     }
 
-    public function getIsFavoritedAttribute() {
-        return in_array(auth()->user()->id,$this->favorites->pluck('id')->toArray());
+    public function scopeHasGallery($q)
+    {
+        return $this->whereHas('gallery', function ($q) {
+            return $q;
+        }, '>', 0);
+    }
+
+    public function getIsFavoritedAttribute()
+    {
+        return in_array(auth()->user()->id, $this->favorites->pluck('id')->toArray());
     }
 
 }
