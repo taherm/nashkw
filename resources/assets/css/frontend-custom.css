@@ -5,8 +5,6 @@
     font-style: normal;
 }
 
-
-
 /*body, div, a, span, table, p, form, input, h1, h2, h3, h4 , input , tr , td , ul , li {*/
 /*font-family: 'Tajawal', 'sans-serif' !important;*/
 /*}*/
@@ -133,9 +131,8 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     content: '' !important;
 }
 
-
 .btn-size-chart {
-    background: rgba(0,0,0,0) none repeat scroll 0 0 !important;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
     border: 2px solid #444 !important;
     color: #444 !important;
     display: inline-block;
@@ -144,4 +141,10 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     margin-right: 20px !important;
     padding: 9px 20px !important;
     text-transform: uppercase !important;
+}
+
+.grandTotal {
+    font-size: large;
+    color: black;
+    font-weight : bold;
 }

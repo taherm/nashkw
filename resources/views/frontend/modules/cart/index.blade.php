@@ -73,7 +73,7 @@
                                             {{ $item->qty }}
                                         </td>
 
-                                        <td class="product-subtotal">{{ $item->price * $item->qty }} {{ trans('general.kd') }}</td>
+                                        <td class="product-subtotal">{{ number_format($item->price * $item->qty,'2','.',',') }} {{ trans('general.kd') }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -179,7 +179,7 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <p style="font-size: large">{{ trans('general.sub_total') }}
-                                                            {{ getCartNetTotal() }} {{ trans('general.kd') }}
+                                                            <span class="grandTotal">{{ number_format(getCartNetTotal(), 2, '.',',') }}</span> {{ trans('general.kd') }}
                                                         </p>
                                                     </div>
                                                 </div>

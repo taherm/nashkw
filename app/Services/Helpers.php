@@ -64,7 +64,8 @@ function getCouponValue()
 
 function getCartNetTotal()
 {
-    return (int)Cart::subtotal() - (int)getCouponValue();
+    $cartSubTotalVal = str_replace(',', '', Cart::subtotal());
+    return (float)$cartSubTotalVal - (float)getCouponValue();
 }
 
 

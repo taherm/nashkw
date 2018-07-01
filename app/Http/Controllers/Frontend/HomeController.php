@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
+use App\Models\Image;
 use App\Models\Product;
 use App\Services\Search\Filters;
 
@@ -11,6 +12,12 @@ class HomeController extends Controller
 {
     public $product;
     const take = 7;
+
+    public function SearchImage(Request $request) {
+//        dd($request->all());
+        $element = Image::where(['fileName' => $request->filaName])->first();
+        $element->categories()->get();
+    }
 
     /**
      * Create a new controller instance.
