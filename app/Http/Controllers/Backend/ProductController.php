@@ -102,6 +102,9 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $this->saveMimes($element, $request, ['image'], ['750', '1334'], false);
         }
+        if ($request->hasFile('size_chart_image')) {
+            $this->saveMimes($element, $request, ['size_chart_image'], ['600', '600'], false);
+        }
         if ($updated) {
             $element->categories()->sync($request->categories);
             $element->tags()->sync($request->tags);

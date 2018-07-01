@@ -54,7 +54,7 @@
     <!-- END Modal -->
 </div>
 
-@if(isset($product) && !is_null($product->size_chart_image))
+@if(isset($product) && !is_null($product->size_chart_image) && isset($settings))
     <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -66,7 +66,7 @@
                     <h4 class="modal-title" id="myModalLabel">{{ trans('general.size_charts') }}</h4>
                 </div>
                 <div class="modal-body" style="text-align: center;">
-                    <img src="{{ file_exists(asset(env('LARGE').$product->size_chart_image)) ? asset(env('LARGE').$product->size_chart_image) : asset(env('LARGE').$settings->size_chart) }}"
+                    <img src="{{ !is_null($product->size_chart_image) ? asset(env('LARGE').$product->size_chart_image) : asset(env('LARGE').$settings->size_chart) }}"
                          id="imagepreview"
                          style="width: 400px; height: 264px;">
                 </div>

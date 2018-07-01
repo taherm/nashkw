@@ -42,8 +42,9 @@
     <!-- Single Product Area end -->
     <!-- Creates the bootstrap modal where the image will appear -->
     {{-- moved to modal blade quick view--}}
+@endsection
+
 @section('scripts')
     @parent
     <script async src="https://static.addtoany.com/menu/page.js"></script>
-@endsection
 @endsection
