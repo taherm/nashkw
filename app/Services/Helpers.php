@@ -64,14 +64,15 @@ function getCouponValue()
 
 function getCartNetTotal()
 {
-    return Cart::subtotal() - getCouponValue();
+    return (int)Cart::subtotal() - (int)getCouponValue();
 }
 
 
-function getDeliveryServiceCost() {
+function getDeliveryServiceCost()
+{
     $settings = Setting::first();
     $cartValue = Cart::subtotal();
-    if($cartValue >= $settings->delivery_service_minimum_charge) {
+    if ($cartValue >= $settings->delivery_service_minimum_charge) {
         return 0;
     }
     return $settings->delivery_service_cost;
