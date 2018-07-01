@@ -32,9 +32,9 @@ class HomeController extends Controller
         if(!auth()->check()) {
             return view('frontend.pages.under_construction');
         }
-        $newArrivals = $this->product->active()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images','favorites')->take(self::take)->get();
-        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->with('gallery.images','favorites')->take(self::take)->get();
-        $bestSalesProducts = $this->product->whereIn('id', $this->product->bestSalesProducts())->with('gallery.images','favorites')->get();
+        $newArrivals = $this->product->active()->onHomePage()->hasProductAttribute()->hasGallery()->orderBy('created_at', 'desc')->with('gallery.images','favorites')->take(self::take)->get();
+        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->hasProductAttribute()->hasGallery()->with('gallery.images','favorites')->take(self::take)->get();
+        $bestSalesProducts = $this->product->whereIn('id', $this->product->hasProductAttribute()->hasGallery()->bestSalesProducts())->with('gallery.images','favorites')->get();
         return view('frontend.home', compact(
             'newArrivals',
             'onSaleProducts',
