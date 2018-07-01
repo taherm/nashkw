@@ -27,6 +27,10 @@
                 </li>
                 <li class="divider"></li>
                 <li>
+                    <a href="{{ route('backend.setting.edit',1) }}">
+                        <i class="icon-settings"></i> Edit Settings</a>
+                </li>
+                <li>
                     <a href="{{ route('backend.setting.index') }}">
                         <i class="icon-settings"></i> Settings</a>
                 </li>

@@ -75,8 +75,11 @@ class SettingController extends Controller
         $setting = Setting::first();
 
         if ($setting->update($request->request->all())) {
-            if($request->has('logo')) {
+            if($request->hasFile('logo')) {
                 $this->saveMimes($setting, $request, ['logo'], ['500', '500'], true);
+            }
+            if($request->hasFile('size_chart')) {
+                $this->saveMimes($setting, $request, ['size_chart'], ['600', '600'], true);
             }
             return redirect()->route('backend.setting.index')->with('success','setting updated');
         }

@@ -66,7 +66,7 @@
                     <h4 class="modal-title" id="myModalLabel">{{ trans('general.size_charts') }}</h4>
                 </div>
                 <div class="modal-body" style="text-align: center;">
-                    <img src="{{ file_exists(asset(env('LARGE').$product->size_chart_image)) ? asset(env('LARGE').$product->size_chart_image) : asset('img/charts.png') }}"
+                    <img src="{{ file_exists(asset(env('LARGE').$product->size_chart_image)) ? asset(env('LARGE').$product->size_chart_image) : asset(env('LARGE').$settings->size_chart) }}"
                          id="imagepreview"
                          style="width: 400px; height: 264px;">
                 </div>

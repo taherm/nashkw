@@ -116,7 +116,7 @@
                                     <div class="place-section">
                                         <Form action="{{ route('frontend.cart.checkout') }}" method="post">
                                             @csrf
-                                            @if($settings->aramex_service)
+                                            @if($settings->shipment_service)
                                                 <div class="col-lg-12">
                                                     <div class="place-headline">
                                                         <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>

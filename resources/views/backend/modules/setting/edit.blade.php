@@ -39,6 +39,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <div class="form-body">
+                                <div class="form-group form-md-line-input">
+                                    <input type="file" class="form-control" name="size_chart" placeholder="...">
+                                    <label for="form_control_1">Size Chart</label>
+                                    <span class="help-block">size_chart will appear in the website 600 * 600 </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
@@ -48,6 +57,16 @@
                                            value="{{ $element->instagram }}">
                                     <label for="form_control_1">instagram URL*</label>
                                     <span class="help-block">instagram</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-body">
+                                <div class="form-group form-md-line-input">
+                                    <input type="text" class="form-control" name="snapchat" placeholder="..."
+                                           value="{{ $element->snapchat }}">
+                                    <label for="form_control_1">snapchat URL*</label>
+                                    <span class="help-block">snapchat</span>
                                 </div>
                             </div>
                         </div>
@@ -79,6 +98,16 @@
                     <div class="col-lg-4">
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
+                                <input type="text" class="form-control" name="facebook" placeholder="..."
+                                       value="{{ $element->facebook }}">
+                                <label for="form_control_1">facebook</label>
+                                <span class="help-block">facebook</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input">
                                 <input type="text" class="form-control" name="phone" placeholder="..."
                                        value="{{ $element->phone }}">
                                 <label for="form_control_1">phone</label>
@@ -93,6 +122,16 @@
                                        value="{{ $element->mobile }}">
                                 <label for="form_control_1">mobile</label>
                                 <span class="help-block">mobile</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input">
+                                <input type="text" class="form-control" name="whatsapp" placeholder="..."
+                                       value="{{ $element->whatsapp }}">
+                                <label for="form_control_1">whatsapp</label>
+                                <span class="help-block">whatsapp</span>
                             </div>
                         </div>
                     </div>

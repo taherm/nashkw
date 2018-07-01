@@ -83,20 +83,24 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
         $validate = validator($request->all(), [
-            'country_id' => 'exists:countries,id',
+            'country_id' => 'required|exists:countries,id',
             'area' => 'required_with:country_id'
         ]);
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate);
         }
-        if ($request->has('country_id')) {
-            $country = Country::whereId(request()->country_id)->first();
-            $cartWeight = $this->cart->content()->pluck('options.product')->sum('weight');
-            $shippingCost = $this->calculateCost($cartWeight, $request->country_id, $request->area);
-            $area = request()->area;
-        }
+        $country = Country::whereId(request()->country_id)->first();
+        // check cart itmes before move to checkout
+        // 1- check if each item is shipment_availability true
+        // 2- check in case of kuwait === Home_deliver_availability for each item
+        // 3 - if kuwait check home_deliever_minimum_charnge for the whole cart
+        $this->checkCartBeforeCheckOut($country);
+
+        $cartWeight = $this->cart->content()->pluck('options.product')->sum('weight');
+        $shippingCost = $this->calculateCost($cartWeight, $request->country_id, $request->area);
+        $area = request()->area;
         $cart = $this->cart->content();
-        return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart', 'country','area'));
+        return view('frontend.modules.checkout.index', compact('shippingCost', 'cartWeight', 'cart', 'country', 'area'));
     }
 
     public function applyCoupon(Request $request)
@@ -119,6 +123,11 @@ class CartController extends Controller
             return redirect()->back()->with('error', trans('general.coupon_not_correct'));
         }
 
+    }
+
+    public function checkCartBeforeCheckOut()
+    {
+        return true;
     }
 
 }
