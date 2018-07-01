@@ -50,12 +50,12 @@
                                         </td>
 
                                         <td class="product-thumbnail">
-                                            <div class="col-lg-1 col-lg-push-4"
+                                            <div class="col-lg-1 col-lg-push-3"
                                                  style="text-align: center; border: 1px solid lightgrey; min-height : 30px; margin: 3px; background-color : {!! $item->options->colorName !!}"></div>
                                         </td>
 
                                         <td class="product-thumbnail">
-                                            <div class="col-lg-1">{{ $item->options->sizeName }}</div>
+                                            <div class="col-lg-2">{{ $item->options->sizeName }}</div>
                                         </td>
 
                                         <td class="product-name">
