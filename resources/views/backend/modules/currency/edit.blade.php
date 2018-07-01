@@ -70,20 +70,40 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group{{ $errors->has('symbol') ? ' has-error' : '' }}">
-                                <label for="symbol" class="control-label">symbol*</label>
-                                <input id="symbol"
+                            <div class="form-group{{ $errors->has('currency_symbol_ar') ? ' has-error' : '' }}">
+                                <label for="currency_symbol_ar" class="control-label">currency_symbol_ar*</label>
+                                <input id="currency_symbol_ar"
                                        type="text"
                                        class="form-control"
-                                       name="symbol"
-                                       value="{{ $element->symbol }}"
-                                       placeholder="symbol in arabic"
+                                       name="currency_symbol_ar"
+                                       value="{{ $element->currency_symbol_ar }}"
+                                       placeholder="currency_symbol_ar in arabic"
                                        maxlength="4"
                                        required autofocus>
-                                @if ($errors->has('symbol'))
+                                @if ($errors->has('currency_symbol_ar'))
                                     <span class="help-block">
                                         <strong>
-                                            {{ $errors->first('symbol') }}
+                                            {{ $errors->first('currency_symbol_ar') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group{{ $errors->has('currency_symbol_en') ? ' has-error' : '' }}">
+                                <label for="currency_symbol_en" class="control-label">currency_symbol_ar*</label>
+                                <input id="currency_symbol_en"
+                                       type="text"
+                                       class="form-control"
+                                       name="currency_symbol_en"
+                                       value="{{ $element->currency_symbol_en }}"
+                                       placeholder="currency_symbol_en in arabic"
+                                       maxlength="4"
+                                       required autofocus>
+                                @if ($errors->has('currency_symbol_en'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('currency_symbol_en') }}
                                         </strong>
                                     </span>
                                 @endif
