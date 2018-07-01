@@ -13,26 +13,45 @@
                     <h3 class="form-section">Edit Currency</h3>
                     {{--name arabic / name english --}}
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="control-label">name*</label>
-                                <input id="name"
+                        <div class="col-md-4">
+                            <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">
+                                <label for="name_ar" class="control-label">name_ar*</label>
+                                <input id="name_ar"
                                        type="text"
                                        class="form-control"
-                                       name="name"
-                                       value="{{ $element->name }}"
-                                       placeholder="name"
+                                       name_ar="name_ar"
+                                       value="{{ $element->name_ar }}"
+                                       placeholder="name_ar"
                                        required autofocus>
-                                @if ($errors->has('name'))
+                                @if ($errors->has('name_ar'))
                                     <span class="help-block">
                                         <strong>
-                                            {{ $errors->first('name') }}
+                                            {{ $errors->first('name_ar') }}
                                         </strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
+                                <label for="name_en" class="control-label">name_en*</label>
+                                <input id="name_en"
+                                       type="text"
+                                       class="form-control"
+                                       name_en="name_en"
+                                       value="{{ $element->name_en }}"
+                                       placeholder="name_en"
+                                       required autofocus>
+                                @if ($errors->has('name_en'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('name_en') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group{{ $errors->has('exchange_rate') ? ' has-error' : '' }}">
                                 <label for="exchange_rate" class="control-label">exchange_rate*</label>
                                 <input id="exchange_rate"
