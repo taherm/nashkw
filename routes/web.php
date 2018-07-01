@@ -16,7 +16,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::get('/', 'DashBoardController@index')->name('index');
     Route::get('/home', 'DashBoardController@index')->name('home');
     Route::get('activation', 'DashBoardController@toggleActivate')->name('activate');
-    Route::get('export/language', 'DashBoardController@exportTranslations')->name('export.translations');
+
 
     Route::resource('product', 'ProductController');
     Route::resource('product/attribute', 'ProductAttributeController');
@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::get('reset/password', 'UserController@getResetPassword')->name('reset.password');
     Route::post('reset/password', 'UserController@postResetPassword')->name('reset');
     Route::get('backup/db', ['as' => 'backup.db', 'uses' => 'HomeController@BackupDB']);
-    Route::get('export/translations', ['as' => 'export.translation', 'uses' => 'DashboardController@exportTranslations']);
+    Route::get('export/translations', 'DashBoardController@exportTranslations')->name('export.translation');
 });
 
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []], function () {
