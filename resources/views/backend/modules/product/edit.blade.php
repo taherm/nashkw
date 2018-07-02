@@ -145,7 +145,7 @@
                                        type="date"
                                        class="form-control"
                                        name="start_sale"
-                                       value="{{ $element->start_sale->format('m-d-Y') }}"
+                                       value="{{ $element->start_sale->format('Y-d-m') }}"
                                        placeholder="name in arabic"
                                        autofocus>
                                 @if ($errors->has('start_sale'))
@@ -164,7 +164,7 @@
                                        type="date"
                                        class="form-control"
                                        name="end_sale"
-                                       value="{{ $element->end_sale }}"
+                                       value="{{ $element->end_sale->format('Y-d-m') }}"
                                        placeholder="name in english"
                                        autofocus>
                                 @if ($errors->has('end_sale'))

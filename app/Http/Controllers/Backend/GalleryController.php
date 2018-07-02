@@ -113,7 +113,6 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         $element = Gallery::whereId($id)->first();
-
         $element->update($request->request->all());
         if ($element) {
             if ($request->hasFile('cover')) {
@@ -136,7 +135,7 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         $element = Gallery::whereId($id)->first();
-        if($element->delete()) {
+        if ($element->delete()) {
             return redirect()->back()->with('success', 'gallery deleted');
         }
         return redirect()->back()->with('error', 'gallery is not deleted');

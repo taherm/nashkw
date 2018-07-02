@@ -36,6 +36,7 @@ trait ImageHelpers
     {
         try {
             foreach ($inputNames as $key => $inputName) {
+                dd($request->file($inputName));
                 if ($request->hasFile($inputName)) {
                     if (in_array($request->file($inputName)->extension(), ['pdf', 'ppt'], true)) {
                         $path = $request->$inputName->store('public/uploads/files');
@@ -84,6 +85,7 @@ trait ImageHelpers
                     }
                 } else {
                     // in case there is no file
+                    dd('stop here');
                     return response()->json(['message' => 'else case for image'], 400);
                 }
             }
@@ -172,7 +174,7 @@ trait ImageHelpers
                 } else {
                     $imagePath = $this->saveImageForGallery($request->images[0], $dimensions, $ratio, $sizes, $model);
                     return $model->images()->create([
-                        'image' => $imagePath,
+                        'path' => $imagePath,
                     ]);
                 }
             } else {
