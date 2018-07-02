@@ -15,21 +15,21 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // frontend
         view()->composer([
-                'frontend.partials.slider',
+            'frontend.partials.slider',
         ],
             'App\Services\ViewComposers@getSliders');
         view()->composer([
             'frontend.partials._nav_right'
-        ],'App\Services\ViewComposers@getCart');
+        ], 'App\Services\ViewComposers@getCart');
         view()->composer([
             'frontend.partials._nav_right'
-        ],'App\Services\ViewComposers@getCartCount');
+        ], 'App\Services\ViewComposers@getCartCount');
         view()->composer([
             'frontend.modules.cart.index',
             'backend.modules.currency.create',
             'backend.modules.currency.edit',
             'backend.partials.sidebar'
-        ],'App\Services\ViewComposers@getCountries');
+        ], 'App\Services\ViewComposers@getCountries');
         view()->composer([
             'frontend.home',
             'frontend.partials.footer',
@@ -45,13 +45,14 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.partials.header'
         ], 'App\Services\ViewComposers@getCategories');
         view()->composer([
-//            'frontend.partials.footer',
-//            'frontend.partials.header',
-//            'frontend.modules.cart.index',
-//            'frontend.modules.checkout.index',
-            'backend.*',
-            'backend.modules.setting.*',
-            'frontend.layouts.app'
+            'frontend.partials.footer',
+            'frontend.partials.header',
+            'frontend.modules.cart.index',
+            'frontend.modules.checkout.index',
+            'backend.partials.nav',
+            'backend.modules.setting.edit',
+            'backend.modules.setting.index',
+            'frontend.modules.product.partials.quick-view'
         ], 'App\Services\ViewComposers@getSettings');
         view()->composer([
             'frontend.partials.footer',
