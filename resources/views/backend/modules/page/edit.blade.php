@@ -148,14 +148,14 @@
                             <div class="form-group">
                                 <label for="description" class="control-label">description arabic</label>
                                 <textarea type="text" class="form-control tinymce" id="content_ar" name="content_ar"
-                                          aria-multiline="true" maxlength="500"></textarea>
+                                          aria-multiline="true" maxlength="500">{{ $element->content_ar }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description" class="control-label">description english</label>
                                 <textarea type="text" class="form-control tinymce" id="content_en" name="content_en"
-                                          aria-multiline="true" maxlength="500"></textarea>
+                                          aria-multiline="true" maxlength="500">{{ $element->content_en }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -165,10 +165,12 @@
                             <div class="form-group">
                                 <label class="control-label sbold">active</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="active" id="optionsRadios3" {{ $element->active ? 'checked' : null }}
+                                    <input type="radio" name="active" id="optionsRadios3"
+                                           {{ $element->active ? 'checked' : null }}
                                            value="1"> active</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="active" id="optionsRadios4" {{ !$element->active ? 'checked' : null  }}
+                                    <input type="radio" name="active" id="optionsRadios4"
+                                           {{ !$element->active ? 'checked' : null  }}
                                            value="0">not active</label>
                             </div>
                         </div>
@@ -176,10 +178,12 @@
                             <div class="form-group">
                                 <label class="control-label sbold">on_menu_desktop</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_desktop" id="optionsRadios3" {{ $element->on_menu_desktop ? 'checked' : null  }}
+                                    <input type="radio" name="on_menu_desktop" id="optionsRadios3"
+                                           {{ $element->on_menu_desktop ? 'checked' : null  }}
                                            value="1"> on_menu_desktop</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_desktop" id="optionsRadios4" {{ !$element->on_menu_desktop ? 'checked' : null  }}
+                                    <input type="radio" name="on_menu_desktop" id="optionsRadios4"
+                                           {{ !$element->on_menu_desktop ? 'checked' : null  }}
                                            value="0">not on_menu_desktop</label>
                             </div>
                         </div>
@@ -187,10 +191,12 @@
                             <div class="form-group">
                                 <label class="control-label sbold">on_menu_mobile</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_mobile" id="optionsRadios3" {{ $element->on_menu_mobile ? 'checked' : null  }}
+                                    <input type="radio" name="on_menu_mobile" id="optionsRadios3"
+                                           {{ $element->on_menu_mobile ? 'checked' : null  }}
                                            value="1"> on_menu_mobile</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_menu_mobile" id="optionsRadios4" {{ !$element->on_menu_mobile ? 'checked' : null  }}
+                                    <input type="radio" name="on_menu_mobile" id="optionsRadios4"
+                                           {{ !$element->on_menu_mobile ? 'checked' : null  }}
                                            value="0">not on_menu_mobile</label>
                             </div>
                         </div>
@@ -198,10 +204,12 @@
                             <div class="form-group">
                                 <label class="control-label sbold">on_footer</label></br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_footer" id="optionsRadios3" {{ $element->on_footer ? 'checked' : null  }}
+                                    <input type="radio" name="on_footer" id="optionsRadios3"
+                                           {{ $element->on_footer ? 'checked' : null  }}
                                            value="1"> on_footer</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="on_footer" id="optionsRadios4" {{ !$element->on_footer ? 'checked' : null  }}
+                                    <input type="radio" name="on_footer" id="optionsRadios4"
+                                           {{ !$element->on_footer ? 'checked' : null  }}
                                            value="0">not on_footer</label>
                             </div>
                         </div>

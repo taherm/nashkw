@@ -143,14 +143,14 @@
                             <div class="form-group">
                                 <label for="description" class="control-label">description arabic</label>
                                 <textarea type="text" class="form-control tinymce" id="content_ar" name="content_ar"
-                                          aria-multiline="true" maxlength="500"></textarea>
+                                          aria-multiline="true" maxlength="500">{{ old('content_ar') }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description" class="control-label">description english</label>
                                 <textarea type="text" class="form-control tinymce" id="content_en" name="content_en"
-                                          aria-multiline="true" maxlength="500"></textarea>
+                                          aria-multiline="true" maxlength="500">{{ old('content_en') }}</textarea>
                             </div>
                         </div>
                     </div>
