@@ -45,7 +45,7 @@ class CountryController extends Controller
             'name_ar' => 'required|unique:countries,name_ar',
             'name_en' => 'required|unique:countries,name_en',
             'calling_code' => 'required|unique:countries,calling_code',
-            'country_code' => 'required|unique:countries,country_code',
+            'country_code' => 'required|alpha|unique:countries,country_code',
             'order' => 'required|numeric|max:99|min:1',
         ]);
         if ($validate->fails()) {
@@ -97,7 +97,7 @@ class CountryController extends Controller
             'name_ar' => 'required|unique:countries,name_ar,' . $id,
             'name_en' => 'required|unique:countries,name_en,' . $id,
             'calling_code' => 'required|unique:countries,calling_code,' . $id,
-            'country_code' => 'required|unique:countries,country_code,' . $id,
+            'country_code' => 'required|alpha|unique:countries,country_code,' . $id,
             'order' => 'required|numeric|max:99|min:1',
         ]);
         if ($validate->fails()) {

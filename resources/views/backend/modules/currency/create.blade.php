@@ -11,19 +11,38 @@
                     {{--name arabic / name english --}}
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="control-label">name*</label>
-                                <input id="name"
+                            <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">
+                                <label for="name_ar" class="control-label">name_ar*</label>
+                                <input id="name_ar"
                                        type="text"
                                        class="form-control"
-                                       name="name"
-                                       value="{{ old('name') }}"
-                                       placeholder="name"
+                                       name="name_ar"
+                                       value="{{ old('name_ar') }}"
+                                       placeholder="name_ar"
                                        required autofocus>
-                                @if ($errors->has('name'))
+                                @if ($errors->has('name_ar'))
                                     <span class="help-block">
                                         <strong>
-                                            {{ $errors->first('name') }}
+                                            {{ $errors->first('name_ar') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
+                                <label for="name_en" class="control-label">name_en*</label>
+                                <input id="name_en"
+                                       type="text"
+                                       class="form-control"
+                                       name="name_en"
+                                       value="{{ old('name_en') }}"
+                                       placeholder="name_en"
+                                       required autofocus>
+                                @if ($errors->has('name_en'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('name_en') }}
                                         </strong>
                                     </span>
                                 @endif
@@ -48,36 +67,59 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group{{ $errors->has('symbol') ? ' has-error' : '' }}">
-                                <label for="symbol" class="control-label">symbol*</label>
-                                <input id="symbol"
+                            <div class="form-group{{ $errors->has('currency_symbol_ar') ? ' has-error' : '' }}">
+                                <label for="currency_symbol_ar" class="control-label">currency_symbol_ar*</label>
+                                <input id="currency_symbol_ar"
                                        type="text"
                                        class="form-control"
-                                       name="symbol"
-                                       value="{{ old('symbol') }}"
-                                       placeholder="symbol in arabic"
+                                       name="currency_symbol_ar"
+                                       value="{{ old('currency_symbol_ar') }}"
+                                       placeholder="currency_symbol_ar in arabic"
                                        maxlength="4"
                                        required autofocus>
-                                @if ($errors->has('symbol'))
+                                @if ($errors->has('currency_symbol_ar'))
                                     <span class="help-block">
                                         <strong>
-                                            {{ $errors->first('symbol') }}
+                                            {{ $errors->first('currency_symbol_ar') }}
                                         </strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="col-md-6">
+                            <div class="form-group{{ $errors->has('currency_symbol_en') ? ' has-error' : '' }}">
+                                <label for="currency_symbol_en" class="control-label">currency_symbol_en*</label>
+                                <input id="currency_symbol_en"
+                                       type="text"
+                                       class="form-control"
+                                       name="currency_symbol_en"
+                                       value="{{ old('currency_symbol_en') }}"
+                                       placeholder="currency_symbol_en in arabic"
+                                       maxlength="4"
+                                       required autofocus>
+                                @if ($errors->has('currency_symbol_en'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('currency_symbol_en') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            @if(!$allCountries->isEmpty())
                                 <div class="form-group">
                                     <label for="duration" class="control-label">country *</label>
-                                    <select class="form-control input-xlarge" name="country_id" id="country" required>
+                                    <select class="form-control input-xlarge" name="country_id" id="country"
+                                            required="required">
                                         @foreach($allCountries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            @else
+                                <span class="label label-danger">No Countries Listed, Please Create Country First -- All Countries exist already have currency.</span>
+                            @endif
                         </div>
                     </div>
                     @include('backend.partials.forms._btn-group')

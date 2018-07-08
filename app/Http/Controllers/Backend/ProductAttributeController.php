@@ -31,7 +31,7 @@ class ProductAttributeController extends Controller
     public function create()
     {
         $validate = validator(request()->all(), ['product_id' => 'required|integer|exists:products,id']);
-        if ($validate->failed()) {
+        if ($validate->fails()) {
             return redirect()->back()->with('error', 'no product id');
         }
         $element = Product::whereId(\request('product_id'))->first();
@@ -55,7 +55,7 @@ class ProductAttributeController extends Controller
                 'size_id' => 'required|integer|exists:sizes,id',
                 'color_id' => 'required|integer|exists:colors,id',
             ]);
-        if ($validate->failed()) {
+        if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput(Input::all());
         }
         $element = ProductAttribute::create($request->all());
@@ -103,7 +103,7 @@ class ProductAttributeController extends Controller
                 'size_id' => 'required|integer|exists:sizes,id',
                 'color_id' => 'required|integer|exists:colors,id',
             ]);
-        if ($validate->failed()) {
+        if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput(Input::all());
         }
         $updated = ProductAttribute::whereId($id)->update($request->except(['_token', '_method']));

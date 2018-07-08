@@ -41,14 +41,14 @@ class CurrencyController extends Controller
     public function store(Request $request)
     {
         $validate = validator($request->all(), [
-            'name_ar' => 'required|unique:currencies,name_ar',
-            'name_en' => 'required|unique:currencies,name_en',
+            'name_ar' => 'required|alpha|unique:currencies,name_ar',
+            'name_en' => 'required|alpha|unique:currencies,name_en',
             'currency_symbol_ar' => 'required|alpha|unique:currencies,currency_symbol_ar',
             'currency_symbol_en' => 'required|alpha|unique:currencies,currency_symbol_en',
             'exchange_rate' => 'required|numeric',
             'country_id' => 'required|unique:currencies,country_id|exists:countries,id',
         ]);
-        if ($validate->failed()) {
+        if ($validate->fails()) {
             return redirect()->back()->with(Input::all())->withErrors($validate);
         }
         $element = Currency::create($request->all());
@@ -92,10 +92,10 @@ class CurrencyController extends Controller
     public function update(Request $request, $id)
     {
         $validate = validator($request->all(), [
-            'name_ar' => 'required|unique:currencies,name_ar,' . $id,
-            'name_en' => 'required|unique:currencies,name_en,' . $id,
-            'currency_symbol_ar' => 'required|unique:currencies,currency_symbol_ar,' . $id,
-            'currency_symbol_en' => 'required|unique:currencies,currency_symbol_en,' . $id,
+            'name_ar' => 'required|alpha|unique:currencies,name_ar,' . $id,
+            'name_en' => 'required|alpha|unique:currencies,name_en,' . $id,
+            'currency_symbol_ar' => 'required|alpha|unique:currencies,currency_symbol_ar,' . $id,
+            'currency_symbol_en' => 'required|alpha|unique:currencies,currency_symbol_en,' . $id,
             'exchange_rate' => 'required|numeric',
             'country_id' => 'required|exists:countries,id|unique:currencies,country_id,' . $id,
         ]);
