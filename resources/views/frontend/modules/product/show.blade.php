@@ -15,7 +15,7 @@
 
 @section('body')
     <div class="single-page-area shop-product-area">
-    @include('frontend.partials._breadcrumbs')
+    @include('frontend.partials._breadcrumbs',['name' => $product->name])
 
     <!-- Single Product details Area -->
         <div class="single-product-details-area">

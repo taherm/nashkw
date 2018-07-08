@@ -68,8 +68,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Country Code</label>
-                                <input type="number" id="mobile_code" name="mobile_code" class="form-control" value="{{ $element->mobile_code }}"
-                                       placeholder="country mobile_code" required>
+                                <input type="number" id="calling_code" name="calling_code" class="form-control" value="{{ $element->calling_code }}"
+                                       placeholder="country calling_code" required>
                                 <span class="help-block"> ex. 00965 </span>
                             </div>
                         </div>

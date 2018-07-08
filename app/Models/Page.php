@@ -5,6 +5,6 @@ namespace App\Models;
 
 class Page extends PrimaryModel
 {
-    protected $localeStrings = ['slug','title'];
+    protected $localeStrings = ['slug','title','content'];
     protected $guarded = [''];
 }

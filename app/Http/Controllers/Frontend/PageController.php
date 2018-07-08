@@ -7,12 +7,17 @@ use App\Mail\SendContactus;
 
 use App\Http\Requests;
 use App\Jobs\SendContactMail;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
 
+    public function show($id) {
+        $element = Page::whereId($id)->first();
+        return view('frontend.modules.page.show', compact('element'));
+    }
     public function getConditions()
     {
 

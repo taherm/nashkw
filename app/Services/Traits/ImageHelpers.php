@@ -36,7 +36,6 @@ trait ImageHelpers
     {
         try {
             foreach ($inputNames as $key => $inputName) {
-                dd($request->file($inputName));
                 if ($request->hasFile($inputName)) {
                     if (in_array($request->file($inputName)->extension(), ['pdf', 'ppt'], true)) {
                         $path = $request->$inputName->store('public/uploads/files');

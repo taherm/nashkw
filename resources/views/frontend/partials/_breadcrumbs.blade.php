@@ -9,7 +9,7 @@
                 </li>
                 <li>
                     <i class="fa fa-xs fa-fw fa-angle-{{ app()->isLocale('ar') ? 'left' : 'right' }}"></i>
-                    {{ $product->name }}
+                    {{ $name }}
                 </li>
             </ul>
         </div>
