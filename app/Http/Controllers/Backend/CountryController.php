@@ -44,8 +44,8 @@ class CountryController extends Controller
         $validate = validator($request->all(), [
             'name_ar' => 'required|unique:countries,name_ar',
             'name_en' => 'required|unique:countries,name_en',
-            'mobile_code' => 'required|unique:countries,mobile_code',
-            'country_iso_alpha3' => 'required|unique:countries,country_iso_alpha3',
+            'calling_code' => 'required|unique:countries,calling_code',
+            'country_code' => 'required|unique:countries,country_code',
             'order' => 'required|numeric|max:99|min:1',
         ]);
         if ($validate->fails()) {
@@ -96,8 +96,8 @@ class CountryController extends Controller
         $validate = validator($request->request->all(), [
             'name_ar' => 'required|unique:countries,name_ar,' . $id,
             'name_en' => 'required|unique:countries,name_en,' . $id,
-            'mobile_code' => 'required|unique:countries,mobile_code,' . $id,
-            'country_iso_alpha3' => 'required|unique:countries,country_iso_alpha3,' . $id,
+            'calling_code' => 'required|unique:countries,calling_code,' . $id,
+            'country_code' => 'required|unique:countries,country_code,' . $id,
             'order' => 'required|numeric|max:99|min:1',
         ]);
         if ($validate->fails()) {

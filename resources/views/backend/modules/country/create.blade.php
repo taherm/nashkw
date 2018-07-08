@@ -82,10 +82,10 @@
                         <div class="col-md-6">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">country_iso_alpha3</label>
-                                    <input type="text" id="country_iso_alpha3" name="country_iso_alpha3" class="form-control" placeholder="country_iso_alpha3" value="{{ old('country_iso_alpha3') }}"
+                                    <label class="control-label">country_code</label>
+                                    <input type="text" id="country_code" name="country_code" class="form-control" placeholder="country_code" value="{{ old('country_code') }}"
                                            required>
-                                    <span class="help-block"> country_iso_alpha3 ex. KWT </span>
+                                    <span class="help-block"> country_code ex. KWT </span>
                                 </div>
                             </div>
                         </div>
