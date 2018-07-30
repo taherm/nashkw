@@ -2,25 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
-use App\Core\PrimaryController;
-use App\Src\Slider\Slider;
-use App\Core\Services\Image\PrimaryImageService;
-
-use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 class SliderController extends Controller
 {
-    public $slider;
-    public $image;
-
-    public function __construct(Slider $slider, PrimaryImageService $image)
-    {
-        $this->slider = $slider;
-        $this->image = $image;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -28,8 +15,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slides = $this->slider->all();
-        return view('backend.modules.slider.index', compact('slides'));
+        $elements = Slider::all();
+        return view('backend.modules.slider.index', compact('elements'));
     }
 
     /**
@@ -39,7 +26,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.modules.slider.create');
     }
 
     /**
@@ -50,20 +37,14 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $this->image->CreateImage($request->file('image'), ['1','1'],['578', '231'], ['1905', '753']);
-
-        if ($image) {
-            \DB::table('sliders')->insert([
-                'image_path' => $image,
-                'url' => $request->url,
-                'order' => $request->order,
-                'caption_en' => $request->caption_en,
-                'caption_ar' => $request->caption_ar,
-                'active'    => 1
-            ]);
-            return redirect()->back()->with('success','Slide saved');
+        $element = Slider::create($request->request->all());
+        if ($element) {
+            if ($request->hasFile('image')) {
+                $this->saveMimes($element, $request, ['image'], ['750', '1334'], false);
+            }
+            return redirect()->route('backend.slider.index')->with('success', trans('message.store_success'));
         }
-        return redirect()->back()->with('error','Slide not saved')->withInputs();
+        return redirect()->back()->with('error', trans('message.store_error'));
     }
 
     /**
@@ -85,7 +66,8 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $element = Slider::whereId($id)->first();
+        return view('backend.modules.slider.edit', compact('element'));
     }
 
     /**
@@ -97,7 +79,15 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $element = Slider::whereId($id)->first();
+        $updated = $element->update($request->request->all());
+        if ($updated) {
+            if ($request->hasFile('image')) {
+                $this->saveMimes($element, $request, ['image'], ['750', '1334'], false);
+            }
+            return redirect()->route('backend.slider.index')->with('success', trans('message.update_success'));
+        }
+        return redirect()->back()->with('error', trans('message.update_error'));
     }
 
     /**
@@ -108,14 +98,10 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->slider->find($id)->delete()) {
-
-            return redirect()->route('backend.slider.index')->with('success', 'Slide Deleted Successfully!');
-
+        $element = Slider::whereId($id)->first()->delete();
+        if ($element) {
+            return redirect()->back()->with('success', trans('message.delete_success'));
         }
-        return redirect()->back()->with('error', 'System Error!!');
-
-//        \DB::table('sliders')->where('id', '=', request()->id)->delete();
-//        return redirect()->back()->with('success', 'Slide deleted');
+        return rediret()->back() - with('error', trans('message.delete_error'));
     }
 }
