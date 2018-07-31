@@ -18,6 +18,7 @@
                 <th>status</th>
                 <th>address</th>
                 <th>mobile</th>
+                <th>created_at</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -32,6 +33,7 @@
                 <th>status</th>
                 <th>address</th>
                 <th>mobile</th>
+                <th>created_at</th>
                 <th>Action</th>
             </tr>
             </tfoot>
@@ -58,6 +60,7 @@
                     <td><span class="label label-{{ $element->status === 'success' ? 'success' : 'info' }}">{{ $element->status }}</span></td>
                     <td>{{ $element->address }}</td>
                     <td><span class="label label-info">{{ $element->mobile }}</span></td>
+                    <td><span class="label label-info">{{ $element->created_at->diffForHumans()}}</span></td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn green btn-xs btn-outline dropdown-toggle"

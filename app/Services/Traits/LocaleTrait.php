@@ -11,7 +11,6 @@ trait LocaleTrait
      */
     public function __get($name)
     {
-
         if (in_array($name, $this->localeStrings)) {
 
             $appLang = app()->getLocale();
@@ -40,10 +39,4 @@ trait LocaleTrait
 
         return parent::__get($name);
     }
-
-    public function getLangAttribute()
-    {
-        return app()->getLocale();
-    }
-
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Branch;
 use App\Models\Country;
 use App\Models\Order;
 use App\Models\User;
@@ -20,7 +21,8 @@ $factory->define(Order::class, function (Faker $faker) {
         'mobile' => $faker->bankAccountNumber,
         'phone' => $faker->bankAccountNumber,
         'reference_id' => $faker->bankAccountNumber,
+        'branch_id' => Branch::all()->random()->id,
         'payment_method' => $faker->randomElement(['cash', 'visa', 'mastercard']),
-        'country_id' => Country::all()->random()->id
+        'country' => Country::all()->random()->name
     ];
 });

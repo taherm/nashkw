@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Branch;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Setting;
@@ -13,6 +14,7 @@ use App\Models\Group;
 use App\Models\Menu;
 use App\Models\Post;
 use App\Models\Role;
+use App\Models\ShipmentPackage;
 use App\Models\Size;
 use App\Models\Slider;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -113,6 +115,16 @@ class ViewComposers
     {
         $pages = Page::active()->get();
         return $view->with(compact('pages'));
+    }
+
+    public function getShipmentPackages(View $view) {
+        $packages = ShipmentPackage::active()->get();
+        return $view->with(compact('packages'));
+    }
+
+    public function getBranches(View $view) {
+        $branches = Branch::active()->get();
+        return $view->with(compact('branches'));
     }
 }
 

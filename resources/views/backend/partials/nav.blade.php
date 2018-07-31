@@ -66,6 +66,10 @@
                             <i class="fa fa-fw fa-sticky-note-o"></i> Create New Policy</a>
                     </li>
                     <li>
+                        <a href="{{ route('backend.slider.create') }}">
+                            <i class="fa fa-fw fa-sticky-note-o"></i> Create New Slider</a>
+                    </li>
+                    <li>
                         <a href="{{ route('backend.setting.index') }}">
                             <i class="icon-settings"></i> Settings
                         </a>

@@ -23,9 +23,9 @@ $factory->define(Setting::class, function (Faker $faker) {
         'facebook' => $faker->url,
         'logo' => $faker->numberBetween(1, 10) . '.jpg',
         'size_chart' => $faker->numberBetween(1, 10) . '.jpg',
-        'shipment_service' => $faker->boolean(true),
-        'delivery_service' => $faker->boolean(false),
-        'delivery_service_cost' => 5,
-        'delivery_service_minimum_charge' => 100
+//        'shipment_service' => $faker->boolean(true),
+//        'delivery_service' => $faker->boolean(false),
+//        'delivery_service_cost' => 5,
+//        'delivery_service_minimum_charge' => 100
     ];
 });

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Resources\BranchResource;
+use App\Models\Branch;
 use App\Models\Color;
 use App\Models\Country;
 use App\Models\ProductAttribute;
@@ -34,6 +36,8 @@ Route::get('qty', function () {
     return response()->json($productAttribute->qty, 200);
 });
 
+
+Route::resource('branch', 'Api\BranchController')->only(['index']);
 
 Route::get('country/{id}', function ($id) {
     $destinationCountry = Country::whereId($id)->first();

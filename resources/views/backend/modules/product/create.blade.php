@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group{{ $errors->has('sale_price') ? ' has-error' : '' }}">
-                                <label for="sale_price" class="control-label">sale_price *</label>
+                                <label for="sale_price" class="control-label">sale_price</label>
                                 <input id="sale_price"
                                        type="text"
                                        class="form-control"
@@ -132,8 +132,6 @@
                                        type="text"
                                        class="form-control"
                                        name="weight"
-                                       maxlength="2"
-                                       minlength="1"
                                        value="{{ old('weight') }}"
                                        placeholder="weight"
                                        required autofocus>
@@ -189,7 +187,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="form_control_1">Main Image</label>
+                                <label for="form_control_1">Main Image*</label>
                                 <input type="file" class="form-control" name="image" placeholder="image" required>
                                 <div class="help-block text-left">
                                     W * H - Best fit ['750', '1334'] pixels
@@ -274,7 +272,7 @@
                         <hr>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="control-label">Categories</label>
+                                <label class="control-label">Categories*</label>
                                 <select multiple="multiple" class="multi-select" id="my_multi_select1"
                                         name="categories[]">
                                     @foreach($categories as $category)
@@ -311,7 +309,7 @@
 
                     <div class="row">
                         <hr>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label sbold">active</label></br>
                                 <label class="radio-inline">
@@ -322,7 +320,7 @@
                                            value="0">not active</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label sbold">on_sale_on_homepage</label></br>
                                 <label class="radio-inline">
@@ -333,7 +331,7 @@
                                            value="0">not on_sale_on_homepage</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label sbold">on_homepage</label></br>
                                 <label class="radio-inline">
@@ -342,6 +340,17 @@
                                 <label class="radio-inline">
                                     <input type="radio" name="on_homepage" id="optionsRadios4" checked
                                            value="0">not on_homepage</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label sbold">check_stock</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="check_stock" id="optionsRadios5" checked
+                                           value="1"> check_stock</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="check_stock" id="optionsRadios6"
+                                           value="0">not in check_stock</label>
                             </div>
                         </div>
                     </div>

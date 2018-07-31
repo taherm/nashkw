@@ -285,6 +285,13 @@
                         </a>
                     </li>
                     <li class="nav-item ">
+                        <a href="{{ route('backend.slider.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-file-image-o"></i>
+                            <span class="title">Sliders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a href="{{ route('backend.aboutus.index') }}" class="nav-link ">
                             <i class="fa fa-fw fa-plus-square-o"></i>
                             <span class="title">Aboutus</span>

@@ -148,3 +148,8 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     color: black;
     font-weight : bold;
 }
+
+.label {
+    color : #b7af15;
+    font-size: large;
+}

@@ -35,11 +35,6 @@ class Order extends PrimaryModel
         return $this->belongsToMany(Product::class, 'order_metas', 'order_id', 'product_id');
     }
 
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
-
     public function scopeOfStatus($query, $type)
     {
         return $query->where('status', $type);
@@ -49,5 +44,9 @@ class Order extends PrimaryModel
     public function getTotalPriceAttribute()
     {
         return $this->order_metas->sum('price');
+    }
+
+    public function branch() {
+        return $this->belongsTo(Branch::class);
     }
 }

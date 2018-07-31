@@ -20,21 +20,27 @@
                 @endforeach
                 <tr>
                     <td colspan="3">
-                        <p class="tabletext">{{ trans('general.subtotal') }}</p>
-
-                        <p class="tabletext">{{ trans('general.shipping_cost') }}</p>
-                        <p class="tabletext">{{ trans('general.grand_total') }}</p>
+                        <p class="tabletext panel-heading">{{ trans('general.grand_total') }}</p>
+                        <p class="tabletext panel-heading">{{ trans('general.shipping_cost') }}</p>
+                        <p class="tabletext panel-heading">{{ trans('general.gross_total') }}</p>
                     </td>
                     <td>
-                        <p class="tabletextp"><span id="subtotal" value="{{ getCartNetTotal() }}">{{ getCartNetTotal() }}</span>{{ trans('general.kd') }}
-                            <input type="hidden" name="subtotal" value="{{ getCartNetTotal() }}">
+                        <p class="tabletext panel-heading"><span id="grandTotal" value="{{ request('grandTotal') }}">
+                                <b>{{ request('grandTotal') }}</b>
+                            </span> <b>{{ trans('general.kd') }}</b>
+                            <input type="hidden" name="grandTotal" value="{{ request('grandTotal') }}">
                         </p>
-                        <p class="tabletextp"><span id="finalDeliveryCost" class="shipping_cost" value=""></span> {{ trans('general.kd') }}
-                            <input type="hidden" name="shipping_cost" value="" class="shipping_cost">
+                        <p class="tabletext panel-heading">
+                            <span id="charge" class="charge" value="{{ request('charge') }}">
+                                <b>{{ request('charge') }}</b>
+                            </span> <b>{{ trans('general.kd') }}</b>
+                            <input type="hidden" name="charge" value="{{ request('charge') }}" class="charge">
                         </p>
-                        <p class="tabletextp">
-                            <span id="grandtotal" value=""></span> {{ trans('general.kd') }}
-                            <input type="hidden" name="grandtotal" class="grandtotal" value="">
+                        <p class="tabletext panel-heading">
+                            <span id="grossTotal" value=""><b>{{ request('grossTotal') }}</b></span>
+                            <b>{{ trans('general.kd') }}</b>
+                            <input type="hidden" name="grossTotal" class="grossTotal"
+                                   value="{{ request('grossTotal') }}">
                         </p>
                     </td>
                 </tr>

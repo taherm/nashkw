@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log('jquery loaded');
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -71,90 +70,4 @@ $(document).ready(function() {
         var qty = (currentyQty > 0 ? currentyQty - 1 : currentyQty);
         $('#qty').attr('value', qty);
     });
-
-    // cart.index
-    $('#areas').html('<option value="">Select Area</option>');
-    $('#country').on('change', function(e) {
-        countryCode = e.target.value;
-        console.log('countryCode', countryCode);
-        $('#areas').html('').toggleClass('disabled');
-        $('#forward').attr('disabled', 'disabled');
-        return axios.get('/api/country/' + countryCode, function(data) {
-            return setTimeout(injectAreas(data), 4000);
-        });
-    });
-    $('#areas').on('change', function() {
-        return setTimeout($('#forward').removeAttr('disabled'), 2000);
-    })
-
-    function injectAreas(data) {
-        for (var i in data) {
-            data[i].map(function(v, index) {
-                $('#areas').append(`<option value="${v}">${v}</option>`)
-            });
-
-        }
-    }
-
-    //checkout.index
-    // shipping cost or delievery cost
-    var shippingCost = $('#shipping_aramex_cost').attr('value');
-    var deliveryCost = $('#delivery_cost').attr('value');
-    if (shippingCost > 0) {
-        $('#finalDeliveryCost').html(shippingCost);
-        $('.shipping_cost').attr('value', shippingCost);
-        var finalDeliveryCost = shippingCost;
-    } else {
-        $('#finalDeliveryCost').html(deliveryCost);
-        $('.shipping_cost').attr('value', deliveryCost);
-        var finalDeliveryCost = deliveryCost;
-    }
-
-    $("input[name='delivery_method']").on('click', function() {
-        var deliveryMethod = $("input[name='delivery_method']:checked").val();
-        if (deliveryMethod === 'aramex') {
-            $('#finalDeliveryCost').html(shippingCost);
-            $('.shipping_cost').attr('value', shippingCost);
-            var finalDeliveryCost = shippingCost;
-        } else {
-            $('#finalDeliveryCost').html(deliveryCost);
-            $('.shipping_cost').attr('value', deliveryCost);
-            var finalDeliveryCost = deliveryCost;
-        }
-        var grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
-        $('.grandtotal').attr('value', grandtotal);
-        $('#grandtotal').html(grandtotal);
-    });
-
-    var subtotal = $('#subtotal').attr('value');
-    var grandtotal = parseFloat(subtotal) + parseFloat(finalDeliveryCost);
-    console.log('the val of final', finalDeliveryCost);
-    $('.grandtotal').attr('value', grandtotal);
-    $('#grandtotal').html(grandtotal);
-
-
-    // for aramex dropdown menu
-    $('#areas').html('<option value="">Select Area</option>');
-    $('#country').on('change', function(e) {
-        countryCode = e.target.value;
-        console.log('countryCode', countryCode);
-        $('#areas').html('').toggleClass('disabled');
-        $('#forward').attr('disabled', 'disabled');
-        $.get('/api/country/' + countryCode, function(data) {
-            console.log('the data', data);
-            return setTimeout(injectAreas(data), 2000);
-        });
-    });
-    $('#areas').on('change', function() {
-        return setTimeout($('#forward').removeAttr('disabled'), 2000);
-    })
-
-    function injectAreas(data) {
-        for (var i in data) {
-            data[i].map(function(v, index) {
-                $('#areas').append(`<option value="${v}">${v}</option>`)
-            });
-
-        }
-    }
 })

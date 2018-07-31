@@ -112,6 +112,7 @@ mix.babel([
         '../expert-theme/expert/js/main.js',
         '../expert-theme/expert/js/vendor/modernizr-2.8.3.min.js',
         './resources/assets/js/frontend-custom.js',
+        './resources/assets/js/cartIndex.js',
     ]
     , 'public/js/frontend.js').version();
 

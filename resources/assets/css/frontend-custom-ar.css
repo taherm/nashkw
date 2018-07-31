@@ -37,3 +37,8 @@ div.simpleLens-lens-element {
     left: 109px;
     bottom: 7px;
 }
+
+.label {
+    color : #b7af15;
+    font-size: large;
+}

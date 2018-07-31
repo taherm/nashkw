@@ -26,11 +26,11 @@
                                 <label class="label"
                                        for="email">{{ trans('general.mobile') }}
                                     <em>*</em></label>
-                                <input type="email" class=" border-color"
-                                       name="email"
+                                <input type="text" class=" border-color"
+                                       name="mobile"
                                        placeholder="+96566666666"
                                        value="{{ auth()->check() ? auth()->user()->mobile : old('mobile') }}"
-                                       id="email" required>
+                                       id="mobile" required>
                             </div>
                         </div>
                     </li>
@@ -42,20 +42,36 @@
                                 <input type="text" class=" border-color"
                                        name="phone"
                                        value="{{ auth()->check() ? auth()->user()->phone : old('phone') }}"
-                                       id="Telephone">
+                                       id="phone">
+                            </div>
+                            <div class="input-box">
+                                    <label class="label"
+                                           for="addr">{{ trans('general.full_address') }}<em>*</em></label>
+                                    <input type="text" class=" border-color"
+                                           name="address"
+                                           id="addr"
+                                           required
+                                           value="{{ auth()->check() ? auth()->user()->address : old('address') }}"/>
+
+                            </div>
+                            <div class="input-box">
+                                <label class="label"
+                                       for="country">{{ trans('general.country') }}
+                                    <em>*</em></label>
+                                <select class="border-color"
+                                        name="country" id="country"
+                                        required
+                                        placeholder='{{ trans('general.select_country') }}'>
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="field fix">
-                            <div class="input-box inhun">
-                                <label class="label"
-                                       for="addr">{{ trans('general.full_address') }}</label>
-                                <input type="text" class=" border-color"
-                                       name="address"
-                                       id="addr"
-                                       value="{{ auth()->check() ? auth()->user()->address : old('address') }}"/>
-                            </div>
+
                         </div>
                     </li>
                     <li>
@@ -116,15 +132,15 @@
                     </li>
                 </ul>
             </div>
-            <div class="button-check">
-                <div class="">
-                                                            <span class="left-btn"><a
-                                                                        href="{{ route('frontend.cart.index') }}">{{ trans('general.back') }}</a></span>
-                    <button type="submit" class="btn right-btn custom-button">
-                        {{ trans('general.save_information') }}
-                    </button>
-                </div>
-            </div>
+            {{--<div class="button-check">--}}
+                {{--<div class="">--}}
+                                                            {{--<span class="left-btn"><a--}}
+                                                                        {{--href="{{ route('frontend.cart.index') }}">{{ trans('general.back') }}</a></span>--}}
+                    {{--<button type="submit" class="btn right-btn custom-button">--}}
+                        {{--{{ trans('general.save_information') }}--}}
+                    {{--</button>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
     </form>
 </div>

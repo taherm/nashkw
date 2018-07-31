@@ -202,6 +202,19 @@ Breadcrumbs::for('backend.user.edit', function ($trail, $element) {
     $trail->push('edit user', route('backend.user.edit', $element->id));
 });
 
+
+Breadcrumbs::for('backend.slider.create', function ($trail) {
+    $trail->parent('backend.slider.index');
+    $trail->push('create slider', route('backend.slider.create'));
+});
+
+Breadcrumbs::for('backend.slider.edit', function ($trail, $element) {
+    $trail->parent('backend.slider.index');
+    $trail->push('edit slider', route('backend.slider.edit', $element->id));
+});
+
+
+
 Breadcrumbs::for('backend.gallery.create', function ($trail) {
     $trail->parent('backend.gallery.index');
     $trail->push(request()->type, route('backend.' . request()->type . '.index'));

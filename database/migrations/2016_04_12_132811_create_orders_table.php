@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('net_price',6,2)->unsigned(); // used if coupon code exists
             $table->string('email')->nullable();
             $table->string('address')->nullable();
+            $table->string('country')->nullable();
             $table->string('mobile')->nullable();
             $table->string('phone')->nullable();
             $table->string('reference_id')->nullable()->deafult(0);
@@ -31,8 +32,9 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->integer('country_id')->unsigned()->index();
-            $table->foreign('country_id')->references('id')->on('countries');
+            $table->boolean('receive_on_branch')->default(0);
+            $table->integer('branch_id')->unsigned()->index();
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -350,6 +350,17 @@
                                            value="0">not on_homepage</label>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label sbold">check_stock</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="check_stock" id="optionsRadios5" {{ $element->check_stock ? 'checked' : null }}
+                                           value="1"> check_stock</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="check_stock" id="optionsRadios6" {{ !$element->check_stock ? 'checked' : null }}
+                                           value="0">not in check_stock</label>
+                            </div>
+                        </div>
                     </div>
                     @include('backend.partials.forms._btn-group')
                 </div>

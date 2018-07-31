@@ -7,10 +7,6 @@
             <div class="row">
                 <form method="POST" action="{{ route('frontend.order.store') }}">
                     @csrf
-                    <input type="hidden" name="country_id" value="{{ request()->country_id }}">
-                    @if(request()->has('area'))
-                        <input type="hidden" name="area" value="{{ request()->area }}">
-                    @endif
                     <div class="col-lg-12 col-sm-12">
                         <!-- Payment Method -->
                         <div class="payment-method">
@@ -46,30 +42,30 @@
                                     </div>
                                 </div><!-- End Panel Default -->
                                 <!-- Panel Default -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="check-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#checkut4">
-                                                <span class="number">3</span>{{ trans('general.shipping_method') }}</a>
-                                        </h4>
-                                    </div>
-                                    <div id="checkut4" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            @include('frontend.modules.checkout._shipment_method')
-                                        </div>
-                                    </div>
-                                </div><!-- End Panel Default -->
+                                {{--<div class="panel panel-default">--}}
+                                    {{--<div class="panel-heading">--}}
+                                        {{--<h4 class="check-title">--}}
+                                            {{--<a data-toggle="collapse" data-parent="#accordion" href="#checkut4">--}}
+                                                {{--<span class="number">3</span>{{ trans('general.shipping_method') }}</a>--}}
+                                        {{--</h4>--}}
+                                    {{--</div>--}}
+                                    {{--<div id="checkut4" class="panel-collapse collapse in">--}}
+                                        {{--<div class="panel-body">--}}
+                                            {{--@include('frontend.modules.checkout._shipment_method')--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div><!-- End Panel Default -->--}}
                                 <!-- Panel Default -->
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="check-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#checkut5">
-                                        <span class="number">4</span>{{ trans('general.payment_information') }}</a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#checkut3">
+                                        <span class="number">3</span>{{ trans('general.payment_information') }}</a>
                                 </h4>
                             </div>
-                            <div id="checkut5" class="panel-collapse collapse in show">
+                            <div id="checkut3" class="panel-collapse collapse in show">
                                 <div class="panel-body">
                                     @include('frontend.modules.checkout._payment_info')
                                 </div>
@@ -79,11 +75,11 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="check-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#checkut6">
-                                        <span class="number">5</span>{{ trans('general.order_review') }}</a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#checkut4">
+                                        <span class="number">4</span>{{ trans('general.order_review') }}</a>
                                 </h4>
                             </div>
-                            <div id="checkut6" class="panel-collapse collapse in show">
+                            <div id="checkut4" class="panel-collapse collapse in show">
                                 <div class="panel-body">
                                     @include('frontend.modules.checkout._order_review')
                                 </div>
