@@ -27,24 +27,24 @@
                         <p class="tabletext panel-heading">{{ trans('general.gross_total') }}</p>
                     </td>
                     <td>
-                        <p class="tabletext panel-heading"><span id="grandTotal" value="{{ request('grandTotal') }}">
+                        <p class="tabletext panel-heading"><span id="grandTotal" value="{{ $shipment['grandTotal'] }}">
                                 <b>{{ request('grandTotal') }}</b>
                             </span> <b>{{ trans('general.kd') }}</b>
-                            <input type="hidden" name="grandTotal" value="{{ request('grandTotal') }}">
+                            {{--<input type="hidden" name="grandTotal" value="{{ $shipment['grandTotal'] }}">--}}
                         </p>
-                        @if(!request('free_shipment'))
+                        @if(isset($shipment['free_shipment']) && !$shipment['free_shipment'])
                             <p class="tabletext panel-heading">
-                            <span id="charge" class="charge" value="{{ request('charge') }}">
-                                <b>{{ request('charge') }}</b>
+                            <span id="charge" class="charge" value="{{ $shipment['charge'] }}">
+                                <b>{{ $shipment['charge'] }}</b>
                             </span> <b>{{ trans('general.kd') }}</b>
-                                <input type="hidden" name="charge" value="{{ request('charge') }}" class="charge">
+                                {{--<input type="hidden" name="charge" value="{{ $shipment['charge'] }}" class="charge">--}}
                             </p>
                         @endif
                         <p class="tabletext panel-heading">
-                            <span id="grossTotal" value=""><b>{{ request('grossTotal') }}</b></span>
+                            <span id="grossTotal" value=""><b>{{ $shipment['grossTotal'] }}</b></span>
                             <b>{{ trans('general.kd') }}</b>
-                            <input type="hidden" name="grossTotal" class="grossTotal"
-                                   value="{{ request('grossTotal') }}">
+                            {{--<input type="hidden" name="grossTotal" class="grossTotal"--}}
+                                   {{--value="{{ $shipment['grossTotal'] }}">--}}
                         </p>
                     </td>
                 </tr>

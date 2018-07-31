@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends PrimaryModel
 {
+    protected $guarded = [''];
     use SoftDeletes;
 
     /**

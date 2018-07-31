@@ -3,10 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\OrderStore;
+use App\Models\Order;
+use App\Models\OrderMeta;
+use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function __construct(Cart $cart)
+    {
+        $this->cart = $cart;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,24 +39,64 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderStore $request)
     {
-        dd($request->all());
-        $validate = validator($request->all(), [
-            'country_id' => 'required|exists:countries,id'
+        $user = auth()->user();
+        $user->update([
+            'email' => $request->email,
+            'country' => $request->country,
+            'mobile' => $request->mobile,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'area' => $request->area,
+            'block' => $request->block,
+            'building' => $request->building,
+            'street' => $request->street,
+            'floor' => $request->floor,
+            'apartment' => $request->apartment,
         ]);
-        if($validate->fail()) {
-            return redirect()->back()->withErrors($validate);
+        if ($user) {
+            $shipment = session('shipment');
+            $coupon = session('coupon');
+            $order = Order::create([
+                'shipping_cost' => $shipment['charge'],
+                'price' => $shipment['grandTotal'],
+                'net_price' => $shipment['grossTotal'],
+                'discount' => $coupon->value,
+                'mobile' => $request->mobile,
+                'phone' => $request->phone,
+                'country' => $request->country,
+                'email' => $request->email,
+                'address' => $request->address,
+                'user_id' => auth()->user()->id,
+                'receive_on_branch' => isset($shipment['free_shipment']) && $shipment['free_shipment'] ? $shipment['free_shipment'] : false,
+                'branch_id' => isset($shipment['branch']) ? $shipment['branch'] : null,
+                'payment_method' => $request->payment_method
+            ]);
+            if ($order) {
+                $this->cart->content()->each(function ($item) use ($order, $request) {
+                    $order->order_metas()->create([
+                        'order_id' => $order->id,
+                        'product_id' => $item->options->product->id,
+                        'product_attribute_id' => $item->id,
+                        'quantity' => $item->qty,
+                        'price' => $item->options->product->on_sale ? $item->options->product->sale_price : $item->options->product->price,
+                    ]);
+                });
+                return redirect()->route('frontend.checkout.review');
+            }
+        } else {
+            return redirect()->route('frontend.cart.index')->with('error', trans('please_check_your_information_again'));
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -58,7 +107,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,8 +118,8 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -81,7 +130,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

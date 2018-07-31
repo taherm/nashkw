@@ -18,6 +18,5 @@ $factory->define(OrderMeta::class, function (Faker $faker) {
             $product = Product::whereId($array['product_id'])->first();
             return $product->on_sale ? $product->sale_price : $product->price;
         },
-        'shipping_cost' => $faker->numberBetween(1, 3)
     ];
 });

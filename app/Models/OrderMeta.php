@@ -5,6 +5,8 @@ namespace App\Models;
 
 class OrderMeta extends PrimaryModel
 {
+    protected $guarded = [''];
+
     public function order()
     {
         return $this->belongsTo(Order::class);

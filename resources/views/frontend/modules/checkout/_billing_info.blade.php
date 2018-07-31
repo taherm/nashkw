@@ -1,6 +1,6 @@
 <div class="col-lg-12 col-md-12 col-sm-12">
-    <form action="{{ route("frontend.cart.store") }}" method="post">
-        @csrf
+    {{--<form action="{{ route("frontend.cart.store") }}" method="post">--}}
+        {{--@csrf--}}
         <div class="form">
             <div class="card-control">
                 <ul>
@@ -62,8 +62,8 @@
                                         name="country" id="country"
                                         required
                                         placeholder='{{ trans('general.select_country') }}'>
-                                    @foreach($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @foreach($countriesWorld as $country)
+                                        <option value="{{ $country }}" {{ auth()->user()->country === $country ? 'selected' : null }}>{{ $country }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -142,5 +142,5 @@
                 {{--</div>--}}
             {{--</div>--}}
         </div>
-    </form>
+    {{--</form>--}}
 </div>

@@ -42,20 +42,20 @@
                                     </div>
                                 </div><!-- End Panel Default -->
                                 <!-- Panel Default -->
-                                {{--<div class="panel panel-default">--}}
-                                    {{--<div class="panel-heading">--}}
-                                        {{--<h4 class="check-title">--}}
-                                            {{--<a data-toggle="collapse" data-parent="#accordion" href="#checkut4">--}}
-                                                {{--<span class="number">3</span>{{ trans('general.shipping_method') }}</a>--}}
-                                        {{--</h4>--}}
-                                    {{--</div>--}}
-                                    {{--<div id="checkut4" class="panel-collapse collapse in">--}}
-                                        {{--<div class="panel-body">--}}
-                                            {{--@include('frontend.modules.checkout._shipment_method')--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div><!-- End Panel Default -->--}}
-                                <!-- Panel Default -->
+                            {{--<div class="panel panel-default">--}}
+                            {{--<div class="panel-heading">--}}
+                            {{--<h4 class="check-title">--}}
+                            {{--<a data-toggle="collapse" data-parent="#accordion" href="#checkut4">--}}
+                            {{--<span class="number">3</span>{{ trans('general.shipping_method') }}</a>--}}
+                            {{--</h4>--}}
+                            {{--</div>--}}
+                            {{--<div id="checkut4" class="panel-collapse collapse in">--}}
+                            {{--<div class="panel-body">--}}
+                            {{--@include('frontend.modules.checkout._shipment_method')--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</div><!-- End Panel Default -->--}}
+                            <!-- Panel Default -->
                             </div>
                         </div>
                         <div class="panel panel-default">

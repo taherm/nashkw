@@ -116,100 +116,101 @@
                                     <div class="place-section">
                                         <Form action="{{ route('frontend.cart.checkout') }}" method="post">
                                             @csrf
-                                                <div class="col-lg-12">
-                                                    <div class="place-headline">
-                                                        <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
-                                                        <div class="col-lg-12">
-                                                            <p>
-                                                                <span>{{ trans('cart.enter_ur_destination') }}</span>
-                                                            </p>
-                                                            <p class="{{ app()->isLocale('ar') ? 'pull-right' : 'pull-left' }} ">{{ trans('general.delivery_message') }}</p>
-                                                        </div>
-                                                        {{--<div class="col-lg-12">--}}
-                                                        {{--<img src="{{ asset('images/aramex.png') }}" alt=""--}}
-                                                        {{--class="{{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }} img-responsive"--}}
-                                                        {{--style="width: 60px; padding: 5px;">--}}
-                                                        {{--<img src="{{ asset('img/cash-delivery.png') }}" alt=""--}}
-                                                        {{--class="{{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }} img-responsive"--}}
-                                                        {{--style="width: 60px;">--}}
-                                                        {{--</div>--}}
+                                            <div class="col-lg-12">
+                                                <div class="place-headline">
+                                                    <h4>{{ trans('cart.estimate_shipping_and_tax') }}</h4>
+                                                    <div class="col-lg-12">
+                                                        <p>
+                                                            <span>{{ trans('cart.enter_ur_destination') }}</span>
+                                                        </p>
+                                                        <p class="{{ app()->isLocale('ar') ? 'pull-right' : 'pull-left' }} ">{{ trans('general.delivery_message') }}</p>
+                                                    </div>
+                                                    {{--<div class="col-lg-12">--}}
+                                                    {{--<img src="{{ asset('images/aramex.png') }}" alt=""--}}
+                                                    {{--class="{{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }} img-responsive"--}}
+                                                    {{--style="width: 60px; padding: 5px;">--}}
+                                                    {{--<img src="{{ asset('img/cash-delivery.png') }}" alt=""--}}
+                                                    {{--class="{{ app()->isLocale('ar') ? 'pull-left' : 'pull-right' }} img-responsive"--}}
+                                                    {{--style="width: 60px;">--}}
+                                                    {{--</div>--}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="search-category">
+                                                    <h5>{{ trans('general.shipment_package') }}</h5>
+                                                    <div class="category">
+                                                        <select class="orderby shipment-dropdown"
+                                                                name="package_id" id="shipment_package"
+                                                                placeholder='{{ trans('general.select_shipment_package') }}'>
+                                                            <option value="">{{ trans('general.shipment_package') }}</option>
+                                                            @foreach($packages as $package)
+                                                                <option value="{{ $package->id }}"
+                                                                        data-is_local="{{ $package->is_local }}"
+                                                                        data-charge="{{ $package->charge }}">{{ $package->slug }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="search-category">
-                                                        <h5>{{ trans('general.shipment_package') }}</h5>
-                                                        <div class="category">
-                                                            <select class="orderby shipment-dropdown"
-                                                                    name="package_id" id="shipment_package"
-                                                                    placeholder='{{ trans('general.select_shipment_package') }}'>
-                                                                <option value="">{{ trans('general.shipment_package') }}</option>
-                                                                @foreach($packages as $package)
-                                                                    <option value="{{ $package->id }}"
-                                                                            data-is_local="{{ $package->is_local }}"
-                                                                            data-charge="{{ $package->charge }}">{{ $package->slug }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            </div>
 
-                                                <div class="col-lg-6">
-                                                    <div class="search-category">
-                                                        <h5 class="free_shipment hidden">{{ trans('general.branch') }}</h5>
-                                                        <div class="category hidden free_shipment">
-                                                            <label for="free_shipment">{{ trans('general.message_free_shipment_branch_receiving') }}</label>
-                                                            <input type="checkbox" name="free_shipment" id="free_shipment" value="1">
-                                                        </div>
+                                            <div class="col-lg-6">
+                                                <div class="search-category">
+                                                    <h5 class="free_shipment hidden">{{ trans('general.branch') }}</h5>
+                                                    <div class="category hidden free_shipment">
+                                                        <label for="free_shipment">{{ trans('general.message_free_shipment_branch_receiving') }}</label>
+                                                        <input type="checkbox" name="free_shipment" id="free_shipment"
+                                                               value="1">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="search-category">
-                                                        <h5 class="branches hidden">{{ trans('general.branch') }}</h5>
-                                                        <div class="category hidden branches">
-                                                            <select class="orderby shipment-dropdown"
-                                                                    name="branch" id="branch"
-                                                                    placeholder='{{ trans('general.select_branch') }}'>
-                                                                @foreach($branches as $branch)
-                                                                    <option value="{{ $branch->id }}"
-                                                                            data-address="{{ $branch->address }}">{{ $branch->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="search-category">
+                                                    <h5 class="branches hidden">{{ trans('general.branch') }}</h5>
+                                                    <div class="category hidden branches">
+                                                        <select class="orderby shipment-dropdown"
+                                                                name="branch" id="branch"
+                                                                placeholder='{{ trans('general.select_branch') }}'>
+                                                            @foreach($branches as $branch)
+                                                                <option value="{{ $branch->id }}"
+                                                                        data-address="{{ $branch->address }}">{{ $branch->name }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="search-category">
-                                                        <div id="branch_address" class="hidden">
-                                                            <h4>{{ trans('general.branch_address') }}</h4>
-                                                        </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="search-category">
+                                                    <div id="branch_address" class="hidden">
+                                                        <h4>{{ trans('general.branch_address') }}</h4>
                                                     </div>
                                                 </div>
-                                                {{--<div class="col-lg-6">--}}
-                                                {{--<div class="search-category">--}}
-                                                {{--<h5>{{ trans('general.country') }}</h5>--}}
-                                                {{--<div class="category">--}}
-                                                {{--<select class="orderby country-dropdown"--}}
-                                                {{--name="country_id" id="country"--}}
-                                                {{--placeholder='{{ trans('general.select_country') }}'>--}}
-                                                {{--<option value="">{{ trans('general.country') }}</option>--}}
-                                                {{--@foreach($countries as $country)--}}
-                                                {{--<option value="{{ $country->id }}">{{ $country->name }}</option>--}}
-                                                {{--@endforeach--}}
-                                                {{--</select>--}}
-                                                {{--</div>--}}
-                                                {{--</div>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-lg-6">--}}
-                                                {{--<div class="search-category">--}}
-                                                {{--<h5>{{ trans('general.area') }}</h5>--}}
-                                                {{--<div class="category">--}}
-                                                {{--<select class="disabled country-dropdown" name="area"--}}
-                                                {{--id="areas">--}}
-                                                {{--<option value="">{{ trans('general.area') }}</option>--}}
-                                                {{--</select>--}}
-                                                {{--</div>--}}
-                                                {{--</div>--}}
-                                                {{--</div>--}}
+                                            </div>
+                                            {{--<div class="col-lg-6">--}}
+                                            {{--<div class="search-category">--}}
+                                            {{--<h5>{{ trans('general.country') }}</h5>--}}
+                                            {{--<div class="category">--}}
+                                            {{--<select class="orderby country-dropdown"--}}
+                                            {{--name="country_id" id="country"--}}
+                                            {{--placeholder='{{ trans('general.select_country') }}'>--}}
+                                            {{--<option value="">{{ trans('general.country') }}</option>--}}
+                                            {{--@foreach($countries as $country)--}}
+                                            {{--<option value="{{ $country->id }}">{{ $country->name }}</option>--}}
+                                            {{--@endforeach--}}
+                                            {{--</select>--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-lg-6">--}}
+                                            {{--<div class="search-category">--}}
+                                            {{--<h5>{{ trans('general.area') }}</h5>--}}
+                                            {{--<div class="category">--}}
+                                            {{--<select class="disabled country-dropdown" name="area"--}}
+                                            {{--id="areas">--}}
+                                            {{--<option value="">{{ trans('general.area') }}</option>--}}
+                                            {{--</select>--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--</div>--}}
                                             @endif
                                             <div class="col-lg-12">
                                                 <div class="rate-fsubtotal">
@@ -227,19 +228,22 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <p style="font-size: large">{{ trans('general.sub_total') }}</p>
-                                                            <h2 class="grandTotal"
-                                                                  value="{{ getCartNetTotal() }}">{{ number_format(getCartNetTotal(), 2, '.',',') }}</h2> {{ trans('general.kd') }}
-                                                            <input type="hidden" name="grandTotal" class="grandTotal" value="">
+                                                        <h2 class="grandTotal"
+                                                            value="{{ getCartNetTotal() }}">{{ number_format(getCartNetTotal(), 2, '.',',') }}</h2> {{ trans('general.kd') }}
+                                                        <input type="hidden" name="grandTotal" class="grandTotal"
+                                                               value="">
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <p style="font-size: large">{{ trans('general.gross_total') }}</p>
-                                                            <h2 id="grossTotal"
-                                                                  class="grossTotal"></h2> {{ trans('general.kd') }}
-                                                            <input type="hidden" name="grossTotal" class="grossTotal" value="">
+                                                        <h2 id="grossTotal"
+                                                            class="grossTotal"></h2> {{ trans('general.kd') }}
+                                                        <input type="hidden" name="grossTotal" class="grossTotal"
+                                                               value="">
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="charge" class="charge" value="">
-                                                <button type="submit" id="forward" disabled="disabled" class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
+                                                <button type="submit" id="forward" disabled="disabled"
+                                                        class="col-lg-12 btn custom-button">{{ trans('cart.proceed_to_checkout') }}
                                                 </button>
                                             </div>
                                         </Form>

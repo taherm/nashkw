@@ -54,15 +54,16 @@ $(document).ready(function() {
         } else {
             $('.charge').attr('value', charge);
             var grandTotal = $('.grandTotal').attr('value');
-            var grossTotal = parseFloat(grandTotal) + parseFloat(charge);
+            console.log('isnull', isNaN(charge));
+            var grossTotal = parseFloat(grandTotal) + parseFloat(!isNaN(charge) ? charge : 0);
             $('.grossTotal').attr('value', grossTotal);
             $('.grandTotal').attr('value', grandTotal);
             $('#grossTotal').html(`<p>${grossTotal}</p>`);
             $('#forward').removeAttr('disabled');
         }
-        console.log('the charge', charge);
-        console.log('the grandTotal', grandTotal);
-        console.log('the grossTotal', grossTotal);
+        console.log('charge', charge);
+        console.log('grossTotal',grossTotal);
+        console.log('grandTotal',grandTotal);
     });
 
     $('#branch').on('change', function(e) {

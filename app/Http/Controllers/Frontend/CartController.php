@@ -40,13 +40,10 @@ class CartController extends Controller
                 'size_id' => 'required|exists:sizes,id',
                 'qty' => 'required|integer|min:1',
             ]);
-
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
-
         $product = Product::whereId($request->product_id)->first();
-
         $productAttribute = ProductAttribute::where([
             'color_id' => $request->color_id,
             'size_id' => $request->size_id,
@@ -77,7 +74,6 @@ class CartController extends Controller
         return true;
     }
 
-
     public function removeItem($id)
     {
         Cart::search(function ($item, $rowId) use ($id) {
@@ -94,6 +90,7 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
+        $countriesWorld = config('countriesWorld');
         $validate = validator($request->all(), [
             'grossTotal' => 'required|numeric',
             'grandTotal' => 'required|numeric',
@@ -107,8 +104,9 @@ class CartController extends Controller
         }
 
         $cart = $this->cart->content();
-        $charge = request('charge');
-        return view('frontend.modules.checkout.index', compact('charge', 'cart'));
+        session()->put('shipment', $request->except('_token'));
+        $shipment = session('shipment');
+        return view('frontend.modules.checkout.index', compact('cart', 'shipment', 'countriesWorld'));
     }
 
     public function applyCoupon(Request $request)
@@ -119,10 +117,12 @@ class CartController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->with('error', trans('general.coupon_not_correct'));
         }
+
         $coupon = Coupon::active()->where(['code' => $request->code, 'consumed' => false])
             ->where('due_date', '>=', Carbon::now())
             ->where('minimum_charge', '<=', $this->cart->subTotal())
             ->first();
+
         if ($coupon) {
             session()->put('coupon', $coupon);
             return redirect()->back()->with('success', trans('message.coupon_shall_be_applied'));
