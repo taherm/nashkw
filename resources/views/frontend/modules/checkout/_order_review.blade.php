@@ -21,7 +21,9 @@
                 <tr>
                     <td colspan="3">
                         <p class="tabletext panel-heading">{{ trans('general.grand_total') }}</p>
-                        <p class="tabletext panel-heading">{{ trans('general.shipping_cost') }}</p>
+                        @if(!request('free_shipment'))
+                            <p class="tabletext panel-heading">{{ trans('general.shipping_cost') }}</p>
+                        @endif
                         <p class="tabletext panel-heading">{{ trans('general.gross_total') }}</p>
                     </td>
                     <td>
@@ -30,12 +32,14 @@
                             </span> <b>{{ trans('general.kd') }}</b>
                             <input type="hidden" name="grandTotal" value="{{ request('grandTotal') }}">
                         </p>
-                        <p class="tabletext panel-heading">
+                        @if(!request('free_shipment'))
+                            <p class="tabletext panel-heading">
                             <span id="charge" class="charge" value="{{ request('charge') }}">
                                 <b>{{ request('charge') }}</b>
                             </span> <b>{{ trans('general.kd') }}</b>
-                            <input type="hidden" name="charge" value="{{ request('charge') }}" class="charge">
-                        </p>
+                                <input type="hidden" name="charge" value="{{ request('charge') }}" class="charge">
+                            </p>
+                        @endif
                         <p class="tabletext panel-heading">
                             <span id="grossTotal" value=""><b>{{ request('grossTotal') }}</b></span>
                             <b>{{ trans('general.kd') }}</b>
