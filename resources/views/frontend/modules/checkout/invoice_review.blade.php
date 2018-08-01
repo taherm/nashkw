@@ -160,6 +160,13 @@
                     </table>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <form action="{{ route('web.payment.create') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $order->id }}">
+                    <button type="submit" class="btn btn-outline-success">{{ trans('general.go_to_payment') }}</button>
+                </form>
+            </div>
         </div>
     </div>
 @endsection

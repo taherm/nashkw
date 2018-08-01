@@ -1,4 +1,3 @@
-
 <?php
 
 /*
@@ -40,7 +39,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::resource('aboutus', 'AboutusController');
     Route::get('reset/password', 'UserController@getResetPassword')->name('reset.password');
     Route::post('reset/password', 'UserController@postResetPassword')->name('reset');
-    Route::get('backup/db', ['as' => 'backup.db', 'uses' => 'HomeController@BackupDB']);
+    Route::get('backup/db', ['as' => 'backup.db', 'uses' => 'DashBoardController@BackupDB']);
     Route::get('export/translations', 'DashBoardController@exportTranslations')->name('export.translation');
 });
 
@@ -59,15 +58,16 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::resource('category', 'CategoryController');
     Route::resource('page', 'PageController');
     Route::resource('user', 'UserController');
-    Route::resource('order', 'OrderController');
-    Route::get('favorite', 'FavoriteController@index')->name('favorite.index');
-    Route::get('favorite/add/{id}', 'FavoriteController@add')->name('favorite.add');
-    Route::get('favorite/remove/{id}', 'FavoriteController@remove')->name('favorite.remove');
     Route::resource('newsletter', 'NewsletterController');
     Route::get('search', 'ProductController@search')->name('product.search');
     Route::get('currency/{currency}', 'HomeController@changeCurrency')->name('currency.change');
     Route::get('language/{locale}', 'HomeController@changeLanguage')->name('language.change');
-
+});
+Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => ['auth']], function () {
+    Route::resource('order', 'OrderController');
+    Route::get('favorite', 'FavoriteController@index')->name('favorite.index');
+    Route::get('favorite/add/{id}', 'FavoriteController@add')->name('favorite.add');
+    Route::get('favorite/remove/{id}', 'FavoriteController@remove')->name('favorite.remove');
 });
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 Auth::routes();

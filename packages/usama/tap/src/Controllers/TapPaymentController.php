@@ -5,17 +5,11 @@ namespace Usama\Tap;
 use App\Http\Controllers\Controller;
 use App\Mail\OrderComplete;
 use App\Models\Ad;
-use App\Models\Branch;
-use App\Models\Image;
 use App\Models\Setting;
 use App\Models\Deal;
 use App\Models\Order;
 use App\Models\OrderAttribute;
 use App\Models\Plan;
-use App\Models\Product;
-use App\Models\User;
-use Carbon\Carbon;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -63,8 +57,11 @@ class TapPaymentController extends Controller
         return hash_hmac('sha256', $this->setHashString($totalPrice), config('tap.apiKey'));
     }
 
-    public function makePayment(Order $order)
+    public function makePayment(Request $request)
     {
+        $className = config('tap.order');
+        $order = new $className();
+        $order = $order->whereId($request->id)->with('order_metas.product', 'order_metas.product_attribute')->first();
         $user = auth()->user();
         $finalArray = [
             'CustomerDC' => [
@@ -73,7 +70,7 @@ class TapPaymentController extends Controller
                 "Gender" => $order->gender ? $order->gender : "0",
                 "ID" => $user ? $user->id : "0",
                 "Mobile" => $order->mobile,
-                "Name" => $order->has('name') ? $order->name : $user->name,
+                "Name" => $user->name,
                 "Nationality" => $order->nationality ? $order->nationality : "KWT",
                 "Street" => $order->address ? $order->address : $user->address,
                 "Area" => $order->area ? $order->area : $user->area_id,
@@ -82,9 +79,9 @@ class TapPaymentController extends Controller
                 "Apartment" => $user->address,
                 "DOB" => $user->created_at
             ],
-            'lstProductDC' => $order->products,
+            'lstProductDC' => $this->getProducts($order),
             'lstGateWayDC' => [$this->getGateWay()],
-            'MerMastDC' => $this->getMerchant($deal->total),
+            'MerMastDC' => $this->getMerchant($order->net_price),
         ];
         $curl = curl_init();
 
@@ -123,11 +120,13 @@ class TapPaymentController extends Controller
              * store the payment and update it with the refrence
                 * */
                 // create the order here
-                $deal->update(['reference_id' => $response->ReferenceID]);
-                return $response->PaymentURL;
+                $order->update(['reference_id' => $response->ReferenceID]);
+//                return $response->PaymentURL;
+                return redirect()->to($response->PaymentURL);
             }
 
-            return response()->json($response->ResponseMessage);
+            return redirect()->back()->with('error', trans('message.payment_url_error'));
+//            return response()->json($response->ResponseMessage);
 
         }
     }
@@ -151,6 +150,25 @@ class TapPaymentController extends Controller
         $order = Order::withoutGlobalScopes()->where(['reference_id' => $request->ref])->first();
         $order->update(['status' => 'failed']);
         abort('404', 'Your payment process is unsuccessful .. your deal is not created please try again or contact us.');
+    }
+
+    public function getProducts($order)
+    {
+        $productsList = [];
+        foreach($order->order_metas as $orderMeta) {
+             array_push($productsList, [
+                'CurrencyCode' => env('TAP_CURRENCY_CODE'),
+                'ImgUrl' => asset(env('LARGE')) . $orderMeta->product->image,
+                'Quantity' => $orderMeta->qty,
+                'TotalPrice' => $orderMeta->product->on_sale ? $orderMeta->product->sale_price : $orderMeta->product->price,
+                'UnitID' => $orderMeta->product->id,
+                'UnitName' => $orderMeta->product->name_en,
+                'UnitPrice' => $orderMeta->product->price,
+                'UnitDesc' => $orderMeta->product->description,
+                'VndID' => '',
+            ]);
+        }
+        return $productsList;
     }
 }
 

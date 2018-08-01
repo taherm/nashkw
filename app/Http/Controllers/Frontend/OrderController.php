@@ -46,7 +46,7 @@ class OrderController extends Controller
     {
         $user = auth()->user();
         $user->update([
-            'email' => $request->email,
+//            'email' => $request->email,
             'country' => $request->country,
             'mobile' => $request->mobile,
             'address' => $request->address,
@@ -65,7 +65,7 @@ class OrderController extends Controller
                 'shipping_cost' => $shipment['charge'],
                 'price' => $shipment['grandTotal'],
                 'net_price' => $shipment['grossTotal'],
-                'discount' => $coupon->value,
+                'discount' => $coupon ? $coupon->value : null,
                 'mobile' => $request->mobile,
                 'phone' => $request->phone,
                 'country' => $request->country,
@@ -75,7 +75,7 @@ class OrderController extends Controller
                 'receive_on_branch' => isset($shipment['free_shipment']) && $shipment['free_shipment'] ? $shipment['free_shipment'] : false,
                 'branch_id' => isset($shipment['branch']) ? $shipment['branch'] : null,
                 'payment_method' => $request->payment_method,
-                'coupon_id' => session('coupon') ? session('coupon')['id'] : null
+                'coupon_id' => $coupon ? $coupon['id'] : null
             ]);
             if ($order) {
                 $this->cart->content()->each(function ($item) use ($order, $request) {
@@ -102,7 +102,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::whereId($id)->with('order_metas.product','order_metas.product_attribute')->first();
+        $order = Order::whereId($id)->with('order_metas.product', 'order_metas.product_attribute')->first();
         $coupon = session('coupon') ? session('coupon') : null;
         return view('frontend.modules.checkout.invoice_review', compact('order', 'coupon'));
     }
