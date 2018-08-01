@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Coupon::class, function (Faker $faker) {
     return [
-        'value' => $faker->randomDigit,
+        'value' => $faker->numberBetween(1,10),
         'is_percentage' => $faker->boolean,
         'user_id' => User::all()->random()->id,
         'active' => $faker->boolean,

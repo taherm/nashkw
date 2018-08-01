@@ -2,6 +2,7 @@
 
 use App\Models\Branch;
 use App\Models\Country;
+use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\User;
 use Faker\Generator as Faker;
@@ -23,6 +24,7 @@ $factory->define(Order::class, function (Faker $faker) {
         'reference_id' => $faker->bankAccountNumber,
         'branch_id' => Branch::all()->random()->id,
         'payment_method' => $faker->randomElement(['cash', 'visa', 'mastercard']),
-        'country' => Country::all()->random()->name
+        'country' => Country::all()->random()->name,
+        'coupon_id' => Coupon::all()->random()->id
     ];
 });

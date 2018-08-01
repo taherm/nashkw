@@ -74,7 +74,8 @@ class OrderController extends Controller
                 'user_id' => auth()->user()->id,
                 'receive_on_branch' => isset($shipment['free_shipment']) && $shipment['free_shipment'] ? $shipment['free_shipment'] : false,
                 'branch_id' => isset($shipment['branch']) ? $shipment['branch'] : null,
-                'payment_method' => $request->payment_method
+                'payment_method' => $request->payment_method,
+                'coupon_id' => session('coupon') ? session('coupon')['id'] : null
             ]);
             if ($order) {
                 $this->cart->content()->each(function ($item) use ($order, $request) {
@@ -82,11 +83,11 @@ class OrderController extends Controller
                         'order_id' => $order->id,
                         'product_id' => $item->options->product->id,
                         'product_attribute_id' => $item->id,
-                        'quantity' => $item->qty,
+                        'qty' => $item->qty,
                         'price' => $item->options->product->on_sale ? $item->options->product->sale_price : $item->options->product->price,
                     ]);
                 });
-                return redirect()->route('frontend.checkout.review');
+                return redirect()->route('frontend.order.show', $order->id);
             }
         } else {
             return redirect()->route('frontend.cart.index')->with('error', trans('please_check_your_information_again'));
@@ -101,7 +102,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::whereId($id)->with('order_metas.product','order_metas.product_attribute')->first();
+        $coupon = session('coupon') ? session('coupon') : null;
+        return view('frontend.modules.checkout.invoice_review', compact('order', 'coupon'));
     }
 
     /**

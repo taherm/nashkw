@@ -55,7 +55,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::post('cart/coupon', 'CartController@applyCoupon')->name('cart.coupon');
     Route::post('cart/checkout', 'CartController@checkout')->name('cart.checkout');
     Route::post('cart/store', 'CartController@checkout')->name('cart.store');
-    Route::post('cart/review', 'CartController@checkout')->name('cart.review');
+    // checkout.review is order.show
     Route::resource('category', 'CategoryController');
     Route::resource('page', 'PageController');
     Route::resource('user', 'UserController');

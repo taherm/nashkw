@@ -17,7 +17,7 @@ class CreateOrderMetasTable extends Migration
             $table->integer('order_id')->unsigned()->index();
             $table->integer('product_id')->unsigned()->index();
             $table->integer('product_attribute_id')->unsigned()->index();
-            $table->integer('quantity')->unsigned();
+            $table->integer('qty')->unsigned();
             // price of the product on the time the order is made
             $table->decimal('price',6,2)->unsigned();
 

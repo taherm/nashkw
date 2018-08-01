@@ -98,6 +98,7 @@ mix.styles([
     './node_modules/bootstrap3-rtl/dist/bootstrap-rtl-min.css',
     'resources/assets/css/frontend-custom-ar.css',
 ], 'public/css/rtl.css').version();
+mix.styles('resources/assets/css/order-review.css','public/css/order-review.css');
 mix.babel([
         '../expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
         '../expert-theme/expert/js/bootstrap.min.js',
@@ -115,6 +116,7 @@ mix.babel([
         './resources/assets/js/cartIndex.js',
     ]
     , 'public/js/frontend.js').version();
+
 
 mix.scripts('resource/js/frontend-custom-ar.js', 'public/js/frontend-custom-ar.js').version();
 

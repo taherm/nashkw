@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Coupon;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Services\ShippingManager;
@@ -131,10 +132,5 @@ class CartController extends Controller
             return redirect()->back()->with('error', trans('general.coupon_not_correct'));
         }
 
-    }
-
-    public function checkCartBeforeCheckOut()
-    {
-        return true;
     }
 }
