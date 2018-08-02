@@ -102,7 +102,6 @@
                     <table>
                         <thead>
                         <tr>
-                            <th class="product-remove">{{ trans('cart.remove') }}</th>
                             <th class="product-thumbnail">{{ trans('cart.image') }}</th>
                             <th class="product-thumbnail">{{ trans('cart.color') }}</th>
                             <th class="product-thumbnail">{{ trans('cart.size') }}</th>
@@ -116,12 +115,6 @@
 
                         @foreach($order->order_metas as $item)
                             <tr>
-                                <td class="product-remove">
-                                    <a href="{{ route('frontend.cart.remove',$item->id) }}">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </td>
-
                                 <td class="product-thumbnail">
                                     <a href="{{ route('frontend.product.show',$item->product_id) }}">
                                         <img src="{{ asset('storage/uploads/images/thumbnail/'.$item->product->image) }}"
@@ -135,7 +128,7 @@
                                 </td>
 
                                 <td class="product-thumbnail">
-                                    {{ $item->sizeName }}
+                                    {{ $item->product_attribute->sizeName }}
                                 </td>
 
                                 <td class="product-name">

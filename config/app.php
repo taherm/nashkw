@@ -1,6 +1,7 @@
 <?php
 
 use SwooleTW\Http\LaravelServiceProvider;
+use Usama\Tap\TapServiceProvider;
 
 return [
 
@@ -163,6 +164,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        TapServiceProvider::class
     ],
 
     /*
