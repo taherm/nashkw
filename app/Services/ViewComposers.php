@@ -134,7 +134,6 @@ class ViewComposers
     {
 
         if (!Cache::has('countriesWorld')) {
-            var_dump('case not has cache');
             Cache::rememberForever('countriesWorld', function () {
                 return config('countriesWorld');
             });

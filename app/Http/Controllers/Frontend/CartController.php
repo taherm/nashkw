@@ -103,11 +103,10 @@ class CartController extends Controller
         if ($validate->fails()) {
             return redirect()->route('frontend.cart.index')->withErrors($validate);
         }
-        $countriesWorld = Cache::get('countries');
         $cart = $this->cart->content();
         session()->put('shipment', $request->except('_token'));
         $shipment = session('shipment');
-        return view('frontend.modules.checkout.index', compact('cart', 'shipment', compact('countriesWorld')));
+        return view('frontend.modules.checkout.index', compact('cart', 'shipment'));
     }
 
     public function applyCoupon(Request $request)
