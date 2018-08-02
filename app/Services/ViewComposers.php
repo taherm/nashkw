@@ -133,13 +133,13 @@ class ViewComposers
     public function getCountriesWorld(View $view)
     {
 
-        if (Cache::has('countriesWorld')) {
+        if (!Cache::has('countriesWorld')) {
+            var_dump('case not has cache');
             Cache::rememberForever('countriesWorld', function () {
                 return config('countriesWorld');
             });
         }
         $countriesWorld = Cache::get('countriesWorld');
-        dd(Cache::get('countriesWorld'));
         return $view->with(compact('countriesWorld'));
     }
 }
