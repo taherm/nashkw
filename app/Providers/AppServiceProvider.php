@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         if ($this->app->environment('local')) {
-            $this->app->register(DuskServiceProvider::class);
-            $this->app->register(GeneratorsServiceProvider::class);
+//            $this->app->register(DuskServiceProvider::class);
+//            $this->app->register(GeneratorsServiceProvider::class);
         }
     }
 }
