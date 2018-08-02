@@ -13,6 +13,7 @@ use App\Services\ShippingManager;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CartController extends Controller
 {
@@ -102,11 +103,11 @@ class CartController extends Controller
         if ($validate->fails()) {
             return redirect()->route('frontend.cart.index')->withErrors($validate);
         }
-
+        $countriesWorld = Cache::get('countries');
         $cart = $this->cart->content();
         session()->put('shipment', $request->except('_token'));
         $shipment = session('shipment');
-        return view('frontend.modules.checkout.index', compact('cart', 'shipment'));
+        return view('frontend.modules.checkout.index', compact('cart', 'shipment', compact('countriesWorld')));
     }
 
     public function applyCoupon(Request $request)
