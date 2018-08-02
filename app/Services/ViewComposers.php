@@ -18,6 +18,7 @@ use App\Models\ShipmentPackage;
 use App\Models\Size;
 use App\Models\Slider;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class ViewComposers
@@ -117,14 +118,27 @@ class ViewComposers
         return $view->with(compact('pages'));
     }
 
-    public function getShipmentPackages(View $view) {
+    public function getShipmentPackages(View $view)
+    {
         $packages = ShipmentPackage::active()->get();
         return $view->with(compact('packages'));
     }
 
-    public function getBranches(View $view) {
+    public function getBranches(View $view)
+    {
         $branches = Branch::active()->get();
         return $view->with(compact('branches'));
+    }
+
+    public function getCountriesWorld(View $view)
+    {
+        if (Cache::has('countriesWorld')) {
+            Cache::rememberForever('countries', function () {
+                return config('countriesWorld');
+            });
+        }
+        $countriesWorld = Cache::get('countries');
+        return $view->with(compact('countriesWorld'));
     }
 }
 

@@ -77,3 +77,7 @@ Route::get('/logwith/{id}', function ($id) {
     return redirect()->route('frontend.home');
 });
 //}
+
+Route::get('settings', function () {
+    echo phpinfo();
+});

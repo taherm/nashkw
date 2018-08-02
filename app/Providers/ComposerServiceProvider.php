@@ -35,6 +35,11 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.modules.cart.index',
         ], 'App\Services\ViewComposers@getShipmentPackages');
 
+
+        view()->composer([
+            'frontend.modules.checkout.index',
+        ], 'App\Services\ViewComposers@getCountriesWorld');
+
         view()->composer([
             'frontend.modules.cart.index',
         ], 'App\Services\ViewComposers@getBranches');

@@ -91,7 +91,6 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
-        $countriesWorld = config('countriesWorld');
         $validate = validator($request->all(), [
             'grossTotal' => 'required|numeric',
             'grandTotal' => 'required|numeric',
@@ -107,7 +106,7 @@ class CartController extends Controller
         $cart = $this->cart->content();
         session()->put('shipment', $request->except('_token'));
         $shipment = session('shipment');
-        return view('frontend.modules.checkout.index', compact('cart', 'shipment', 'countriesWorld'));
+        return view('frontend.modules.checkout.index', compact('cart', 'shipment'));
     }
 
     public function applyCoupon(Request $request)
