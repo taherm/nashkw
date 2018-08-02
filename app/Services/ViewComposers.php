@@ -18,7 +18,7 @@ use App\Models\ShipmentPackage;
 use App\Models\Size;
 use App\Models\Slider;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cache as Cache;
 use Illuminate\View\View;
 
 class ViewComposers
@@ -132,12 +132,14 @@ class ViewComposers
 
     public function getCountriesWorld(View $view)
     {
+
         if (Cache::has('countriesWorld')) {
-            Cache::rememberForever('countries', function () {
+            Cache::rememberForever('countriesWorld', function () {
                 return config('countriesWorld');
             });
         }
-        $countriesWorld = Cache::get('countries');
+        $countriesWorld = Cache::get('countriesWorld');
+        dd(Cache::get('countriesWorld'));
         return $view->with(compact('countriesWorld'));
     }
 }
