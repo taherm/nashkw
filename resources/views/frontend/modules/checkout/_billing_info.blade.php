@@ -55,7 +55,6 @@
 
                             </div>
                             <div class="input-box">
-                                {{ dd($countriesWorld) }}
                                 <label class="label"
                                        for="country">{{ trans('general.country') }}
                                     <em>*</em></label>
