@@ -87,7 +87,7 @@
         </div>
         <div class="img-wrapper">
             @for($i=1;$i<=14;$i++)
-                <img class="img-brochure" src="{{ asset('images/brochure/BROCHURE -2-' . $i .'.jpg') }}"
+                <img class="img-brochure" src="{{ asset('images/brochure/BROCHURE-2-' . $i .'.jpg') }}"
                      alt="{{ env('APP_NAME') }}">
             @endfor
             <hr>

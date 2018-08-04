@@ -59,7 +59,7 @@
                                            data-title="Delete"
                                            data-content="Are you sure you want to delete attribute ? "
                                            data-form_id="delete-{{ $element->id }}">
-                                            <i class="fa fa-fw fa-recycle"></i> delete</a>
+                                            <i class="fa fa-fw fa-recycle"></i> dhelete</a>
                                         <form method="post" id="delete-{{ $element->id }}"
                                               action="{{ route('backend.attribute.destroy',$element->id) }}">
                                             @csrf
