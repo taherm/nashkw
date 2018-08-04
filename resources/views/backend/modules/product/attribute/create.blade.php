@@ -4,6 +4,7 @@
     <div class="portlet box blue">
         @include('backend.partials.forms.form_title')
         <div class="portlet-body form">
+            @include('backend.modules.product_attributes.index')
             <form class="horizontal-form" role="form" method="POST"
                   action="{{ route('backend.attribute.store') }}" enctype="multipart/form-data">
                 @csrf

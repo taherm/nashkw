@@ -28,13 +28,13 @@
                         @endif
                         <a href="{{ route('frontend.product.show',$product->id) }}">
                             <img class="primary-img"
-                                 src="{{ asset('storage/uploads/images/thumbnail/'.$product->image) }} "
+                                 src="{{ asset(env('THUMBNAIL').$product->image) }} "
                                  alt="{{ $product->name }}">
 
                             @if($product->gallery)
                                 @if(!$product->gallery->images->isEmpty())
                                     <img class="secondary-img"
-                                         src="{{ asset('storage/uploads/images/thumbnail/'.$product->gallery->images->sortBy('order')->first()->path) }} "
+                                         src="{{ asset(env('THUMBNAIL').$product->gallery->images->sortBy('order')->first()->path) }} "
                                          alt="{{ $product->name }}">
                                 @endif
                             @endif
@@ -72,7 +72,7 @@
                                        data-saleprice="{{ $product->convertedFinalPrice  }} KD"
                                        data-price="{{ $product->price }} KD"
                                        data-link="{{ route('frontend.product.show',$product->id) }}"
-                                       data-image="{{ asset('storage/uploads/images/medium/'.$product->image) }}"
+                                       data-image="{{ asset(env('MEDIUM').$product->image) }}"
                                        data-description="{{ $product->description }}">
 
                                         <i class="fa fa-eye"></i>

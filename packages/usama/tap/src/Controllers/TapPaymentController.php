@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\OrderAttribute;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -134,15 +135,16 @@ class TapPaymentController extends Controller
     public function result(Request $request)
     {
         // once the result is success .. get the deal from refrence then delete all other free deals related to such ad.
-        $order = Order::where(['reference_id' => $request->ref])->with('order_metas.product', 'user', 'order_metas.product_attribute')->first();
+        $order = Order::where(['reference_id' => $request->ref])->with('order_metas.product', 'user', 'order_metas.product_attribute.size','order_metas.product_attribute.color')->first();
         $order->order_metas->each(function ($orderMeta) use ($order) {
             $orderMeta->product->check_stock && $orderMeta->product_attribute->qty > 0 ? $orderMeta->product_attribute->decrement('qty', 1) : null;
         });
         $order->update(['status' => 'success']);
         $contactus = Setting::first();
         Mail::to($order->email)->cc($contactus->email)->send(new OrderComplete($order, $order->user));
+        $this->clearCart();
         $markdown = new Markdown(view(), config('mail.markdown'));
-        return $markdown->render('emails.order-complete', ['element' => $order]);
+        return $markdown->render('emails.order-complete', ['order' => $order,'user' => $order->user]);
     }
 
     public function error(Request $request)
@@ -169,6 +171,10 @@ class TapPaymentController extends Controller
             ]);
         }
         return $productsList;
+    }
+
+    public function clearCart() {
+        session()->forget('cart');
     }
 }
 

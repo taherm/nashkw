@@ -34,6 +34,7 @@ class CreateOrdersTable extends Migration
 
             $table->boolean('receive_on_branch')->default(0);
             $table->integer('branch_id')->unsigned()->nullable();
+
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('restrict')->onUpdate('cascade');
 
             $table->integer('coupon_id')->unsigned()->nullable();

@@ -137,7 +137,7 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="search-category">
-                                                    <h5>{{ trans('general.shipment_package') }}</h5>
+                                                    <h4>{{ trans('general.shipment_package') }}</h4>
                                                     <div class="category">
                                                         <select class="orderby shipment-dropdown"
                                                                 name="package_id" id="shipment_package"
@@ -155,7 +155,7 @@
 
                                             <div class="col-lg-6">
                                                 <div class="search-category">
-                                                    <h5 class="free_shipment hidden">{{ trans('general.branch') }}</h5>
+                                                    <h4 class="free_shipment hidden">{{ trans('general.branch') }}</h4>
                                                     <div class="category hidden free_shipment">
                                                         <label for="free_shipment">{{ trans('general.message_free_shipment_branch_receiving') }}</label>
                                                         <input type="checkbox" name="free_shipment" id="free_shipment"
@@ -163,9 +163,10 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="search-category">
-                                                    <h5 class="branches hidden">{{ trans('general.branch') }}</h5>
+                                                    <h4 class="branches hidden">{{ trans('general.branch') }}</h4>
                                                     <div class="category hidden branches">
                                                         <select class="orderby shipment-dropdown"
                                                                 name="branch" id="branch"

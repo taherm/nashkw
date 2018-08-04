@@ -8,22 +8,22 @@
         </div>
         <form role="form" method="post" action="{{ route('backend.slider.update',$element->id) }}"
               enctype="multipart/form-data">
-            {{ csrf_field() }}
+            @csrf
             <input type="hidden" name="_method" value="patch"/>
-            <div class="form-body">
-                <div class="form-group form-md-line-input">
-                    <input type="text" class="form-control" name="title_ar" value={{$element->title_ar}}>
-                    <label for="form_control_1">Slide Title Ar *</label>
-                    <span class="help-block">please enter proper title</span>
-                </div>
-            </div>
-            <div class="form-body">
-                <div class="form-group form-md-line-input">
-                    <input type="text" class="form-control" name="title_en" value={{ $element->title_en }}>
-                    <label for="form_control_1">Slide Title En*</label>
-                    <span class="help-block">please enter proper title</span>
-                </div>
-            </div>
+            {{--<div class="form-body">--}}
+                {{--<div class="form-group form-md-line-input">--}}
+                    {{--<input type="text" class="form-control" name="title_ar" value={{$element->title_ar}}>--}}
+                    {{--<label for="form_control_1">Slide Title Ar *</label>--}}
+                    {{--<span class="help-block">please enter proper title</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="form-body">--}}
+                {{--<div class="form-group form-md-line-input">--}}
+                    {{--<input type="text" class="form-control" name="title_en" value={{ $element->title_en }}>--}}
+                    {{--<label for="form_control_1">Slide Title En*</label>--}}
+                    {{--<span class="help-block">please enter proper title</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <div class="form-body">
                 <div class="form-group form-md-line-input">
                     <input type="text" class="form-control" name="url" value="{{ $element->url }}" placeholder="...">

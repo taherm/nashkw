@@ -163,112 +163,6 @@
                     </li>
                 </ul>
             </li>
-
-            <li class="nav-item {{ activeItem('tag') }}">
-                <a href="{{ route('backend.tag.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-tag"></i>
-                    <span class="title">Tags</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.tag.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-tags"></i>
-                            <span class="title">All Tags</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.tag.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-plus-square-o"></i>
-                            <span class="title">Create New Tag</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item {{ activeItem('color') }}">
-                <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-paint-brush"></i>
-                    <span class="title">Colors</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-list-alt"></i>
-                            <span class="title">Colors List</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.color.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-paint-brush"></i>
-                            <span class="title">Create New Color</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item {{ activeItem('size') }}">
-                <a href="{{ route('backend.size.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-tags"></i>
-                    <span class="title">Sizes</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.size.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-list-ul"></i>
-                            <span class="title">Size List</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.size.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-pie-chart"></i>
-                            <span class="title">Create New Size</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-            <li class="nav-item {{ activeItem('order') }}">
-                <a href="{{ route('backend.order.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-money"></i>
-                    <span class="title">Orders</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.order.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-pie-chart"></i>
-                            <span class="title">All Orders</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.order.index',['status' => 'success']) }}"
-                           class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-pie-chart"></i>
-                            <span class="title">Successful Orders</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.order.index',['status' => 'failed']) }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-pie-chart"></i>
-                            <span class="title">Failed Orders</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
             {{--Settings--}}
             <li class="nav-item {{ activeItem('setting', ['policy','term','faq','page','contactus', 'aboutus','gallery','image']) }}">
                 <a href="{{ route('backend.setting.index') }}" class="nav-link nav-toggle">
@@ -288,6 +182,13 @@
                         <a href="{{ route('backend.slider.index') }}" class="nav-link ">
                             <i class="fa fa-fw fa-file-image-o"></i>
                             <span class="title">Sliders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.package.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-file-image-o"></i>
+                            <span class="title">Shipment Packages</span>
                             <span class="arrow"></span>
                         </a>
                     </li>
@@ -419,6 +320,108 @@
                     </li>
                 </ul>
             </li>
+            {{--tags--}}
+            <li class="nav-item {{ activeItem('tag') }}">
+                <a href="{{ route('backend.tag.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-tag"></i>
+                    <span class="title">Tags</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.tag.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-tags"></i>
+                            <span class="title">All Tags</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.tag.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-plus-square-o"></i>
+                            <span class="title">Create New Tag</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item {{ activeItem('color') }}">
+                <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-paint-brush"></i>
+                    <span class="title">Colors</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-list-alt"></i>
+                            <span class="title">Colors List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.color.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-paint-brush"></i>
+                            <span class="title">Create New Color</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item {{ activeItem('order') }}">
+                <a href="{{ route('backend.order.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-money"></i>
+                    <span class="title">Orders</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.order.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">All Orders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.order.index',['status' => 'success']) }}"
+                           class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">Successful Orders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.order.index',['status' => 'failed']) }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">Failed Orders</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item {{ activeItem('size') }}">
+                <a href="{{ route('backend.size.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-tags"></i>
+                    <span class="title">Sizes</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.size.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-list-ul"></i>
+                            <span class="title">Size List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.size.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">Create New Size</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
 
             {{--<li class="nav-item">--}}
                 {{--<a href="javascript:;" class="nav-link nav-toggle">--}}

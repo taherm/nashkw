@@ -3,7 +3,7 @@
     <div class="clearfix"></div>
     <div class="portlet-body form">
         <form role="form" method="post" action="{{ route('backend.slider.store') }}" enctype="multipart/form-data">
-            {{ csrf_field() }}
+            @csrf
             {{--<div class="form-body">--}}
                 {{--<div class="form-group form-md-line-input">--}}
                     {{--<input type="text" class="form-control" name="title_ar" placeholder="...">--}}
