@@ -190,7 +190,7 @@
                                 <label for="form_control_1">Main Image*</label>
                                 <input type="file" class="form-control" name="image" placeholder="image" required>
                                 <div class="help-block text-left">
-                                    W * H - Best fit ['750', '1334'] pixels
+                                    W * H - Best fit ['1080', '1440'] pixels
                                 </div>
                             </div>
                         </div>

@@ -63,10 +63,10 @@ class GalleryController extends Controller
         }
         if ($element) {
             if ($request->hasFile('cover')) {
-                $this->saveMimes($element, $request, ['cover'], ['750', '1334'], false);
+                $this->saveMimes($element, $request, ['cover'], ['1080', '1440'], true);
             }
             if ($request->hasFile('images')) {
-                $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
+                $this->saveGallery($element, $request, 'images', ['1080', '1440'], false);
             }
             return redirect()->back()->with('success', 'gallery saved success');
         }
@@ -116,10 +116,10 @@ class GalleryController extends Controller
         $element->update($request->request->all());
         if ($element) {
             if ($request->hasFile('cover')) {
-                $this->saveMimes($element, $request, ['cover'], ['750', '1334'], false);
+                $this->saveMimes($element, $request, ['cover'], ['1080', '1440'], true);
             }
             if ($request->hasFile('images')) {
-                $this->saveGallery($element, $request, 'images', ['750', '1334'], false);
+                $this->saveGallery($element, $request, 'images', ['1080', '1440'], false);
             }
             return redirect()->back()->with('success', 'gallery saved success');
         }

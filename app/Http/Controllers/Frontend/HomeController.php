@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use App\Models\Image;
 use App\Models\Product;
-use App\Services\Search\Filters;
 
 class HomeController extends Controller
 {

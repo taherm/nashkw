@@ -51,7 +51,7 @@ class ProductController extends Controller
             $element->tags()->sync($request->tags);
             $element->categories()->sync($request->categories);
             if ($request->hasFile('image')) {
-                $this->saveMimes($element, $request, ['image'], ['750', '1334'], false);
+                $this->saveMimes($element, $request, ['image'], ['1080', '1440'], true);
             }
             if ($request->hasFile('size_chart_image')) {
                 $this->saveMimes($element, $request, ['size_chart_image'], ['500', '500'], false);
@@ -100,7 +100,7 @@ class ProductController extends Controller
         $element = Product::whereId($id)->first();
         $updated = $element->update($request->except(['_token', 'image', 'tags', 'categories']));
         if ($request->hasFile('image')) {
-            $this->saveMimes($element, $request, ['image'], ['750', '1334'], false);
+            $this->saveMimes($element, $request, ['image'], ['1080', '1440'], true);
         }
         if ($request->hasFile('size_chart_image')) {
             $this->saveMimes($element, $request, ['size_chart_image'], ['600', '600'], false);

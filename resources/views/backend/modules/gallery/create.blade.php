@@ -50,7 +50,7 @@
                                            required
                                     />
                                     <div class="help-block text-left">
-                                        W * H - Best fit ['750', '1334'] pixels
+                                        W * H - Best fit ['1080', '1440'] pixels
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                     <input class="form-control tooltip-message" name="images[]"
                                            placeholder="images" type="file" multiple/>
                                     <div class="help-block text-left">
-                                        W * H - Best fit ['750', '1334'] pixels
+                                        W * H - Best fit ['1080', '1440'] pixels
                                     </div>
                                 </div>
                             </div>
