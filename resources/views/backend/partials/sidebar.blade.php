@@ -179,6 +179,13 @@
                         </a>
                     </li>
                     <li class="nav-item ">
+                        <a href="{{ route('backend.branch.index') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-file-image-o"></i>
+                            <span class="title">Branches</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a href="{{ route('backend.slider.index') }}" class="nav-link ">
                             <i class="fa fa-fw fa-file-image-o"></i>
                             <span class="title">Sliders</span>

@@ -21,7 +21,7 @@ class CreateBranchesTable extends Migration
             $table->string('phone')->nullable();
             $table->boolean('active')->default(1);
 
-            $table->integer('country_id')->unsigned()->index();
+            $table->integer('country_id')->unsigned()->index()->nullable();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });

@@ -322,5 +322,20 @@ Breadcrumbs::for('backend.package.edit', function ($trail, $element) {
     return $trail->push('edit package', route('backend.package.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.branch.index', function ($trail) {
+    $trail->parent('backend.home');
+    return $trail->push('branch index', route('backend.branch.index'));
+});
+
+Breadcrumbs::for('backend.branch.create', function ($trail) {
+    $trail->parent('backend.branch.index');
+    return $trail->push('create branch', route('backend.branch.create'));
+});
+
+Breadcrumbs::for('backend.branch.edit', function ($trail, $element) {
+    $trail->parent('backend.branch.index');
+    return $trail->push('edit branch', route('backend.branch.edit', $element->id));
+});
+
 
 

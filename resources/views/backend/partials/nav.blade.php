@@ -70,6 +70,10 @@
                             <i class="fa fa-fw fa-plus"></i> Create New Slider</a>
                     </li>
                     <li>
+                        <a href="{{ route('backend.branch.create') }}">
+                            <i class="fa fa-fw fa-plus"></i> Create New Branch</a>
+                    </li>
+                    <li>
                         <a href="{{ route('backend.package.create') }}">
                             <i class="fa fa-fw fa-plus-circle"></i> Create New ShipmentPackage</a>
                     </li>
