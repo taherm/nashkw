@@ -70,10 +70,6 @@
                                                     <i class="fa fa-fw fa-edit"></i> Edit</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('backend.activate',['model' => 'ShipmentPackage','id' => $element->id]) }}">
-                                                    <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
-                                            </li>
-                                            <li>
                                                 <a data-toggle="modal" href="#" data-target="#basic"
                                                    data-title="Delete"
                                                    data-content="Are you sure you want to delete {{ $element->name  }}? "
