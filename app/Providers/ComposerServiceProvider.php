@@ -59,14 +59,16 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.partials.header'
         ], 'App\Services\ViewComposers@getCategories');
         view()->composer([
-            'frontend.partials.footer',
-            'frontend.partials.header',
-            'frontend.modules.cart.index',
-            'frontend.modules.checkout.index',
-            'backend.partials.nav',
-            'backend.modules.setting.edit',
-            'backend.modules.setting.index',
-            'frontend.modules.product.partials.quick-view'
+            'frontend.layouts.app',
+            'backend.layouts.app',
+//            'frontend.partials.footer',
+//            'frontend.partials.header',
+//            'frontend.modules.cart.index',
+//            'frontend.modules.checkout.index',
+//            'backend.partials.nav',
+//            'backend.modules.setting.edit',
+//            'backend.modules.setting.index',
+//            'frontend.modules.product.partials.quick-view'
         ], 'App\Services\ViewComposers@getSettings');
         view()->composer([
             'frontend.partials.footer',
