@@ -71,8 +71,9 @@ class ComposerServiceProvider extends ServiceProvider
 //            'frontend.modules.product.partials.quick-view'
         ], 'App\Services\ViewComposers@getSettings');
         view()->composer([
-            'frontend.partials.footer',
-            'frontend.partials.header'
+            'frontend.layouts.app',
+//            'frontend.partials.footer',
+//            'frontend.partials.header'
         ], 'App\Services\ViewComposers@getPages');
 
         view()->composer([
