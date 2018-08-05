@@ -307,5 +307,20 @@ Breadcrumbs::for('backend.image.edit', function ($trail, $element) {
     return $trail->push('edit image', route('backend.image.edit', $element->id));
 });
 
+Breadcrumbs::for('backend.package.index', function ($trail) {
+    $trail->parent('backend.home');
+    return $trail->push('package index', route('backend.package.index'));
+});
+
+Breadcrumbs::for('backend.package.create', function ($trail) {
+    $trail->parent('backend.package.index');
+    return $trail->push('create package', route('backend.package.create'));
+});
+
+Breadcrumbs::for('backend.package.edit', function ($trail, $element) {
+    $trail->parent('backend.package.index');
+    return $trail->push('edit package', route('backend.package.edit', $element->id));
+});
+
 
 

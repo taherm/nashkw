@@ -4,16 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Country;
 use App\Models\Coupon;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Services\ShippingManager;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 
 class CartController extends Controller
 {

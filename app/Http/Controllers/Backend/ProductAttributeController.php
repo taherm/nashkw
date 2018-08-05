@@ -34,10 +34,8 @@ class ProductAttributeController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->with('error', 'no product id');
         }
-        $element = Product::whereId(\request('product_id'))->first();
-        $sizes = Size::active()->get();
-        $colors = Color::active()->get();
-        return view('backend.modules.product.attribute.create', compact('element', 'sizes', 'colors'));
+        $element = Product::whereId(\request('product_id'))->with('product_attributes.size','product_attributes.color')->first();
+        return view('backend.modules.product.attribute.create', compact('element'));
     }
 
     /**

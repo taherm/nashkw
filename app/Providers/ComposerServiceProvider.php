@@ -72,6 +72,14 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.partials.footer',
             'frontend.partials.header'
         ], 'App\Services\ViewComposers@getPages');
+
+        view()->composer([
+            'backend.modules.product.attribute.create',
+        ], 'App\Services\ViewComposers@getActiveSizes');
+
+        view()->composer([
+            'backend.modules.product.attribute.create',
+        ], 'App\Services\ViewComposers@getActiveColors');
     }
 
     /**

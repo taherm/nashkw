@@ -275,7 +275,7 @@
                                                     @foreach($child->children as $subChild)
                                                         <option value="{{ $subChild->id }}"
                                                                 {{ in_array($subChild->id,$element->categories->pluck('id')->toArray()) ? 'selected' : null  }}  style="padding-left: 35px">{{ $subChild->name }}</option>
-                                                    @endforeachi
+                                                    @endforeach
                                                 @endif
                                             @endforeach
                                         @endif

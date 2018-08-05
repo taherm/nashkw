@@ -141,5 +141,15 @@ class ViewComposers
         $countriesWorld = Cache::get('countriesWorld');
         return $view->with(compact('countriesWorld'));
     }
+
+    public function getActiveColors(View $view) {
+        $colors = Color::active()->get();
+        return $view->with(compact('colors'));
+    }
+
+    public function getActiveSizes(View $view) {
+        $sizes = Size::active()->get();
+        return $view->with(compact('sizes'));
+    }
 }
 
