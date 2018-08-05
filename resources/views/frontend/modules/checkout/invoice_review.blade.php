@@ -124,7 +124,7 @@
 
                                 <td class="product-thumbnail">
                                     <div class="col-lg-1 col-lg-push-4"
-                                         style="text-align: center; border: 1px solid lightgrey; min-height : 30px; margin: 3px; background-color : {!! $item->colorName !!}"></div>
+                                         style="text-align: center; border: 1px solid lightgrey; min-height : 30px; margin: 3px; background-color : {!! $item->product_attribute->colorName !!}"></div>
                                 </td>
 
                                 <td class="product-thumbnail">
@@ -151,14 +151,13 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <br>
+                    <form action="{{ route('web.payment.create') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $order->id }}">
+                        <button type="submit" class="btn right-btn custom-button">{{ trans('general.go_to_payment') }}</button>
+                    </form>
                 </div>
-            </div>
-            <div class="col-lg-12">
-                <form action="{{ route('web.payment.create') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="id" value="{{ $order->id }}">
-                    <button type="submit" class="btn btn-outline-success">{{ trans('general.go_to_payment') }}</button>
-                </form>
             </div>
         </div>
     </div>
