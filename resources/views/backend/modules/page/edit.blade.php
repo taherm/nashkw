@@ -93,13 +93,13 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                <label for="url" class="control-label">URL *</label>
+                                <label for="url" class="control-label">Full URL *</label>
                                 <input id="url"
                                        type="text"
                                        class="form-control"
                                        name="url"
                                        value="{{ $element->url }}"
-                                       placeholder="name in english"
+                                       placeholder="Full URL"
                                        autofocus>
                                 @if ($errors->has('url'))
                                     <span class="help-block">

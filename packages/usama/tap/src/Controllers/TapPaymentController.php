@@ -139,7 +139,11 @@ class TapPaymentController extends Controller
         $order->order_metas->each(function ($orderMeta) use ($order) {
             $orderMeta->product->check_stock && $orderMeta->product_attribute->qty > 0 ? $orderMeta->product_attribute->decrement('qty', 1) : null;
         });
-        $order->update(['status' => 'success']);
+        $done = $order->update(['status' => 'success']);
+        $coupon = session('coupon');
+        if($coupon && $done) {
+            $coupon->update(['consumed' => true]);
+        }
         $contactus = Setting::first();
         Mail::to($order->email)->cc($contactus->email)->send(new OrderComplete($order, $order->user));
         $this->clearCart();
