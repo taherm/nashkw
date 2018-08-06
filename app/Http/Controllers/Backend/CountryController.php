@@ -123,6 +123,7 @@ class CountryController extends Controller
     public function destroy($id)
     {
         $element = Country::whereId($id)->with('currency','branches')->first();
+        dd($element->currency);
         if($element->currency && $element->branches->isEmpty()) {
             if($element->delete()) {
                 return redirect()->route('backend.country.index')->with('success', 'country deleted successfully');
