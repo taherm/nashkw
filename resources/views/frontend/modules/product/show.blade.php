@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <!--product-Description-area start-->w
+        <!--product-Description-area start-->
     @include('frontend.modules.product.partials.productDescription')
 
     <!--related-products-area start-->

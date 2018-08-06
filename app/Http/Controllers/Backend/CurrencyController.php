@@ -120,7 +120,11 @@ class CurrencyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $element = Currency::whereId($id)->first();
+        if($element->delete()) {
+            return redirect()->route('backend.currency.index')->with('success', 'currency deleted successfully');
+        }
+        return redirect()->route('backend.currency.index')->with('error', 'currency did not delete!!');
     }
 
     public function updateRates()

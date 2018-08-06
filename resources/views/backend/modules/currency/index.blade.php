@@ -64,6 +64,22 @@
                                         <a href="{{ route('backend.activate',['model' => 'currency','id' => $element->id]) }}">
                                             <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
                                     </li>
+                                    <li>
+                                        <a data-toggle="modal" href="#" data-target="#basic"
+                                           data-title="Delete"
+                                           data-content="Are you sure you want to delete page {{ $element->name }}? "
+                                           data-form_id="delete-{{ $element->id }}"
+                                        >
+                                            <i class="fa fa-fw fa-recycle"></i> delete</a>
+                                        <form method="post" id="delete-{{ $element->id }}"
+                                              action="{{ route('backend.currency.destroy',$element->id) }}">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="delete"/>
+                                            <button type="submit" class="btn btn-del hidden">
+                                                <i class="fa fa-fw fa-times-circle"></i> delete
+                                            </button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </td>
