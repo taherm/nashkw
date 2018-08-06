@@ -122,6 +122,12 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $element = Country::whereId($id)->with('currency','branches')->first();
+        if($element->currency && $element->branches->isEmpty()) {
+            if($element->delete()) {
+                return redirect()->route('backend.country.index')->with('success', 'country deleted successfully');
+            }
+        }
+        return redirect()->route('backend.country.index')->with('error', 'country can not be delete as long as it has currency or branch!!');
     }
 }
