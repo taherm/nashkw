@@ -16,7 +16,6 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('status', ['pending', 'success', 'shipped', 'completed', 'failed','delivered']);
-
             $table->decimal('shipping_cost',6,2)->unsigned();
             $table->decimal('price',6,2)->unsigned();
             $table->decimal('discount',6,2)->unsigned()->nullable(); //
