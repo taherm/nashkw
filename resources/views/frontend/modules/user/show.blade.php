@@ -40,12 +40,12 @@
                                             <td>{{ $order->price }}</td>
                                             <td>{{ $order->discount }}</td>
                                             <td>{{ $order->net_price }}</td>
-
                                             <td>
                                                 {{ trans('general.email') }} : {{ $order->email }} <br>
                                                 {{ trans('general.mobile') }} : {{ $order->mobile }} <br>
                                                 {{ trans('general.phone') }} : {{ $order->phone}} <br>
-                                                {{ trans('general.address') }} : {{ $order->address}} / {{ $order->country }} <br>
+                                                {{ trans('general.address') }} : {{ $order->address}}
+                                                / {{ $order->country }} <br>
                                                 {{ trans('general.reference_id') }} : {{ $order->reference_id}} <br>
                                                 {{ trans('general.payment_method') }} : {{ $order->payment_method }}
                                                 <br>
