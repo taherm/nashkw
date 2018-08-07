@@ -49,7 +49,7 @@
                                             <td>{{ $order->mobile }}</td>
                                             <td>{{ $order->reference_id }}</td>
                                             <td>{{ $order->payment_method }}</td>
-                                            <td>{{ $order->branch->name }} - {{ $order->branch->address }}</td>
+                                            <td>{{ $order->branch ? $order->branch->name .'-'. $order->branch->address : ''}}</td>
                                         @endforeach
                                     </tr>
                                 </table>
