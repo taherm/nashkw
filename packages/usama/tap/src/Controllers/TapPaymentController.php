@@ -126,9 +126,7 @@ class TapPaymentController extends Controller
                 return redirect()->to($response->PaymentURL);
             }
 
-            dd($response);
-            return redirect()->back()->with('error', $response->ResponseMessage);
-//            return redirect()->back()->with('error', trans('message.payment_url_error'));
+            return redirect()->back()->with('error', trans('message.payment_url_error'));
 //            return response()->json($response->ResponseMessage);
 
         }
