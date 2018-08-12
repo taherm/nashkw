@@ -164,7 +164,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-        TapServiceProvider::class
+        TapServiceProvider::class,
+        Riverskies\Laravel\MobileDetect\MobileDetectServiceProvider::class
     ],
 
     /*
@@ -215,7 +216,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
-    ],
+        'MobileDetect' => Riverskies\Laravel\MobileDetect\Facades\MobileDetect::class,
+    ]
 
 ];
