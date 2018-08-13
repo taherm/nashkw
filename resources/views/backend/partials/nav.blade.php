@@ -431,7 +431,7 @@
                                     <i class="icon-home"></i>Home</a>
                             </li>
                             <li>
-                                <a href="{{ route('backend.index') }}">
+                                <a href="{{ route('backend.home') }}">
                                     <i class="icon-home"></i>Dashboard</a>
                             </li>
                             <li>

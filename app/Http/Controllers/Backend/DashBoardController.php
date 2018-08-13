@@ -13,6 +13,11 @@ class DashBoardController extends Controller
 {
     public function index()
     {
+        return redirect()->route('backend.order.index');
+    }
+
+    public function home()
+    {
         return view('backend.home');
     }
 

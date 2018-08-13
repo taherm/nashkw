@@ -13,10 +13,8 @@
 
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.', 'middleware' => ['auth', 'adminAccessOnly']], function () {
     Route::get('/', 'DashBoardController@index')->name('index');
-    Route::get('/home', 'DashBoardController@index')->name('home');
+    Route::get('/home', 'DashBoardController@home')->name('home');
     Route::get('activation', 'DashBoardController@toggleActivate')->name('activate');
-
-
     Route::resource('product', 'ProductController');
     Route::resource('product/attribute', 'ProductAttributeController');
     Route::resource('gallery', 'GalleryController');
