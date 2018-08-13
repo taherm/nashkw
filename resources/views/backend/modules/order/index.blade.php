@@ -47,7 +47,7 @@
                                 <li>
                                     <span class="label label-sm label-info">
                                     {{ $meta->product->name_ar}} - {{ $meta->product_attribute->size->name_ar }}
-                                        - {{ $meta->quantity }}
+                                        - {{ $meta->qty }}
                                     </span>
                                 </li>
                             @endforeach
