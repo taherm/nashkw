@@ -55,8 +55,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::whereId($id)->first();
-        return view('backend.modules.order.meta.index', compact('order'));
+        $element = Order::whereId($id)->with('order_metas')->first();
+        return view('backend.modules.order.show', compact('element'));
     }
 
     /**
