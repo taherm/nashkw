@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <style>
         body, html {
-            margin: 0px;
-            width: 100%;
-            padding:0px;
+            width: 99%;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
         }
         html, body, div, span, p, a, h1, h2, h3, h4, h5 {
             font-family: 'Tajawal', sans-serif;
@@ -85,13 +89,13 @@
                     الكتالوج</a>
             </h3>
         </div>
-        <div class="img-wrapper">
-            @for($i=1;$i<=14;$i++)
-                <img class="img-brochure" src="{{ asset('images/brochure/BROCHURE-2-' . $i .'.jpg') }}"
-                     alt="{{ env('APP_NAME') }}">
-            @endfor
-            <hr>
-        </div>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-wrap: nowrap; border: 1px solid white;">
+        @for($i=1;$i<=15;$i++)
+            <img src="{{ asset('images/brochure_new/' . $i .'.jpg') }}" style="width : 99%; !important;"
+                 alt="{{ env('APP_NAME') }}">
+        @endfor
+        <hr>
     </div>
 @endsection
 
