@@ -14,7 +14,7 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
         factory(Tag::class, app()->environment('production') ? 2 : 50)->create()->each(function ($q) {
-            return $q->products()->saveMany(Product::all()->random(5));
+            return $q->products()->saveMany(Product::all()->random());
         });
     }
 }
