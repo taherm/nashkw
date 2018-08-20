@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends PrimaryModel
 {
-    use ProductHelpers, SoftDeletes;
+    use ProductHelpers, SoftDeletes, ModelHelpers;
     protected $localeStrings = ['name', 'description', 'notes'];
     protected $guarded = [''];
     protected $appends = ['isOnSale'];
