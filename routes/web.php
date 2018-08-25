@@ -17,6 +17,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::get('activation', 'DashBoardController@toggleActivate')->name('activate');
     Route::resource('product', 'ProductController');
     Route::resource('product/attribute', 'ProductAttributeController');
+    Route::get('trashed', 'ProductController@trashed')->name('product.trashed');
+    Route::get('restore/{id}', 'ProductController@restore')->name('product.restore');
     Route::resource('gallery', 'GalleryController');
     Route::resource('image', 'ImageController');
     Route::resource('category', 'CategoryController');

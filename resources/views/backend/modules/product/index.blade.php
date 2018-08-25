@@ -165,22 +165,29 @@
                                                 <a href="{{ route('backend.attribute.create',['product_id' => $element->id]) }}">
                                                     <i class="fa fa-fw fa-plus-square"></i> assign new attribute</a>
                                             </li>
-                                            <li>
-                                                <a data-toggle="modal" href="#" data-target="#basic"
-                                                   data-title="Delete"
-                                                   data-content="Are you sure you want to delete {{ $element->name  }}? "
-                                                   data-form_id="delete-{{ $element->id }}"
-                                                >
-                                                    <i class="fa fa-fw fa-recycle"></i> delete</a>
-                                                <form method="post" id="delete-{{ $element->id }}"
-                                                      action="{{ route('backend.product.destroy',$element->id) }}">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="delete"/>
-                                                    <button type="submit" class="btn btn-del hidden">
-                                                        <i class="fa fa-fw fa-times-circle"></i> delete
-                                                    </button>
-                                                </form>
-                                            </li>
+                                            @if(!$element->trashed())
+                                                <li>
+                                                    <a data-toggle="modal" href="#" data-target="#basic"
+                                                       data-title="Delete"
+                                                       data-content="Are you sure you want to delete {{ $element->name  }}? "
+                                                       data-form_id="delete-{{ $element->id }}"
+                                                    >
+                                                        <i class="fa fa-fw fa-recycle"></i> delete</a>
+                                                    <form method="post" id="delete-{{ $element->id }}"
+                                                          action="{{ route('backend.product.destroy',$element->id) }}">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="delete"/>
+                                                        <button type="submit" class="btn btn-del hidden">
+                                                            <i class="fa fa-fw fa-times-circle"></i> delete
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a href="{{ route('backend.product.restore',$element->id) }}">
+                                                        <i class="fa fa-fw fa-window-restore"></i> restore</a>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </td>

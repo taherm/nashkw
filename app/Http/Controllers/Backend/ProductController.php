@@ -26,6 +26,12 @@ class ProductController extends Controller
         return view('backend.modules.product.index', compact('elements'));
     }
 
+    public function trashed()
+    {
+        $elements = Product::onlyTrashed()->paginate(100);
+        return view('backend.modules.product.index', compact('elements'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -121,7 +127,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $element = Product::whereId($id)->first();
-        $element->product_attributes()->delete();
         if ($element->delete()) {
             return redirect()->back()->with('success', 'product deleted');
         }

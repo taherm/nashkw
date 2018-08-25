@@ -49,6 +49,13 @@
                             <span class="arrow"></span>
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.product.trashed') }}" class="nav-link ">
+                            <i class="fa fa-fw fa-recycle"></i>
+                            <span class="title">Trashed</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item {{ activeItem('user') }}">

@@ -22,6 +22,17 @@ Breadcrumbs::for('backend.product.index', function ($trail) {
     $trail->push('products', route('backend.product.index'));
 });
 
+Breadcrumbs::for('backend.product.trashed', function ($trail) {
+    $trail->parent('backend.product.index');
+    $trail->push('trashed', route('backend.product.trashed'));
+});
+
+
+Breadcrumbs::for('backend.product.restore', function ($trail) {
+    $trail->parent('backend.product.index');
+    $trail->push('restore product', route('backend.product.restore'));
+});
+
 Breadcrumbs::for('backend.attribute.index', function ($trail) {
     $trail->parent('backend.product.index');
 //    $trail->push('products', route('backend.product.index'));
