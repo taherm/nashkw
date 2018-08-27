@@ -66,7 +66,7 @@ class GalleryController extends Controller
                 $this->saveMimes($element, $request, ['cover'], ['1080', '1440'], true);
             }
             if ($request->hasFile('images')) {
-                $this->saveGallery($element, $request, 'images', ['1080', '1440'], false);
+                $this->saveGallery($element, $request, 'images', ['1080', '1440'], true);
             }
             return redirect()->back()->with('success', 'gallery saved success');
         }
@@ -119,7 +119,7 @@ class GalleryController extends Controller
                 $this->saveMimes($element, $request, ['cover'], ['1080', '1440'], true);
             }
             if ($request->hasFile('images')) {
-                $this->saveGallery($element, $request, 'images', ['1080', '1440'], false);
+                $this->saveGallery($element, $request, 'images', ['1080', '1440'], true);
             }
             return redirect()->back()->with('success', 'gallery saved success');
         }
