@@ -30,9 +30,12 @@
                             <img class="primary-img"
                                  src="{{ asset(env('THUMBNAIL').$product->image) }} "
                                  alt="{{ $product->name }}">
-
                             @if($product->gallery)
-                                @if(!$product->gallery->images->isEmpty())
+                                @if($product->gallery->cover)
+                                    <img class="secondary-img"
+                                         src="{{ asset(env('THUMBNAIL').$product->gallery->cover) }} "
+                                         alt="{{ $product->name }}">
+                                @else
                                     <img class="secondary-img"
                                          src="{{ asset(env('THUMBNAIL').$product->gallery->images->sortBy('order')->first()->path) }} "
                                          alt="{{ $product->name }}">
