@@ -12,7 +12,6 @@
     <meta property="og:image" content="{{asset(env('THUMBNAIL').$product->image)}}"/>
 @endsection
 
-
 @section('body')
     <div class="single-page-area shop-product-area">
     @include('frontend.partials._breadcrumbs',['name' => $product->name])
