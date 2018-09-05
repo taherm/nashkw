@@ -35,9 +35,8 @@ class Filters extends QueryFilters
     public function category_id()
     {
         $children = $this->category->whereId(request()->category_id)->with('children')->first()->children->pluck('id');
-        dd($children);
         return $this->builder->whereHas('categories', function ($q) use ($children) {
-            return $q->whereIn('id', [request()->category_id, !$children->isEmpty() ? $children : request()->category_id]);
+            return $q->whereIn('id', [!$children->isEmpty() ? $children : request()->category_id]);
         });
     }
 
@@ -77,7 +76,8 @@ class Filters extends QueryFilters
         return $this->builder->where('price', '<=', request()->max);
     }
 
-    public function page() {
+    public function page()
+    {
         return $this->builder;
     }
 
