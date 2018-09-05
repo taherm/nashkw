@@ -38,8 +38,7 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        Color::create($request->request->all());
         return redirect()->route('backend.color.index')->with('success', 'color created');
     }
 
@@ -76,7 +75,6 @@ class ColorController extends Controller
     public function update(Request $request, $id)
     {
         $element = Color::find($id)->update($request->request->all());
-
         return redirect()->route('backend.color.index')->with('success', 'color updated');
     }
 
