@@ -23,10 +23,6 @@
                             <th>id</th>
                             <th>sku</th>
                             <th>name_ar</th>
-                            {{--<th>HomeDeliveryAvail</th>--}}
-                            {{--<th>ShipmentAvail</th>--}}
-                            <th>on_sale</th>
-                            <th>OnHome</th>
                             <th>price</th>
                             <th>sale_price</th>
                             <th>weight</th>
@@ -42,10 +38,6 @@
                             <th>id</th>
                             <th>sku</th>
                             <th>name_ar</th>
-                            {{--<th>HomeDeliverAvailability</th>--}}
-                            {{--<th>shipment_availability</th>--}}
-                            <th>on_sale</th>
-                            <th>OnHome</th>
                             <th>price</th>
                             <th>sale_price</th>
                             <th>weight</th>
@@ -68,12 +60,12 @@
                                 {{--<td>--}}
                                 {{--<span class="label {{ activeLabel($element->shipment_availability) }}">{{ activeText($element->shipment_availability,'Yes') }}</span>--}}
                                 {{--</td>--}}
-                                <td>
-                                    <span class="label {{ activeLabel($element->on_sale) }}">{{ activeText($element->on_sale,'OnSale') }}</span>
-                                </td>
-                                <td>
-                                    <span class="label {{ activeLabel($element->on_home) }}">{{ activeText($element->on_home,'onHome') }}</span>
-                                </td>
+                                {{--<td>--}}
+                                    {{--<span class="label {{ activeLabel($element->on_sale) }}">{{ activeText($element->on_sale,'OnSale') }}</span>--}}
+                                {{--</td>--}}
+                                {{--<td>--}}
+                                    {{--<span class="label {{ activeLabel($element->on_home) }}">{{ activeText($element->on_home,'onHome') }}</span>--}}
+                                {{--</td>--}}
                                 <td>
                                     {{ $element->price }}
                                 </td>
@@ -87,7 +79,7 @@
                                     <img class="img-xs"
                                          src="{{ asset('storage/uploads/images/thumbnail/'.$element->image) }}" alt="">
                                 </td>
-                                <td>{{ $element->end_sale }}</td>
+                                <td>{{ !is_null($element->end_sale) ? $element->end_sale->format('Y-d-m') : null }}</td>
                                 <td>
                                     <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
                                 </td>
