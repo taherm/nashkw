@@ -1,5 +1,5 @@
-<div class="sorter">
-    <div class="sort-by">
+{{--<div class="sorter">--}}
+    {{--<div class="sort-by">--}}
         {{--<label>Sort By</label>--}}
         {{--<select id="sort" style="height: auto;">--}}
             {{--<option value="position">{{ trans('general.position') }}</option>--}}
@@ -11,8 +11,8 @@
         {{--@else--}}
             {{--<a href="{{ request()->fullUrl().'&sort=desc' }}"><i class="fa fa-long-arrow-down"></i></a>--}}
         {{--@endif--}}
-    </div>
-</div>
+    {{--</div>--}}
+{{--</div>--}}
 {{--@if($products->count() >= 12)--}}
     {{--<div class="pages">--}}
         {{--<ol>--}}

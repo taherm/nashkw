@@ -1,4 +1,4 @@
-@if($tags->count() >0)
+@if(isset($tags) && !$tags->isEmpty())
     <div class="layout-title bottom-tag">
         <h4>{{ trans('general.tags') }}</h4>
         <div class="shop-layout">
@@ -7,10 +7,12 @@
                     <ul>
                         @foreach($tags as $tag)
                             {{--<li><a href="{{ route('product.tags',[$tag->name]) }}"--}}
-                                   {{--style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->name }}</a></li>--}}
-
-                            <li style=""><a href="{{ route('frontend.product.search',['tag_id' => $tag->id]) }}"
-                                   style="">{{ $tag->slug }}</a></li>
+                            {{--style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->name }}</a></li>--}}
+                            <li>
+                                <a href="{{ route('frontend.product.search',['tag_id' => $tag->id]) }}">
+                                    {{ $tag->slug }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -18,5 +20,8 @@
         </div><!-- End Shop Layout -->
     </div>
 @else
-    <div class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {{ trans('general.message.warning.no_tags') }}</div>
+    <div class="alert alert-warning">
+        <i class="fa fa-exclamation-triangle"></i>
+        {{ trans('general.message.warning.no_tags') }}
+    </div>
 @endif

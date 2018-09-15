@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Services\Search\Filters;
 use Illuminate\Http\Request;
@@ -31,11 +32,8 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return redirect()->route('frontend.home')->withErrors($validator->messages());
         }
-
-        $elements = $this->product->active()->hasProductAttribute()->hasGallery()->filters($filters)->with('tags','gallery.images','favorites')->orderBy('id','desc')->paginate(20);
-
+        $elements = $this->product->active()->hasProductAttribute()->hasGallery()->filters($filters)->with('tags', 'gallery.images', 'favorites')->orderBy('id', 'desc')->paginate(20);
         $tags = $elements->pluck('tags')->unique()->flatten();
-
         if (!$elements->isEmpty()) {
             return view('frontend.modules.product.index', compact('elements', 'tags'));
         } else {

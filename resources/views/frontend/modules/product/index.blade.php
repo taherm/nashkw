@@ -1,7 +1,6 @@
 @extends('frontend.layouts.app')
 
 @section('body')
-
     <!--Products start-->
     <!-- shop page area start -->
     <div class="shop-product-area">
@@ -11,9 +10,10 @@
                     <!--breadcrumbs start-->
                 {{--@include('frontend.modules.category.partials._breadcrumbs')--}}
                 <!--breadcrumbs end-->
-                    @if(isset($tags))
-                        @include('frontend.modules.category.partials._tags')
-                    @endif
+                    <div class="layout-title bottom-tag">
+                        <h4>{{ trans('general.products_search_results') }}</h4>
+                        <hr>
+                    </div>
                     <div class="shop-product-view">
                         <!-- Shop Product Tab Area -->
                         <div class="product-tab-area">
@@ -27,8 +27,9 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--                        @include('frontend.modules.category.partials._bottom_toolbar')--}}
+                            {{--@include('frontend.modules.category.partials._bottom_toolbar')--}}
                         </div>
+                        @include('frontend.modules.category.partials._tags')
                     </div>
                 </div>
             </div>
@@ -36,7 +37,5 @@
     </div>
     <!-- shop page area end -->
     <!--Products end-->
-
-
 @endsection
 
