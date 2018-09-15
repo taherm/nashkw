@@ -47,10 +47,6 @@ class ProductController extends Controller
         // return array of ['size_id', 'color', 'att_id','qty' ] for one product
         $data = $product->product_attributes->toArray();
         $products = $this->product->getRelatedProducts($product);
-        /*
-         * Rating Percentage for each product loaded.
-         *
-         * */
         return view('frontend.modules.product.show', compact('products', 'product', 'data'));
     }
 

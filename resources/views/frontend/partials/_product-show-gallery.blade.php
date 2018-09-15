@@ -22,7 +22,7 @@
             </div>
         </div>
         @foreach($product->gallery->images as $image)
-            <div class="tab-pane" id="p-view-{{ $image->id }}">
+            <div class="tab-pane" id="p-view-{{ $product->id.'-'.$image->id }}">
                 <div class="simpleLens-big-image-container">
                     <a class="simpleLens-lens-image" data-lens-image="{{ asset(env('LARGE').$image->path) }}">
                         <img src="{{ asset(env('LARGE').$image->path) }}" class="simpleLens-big-image"
@@ -37,7 +37,7 @@
         <div id="single-product" class="owl-carousel custom-carousel">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="active"><a href="#p-view-{{ $product->id }}" role="tab" data-toggle="tab">
-                        <img src="{{ asset(env('LARGE').$product->image) }}" alt="{{ $product->name }}"
+                        <img src="{{ asset(env('THUMBNAIL').$product->image) }}" alt="{{ $product->name }}"
                              style="height : 100px">
                     </a>
                 </li>
@@ -45,8 +45,8 @@
             @foreach($product->gallery->images as $image)
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="{{ $loop->last ? 'last-li' : 'hidden-sm hidden-xs' }} ">
-                        <a href="#p-view-{{ $image->id }}" role="tab" data-toggle="tab">
-                            <img src="{{ asset(env('LARGE').$image->path) }}" alt="{{ $image->caption }}"
+                        <a href="#p-view-{{ $product->id.'-'.$image->id }}" role="tab" data-toggle="tab">
+                            <img src="{{ asset(env('THUMBNAIL').$image->path) }}" alt="{{ $image->caption }}"
                                  style="height : 100px">
                         </a>
                     </li>

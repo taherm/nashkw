@@ -70,4 +70,8 @@ $(document).ready(function() {
         var qty = (currentyQty > 0 ? currentyQty - 1 : currentyQty);
         $('#qty').attr('value', qty);
     });
+    // was a stupid bug in the original theme related to product gallery in product.show
+    $('.nav-tabs').on('click', function() {
+        $('.tab-pane').removeClass('show');
+    });
 })
