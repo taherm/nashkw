@@ -86,7 +86,7 @@
                                                         class="fa fa-instagram"></i></a></li>
                                         <li><a href="https://www.twitter.com/{{ $settings->twitter }}/" target="_blank"><i
                                                         class="fa fa-twitter"></i></a></li>
-                                        <li><a href="https://www.twitter.com/{{ $settings->snapchat }}/" target="_blank"><i
+                                        <li><a href="https://www.snapchat.com/{{ $settings->snapchat }}/" target="_blank"><i
                                                         class="fa fa-snapchat"></i></a></li>
                                         <li><a href="{{ $settings->youtube }}" target="_blank"><i
                                                         class="fa fa-youtube"></i></a></li>
