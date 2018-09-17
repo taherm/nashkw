@@ -36,12 +36,12 @@
                                 @endif
                                 <a href="{{ route('frontend.product.show',$product->id) }}">
                                     <img class="primary-img"
-                                         src="{{ asset(env('THUMBNAIL').$product->image) }}"
+                                         src="{{ asset(env('MEDIUM').$product->image) }}"
                                          alt="{{ $product->description }}">
 
                                     @if(!$product->gallery->images->isEmpty())
                                         <img class="secondary-img"
-                                             src="{{ asset(env('THUMBNAIL').$product->gallery->images->sortBy('order')->first()->path) }}"
+                                             src="{{ asset(env('MEDIUM').$product->gallery->images->sortBy('order')->first()->path) }}"
                                              alt="{{ $product->caption }}">
                                     @endif
                                 </a>
@@ -78,7 +78,7 @@
                                                data-saleprice="{{ $product->convertedFinalPrice  }} KD"
                                                data-price="{{ $product->price }} KD"
                                                data-link="{{ route('frontend.product.show',$product->id) }}"
-                                               data-image="{{ asset(env('THUMBNAIL').$product->image) }}"
+                                               data-image="{{ asset(env('MEDIUM').$product->image) }}"
                                                data-description="{{ $product->description }}">
 
                                                 <i class="fa fa-eye"></i>
@@ -117,17 +117,17 @@
                                 {{--@endif--}}
                                 {{--<a href="#">--}}
                                     {{--<img class="primary-img"--}}
-                                         {{--src="{{ asset(env('THUMBNAIL').$product->image) }} "--}}
+                                         {{--src="{{ asset(env('MEDIUM').$product->image) }} "--}}
                                          {{--alt="{{ $product->description }}">--}}
 
                                     {{--@if(isset($product->gallery->images->first()->path))--}}
-                                        {{--@if(file_exists(env('THUMBNAIL').$product->gallery->images->first()->path)))--}}
+                                        {{--@if(file_exists(env('MEDIUM').$product->gallery->images->first()->path)))--}}
                                         {{--<img class="secondary-img"--}}
-                                             {{--src="{{ asset(env('THUMBNAIL').$product->gallery->images->first()->path) }} "--}}
+                                             {{--src="{{ asset(env('MEDIUM').$product->gallery->images->first()->path) }} "--}}
                                              {{--alt="{{ $product->caption }}">--}}
                                         {{--@else--}}
                                             {{--<img class="secondary-img"--}}
-                                                 {{--src="{{ asset(env("THUMBNAIL").$product->image) }} "--}}
+                                                 {{--src="{{ asset(env("MEDIUM").$product->image) }} "--}}
                                                  {{--alt="{{ $product->caption }}">--}}
                                         {{--@endif--}}
                                     {{--@endif--}}
@@ -156,7 +156,7 @@
                                                {{--data-saleprice="{{ $product->finalPrice  }} KD"--}}
                                                {{--data-price="{{ $product->price }} KD"--}}
                                                {{--data-link="{{ route('frontend.product.show',$product->id) }}"--}}
-                                               {{--data-image="{{ asset(env('THUMBNAIL').$product->image) }}"--}}
+                                               {{--data-image="{{ asset(env('MEDIUM').$product->image) }}"--}}
                                                {{--data-description="{!! $product->description !!}"--}}
                                             {{-->--}}
                                                 {{--<i class="fa fa-eye"></i>--}}
