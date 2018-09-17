@@ -33,7 +33,7 @@ class ProductController extends Controller
             return redirect()->route('frontend.home')->withErrors($validator->messages());
         }
         $elements = $this->product->active()->hasProductAttribute()->hasGallery()->filters($filters)->with('tags', 'gallery.images', 'favorites')->orderBy('id', 'desc')->paginate(20);
-        $tags = $elements->pluck('tags')->unique()->flatten();
+        $tags = $elements->pluck('tags')->flatten()->pluck('name','id')->unique()->sortKeysDesc();
         if (!$elements->isEmpty()) {
             return view('frontend.modules.product.index', compact('elements', 'tags'));
         } else {
