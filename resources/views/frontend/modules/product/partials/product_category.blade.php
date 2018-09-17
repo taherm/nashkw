@@ -40,9 +40,9 @@
                                          alt="{{ $product->name }}">
 
                                     @if(!$product->gallery->images->isEmpty())
-                                    <img class="secondary-img"
-                                         src="{{ asset(env('THUMBNAIL').$product->gallery->images->sortBy('order')->first()->path) }}"
-                                         alt="{{ $product->name }}">
+                                        <img class="secondary-img"
+                                             src="{{ asset(env('THUMBNAIL').$product->gallery->images->sortBy('order')->first()->path) }}"
+                                             alt="{{ $product->name }}">
                                     @endif
                                 </a>
                                 <div class="add-action">
@@ -116,27 +116,19 @@
                                     <span class="sale-text new-sale">{{ trans('general.new') }}</span>
                                 @endif
                                 <a href="#">
-                                    @if(file_exists(env('MEDIUM').$product->image)))
-                                        <img class="primary-img"
-                                             src="{{ asset(env('MEDIUM').$product->image) }} "
-                                             alt=""
-                                             style="width: 261px;height: 300px;">
-                                    @else
-                                        <img class="primary-img"
-                                             src="{{ asset(env('THUMBNAIL').$product->image) }} "
-                                             alt="" style="width: 261px;height: 300px;">
-                                    @endif
+                                    <img class="primary-img"
+                                         src="{{ asset(env('THUMBNAIL').$product->image) }} "
+                                         alt="{{ $product->description }}">
 
                                     @if(isset($product->gallery->images->first()->path))
                                         @if(file_exists(env('THUMBNAIL').$product->gallery->images->first()->path)))
-                                            <img class="secondary-img"
-                                                 src="{{ asset(env('MEDIUM').$product->gallery->images->first()->path) }} "
-                                                 alt="" style="width: 261px;height: 300px;">
+                                        <img class="secondary-img"
+                                             src="{{ asset(env('THUMBNAIL').$product->gallery->images->first()->path) }} "
+                                             alt="{{ $product->caption }}">
                                         @else
                                             <img class="secondary-img"
-                                                 src="{{ asset(env("MEDIUM").$product->image) }} "
-                                                 alt=""
-                                                 style="width: 261px;height: 300px;">
+                                                 src="{{ asset(env("THUMBNAIL").$product->image) }} "
+                                                 alt="{{ $product->caption }}">
                                         @endif
                                     @endif
                                 </a>
