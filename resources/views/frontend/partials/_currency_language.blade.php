@@ -15,9 +15,9 @@
     </li>
     <li class="currency">
         <span>{{trans('general.currency')}}</span>
-        <img width="20" height="20"
-             src="{{asset('storage/uploads/images/thumbnail/'.strtolower($currency->country->flag))}}"
-             style="padding-right: 5px; padding-left: 3px;" id="main-currency-image"/>
+        {{--<img width="20" height="20"--}}
+             {{--src="{{asset('storage/uploads/images/thumbnail/'.strtolower($currency->country->flag))}}"--}}
+             {{--style="padding-right: 5px; padding-left: 3px;" id="main-currency-image"/>--}}
         <a href="#" id="main-currency-code">
             {{ $currency->name  }}
         </a>
