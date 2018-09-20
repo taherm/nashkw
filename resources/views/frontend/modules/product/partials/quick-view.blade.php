@@ -22,7 +22,7 @@
                             <div class="price-box-3">
                                 <div class="s-price-box">
                                     <span class="new-price new-price-ql"></span>
-                                    <span class="old-price old-price-ql"></span>
+                                    {{--<span class="old-price old-price-ql"></span>--}}
                                 </div>
                             </div>
                             {{--<a href="shop.html" class="see-all">See all features</a>--}}
