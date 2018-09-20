@@ -22,7 +22,7 @@
                     </div>
                     <div class="product-img">
                         @if($product->on_sale)
-                            <span class="sale-text">{{ trans('general.sale') }}</span>
+                            <span class="sale-text on-sale" style="background-color: red !important;">{{ trans('general.sale') }}</span>
                         @else
                             <span class="sale-text new-sale">{{ trans('general.new') }}</span>
                         @endif

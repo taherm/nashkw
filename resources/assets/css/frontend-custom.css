@@ -153,3 +153,8 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     color : #b7af15;
     font-size: large;
 }
+
+.product-img span.on-sale {
+    font-weight: bolder;
+    background-color: red !important;
+}
