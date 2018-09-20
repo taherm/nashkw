@@ -9,7 +9,7 @@
                             {{--<li><a href="{{ route('product.tags',[$tag->name]) }}"--}}
                             {{--style="font-size: {!!rand(6,20)!!}px !important;">{{ $tag->name }}</a></li>--}}
                             <li>
-                                <a href="{{ route('frontend.product.search',['tag_id' => $key]) }}">
+                                <a style="color: green;" href="{{ route('frontend.product.search',['tag_id' => $key]) }}" >
                                     {{ $value }}
                                 </a>
                             </li>
