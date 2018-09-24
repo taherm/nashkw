@@ -84,15 +84,15 @@
                                     <p>{{ trans('general.online_shopping_in_gulf') }}</p>
                                     <ul class="footer-icon">
                                         <li><a href="https://www.instagram.com/{{ $settings->instagram }}/"
-                                               target="_blank"><i
-                                                        class="fa fa-instagram"></i></a></li>
-                                        <li><a href="https://www.twitter.com/{{ $settings->twitter }}/" target="_blank"><i
-                                                        class="fa fa-twitter"></i></a></li>
+                                               target="_blank">
+                                                <img src="{{ asset('images/instagram.png') }}" alt="" class="img-xs"/>
+                                            </a></li>
+                                        <li><a href="https://www.twitter.com/{{ $settings->twitter }}/" target="_blank">
+                                                <img src="{{ asset('images/twitter.png') }}" alt="" class="img-xs"/>
+                                            </a></li>
                                         <li><a href="https://www.snapchat.com/{{ $settings->snapchat }}/"
-                                               target="_blank"><i
-                                                        class="fa fa-snapchat"></i></a></li>
-                                        <li><a href="{{ $settings->youtube }}" target="_blank"><i
-                                                        class="fa fa-youtube"></i></a></li>
+                                               target="_blank"><img src="{{ asset('images/snap.png') }}" alt="" class="img-xs"/></a></li>
+                                        <li><a href="{{ $settings->youtube }}" target="_blank"><img src="{{ asset('images/youtube.png') }}" alt="" class="img-xs"/></a></li>
                                     </ul>
                                 </div>
                             </div>
