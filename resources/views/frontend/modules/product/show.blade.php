@@ -33,7 +33,6 @@
 
     <!--related-products-area start-->
         @if(!$products->isEmpty())
-
             @include('frontend.modules.product.partials.product_carousel',[$products ,'heading'=> trans('general.related_products'),'backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-3 col-md-3 col-sm-3'])
         @endif
     </div>
