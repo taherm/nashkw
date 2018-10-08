@@ -84,12 +84,9 @@ class TapPaymentController extends Controller
             'lstGateWayDC' => [$this->getGateWay()],
             'MerMastDC' => $this->getMerchant($order->net_price),
         ];
-
-//        dump('finalArray');
-//        dd($finalArray);
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://www.gotapnow.com/TapWebConnect/Tap/WebPay/PaymentRequest',
+            CURLOPT_URL => config('tap.paymentUrl'),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -108,7 +105,6 @@ class TapPaymentController extends Controller
         if ($err) {
             echo "cURL Error #:" . $err;
         } else {
-            dd($response);
             $response = (\GuzzleHttp\json_decode($response));
             if (!$response->ResponseCode) {
                 /* response how it looks
