@@ -110,6 +110,8 @@ class TapPaymentController extends Controller
         } else {
             $response = (\GuzzleHttp\json_decode($response));
             if (!$response->ResponseCode) {
+                dump($response->PaymentURL);
+                dd($response);
                 /* response how it looks
                 * {#966 ▼
                     +"PaymentURL": "http://live.gotapnow.com/webpay.aspx?ref=210092017100407130&sess=kEh3R7REOFWP0b3BFM6Kkm2O7AQck8Jg"
