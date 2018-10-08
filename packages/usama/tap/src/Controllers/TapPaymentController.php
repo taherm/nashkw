@@ -64,7 +64,7 @@ class TapPaymentController extends Controller
         $order = new $className();
         $order = $order->whereId($request->id)->with('order_metas.product', 'order_metas.product_attribute')->first();
         $user = auth()->user();
-//        dd($this->getMerchant($order->net_price));
+        dump($this->getMerchant($order->net_price));
         $finalArray = [
             'CustomerDC' => [
                 "Email" => $order->email,
