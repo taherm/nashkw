@@ -85,10 +85,9 @@ class TapPaymentController extends Controller
             'MerMastDC' => $this->getMerchant($order->net_price),
         ];
 
-        dump('finalArray');
-        dd($finalArray);
+//        dump('finalArray');
+//        dd($finalArray);
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_URL => config('tap.paymentUrl'),
             CURLOPT_RETURNTRANSFER => true,
@@ -105,13 +104,12 @@ class TapPaymentController extends Controller
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
         curl_close($curl);
-
         if ($err) {
             echo "cURL Error #:" . $err;
         } else {
             $response = (\GuzzleHttp\json_decode($response));
+            dd($response);
             if (!$response->ResponseCode) {
                 /* response how it looks
                 * {#966 ▼
