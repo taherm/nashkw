@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @include('frontend.partials._breadcrumbs',['name' => $element->title])
+                @include('frontend.partials._breadcrumbs',['name' => $element->slug])
 
                     <!--about-body-area start-->
                     <div class="row">
