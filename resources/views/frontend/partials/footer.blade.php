@@ -164,11 +164,11 @@
 {{--                                <h3>{{ strtoupper(trans('general.my_account')) }}</h3>--}}
                                 <div class="footer-menu">
                                     <ul>
-                                        @auth
-                                            <li>
-                                                <a href="{{ route('frontend.user.show', auth()->user()->id) }}">{{ trans('general.my_account') }}</a>
-                                            </li>
-                                        @endauth
+                                        {{--@auth--}}
+                                            {{--<li>--}}
+                                                {{--<a href="{{ route('frontend.user.show', auth()->user()->id) }}">{{ trans('general.my_account') }}</a>--}}
+                                            {{--</li>--}}
+                                        {{--@endauth--}}
                                         <li>
                                             <a href="{{ route('frontend.order.index') }}">{{ trans('general.order_history') }}</a>
                                         </li>
