@@ -26,7 +26,6 @@ class PageController extends Controller
     public function getAboutus(Aboutus $aboutUs)
     {
         $aboutData = $aboutUs->where('id', 1)->first();
-
         return view('frontend.pages.about', compact('aboutData'));
     }
 

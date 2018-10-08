@@ -47,6 +47,7 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer([
             'frontend.home',
             'frontend.partials.footer',
+            'frontend.modules.order.index',
             'frontend.modules.product.index',
             'frontend.modules.product.show',
             'frontend.modules.favorite.index',

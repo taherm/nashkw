@@ -161,7 +161,7 @@
                         <div class="col-lg-2 col-md-2 hidden-sm col-xs-12">
                             <!-- middle-footer-text start-->
                             <div class="middle-footer-text middle-footer-text2">
-                                <h3>{{ strtoupper(trans('general.my_account')) }}</h3>
+{{--                                <h3>{{ strtoupper(trans('general.my_account')) }}</h3>--}}
                                 <div class="footer-menu">
                                     <ul>
                                         @auth
