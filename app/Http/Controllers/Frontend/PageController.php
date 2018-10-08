@@ -16,7 +16,6 @@ class PageController extends Controller
 
     public function show($id) {
         $element = Page::find($id);
-        dd($element);
         return view('frontend.modules.page.show', compact('element'));
     }
     public function getConditions()
