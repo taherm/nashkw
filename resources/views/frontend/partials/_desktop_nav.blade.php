@@ -35,7 +35,7 @@
                                 @foreach($pages->where('on_menu_desktop', true) as $page)
                                     <li>
                                         <a class="no-child"
-                                           href="{{ $page->url }}">{{ $page->slug }}</a>
+                                           href="{{ url($page->url) }}">{{ $page->slug }}</a>
                                     </li>
                                 @endforeach
                             @endif
