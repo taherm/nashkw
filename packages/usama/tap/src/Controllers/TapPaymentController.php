@@ -107,10 +107,8 @@ class TapPaymentController extends Controller
 
         if ($err) {
             echo "cURL Error #:" . $err;
-            dd($err);
         } else {
             $response = (\GuzzleHttp\json_decode($response));
-            dd($response);
             if (!$response->ResponseCode) {
                 /* response how it looks
                 * {#966 ▼
