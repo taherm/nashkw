@@ -9,11 +9,11 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="feature-headline section-heading text-center">
-                        <h2>{{ trans('general.my_wishlist') }}</h2>
+                        <h2>{{ trans('general.order_history') }}</h2>
                     </div>
                 </div>
             </div>
-            @include('frontend.modules.product.partials.product_thumbnail',['products'=>$wishlistProducts])
+            @include('frontend.modules.product.partials.product_thumbnail',['products'=> $elements])
         </div>
     </div>
 
