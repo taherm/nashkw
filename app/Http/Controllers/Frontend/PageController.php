@@ -15,7 +15,7 @@ class PageController extends Controller
 {
 
     public function show($id) {
-        $element = Page::whereId($id)->first();
+        $element = Page::find($id);
         return view('frontend.modules.page.show', compact('element'));
     }
     public function getConditions()
