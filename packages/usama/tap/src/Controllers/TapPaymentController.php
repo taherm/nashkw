@@ -89,7 +89,7 @@ class TapPaymentController extends Controller
 //        dd($finalArray);
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => config('tap.paymentUrl'),
+            CURLOPT_URL => 'http://wwww.gotapnow.com/TapWebConnect/Tap/WebPay/PaymentRequest',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
