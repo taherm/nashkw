@@ -64,7 +64,6 @@ class TapPaymentController extends Controller
         $order = new $className();
         $order = $order->whereId($request->id)->with('order_metas.product', 'order_metas.product_attribute')->first();
         $user = auth()->user();
-        dd($this->getMerchant($order->net_price));
         $finalArray = [
             'CustomerDC' => [
                 "Email" => $order->email,
@@ -110,10 +109,7 @@ class TapPaymentController extends Controller
             echo "cURL Error #:" . $err;
         } else {
             $response = (\GuzzleHttp\json_decode($response));
-            dd($response);
             if (!$response->ResponseCode) {
-                dump($response->PaymentURL);
-                dd($response);
                 /* response how it looks
                 * {#966 ▼
                     +"PaymentURL": "http://live.gotapnow.com/webpay.aspx?ref=210092017100407130&sess=kEh3R7REOFWP0b3BFM6Kkm2O7AQck8Jg"
