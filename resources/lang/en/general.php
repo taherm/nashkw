@@ -167,4 +167,6 @@ return array (
   'my_fatorrah' => 'My Fatorrah',
   'submit' => 'submit',
   'best_sale_products' => 'Best Sale Products',
+  'meta_description' => 'عبايات الكويت حراير لمسة عباية  روعة التصميم
+harayer harayer7 abaia abaya abayat',
 );
