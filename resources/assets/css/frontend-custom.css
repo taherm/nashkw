@@ -162,3 +162,7 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
 .middle-text ul.footer-icon li a {
     border : none !important;
 }
+
+.top-menu nav ul li ul {
+    min-width: 180px;
+}
