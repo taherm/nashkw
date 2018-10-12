@@ -40,7 +40,6 @@ class HomeController extends Controller
         }
         $newArrivals = $this->product->active()->hasProductAttribute()->hasGallery()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images','favorites')->take(self::take)->get();
         $onSaleProducts = $this->product->active()->hasProductAttribute()->hasGallery()->onSaleOnHomePage()->with('gallery.images','favorites')->take(self::take)->get();
-        dd($onSaleProducts);
         $bestSalesProducts = $this->product->whereIn('id', $this->product->active()->hasProductAttribute()->hasGallery()->bestSalesProducts())->with('gallery.images','favorites')->get();
         return view('frontend.home', compact(
             'newArrivals',
