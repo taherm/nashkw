@@ -3,7 +3,7 @@
     <div class="clearfix"></div>
     <div class="portlet-body form">
         <div class="col-lg-12 col-lg-push-4">
-            <img class="img-responsive img-thumbnail" src="{{ asset('storage/uploads/images/large/'.$element->image) }}"
+            <img class="img-responsive img-thumbnail img-med" src="{{ asset('storage/uploads/images/large/'.$element->image) }}"
                  alt="">
         </div>
         <form role="form" method="post" action="{{ route('backend.slider.update',$element->id) }}"
@@ -43,7 +43,7 @@
                 <div class="form-group form-md-line-input">
                     <input type="file" class="form-control" name="image" placeholder="...">
                     <label for="form_control_1">Slide Image*</label>
-                    <span class="help-block">slider Image only JPG / PNG is accepted -best fit ['1440', '400']</span>
+                    <span class="label-warning">slider Image only JPG / PNG is accepted -best fit ['1905', '750']</span>
                 </div>
             </div>
 
