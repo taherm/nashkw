@@ -31,7 +31,7 @@
                     <a href="{{ route('frontend.currency.change',['currency' => strtolower($currency->currency_symbol_en)]) }}"
                        class="currency-code">
                         @if($currency->country->flag)
-                        <img style="width : 25px; height: 25px;" src="{{ asset(env('MEDIUM').$currency->country->flag) }}"/>
+                        <img style="width : 25px; height: 15px;" src="{{ asset(env('MEDIUM').$currency->country->flag) }}"/>
                         @endif
                          <span>{{ $currency->name }}</span>
                     </a>
