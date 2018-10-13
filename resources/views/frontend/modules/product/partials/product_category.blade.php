@@ -39,7 +39,7 @@
                                          src="{{ asset(env('MEDIUM').$product->image) }}"
                                          alt="{{ $product->description }}">
 
-                                    @if(!$product->gallery->images->isEmpty())
+                                    @if(!$product->gallery)
                                         <img class="secondary-img"
                                              src="{{ asset(env('MEDIUM').$product->gallery->images->sortBy('order')->first()->path) }}"
                                              alt="{{ $product->caption }}">
