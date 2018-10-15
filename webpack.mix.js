@@ -80,46 +80,78 @@ mix.scripts([
 mix.scripts('./node_modules/tinymce/tinymce.min.js', 'public/js/tinymce.min.js').version();
 mix.scripts('resources/assets/js/backend-custom.js', 'public/js/backend-custom.js').version();
 mix.styles([
-        '../expert-theme/expert/css/bootstrap.min.css',
-        '../expert-theme/expert/css/nivo-slider.css',
-        '../expert-theme/expert/css/jquery-ui.min.css',
-        '../expert-theme/expert/css/meanmenu.min.css',
-        '../expert-theme/expert/css/owl.carousel.css',
-        '../expert-theme/expert/css/font-awesome.min.css',
-        '../expert-theme/expert/css/jquery.simpleGallery.css',
-        '../expert-theme/expert/css/jquery.simpleLens.css',
-        '../expert-theme/expert/style.css',
-        '../expert-theme/expert/css/responsive.css',
-        './resources/assets/css/frontend-custom.css'
+        '../bella/bella-files/bella/assets/plugins/bootstrap/css/bootstrap.min.css',
+        '../bella/bella-files/bella/assets/plugins/bootstrap-select/css/bootstrap-select.min.css',
+        '../bella/bella-files/bella/assets/plugins/fontawesome/css/font-awesome.min.css',
+        '../bella/bella-files/bella/assets/plugins/prettyphoto/css/prettyPhoto.css',
+        '../bella/bella-files/bella/assets/plugins/owl-carousel2/assets/owl.carousel.min.css',
+        '../bella/bella-files/bella/assets/plugins/owl-carousel2/assets/owl.theme.default.min.css',
+        '../bella/bella-files/bella/assets/plugins/animate/animate.min.css',
+        '../bella/bella-files/bella/assets/css/theme.css',
+        '../bella/bella-files/bella/assets/css/theme-gold.css',
+        'resources/assets/css/frontend-custom.css',
     ]
     , 'public/css/frontend.css').version();
 mix.styles([
-    'resources/assets/css/style_rtl.css',
-    './node_modules/bootstrap3-rtl/dist/bootstrap-rtl-min.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/bootstrap/css/bootstrap.min.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/bootstrap/css/bootstrap-rtl.min.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/bootstrap-select/css/bootstrap-select.min.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/fontawesome/css/font-awesome.min.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/prettyphoto/css/prettyPhoto.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/owl-carousel2/assets/owl.carousel.min.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/owl-carousel2/assets/owl.theme.default.min.css',
+    '../bella/bella-files/bella-rtl/assets/plugins/animate/animate.min.css',
+    '../bella/bella-files/bella-rtl/assets/css/theme.css',
+    '../bella/bella-files/bella-rtl/assets/css/theme-gold.css',
+    'resources/assets/css/frontend-custom.css',
     'resources/assets/css/frontend-custom-ar.css',
-], 'public/css/rtl.css').version();
-mix.styles('resources/assets/css/order-review.css','public/css/order-review.css');
+    'resources/assets/js/cartIndex.js'
+], 'public/css/frontend-rtl.css').version();
+// mix.styles('resources/assets/css/order-review.css','public/css/order-review.css');
 mix.babel([
-        '../expert-theme/expert/js/vendor/jquery-1.12.0.min.js',
-        '../expert-theme/expert/js/bootstrap.min.js',
-        '../expert-theme/expert/js/jquery.nivo.slider.pack.js',
-        '../expert-theme/expert/js/owl.carousel.min.js',
-        '../expert-theme/expert/js/jquery-ui.min.js',
-        '../expert-theme/expert/js/jquery.meanmenu.js',
-        '../expert-theme/expert/js/jquery.simpleGallery.min.js',
-        '../expert-theme/expert/js/jquery.simpleLens.min.js',
-        '../expert-theme/expert/js/wow.min.js',
-        '../expert-theme/expert/js/plugins.js',
-        '../expert-theme/expert/js/main.js',
-        '../expert-theme/expert/js/vendor/modernizr-2.8.3.min.js',
-        './resources/assets/js/frontend-custom.js',
-        './resources/assets/js/cartIndex.js',
+        '../bella/bella-files/bella/assets/plugins/modernizr.custom.js',
+        '../bella/bella-files/bella/assets/plugins/iesupport/html5shiv.js',
+        '../bella/bella-files/bella/assets/plugins/iesupport/respond.min.js',
+        '../bella/bella-files/bella/assets/plugins/jquery/jquery-1.11.1.min.js',
+        '../bella/bella-files/bella/assets/plugins/bootstrap/js/bootstrap.min.js',
+        '../bella/bella-files/bella/assets/plugins/bootstrap-select/js/bootstrap-select.min.js',
+        // '../bella/bella-files/bella/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js',
+        '../bella/bella-files/bella/assets/plugins/superfish/js/superfish.min.js',
+        '../bella/bella-files/bella/assets/plugins/owl-carousel2/owl.carousel.min.js',
+        '../bella/bella-files/bella/assets/plugins/jquery.sticky.min.js',
+        '../bella/bella-files/bella/assets/plugins/jquery.easing.min.js',
+        '../bella/bella-files/bella/assets/plugins/jquery.smoothscroll.min.js',
+        '../bella/bella-files/bella/assets/plugins/smooth-scrollbar.min.js',
+        '../bella/bella-files/bella/assets/js/theme.js',
+        '../bella/bella-files/bella/assets/plugins/jquery.cookie.js',
+        'resources/assets/js/frontend-custom.js',
+        'resources/assets/js/frontend-custom-en.js',
+        'resources/assets/js/cartIndex.js'
     ]
     , 'public/js/frontend.js').version();
 
-
-mix.scripts('resource/js/frontend-custom-ar.js', 'public/js/frontend-custom-ar.js').version();
-
+mix.babel([
+        '../bella/bella-files/bella-rtl/assets/plugins/modernizr.custom.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/iesupport/html5shiv.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/iesupport/respond.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/jquery/jquery-1.11.1.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/bootstrap/js/bootstrap.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/bootstrap-select/js/bootstrap-select.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/superfish/js/superfish.min.js',
+        // '../bella/bella-files/bella-rtl/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/owl-carousel2/owl.carousel.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/jquery.sticky.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/jquery.easing.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/jquery.smoothscroll.min.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/smooth-scrollbar.min.js',
+        '../bella/bella-files/bella-rtl/assets/js/theme.js',
+        '../bella/bella-files/bella-rtl/assets/plugins/jquery.cookie.js',
+        'resources/assets/js/frontend-custom.js',
+        'resources/assets/js/frontend-custom-ar.js',
+        'resources/assets/js/cartIndex.js'
+    ]
+    , 'public/js/frontend-rtl.js').version();
+mix.copy('resources/assets/js/jquery.prettyPhoto.min.js', 'public/js/jquery.prettyPhoto.min.js').version();
 mix.copyDirectory('../metronic_v4.5.6/theme/assets/global/plugins/simple-line-icons/fonts', 'public/css/fonts');
 mix.copyDirectory('..//metronic_v4.5.6/theme/assets/global/plugins/datatables/images', 'public/plugins/datatables/images');
 mix.copyDirectory('../metronic_v4.5.6/theme/assets/global/img', 'public/img');
@@ -128,5 +160,6 @@ mix.copyDirectory('./node_modules/font-awesome/fonts', 'public/fonts');
 mix.copyDirectory('./node_modules/tinymce/plugins', 'public/js/plugins');
 mix.copyDirectory('./node_modules/tinymce/skins', 'public/js/skins');
 mix.copyDirectory('./node_modules/tinymce/themes', 'public/js/themes');
-mix.copyDirectory('../expert-theme/expert/img', 'public/img');
-mix.copyDirectory('../expert-theme/expert/fonts', 'public/fonts');
+mix.copyDirectory('../bella/bella-files/bella/assets/img', 'public/img');
+mix.copyDirectory('../bella/bella-files/bella/assets/ico', 'public/ico');
+mix.copyDirectory('../bella/bella-files/bella/assets/plugins/prettyphoto/images', 'public/images');

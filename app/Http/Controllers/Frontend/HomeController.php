@@ -35,7 +35,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(!auth()->check()) {
+        if(app()->environment('production') && !auth()->check()) {
             return view('frontend.pages.under_construction');
         }
         $newArrivals = $this->product->active()->hasProductAttribute()->hasGallery()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images','favorites')->take(self::take)->get();
