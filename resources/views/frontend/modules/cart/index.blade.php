@@ -15,7 +15,6 @@
     <!-- PAGE -->
     <section class="page-section color">
         <div class="container">
-
             <h3 class="block-title alt"><i class="fa fa-angle-down"></i>{{ trans('general.products') }}</h3>
             <div class="row orders">
                 <div class="col-md-12">
@@ -163,8 +162,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
     <!-- /PAGE -->

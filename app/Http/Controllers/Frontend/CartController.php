@@ -110,7 +110,7 @@ class CartController extends Controller
     {
         $validate = validator($request->all(), [
             'code' => 'required',
-        ]);.en
+        ]);
         if ($validate->fails()) {
             return redirect()->back()->with('error', trans('general.coupon_not_correct'));
         }

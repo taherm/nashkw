@@ -20,7 +20,8 @@
                                 {{--<a class="btn btn-theme btn-block btn-icon-left twitter" href="#"><i class="fa fa-twitter"></i>Sign in with Twitter</a>--}}
                             {{--</div>--}}
                             <div class="col-md-12">
-                                <div class="form-group"><input class="form-control" name="email" type="text" placeholder="{{ trans('general.email') }}"></div>
+                                <div class="form-group">
+                                    <input class="form-control" name="email" type="text" placeholder="{{ trans('general.email') }}"></div>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -28,7 +29,9 @@
                                 @endif
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group"><input class="form-control" name="password" type="password" placeholder="{{ trans('general.password') }}"></div>
+                                <div class="form-group">
+                                    <input class="form-control" name="password" type="password" placeholder="{{ trans('general.password') }}">
+                                </div>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
