@@ -172,6 +172,7 @@ return array (
   'meta_description' => 'عبايات الكويت حراير لمسة عباية  روعة التصميم',
   'kd' => 'د.ك',
   'knet' => 'كي نت',
+  'products_search_results' => 'المنتجات',
   'items' => 'قطع',
   'back_to' => 'الرجوع إلى',
   'in_stock' => 'متاح',
