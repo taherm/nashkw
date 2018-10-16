@@ -84,4 +84,14 @@ class Filters extends QueryFilters
         return $this->builder;
     }
 
+    public function sort()
+    {
+        switch (request('sort')) {
+            case 'name' :
+                return $this->builder->orderBy('name_en', 'asc');
+            default :
+                return $this->builder->orderBy('price', request('sort'));
+        }
+    }
+
 }

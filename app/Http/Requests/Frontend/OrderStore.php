@@ -37,7 +37,7 @@ class OrderStore extends FormRequest
             'street' => 'nullable',
             'floor' => 'nullable',
             'apartment' => 'nullable',
-            'payment_method' => 'required',
+            'payment_method' => 'required|alpha',
         ];
     }
 }
