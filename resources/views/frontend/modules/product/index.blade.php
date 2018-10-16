@@ -44,8 +44,8 @@
                             <h4 class="widget-title">{{ trans('general.products_search_results') }}</h4>
                             <div class="widget-content">
                                 <ul>
-                                    @if(!$categories->isEmpty())
-                                        @foreach($categories->where('parent_id',0) as $parent)
+                                    @if(!$categoriesList->isEmpty())
+                                        @foreach($categoriesList->where('parent_id',0) as $parent)
                                             <li>
                                                 <span class="arrow"><i class="fa fa-angle-down"></i></span>
                                                 <a href="{!! request()->fullUrlWithQuery(['category_id' => $parent->id]) !!}">

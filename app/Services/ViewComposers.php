@@ -59,24 +59,26 @@ class ViewComposers
     {
 //        $categories = Category::active()->onlyParent()->with('parent.children.children')->get();
         // get parent that has children and children of children whereHas products and with their products
-        $categories = Category::active()
-            ->whereHas('children', function ($q) {
-                return $q->whereHas('products', function ($q) {
-                    return $q;
-                }, '>', 0)->orWhereHas('children', function ($q) {
-                    return $q->whereHas('products', function ($q) {
-                        return $q;
-                    }, '>', 0)->orWhereHas('children', function ($q) {
-                        return $q;
-                    }, '>', 0);
-                }, '>', 0);
-            }, '>', 0)
-            ->orWhereHas('products', function ($q) {
-                return $q;
-            }, '>', 0)
-            ->onlyParent()
-            ->with('children.children')
-            ->get();
+//        $categories = Category::active()
+//            ->whereHas('children', function ($q) {
+//                return $q->whereHas('products', function ($q) {
+//                    return $q;
+//                }, '>', 0)->orWhereHas('children', function ($q) {
+//                    return $q->whereHas('products', function ($q) {
+//                        return $q;
+//                    }, '>', 0)->orWhereHas('children', function ($q) {
+//                        return $q;
+//                    }, '>', 0);
+//                }, '>', 0);
+//            }, '>', 0)
+//            ->orWhereHas('products', function ($q) {
+//                return $q;
+//            }, '>', 0)
+//            ->onlyParent()
+//            ->with('children.children')
+//            ->get();
+//        $categories = Category::active()->onlyParent()->has('children.products')->with('children.products','children.children.products')->get();
+        $categories = Category::active()->onlyParent()->with('children.children')->get();
         return $view->with(compact('categories'));
     }
 
@@ -142,12 +144,14 @@ class ViewComposers
         return $view->with(compact('countriesWorld'));
     }
 
-    public function getActiveColors(View $view) {
+    public function getActiveColors(View $view)
+    {
         $colors = Color::active()->get();
         return $view->with(compact('colors'));
     }
 
-    public function getActiveSizes(View $view) {
+    public function getActiveSizes(View $view)
+    {
         $sizes = Size::active()->get();
         return $view->with(compact('sizes'));
     }
