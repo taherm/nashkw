@@ -423,11 +423,11 @@
     <!-- /PAGE -->
 
     <!-- On Sales  -->
-    @include('frontend.partials._product_carousel_lg', ['elements' => $onSaleProducts , 'title' => trans('general.general.on_sale_products')])
+    @include('frontend.partials._product_carousel_lg', ['elements' => $onSaleProducts , 'title' => trans('general.on_sale_products')])
     <!-- /PAGE -->
 
     <!-- Best Sales  -->
-    @include('frontend.partials._product_carousel_lg',['elements' => $bestSalesProducts, 'title' => trans('general.general.best_sale_products')])
+    @include('frontend.partials._product_carousel_lg',['elements' => $bestSalesProducts, 'title' => trans('general.best_sale_products')])
     <!-- /PAGE -->
 
     <!-- PAGE -->
