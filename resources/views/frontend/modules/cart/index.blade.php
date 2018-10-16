@@ -166,7 +166,7 @@
                             </form>
                         </div>
                     </div>
-                @elsesho
+                @else
                     <hr class="page-divider small"/>
                     <div class="col-lg-12">
                         <section class="page-section breadcrumbs">
