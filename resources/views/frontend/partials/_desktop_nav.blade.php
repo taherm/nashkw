@@ -9,18 +9,15 @@
                     @foreach($categories->where('is_home', true)->sortBy('order') as $category)
                         <li class="megamenu">
                             <a href="{{ route('frontend.product.search',['category_id' => $category->id ]) }}">{{ $category->name }}</a>
-                            {{ var_dump('here 1') }}
                             @if(!$category->children->where('is_home', true)->isEmpty())
-                                {{ var_dump('here 2') }}
                                 <ul>
-                                    @foreach($category->children->where('is_home',true)->sortBy('order') as $child)
-                                        <li class="row">
+                                    <li class="row">
+                                        @foreach($category->children->where('is_home',true)->sortBy('order') as $child)
                                             <div class="col-md-2">
                                                 <h4 class="block-title"><span><a
                                                                 href="{{ route('frontend.product.search', ['category_id' => $child->id]) }}"><strong>{{ $child->name }}</strong></a></span>
                                                 </h4>
                                                 @if(!$child->children->where('is_home', true)->isEmpty())
-                                                    {{ var_dump('here 3') }}
                                                     <ul>
                                                         @foreach($child->children->where('is_home', true) as $subChild)
                                                             <li>
@@ -30,8 +27,8 @@
                                                     </ul>
                                                 @endif
                                             </div>
-                                        </li>
-                                    @endforeach
+                                        @endforeach
+                                    </li>
                                 </ul>
                             @endif
                         </li>
