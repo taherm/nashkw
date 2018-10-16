@@ -36,8 +36,9 @@ class ProductController extends Controller
         $tags = $elements->pluck('tags')->flatten()->unique('id')->sortKeysDesc();
         $sizes = $elements->pluck('product_attributes')->flatten()->pluck('size')->flatten()->unique('id')->sortKeysDesc();
         $colors = $elements->pluck('product_attributes')->flatten()->pluck('color')->flatten()->unique('id')->sortKeysDesc();
+        $categories = $elements->pluck('categories')->flatten()->unique('id');
         if (!$elements->isEmpty()) {
-            return view('frontend.modules.product.index', compact('elements','tags','colors','sizes'));
+            return view('frontend.modules.product.index', compact('elements','tags','colors','sizes','categories'));
         } else {
             return redirect()->route('frontend.home')->with('error', trans('message.no_items_found'));
         }

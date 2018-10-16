@@ -108,7 +108,7 @@ class CartController extends Controller
 
     public function applyCoupon(Request $request)
     {
-        $validate = validator($request->all(), [
+        $validate = validator($request->request->all(), [
             'code' => 'required',
         ]);
         if ($validate->fails()) {

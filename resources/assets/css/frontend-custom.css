@@ -192,3 +192,7 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
 .cart-padding {
     padding: 10px;
 }
+
+.top-bar{
+    background-color: black !important;
+}

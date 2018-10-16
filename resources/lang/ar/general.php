@@ -79,7 +79,7 @@ return array (
   'english' => 'English',
   'currency' => 'العملة',
   'subscribe_to_our_news_letter' => 'النشرة البريدية اشتراك',
-  'subscribe_message_paragraph' => 'اشترك معنا ليصلك كل جديد من ميم ونون .. جميع المنتجات الحصرية وما شابه .....',
+  'subscribe_message_paragraph' => 'اشترك معنا ليصلك كل جديد من .. جميع المنتجات الحصرية وما شابه .....',
   'email' => 'البريد الإلكتروني',
   'subscribe' => 'اشترك',
   'select_color' => 'اختار اللون',

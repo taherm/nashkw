@@ -29,7 +29,7 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.modules.checkout.index',
             'backend.modules.currency.create',
             'backend.modules.currency.edit',
-            'backend.partials.sidebar'
+            'backend.partials.sidebar',
         ], 'App\Services\ViewComposers@getCountries');
 
         view()->composer([
@@ -39,6 +39,7 @@ class ComposerServiceProvider extends ServiceProvider
 
         view()->composer([
             'frontend.modules.checkout.index',
+            'auth.register',
         ], 'App\Services\ViewComposers@getCountriesWorld');
 
         view()->composer([
