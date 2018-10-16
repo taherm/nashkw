@@ -20,7 +20,7 @@
 <div class="wrapper">
 @section('header')
     @include('frontend.partials._top_bar')
-    @include('frontend.partials.header')
+    @include('frontend.partials.header_one')
     @include('frontend.partials._notification')
 @show
 @section('content')
