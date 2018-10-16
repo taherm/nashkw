@@ -66,7 +66,7 @@
                                 </div>
                                 @foreach($product->gallery->images as $img)
                                     <div class="col-xs-2 col-sm-2 col-md-3">
-                                        <a href="{{ asset(env('THUMBNAIL').$img->path) }}" data-gal="prettyPhoto">
+                                        <a href="{{ asset(env('LARGE').$img->path) }}" data-gal="prettyPhoto">
                                             <img class="img-responsive" src="{{ asset(env('LARGE').$img->path) }}"
                                                  alt=""{{ $img->path}}/>
                                         </a>
