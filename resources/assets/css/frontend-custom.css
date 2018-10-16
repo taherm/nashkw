@@ -196,3 +196,7 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
 .top-bar{
     background-color: black !important;
 }
+
+.header .header-wrapper>.container {
+    min-height: 100px;
+}

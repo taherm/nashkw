@@ -4,7 +4,7 @@
         <div class="container">
 
             <!-- Logo -->
-            <div class="logo" style="height : 60px !important; overflow : hidden;">
+            <div class="logo">
                 <a href="{{ route('home') }}"><img src="{{ asset(env('LARGE').$settings->logo) }}" alt="{{ $settings->name }}"/></a>
             </div>
             <!-- /Logo -->
