@@ -200,3 +200,8 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
 .header .header-wrapper>.container {
     min-height: 100px;
 }
+
+.header .header-wrapper {
+    padding : 0px;
+    padding-top : 10px;
+}
