@@ -72,7 +72,7 @@
                                                     <span class="arrow"><i class="fa fa-angle-down"></i></span>
                                                     <a href="{!! request()->fullUrlWithQuery(['category_id' => $cat->id]) !!}">
                                                         {{ $cat->name }}
-                                                        <span class="count">{{ $cat->children->pluck('products')->flatten()->count() }}</span>
+                                                        <span class="count">{{ $cat->products->count() }}</span>
                                                     </a>
                                                     @if(!$cat->children->isEmpty())
                                                         <ul class="children">
