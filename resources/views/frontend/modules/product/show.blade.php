@@ -126,7 +126,7 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}" id="product_id">
                             <div class="col-sm-6">
                                 <div class="form-group selectpicker-wrapper">
-                                    <label for="exampleSelect2">Color</label>
+                                    <label for="exampleSelect2">{{ trans('general.color') }}</label>
                                     <select
                                             id="color"
                                             name="color_id"
