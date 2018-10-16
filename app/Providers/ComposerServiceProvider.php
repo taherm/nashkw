@@ -64,7 +64,6 @@ class ComposerServiceProvider extends ServiceProvider
         ], 'App\Services\ViewComposers@getCurrencies');
         view()->composer([
             'frontend.partials.header',
-            'frontend.modules.product.index'
         ], 'App\Services\ViewComposers@getCategories');
         view()->composer([
             'frontend.layouts.app',

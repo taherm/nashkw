@@ -18,7 +18,7 @@
                                                                 href="{{ route('frontend.product.search', ['category_id' => $child->id]) }}"><strong>{{ $child->name }}</strong></a></span>
                                                 </h4>
                                                 @if(!$child->children->where('is_home', true)->isEmpty())
-                                                    <ul>
+                                                    <ul class="active">
                                                         @foreach($child->children->where('is_home', true) as $subChild)
                                                             <li>
                                                                 <a href="{{ route('frontend.product.search', ['category_id' => $subChild->id]) }}">{{ $subChild->name }}</a>

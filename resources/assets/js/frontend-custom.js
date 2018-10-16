@@ -32,8 +32,6 @@ $(document).ready(function() {
     $('#color').on('change', function(e) {
         var product_id = $('#product_id').val();
         var color_id = e.target.value;
-        console.log('productid', product_id);
-        console.log('color id', color_id);
         $('#size').html('<option value="">select size</option>');
         return axios.get('/api/size', {params: {product_id, color_id}}).then(r =>
             r.data.map(s => {
@@ -43,7 +41,6 @@ $(document).ready(function() {
     })
     // when the size changes .. should fetch the qty of the current attribute and inject it in max qty.
     $('#size').on('change', function(e) {
-        console.log('the size id ', e.target.value);
         var size_id = e.target.value;
         var color_id = $('#color').val();
         var product_id = $('#product_id').val();
