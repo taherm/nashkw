@@ -169,4 +169,11 @@ return array (
   'best_sale_products' => 'Best Sale Products',
   'meta_description' => 'عبايات الكويت حراير لمسة عباية  روعة التصميم
 harayer harayer7 abaia abaya abayat',
+  'back_to' => 'Back to',
+  'approx' => 'approx',
+  'in_stock' => 'In Stock',
+  'out_of_stock' => 'Out of Stock',
+  'items' => 'Items',
+  'kd' => 'KWD',
+  'knet' => 'K-net',
 );
