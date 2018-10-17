@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Currency;
 use App\Models\Image;
 use App\Models\Product;
@@ -10,13 +11,7 @@ use App\Models\Product;
 class HomeController extends Controller
 {
     public $product;
-    const take = 7;
-
-    public function SearchImage(Request $request) {
-//        dd($request->all());
-        $element = Image::where(['fileName' => $request->filaName])->first();
-        $element->categories()->get();
-    }
+    const take = 8;
 
     /**
      * Create a new controller instance.
@@ -35,16 +30,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(app()->environment('production') && !auth()->check()) {
+        if (app()->environment('production') && !auth()->check()) {
             return view('frontend.pages.under_construction');
         }
-        $newArrivals = $this->product->active()->hasProductAttribute()->hasGallery()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images','favorites')->take(self::take)->get();
-        $onSaleProducts = $this->product->active()->hasProductAttribute()->hasGallery()->onSaleOnHomePage()->with('gallery.images','favorites')->take(self::take)->get();
-        $bestSalesProducts = $this->product->whereIn('id', $this->product->active()->hasProductAttribute()->hasGallery()->bestSalesProducts())->with('gallery.images','favorites')->get();
+        $newArrivals = $this->product->active()->hasProductAttribute()->hasGallery()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images', 'favorites')->take(self::take)->get();
+        $onSaleProducts = $this->product->active()->hasProductAttribute()->hasGallery()->onSaleOnHomePage()->with('gallery.images', 'favorites')->take(self::take)->get();
+        $bestSalesProducts = $this->product->whereIn('id', $this->product->active()->hasProductAttribute()->hasGallery()->bestSalesProducts())->with('gallery.images', 'favorites')->get();
+        $brands = Brand::active()->where('is_home', true)->has('products', '>', 0)->take(12)->get();
         return view('frontend.home', compact(
             'newArrivals',
             'onSaleProducts',
-            'bestSalesProducts'
+            'bestSalesProducts',
+            'brands'
         ));
     }
 
