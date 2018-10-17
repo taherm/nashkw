@@ -4,6 +4,7 @@ namespace App\Models;
 
 class Favorite extends PrimaryModel
 {
+    use ModelHelpers;
     protected $guarded = [''];
 
     public function product()
