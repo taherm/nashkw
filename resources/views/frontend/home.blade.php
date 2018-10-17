@@ -419,7 +419,7 @@
     <!-- /PAGE -->
 
     <!-- Newest -->
-    @include('frontend.partials._product_carousel_lg', ['elements' => $newArrivals, 'title' => trans('general.general.new_arrival')])
+    @include('frontend.partials._product_carousel_lg', ['elements' => $newArrivals, 'title' => trans('general.new_arrival')])
     <!-- /PAGE -->
 
     <!-- On Sales  -->
