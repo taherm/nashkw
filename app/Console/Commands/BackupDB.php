@@ -47,7 +47,7 @@ class BackupDB extends Command
 
         $extention = storage_path('app/public/');
 
-        $fileName = $extention . '3almazad-' . Carbon::now()->format('d-m-Y');
+        $fileName = $extention . env('APP_NAME').'-' . Carbon::now()->format('d-m-Y');
 
 
         $command = "mysqldump -e -f -u$username -p$password $dbName > $fileName.sql";
@@ -67,7 +67,6 @@ class BackupDB extends Command
             $this->info('backup is done');
 
         } else {
-//            dd($process->getErrorOutput());
             $this->error('error occured !!' . $process->getErrorOutput());
         }
     }
