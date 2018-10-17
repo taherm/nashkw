@@ -94,12 +94,12 @@ trait ProductHelpers
 
     public function scopeHasProductAttribute($q)
     {
-        return $this->has('product_attributes','>',0);
+        return $this->has('product_attributes', '>', 0);
     }
 
     public function scopeHasGallery($q)
     {
-        return $this->has('gallery','>',0);
+        return $this->has('gallery', '>', 0);
         return $this->whereHas('gallery', function ($q) {
             return $q;
         }, '>', 0);
@@ -107,7 +107,7 @@ trait ProductHelpers
 
     public function getIsFavoritedAttribute()
     {
-        return in_array(auth()->user()->id, $this->favorites->pluck('id')->toArray());
+        return auth()->check() ? in_array(auth()->user()->id, $this->favorites->pluck('id')->toArray()) : null;
     }
 
 }
