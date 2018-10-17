@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Favorite;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class FavoriteController extends Controller
      */
     public function add($id)
     {
-        $element = Favorite::create(['user_id' => auth()->user()->id, 'product_id' => $id]);
+        $element = Product::whereId($id)->first()->favorites()->sync(auth()->user()->id);
         return redirect()->back()->with('success', trans('message.favorite_saved'));
     }
 
