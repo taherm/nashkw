@@ -428,6 +428,8 @@
 
     <!-- Best Sales  -->
     @include('frontend.partials._product_carousel_lg',['elements' => $bestSalesProducts, 'title' => trans('general.best_sale_products')])
+
+    @include('frontend.partials._brands_carousel',['bands' => $brands])
     <!-- /PAGE -->
 
     <!-- PAGE -->

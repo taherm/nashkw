@@ -157,7 +157,7 @@
                                 <div class="buttons">
                                     <div class="quantity">
                                         <a class="btn qty-decrease btn-qty"><i class="fa fa-minus"></i></a>
-                                        <input class="form-control qty" type="text"  name="qty"
+                                        <input class="form-control qty" type="text" name="qty"
                                                value="1"
                                                title="{{ trans('general.quantity') }}"
                                                id="qty">
@@ -208,6 +208,18 @@
                                         @foreach($product->tags as $tag)
                                             <a href="{{ route('frontend.product.search',['tag_id' => $tag->id]) }}">
                                                 {{ $tag->slug }},
+                                            </a>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endif
+                            @if(!$product->brands->isEmpty())
+                                <tr>
+                                    <td class="title">{{ trans("general.brands") }}:</td>
+                                    <td>
+                                        @foreach($product->brands as $brand)
+                                            <a href="{{ route('frontend.product.search',['brand_id' => $brand->id]) }}">
+                                                {{ $brand->slug }},
                                             </a>
                                         @endforeach
                                     </td>

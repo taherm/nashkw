@@ -84,6 +84,13 @@ class Filters extends QueryFilters
         return $this->builder;
     }
 
+    public function brand_id()
+    {
+        return $this->builder->whereHas('brands', function ($q) {
+            return $q->where('id', request()->brand_id);
+        });
+    }
+
     public function sort()
     {
         switch (request('sort')) {
