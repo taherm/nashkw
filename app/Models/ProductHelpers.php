@@ -100,9 +100,6 @@ trait ProductHelpers
     public function scopeHasGallery($q)
     {
         return $this->has('gallery', '>', 0);
-        return $this->whereHas('gallery', function ($q) {
-            return $q;
-        }, '>', 0);
     }
 
     public function getIsFavoritedAttribute()

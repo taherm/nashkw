@@ -54,12 +54,10 @@
                                 <label class="control-label sbold">Is Active</label>
                                 <div class="radio-list">
                                     <label class="radio-inline">
-                                        <input type="radio" name="active" id="optionsRadios1" value="1"
-                                               checked="{{ $element->active ? 'checked' : null }}">
+                                        <input type="radio" name="active" id="optionsRadios1" value="1" {{ $element->active ? 'checked' : null }}>
                                         Active </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="active" id="optionsRadios2" value="0"
-                                               checked="{{ !$element->active ? 'checked' : null }}">
+                                        <input type="radio" name="active" id="optionsRadios2" value="0" {{ !$element->active ? 'checked' : null }}>
                                         Not Active</label>
                                 </div>
                             </div>
