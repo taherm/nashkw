@@ -1,11 +1,5 @@
 @extends('frontend.layouts.app')
 
-
-@section('styles')
-    @parent
-    {{--<link rel="stylesheet" href="{{ mix('css/order-review.css') }}">--}}
-@endsection
-
 @section('body')
     <div class="col-lg-12" style="background-color: white; margin: 20px;">
         <div class="col-lg-6 col-lg-push-3 col-sm-12">
