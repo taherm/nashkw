@@ -35,9 +35,10 @@
                             <tbody>
 
                             @foreach($cart as $item)
+                                {{ dd($item) }}
                                 <tr>
                                     <td class="image">
-                                        <a class="media-link" href="#"><i class="fa fa-plus"></i>
+                                        <a class="media-link" href="{{ route('frontend.product.show',$item->options->product->id) }}">
                                             <img class="img-sm"
                                                  src="{{ asset(env('THUMBNAIL').$item->options->product->image) }}"
                                                  alt="{{ $item->name }}"/></a></td>
