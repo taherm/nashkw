@@ -14,6 +14,7 @@
                 <th>net price</th>
                 <th>discount</th>
                 <th>price</th>
+                <th>shipment</th>
                 <th>reference_id</th>
                 <th>status</th>
                 <th>address</th>
@@ -29,6 +30,7 @@
                 <th>net price</th>
                 <th>discount</th>
                 <th>price</th>
+                <th>shipment</th>
                 <th>reference_id</th>
                 <th>status</th>
                 <th>address</th>
@@ -56,6 +58,7 @@
                     <td>{{ $element->net_price}}</td>
                     <td>{{ $element->discount}}</td>
                     <td>{{ $element->price}}</td>
+                    <td>{{ $element->shipping_cost}}</td>
                     <td>{{ $element->reference_id}}</td>
                     <td><span class="label label-{{ $element->status === 'success' ? 'success' : 'info' }}">{{ $element->status }}</span></td>
                     <td>{{ $element->address }}</td>
