@@ -60,7 +60,7 @@ class Filters extends QueryFilters
     public function size_id()
     {
         return $this->builder->whereHas('product_attributes', function ($q) {
-            return $q->where('size_id', request()->color_id);
+            return $q->where('size_id', request()->size_id);
         });
     }
 

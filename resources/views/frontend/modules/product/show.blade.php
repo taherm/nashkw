@@ -21,9 +21,7 @@
     <div class="content-area">
         <section class="page-section">
             <div class="container">
-
                 <div class="row product-single">
-
                     <div class="col-md-6">
                         <div class="badges">
                             @if($product->isOnSale)
