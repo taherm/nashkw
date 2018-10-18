@@ -95,6 +95,9 @@
     height: 100px;
     width: auto;
 }
+.img-xxs {
+    width : 12px;
+}
 
 nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     color: darkgoldenrod !important;
