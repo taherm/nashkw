@@ -2,7 +2,11 @@
 
 @section('head')
     @parent
-    <title>{{ $product->name }}</title>
+    @section('title')
+    <title>{{ $product->name_ar .' ' . $product->name_en}}</title>
+    @endsection
+    <meta name="description" content="{!! $product->description_ar .' '. $product->description_en !!}">
+    <meta name="keywords" content="{{ $product->notes . config('app.name')  }}"/>
     <!-- You can use Open Graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
     <meta property="og:url" content="{{ request()->fullUrl() }}"/>
