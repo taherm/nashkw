@@ -188,4 +188,6 @@ harayer harayer7 abaia abaya abayat',
   'colors' => 'Colors',
   'sort' => 'Sort',
   'favorites' => 'Favorites',
+  'highest_to_lowest' => 'Highest to lowest',
+  'lowest_to_highest' => 'Lowest to highest',
 );

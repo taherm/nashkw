@@ -186,5 +186,7 @@ return array (
   'back_to' => 'الرجوع إلى',
   'in_stock' => 'متاح',
   'sort' => 'التصنيف',
+  'lowest_to_highest' => 'الأقل سعرا',
+  'highest_to_lowest' => 'الأعلى سعرا',
   'favorites' => 'المفضلة',
 );
