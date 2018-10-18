@@ -167,6 +167,8 @@ return array (
   'checkout' => 'الدفع',
   'terms_and_policy' => 'الشروط و الاحكام',
   'size_charts' => 'جدول المقاسات',
+  'date' => 'التاريخ',
+  'pages' => 'الصفحات',
   'out_of_stock' => 'غير متوفر',
   'approx' => 'تقريبا',
   'meta_description' => 'عبايات الكويت حراير لمسة عباية  روعة التصميم',

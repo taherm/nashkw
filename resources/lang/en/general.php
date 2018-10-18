@@ -177,4 +177,6 @@ harayer harayer7 abaia abaya abayat',
   'kd' => 'KWD',
   'knet' => 'K-net',
   'products' => 'Products',
+  'date' => 'Date',
+  'pages' => 'Pages',
 );
