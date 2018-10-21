@@ -265,4 +265,5 @@ return array (
   ),
   'clear' => 'مسح /افراغ',
   'favorites' => 'المفضلة',
+  'information_review' => 'مراجعة البيانات',
 );

@@ -266,4 +266,5 @@ harayer harayer7 abaia abaya abayat',
   'tap_payment' => 'tap payment',
   'welcome_message' => 'welcome message',
   'shop' => 'shop',
+  'information_review' => 'Information Review',
 );
