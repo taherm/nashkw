@@ -61,6 +61,7 @@
                     <div class="col-md-6">
                         <label for="area">{{ trans('general.area') }}</label>
                         <div class="form-group"><input name="area" value="{{ auth()->user()->area }}"
+                                                       disabled
                                                        class="form-control" type="text"
                                                        placeholder="{{ trans('general.email') }}">
                         </div>
