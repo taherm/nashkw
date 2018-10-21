@@ -8,7 +8,7 @@
                         <div class="media">
                             <a class="media-link" data-gal="prettyPhoto"
                                href="{{ asset(env('LARGE').$element->image) }}">
-                                <img src="{{ asset(env('THUMBNAIL').$element->image) }}" alt="{{ $element->name }}"/>
+                                <img src="{{ asset(env('LARGE').$element->image) }}" alt="{{ $element->name }}"/>
                                 <span class="icon-view">
                                     <strong><i class="fa fa-eye"></i></strong>
                                 </span>
@@ -18,14 +18,14 @@
                             <h4 class="caption-title"><a
                                         href="{{ route('frontend.product.show', $element->id) }}">{{ $element->name }}</a>
                             </h4>
-                            <div class="rating">
+                            {{--<div class="rating">--}}
                             {{--<span class="star"></span>--}}
                             {{----><span class="star active"></span><!----}}
                             {{----><span class="star active"></span><!----}}
                             {{----><span class="star active"></span><!----}}
                             {{----><span class="star active"></span>--}}
                                 {{--<strong><i class="fa fa-heart"></i></strong>--}}
-                            </div>
+                            {{--</div>--}}
 
                             <div class="price">
                                 @if($element->isOnSale)
