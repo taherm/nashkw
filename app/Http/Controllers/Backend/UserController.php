@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return ('working fine from the create method');
+        return view('backend.modules.user.create');
     }
 
     /**
@@ -36,9 +37,23 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-
+        $validator = validator($request->request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'mobile' => 'required',
+            'country' => 'required|alpha',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withInput(Input::all())->withErrors($validator);
+        }
+        $element = User::create($request->except('password_confirmation'));
+        if ($element) {
+            return redirect()->route('backend.user.index')->with('success', 'user created');
+        }
+        return redirect()->route('backend.user.create')->with('error', 'user not created');
     }
 
     /**
@@ -60,6 +75,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $element = User::whereId($id)->first();
+        return view('backend.modules.user.edit', compact('element'));
     }
 
     /**
@@ -75,10 +92,15 @@ class UserController extends Controller
         if ($request->has('password')) {
             $element->password = bcrypt($request->password);
         }
-        $element->email = $request->email;
-        $element->save();
-
-        return redirect()->route('backend.user.index')->with('success', 'user updated');
+        if ($request->has('email')) {
+            $element->email = $request->email;
+            $element->save();
+        }
+        $updated = $element->update($request->except('email'));
+        if ($updated) {
+            return redirect()->route('backend.user.index')->with('success', 'user updated');
+        }
+        return redirect()->route('backend.user.edit', $id)->with('error', 'user not updated');
     }
 
 
