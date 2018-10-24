@@ -189,7 +189,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                             <div class="col-lg-12">
                                 <div class="buttons">
                                     <div class="quantity">
-                                        <a class="btn qty-decrease btn-qty"><i class="fa fa-minus"></i></a>
+                                        <a class="btn qty-decrease"><i class="fa fa-minus"></i></a>
                                         <input class="form-control qty" type="text" name="qty"
                                                value="1"
                                                title="{{ trans('general.quantity') }}"
@@ -199,6 +199,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                     <button class="btn btn-theme btn-cart btn-icon-left" type="submit"><i
                                                 class="fa fa-shopping-cart"></i>{{ trans('general.add_to_cart') }}
                                     </button>
+                                    <hr class="page-divider small hidden-md"/>
                                     @if($product->isFavorited)
                                         <a class="btn btn-theme btn-wish-list btn-outline-danger"
                                            href="{{ route("frontend.favorite.remove", $product->id) }}"><span
