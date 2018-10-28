@@ -31,6 +31,17 @@ class Product extends PrimaryModel
 
 
     /**
+     * MorphRelation
+     * MorphOne = many hasONe relation
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'galleryable');
+    }
+
+
+    /**
      * Product Attribute
      * hasMany Relation
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

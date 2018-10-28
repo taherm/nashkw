@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Backend;
 use App\Core\PrimaryController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Models\Product;
+use App\Services\Traits\NotificationHelper;
 use App\Src\Currency\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
 class DashBoardController extends Controller
 {
+    use NotificationHelper;
     public function index()
     {
         return redirect()->route('backend.order.index');
@@ -86,5 +89,23 @@ class DashBoardController extends Controller
         Artisan::call('publish-trans');
 
         return redirect()->back()->with('success', 'translations exported');
+    }
+
+    public function createNotification($element) {
+        $element = Product::active()->hasAttributes()->first();
+        $this->notify(
+            trans('message.notification_message',
+                [
+                    'type' => 'testing',
+                    'name' => $element->name,
+                    'project_name' => $element->name
+                ]),
+            '',
+            [
+                'path' => asset('storage/uploads/files/' . $element->path),
+                'title' => $element->name,
+                'type' => 'pdf'
+            ]
+        );
     }
 }
