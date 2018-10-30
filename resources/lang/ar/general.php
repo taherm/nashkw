@@ -181,6 +181,8 @@ return array (
   'out_of_stock' => 'غير متوفر',
   'approx' => 'تقريبا',
   'meta_description' => 'عبايات الكويت حراير لمسة عباية  روعة التصميم',
+  'app_keywords' => 'عبايات الكويت تصميم عباية لمسة حراير محجبات حجاب',
+  'app_author' => 'لمسة حراير',
   'kd' => 'د.ك',
   'delivery_message' => 'رسالة التوصيل',
   'shipment_package' => 'طريقة الشحن',

@@ -267,4 +267,6 @@ harayer harayer7 abaia abaya abayat',
   'welcome_message' => 'welcome message',
   'shop' => 'shop',
   'information_review' => 'Information Review',
+  'app_keywords' => 'Abayat Abaya Kuwait Hijab Lamaset Harayer',
+  'app_author' => 'Harayer',
 );
