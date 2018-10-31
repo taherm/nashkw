@@ -23,7 +23,8 @@
                             </div>
                         @endforeach
                         <div class="media">
-                            <p class="pull-{{ app()->isLocale('ar') ? 'left' : 'right' }} item-price">{{ $cart->pluck('price')->sum() }} {{ $currency->symbol }}</p>
+{{--                            {{ dd($cart) }}--}}
+                            <p class="pull-{{ app()->isLocale('ar') ? 'left' : 'right' }} item-price">{{ getCartNetTotal() }} {{ $currency->symbol }}</p>
                             <div class="media-body">
                                 <h4 class="media-heading item-title summary">{{ trans('general.sub_total') }}</h4>
                             </div>
