@@ -6,4 +6,5 @@ return array (
   'favorite_saved' => 'Product is added to your wish list successfully.',
   'no_items_found' => 'No Products found.',
   'checkout' => 'checkout',
+  'register' => 'Register with us now.',
 );
