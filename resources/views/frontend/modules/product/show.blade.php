@@ -40,7 +40,12 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                    @enddesktop
                                 ><i
                                             class="fa fa-plus"></i></a>
-                                <a href="{{ asset(env('LARGE').$product->image) }}" data-gal="prettyPhoto">
+                                <a
+                                        @desktop
+                                        data-gal="prettyPhoto"
+                                        href="{{ asset(env('LARGE').$product->image) }}"
+                                        @enddesktop
+                                >
                                     <img class="img-responsive" src="{{ asset(env('LARGE').$product->image) }}"
                                          alt="{{ $product->name_ar . $product->name_en . $product->description_ar . $product->description_en }}"/>
                                 </a>
