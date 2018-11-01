@@ -11,8 +11,8 @@
 Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 <meta property="og:url" content="{{ request()->fullUrl() }}"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="{{ $product->name }}"/>
-<meta property="og:description" content="{!! strip_tags($product->description) !!}"/>
+<meta property="og:title" content="{{ $product->name_ar . '-' . $product->name_en}}"/>
+<meta property="og:description" content="{!! strip_tags($product->description_ar .'-'. $product->description_en) !!}"/>
 <meta property="og:image" content="{{asset(env('LARGE').$product->image)}}"/>
 @endsection
 
@@ -38,7 +38,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                             class="fa fa-plus"></i></a>
                                 <a href="{{ asset(env('LARGE').$product->image) }}" data-gal="prettyPhoto">
                                     <img class="img-responsive" src="{{ asset(env('LARGE').$product->image) }}"
-                                         alt=""{{ $product->name }}/>
+                                         alt="{{ $product->name_ar . $product->name_en . $product->description_ar . $product->description_en }}"/>
                                 </a>
                             </div>
                             @if(!$product->gallery->images->isEmpty())
@@ -50,7 +50,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                         </a>
                                         <a href="{{ asset(env('LARGE').$img->path) }}" data-gal="prettyPhoto">
                                             <img class="img-responsive" src="{{ asset(env('LARGE').$img->path) }}"
-                                                 alt="{{ $img->caption }}"/>
+                                                 alt="{{ $product->name_ar . $product->name_en . $product->description_ar . $product->description_en . $img->caption_ar . $img->caption_en}}"/>
                                         </a>
                                     </div>
                                 @endforeach

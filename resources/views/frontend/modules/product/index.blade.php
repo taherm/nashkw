@@ -118,7 +118,7 @@
                                                 <a class="media-link" data-gal="prettyPhoto"
                                                    href="{{ asset(env('LARGE').$element->image) }}">
                                                     <img src="{{ asset(env('THUMBNAIL').$element->image) }}"
-                                                         alt="{{ $element->name }}"/>
+                                                         alt="{{ $element->name_ar . $element->name_en . $element->description_ar . $element->description_en }}"/>
                                                     <span class="icon-view">
                                                         <strong><i class="fa fa-eye"></i></strong>
                                                     </span>
