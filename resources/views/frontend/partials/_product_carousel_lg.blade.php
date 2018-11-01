@@ -6,9 +6,16 @@
                 @foreach($elements as $element)
                     <div class="thumbnail bordered no-padding">
                         <div class="media">
-                            <a class="media-link" data-gal="prettyPhoto"
-                               href="{{ asset(env('LARGE').$element->image) }}">
-                                <img src="{{ asset(env('THUMBNAIL').$element->image) }}" alt="{{ $element->name . $element->description}}"/>
+                            <a class="media-link"
+                               @mobile
+                               href="{{ route('frontend.product.show', $element->id) }}"
+                               @elsemobile
+                               data-gal="prettyPhoto"
+                               href="{{ asset(env('LARGE').$element->image) }}"
+                               @endmobile
+                            >
+                                <img src="{{ asset(env('THUMBNAIL').$element->image) }}"
+                                     alt="{{ $element->name . $element->description}}"/>
                                 <span class="icon-view">
                                     <strong><i class="fa fa-eye"></i></strong>
                                 </span>
@@ -24,7 +31,7 @@
                             {{----><span class="star active"></span><!----}}
                             {{----><span class="star active"></span><!----}}
                             {{----><span class="star active"></span>--}}
-                                {{--<strong><i class="fa fa-heart"></i></strong>--}}
+                            {{--<strong><i class="fa fa-heart"></i></strong>--}}
                             {{--</div>--}}
 
                             <div class="price">
