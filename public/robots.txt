@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: http://harayer7.com/sitemap.xml
