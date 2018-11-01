@@ -14,8 +14,11 @@
         @include('frontend.partials.styles')
     @show
 </head>
-
+@mobile
+<body id="home" class="wide header-style-5">
+@elsemobile
 <body id="home" class="wide">
+@endmobile
 @include('frontend.partials._preloader')
 <div class="wrapper">
 @section('header')
