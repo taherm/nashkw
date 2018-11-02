@@ -11,14 +11,14 @@
                         <ul class="social-icons">
                             @if($settings->facebook)
                                 <li><a href="{{ $settings->facebook }}" class="facebook">
-                                        <i class="fa fa-facebook" style="color : lightskyblue"></i>
+                                        <i class="fa fa-facebook fa-3x" style="color : lightskyblue"></i>
                                     </a>
                                 </li>
                             @endif
                             @if($settings->twitter)
                                 <li><a href="{{ $settings->twitter }}" class="twitter">
                                         <img
-                                                class=" img-xxs"
+                                                class=" img-xs"
                                                 src="{{ asset('images/twitter.png') }}"
                                         >
                                     </a>
@@ -27,7 +27,7 @@
                             @if($settings->youtube)
                                 <li><a href="{{ $settings->youtube }}" class="twitter">
                                         <img
-                                                class=" img-xxs"
+                                                class=" img-xs"
                                                 src="{{ asset('images/youtube.png') }}"
                                         >
                                     </a></li>
@@ -35,7 +35,7 @@
                             @if($settings->instagram)
                                 <li><a href="{{ $settings->instagram}}" class="twitter">
                                         <img
-                                                class="img-xxs"
+                                                class="img-xs"
                                                 src="{{ asset('images/instagram.png') }}"
                                         >
                                     </a></li>
@@ -44,20 +44,20 @@
                                 <li><a href="https://api.whatsapp.com/send?phone={{ $settings->whatsapp  }}"
                                        class="instagram">
                                         <img
-                                                class=" img-xxs"
+                                                class=" img-xs"
                                                 src="{{ asset('images/whatsapp.png') }}"
                                         >
                                     </a></li>
                             @endif
                             @if($settings->snapchat)
                                 <li><a href="{{ $settings->snapchat }}" class="snapchat">
-                                        <img class=" img-xxs" src="{{ asset('images/snap.png') }}"/></a></li>
+                                        <img class=" img-xs" src="{{ asset('images/snap.png') }}"/></a></li>
                             @endif
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="widget widget-categories">
+                    <div class="widget">
                         <h4 class="widget-title">{{ trans('general.information') }}</h4>
                         <ul>
                             @if($settings->phone)
@@ -67,11 +67,17 @@
                                 <li><i class="fa fa-inbox"></i> &nbsp; {{ $settings->email }}</li>
                             @endif
                             @if($settings->mobile)
-                                <li><i class="fa fa-mobile-phone"></i> &nbsp; {{ $settings->mobile }}</li>
+                                <li><i class="fa fa-mobile-phone"></i> &nbsp;
+                                    <a href="tel:{{ $settings->mobile }}" class="hidden-md">{{ $settings->mobile }}</a>
+                                    <span class="visible-md">{{ $settings->mobile }}</span>
+                                </li>
                             @endif
                             @if($settings->whatsapp)
                                 <li><img class="img-grey img-xxs" src="{{ asset('images/whatsapp.png') }}"/>
-                                    &nbsp; {{ $settings->whatsapp }}</li>
+                                    &nbsp;
+                                    <a href="https://wa.me/{{ $settings->whatsapp }}" class="hidden-md">{{ $settings->whatsapp }}</a>
+                                    <span class="visible-md">{{ $settings->whatsapp }}</span>
+                                </li>
                             @endif
                             @if($settings->address)
                                 <li><i class="fa fa-location-arrow"></i> &nbsp; {{ $settings->address }}</li>
