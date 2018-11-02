@@ -75,7 +75,7 @@
                             @if($settings->whatsapp)
                                 <li><img class="img-grey img-xxs" src="{{ asset('images/whatsapp.png') }}"/>
                                     &nbsp;
-                                    <a href="https://wa.me/{{ $settings->whatsapp }}" class="hidden-md">{{ $settings->whatsapp }}</a>
+                                    <a href="https://api.whatsapp.com/send?phone={{ $settings->whatsapp  }}" class="hidden-md">{{ $settings->whatsapp }}</a>
                                     <span class="visible-md">{{ $settings->whatsapp }}</span>
                                 </li>
                             @endif
