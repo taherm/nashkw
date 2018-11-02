@@ -217,6 +217,8 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     min-height: 120px; !important;
 }
 
-.social-icons a {
-    border : none;
+.social-icons a, .social-icons a:hover  {
+    border : transparent !important;
+    color : transparent !important;
+    background-color : transparent !important;
 }
