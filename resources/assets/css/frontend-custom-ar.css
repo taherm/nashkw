@@ -1,16 +1,16 @@
-/*@font-face {*/
-    /*font-family: 'GE SS Unique';*/
-    /*src: url('fonts/GE_SS_Unique_Light.ttf') format('truetype'),*/
-    /*url('fonts/GE_SS_Unique_Light.otf') format('otf'),*/
-    /*url('fonts/GE_SS_Unique_Light.eot'),*/
-    /*url('fonts/GE_SS_Unique_Light.eot?#iefix') format('embedded-opentype'); !* Super Modern Browsers *!*/
-    /*font-weight: bolder;*/
-    /*font-style: normal;*/
-/*}*/
+@font-face {
+    font-family: 'GE SS Unique';
+    src: url('fonts/GE_SS_Unique_Light.ttf') format('truetype'),
+    url('fonts/GE_SS_Unique_Light.otf') format('otf'),
+    url('fonts/GE_SS_Unique_Light.eot'),
+    url('fonts/GE_SS_Unique_Light.eot?#iefix') format('embedded-opentype'); /* Super Modern Browsers */
+    font-weight: bolder;
+    font-style: normal;
+}
 
-/*body, div, a, span, table, p, form, input, h1, h2, h3, h4, input, tr, td, ul, li {*/
-    /*font-family: 'GE SS Unique', 'sans-serif' !important;*/
-/*}*/
+body, div, a, span, table, p, form, input, h1, h2, h3, h4, input, tr, td, ul, li {
+    font-family: 'GE SS Unique', 'sans-serif' !important;
+}
 .main-menu nav ul li a::after {
     display: none;
 }
