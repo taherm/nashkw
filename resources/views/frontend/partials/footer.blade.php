@@ -98,8 +98,16 @@
                 <div class="col-md-3">
                     <div class="widget widget-tag-cloud">
                         <h4 class="widget-title">{{ $settings->company }}</h4>
-                        <img src="{{ asset(env('THUMBNAIL').$settings->logo) }}" class="img-sm center-block"
-                             alt="{{ $settings->company_ar .' '. $settings->company_en}}">
+                        <div class="center-block text-center">
+                            <a href="https://itunes.apple.com/kw/app/lamsat-harayer/id1112697122?mt=8">
+                                <img src="{{ asset('images/apple.png') }}" style="max-width: 100px; margin: 10px"
+                                     alt="{{ $settings->company_ar .' '. $settings->company_en}}">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.harayer7app">
+                                <img src="{{ asset('images/google.png') }}" style="max-width: 100px; margin: 10px;"
+                                     alt="{{ $settings->company_ar .' '. $settings->company_en}}">
+                            </a>
+                        </div>
                     </div>
                 </div>
 
