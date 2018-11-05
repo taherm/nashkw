@@ -222,3 +222,7 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     color : transparent !important;
     background-color : transparent !important;
 }
+
+#preloader {
+    background-color: white !important;
+}
