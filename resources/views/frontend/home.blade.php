@@ -435,8 +435,12 @@
         @include('frontend.partials._product_carousel_lg',['elements' => $bestSalesProducts, 'title' => trans('general.best_sale_products')])
     @endif
 
-    @if($brands->isNotEmpty())
-        @include('frontend.partials._brands_carousel',['bands' => $brands])
+    {{--@if($brands->isNotEmpty())--}}
+        {{--@include('frontend.partials._brands_carousel',['bands' => $brands])--}}
+    {{--@endif--}}
+
+    @if($hotDeals->isNotEmpty())
+        @include('frontend.partials._product_hot_deal_carousel_lg',['elements' => $hotDeals,'title' => trans('general.hot_deals')])
     @endif
     <!-- /PAGE -->
 

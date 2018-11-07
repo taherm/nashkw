@@ -107,4 +107,13 @@ trait ProductHelpers
         return auth()->check() ? in_array(auth()->user()->id, $this->favorites->pluck('id')->toArray()) : null;
     }
 
+    public function getRealHotDealAttribute() {
+        return $this->isOnSale && $this->is_hot_deal;
+    }
+
+    public function scopeHotDeals($q)
+    {
+        return $q->onSale()->where('is_hot_deal', true);
+    }
+
 }

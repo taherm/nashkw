@@ -361,6 +361,17 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
+                                <label class="control-label sbold">is_hot_deal</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_hot_deal" id="optionsRadios7" checked
+                                           value="1"> is_hot_deal</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_hot_deal" id="optionsRadios8"
+                                           value="0">not is_hot_deal</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
                                 <label class="control-label sbold">check_stock</label></br>
                                 <label class="radio-inline">
                                     <input type="radio" name="check_stock" id="optionsRadios5" checked
