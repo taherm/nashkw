@@ -3,7 +3,6 @@
     <div class="footer-widgets">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-3">
                     <div class="widget">
                         <h4 class="widget-title">{{ trans('general.aboutus') }}</h4>
@@ -91,6 +90,14 @@
                             @if($settings->address)
                                 <li><i class="fa fa-location-arrow"></i> &nbsp; {{ $settings->address }}</li>
                             @endif
+                            @if($settings->longitude && $settings->latitude)
+                                <li>
+                                    <i class="fa fa-map-marker"></i>&nbsp;
+                                    <a href="https://www.google.com/maps/search/?api=1&query={{ $settings->latitude  }},{{ $settings->longitude }}"
+                                       class="hidden-md">{{ trans('general.our_location') }}</a>
+                                    <span class="visible-md">{{ trans('general.our_location')}}</span>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -119,7 +126,26 @@
                         </div>
                     </div>
                 </div>
-
+                @if($branches->isNotEmpty())
+                    <div class="col-lg-12">
+                        <div class="widget">
+                            <h4 class="widget-title">{{ trans('general.branches') }}</h4>
+                            @foreach($branches->chunk(3) as $divided)
+                                <div class="col-lg-3">
+                                    <ul>
+                                        @foreach($divided as $branch)
+                                                <li><i class="fa fa-map-marker"></i><a class="btn-sm"
+                                                                             href="https://www.google.com/maps/search/?api=1&query={{ $branch->latitude }},{{ $branch->longitude }}">
+                                                        {{ $branch->name }} - {{ $branch->phone }}
+                                                    </a>
+                                                </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
