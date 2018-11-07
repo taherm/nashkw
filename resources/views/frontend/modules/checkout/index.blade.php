@@ -18,7 +18,7 @@
     <section class="page-section color">
         <div class="container">
             @guest
-                <h3 class="block-title alt"><i class="fa fa-angle-down color"></i>1. Account</h3>
+                <h3 class="block-title alt"><i class="fa fa-angle-down color"></i>1. {{ trans('general.account') }}</h3>
                 <form method="POST" action="{{ route('login') }}" class="form-sign-in">
                     @csrf
                     <div class="row ">
@@ -46,56 +46,56 @@
                 <form action="#" class="form-delivery">
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
-                            <label for="name">{{ trans('general.full_name') }}</label>
-                            <div class="form-group"><input required name="name" value="{{ auth()->user()->name }}"
+                            <label for="name">{{ trans('general.full_name') }}*</label>
+                            <div class="form-group"><input required name="name" value="{{ auth()->check() ? auth()->user()->name : null }}"
                                                            class="form-control" type="text"
                                                            placeholder="{{ trans('general.full_name') }}">
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="email">{{ trans('general.email') }}</label>
-                            <div class="form-group"><input required name="email" value="{{ auth()->user()->email }}"
+                            <label for="email">{{ trans('general.email') }}*</label>
+                            <div class="form-group"><input required name="email" value="{{ auth()->check() ? auth()->user()->email : null }}"
                                                            class="form-control" type="text"
                                                            placeholder="{{ trans('general.email') }}">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="phone">{{ trans('general.phone') }}</label>
-                            <div class="form-group"><input name="phone" value="{{ auth()->user()->phone }}"
-                                                           class="form-control" type="text"
-                                                           placeholder="{{ trans('general.full_name') }}">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="mobile">{{ trans('general.mobile') }}</label>
-                            <div class="form-group"><input required name="mobile" value="{{ auth()->user()->mobile }}"
-                                                           class="form-control" type="text"
-                                                           placeholder="{{ trans('general.email') }}">
-                            </div>
-                        </div>
+                        {{--<div class="col-md-6">--}}
+                            {{--<label for="phone">{{ trans('general.phone') }}</label>--}}
+                            {{--<div class="form-group"><input name="phone" value="{{ auth()->check() ? auth()->user()->phone : null }}"--}}
+                                                           {{--class="form-control" type="text"--}}
+                                                           {{--placeholder="{{ trans('general.phone') }}">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="col-md-12">
-                            <label for="address">{{ trans('general.full_address') }}</label>
-                            <div class="form-group"><input required name="address" value="{{ auth()->user()->address }}"
+                            <label for="address">{{ trans('general.full_address') }}*</label>
+                            <div class="form-group"><input required name="address" value="{{ auth()->check() ? auth()->user()->address : null }}"
                                                            class="form-control" type="text"
                                                            placeholder="{{ trans("general.full_address") }}"></div>
                         </div>
+                        {{--<div class="col-md-6">--}}
+                            {{--<label for="area">{{ trans('general.area') }}</label>--}}
+                            {{--<div class="form-group"><input name="area" value="{{ auth()->check() ? auth()->user()->area : null }}"--}}
+                                                           {{--class="form-control" type="text"--}}
+                                                           {{--placeholder="{{ trans('general.email') }}">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="col-md-6">
-                            <label for="area">{{ trans('general.area') }}</label>
-                            <div class="form-group"><input name="area" value="{{ auth()->user()->area }}"
+                            <label for="mobile">{{ trans('general.mobile') }}*</label>
+                            <div class="form-group"><input required name="mobile" value="{{ auth()->check() ? auth()->user()->mobile : null }}"
                                                            class="form-control" type="text"
-                                                           placeholder="{{ trans('general.email') }}">
+                                                           placeholder="{{ trans('general.mobile') }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group selectpicker-wrapper">
-                                <label for="country_id">{{ trans('general.country') }}</label>
+                                <label for="country_id">{{ trans('general.country') }}*</label>
                                 <select
                                         name="country" id="country"
                                         required
                                         class="selectpicker input-price" data-live-search="true" data-width="100%"
                                         data-toggle="tooltip" title="Select">
                                     @foreach($countriesWorld as $country)
-                                        <option value="{{ $country }}" {{ auth()->user()->country === $country ? 'selected' : null }}>{{ $country }}</option>
+                                        <option value="{{ $country }}" {{  $country == 'Kuwait' ? 'selected' : null }}>{{ $country }}</option>
                                     @endforeach
                                 </select>
                             </div>

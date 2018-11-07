@@ -4,13 +4,13 @@
         <div class="container">
 
             <!-- Logo -->
-            <div class="logo">
+            <div class="logo hidden-xs">
                 <a href="{{ route('home') }}"><img class="img-sm center-block" src="{{ asset(env('LARGE').$settings->logo) }}" alt="{{ $settings->company_ar .' '.$settings->company_en }}"/></a>
             </div>
             <!-- /Logo -->
 
             <!-- Header search -->
-            <div class="header-search">
+            <div class="header-search hidden-xs">
                 {{--<input class="form-control" type="text" placeholder="What are you looking?"/>--}}
                 {{--<button><i class="fa fa-search"></i></button>--}}
                 <Form method="get" action="{{ route('frontend.product.search') }}">

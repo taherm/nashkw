@@ -167,20 +167,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                 </tr>
                             @endif
                         </table>
-
-                        <hr class="page-divider"/>
-                        <div class="product-text">
-                            @if($product->description)
-                                <h4>{{ trans('general.description') }}</h4>
-                                <p>{{ $product->description }}</p>
-                            @endif
-                            @if($product->notes)
-                                <h4>{{ trans('general.notes') }}</h4>
-                                    <p>{{ $product->notes }}</p>
-                            @endif
-                        </div>
-                        <hr class="page-divider"/>
-
+                        <hr class="page-divider small"/>
 
                         <form class="row variable" method="post" class="cart"
                               action="{{ route('frontend.cart.add') }}">
@@ -246,7 +233,21 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                             </div>
                         </form>
 
-                        <hr class="page-divider small"/>
+
+
+                        <hr class="page-divider"/>
+                        <div class="product-text">
+                            @if($product->description)
+                                <h4>{{ trans('general.description') }}</h4>
+                                <p>{{ $product->description }}</p>
+                            @endif
+                            @if($product->notes)
+                                <h4>{{ trans('general.notes') }}</h4>
+                                    <p>{{ $product->notes }}</p>
+                            @endif
+                        </div>
+                        <hr class="page-divider"/>
+
                         <table>
                             <tr>
                                 <td class="title">{{ trans('general.categories') }}:</td>

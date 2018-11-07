@@ -39,6 +39,14 @@
                         <li><a href="{{ $page->url }}">{{ $page->slug }}</a></li>
                     @endforeach
                 @endif
+                <li class="hidden-lg">
+                    <a class="no-child"
+                       href="https://api.whatsapp.com/send?phone={{ $settings->whatsapp  }}">{{ trans('general.whatsapp') }}</a>
+                </li>
+                <li class="hidden-lg">
+                    <a class="no-child"
+                       href="tel:{{ $settings->mobile }}">{{ trans('general.mobile') }}</a>
+                </li>
             </ul>
         </nav>
         <!-- /Navigation -->

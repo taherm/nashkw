@@ -50,6 +50,9 @@ $(document).ready(function() {
             $('#chargeVal').html(parseFloat(!isNaN(charge) ? charge : 0));
             var grandTotal = $('.grandTotal').attr('value');
             var grossTotal = parseFloat(grandTotal) + parseFloat(charge);
+            console.log('charge is', charge);
+            console.log('grandTotal new', grandTotal);
+            console.log('grossTotal new ', grossTotal);
             $('.grossTotal').attr('value', grossTotal);
             $('.grandTotal').attr('value', grandTotal);
             $('#grossTotal').html(`${grossTotal}`);
