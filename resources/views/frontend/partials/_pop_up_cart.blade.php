@@ -34,13 +34,13 @@
                                 <div>
                                     <a href="#" class="btn btn-theme btn-theme-dark"
                                        data-dismiss="modal">{{ trans('general.close') }}</a>
-                                    @if(auth()->check())
+{{--                                    @if(auth()->check())--}}
                                         <a href="{{ route('frontend.cart.index') }}"
                                            class="btn btn-theme btn-theme-transparent btn-call-checkout">{{ trans('general.checkout') }}</a>
-                                    @else
-                                        <a href="{{ route('register') }}"
-                                           class="btn btn-theme btn-theme-transparent btn-call-checkout">{{ trans('general.checkout') }}</a>
-                                    @endif
+                                    {{--@else--}}
+                                        {{--<a href="{{ route('register') }}"--}}
+                                           {{--class="btn btn-theme btn-theme-transparent btn-call-checkout">{{ trans('general.checkout') }}</a>--}}
+                                    {{--@endif--}}
                                     <a href="{{ route('frontend.cart.clear') }}"
                                        class="btn btn-theme btn-theme-transparent btn-call-checkout">{{ trans('general.clear') }}</a>
                                 </div>

@@ -168,41 +168,46 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                             @endif
                         </table>
                         <hr class="page-divider small"/>
+                        <hr class="page-divider small"/>
 
                         <form class="row variable" method="post" class="cart"
                               action="{{ route('frontend.cart.add') }}">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}" id="product_id">
-                            <div class="col-sm-6">
-                                <div class="form-group selectpicker-wrapper">
-                                    <label for="exampleSelect2">{{ trans('general.color') }}</label>
-                                    <select
-                                            id="color"
-                                            name="color_id"
-                                            class="selectpicker input-price" data-live-search="true"
-                                            data-width="100%"
-                                            data-toggle="tooltip" title="{{ trans('select_color') }}">
-                                        <option value="">{{ trans('general.select_color') }}</option>
-                                        @foreach($product->product_attributes->unique('color')->pluck('color') as $color)
-                                            <option value="{{ $color->id }}">{{ $color->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group selectpicker-wrapper">
-                                    <label for="exampleSelect1">{{ trans('general.size') }}</label>
-                                    <select
-                                            name="size_id"
-                                            id="size"
-                                            class="col-sm-6 size-menu input-price" data-live-search="true"
-                                            data-width="100%"
-                                            data-toggle="tooltip" title="{{ trans('select_size') }}">
-                                        <option value="">{{ trans('general.select_size') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
+
+                            {{-- size and color has been disabled according to clients' request--}}
+                            <input type="hidden" name="color_id" value="{{ $product->product_attributes->first()->color_id }}">
+                            <input type="hidden" name="size_id" value="{{  $product->product_attributes->first()->size_id }}">
+                            {{--<div class="col-sm-6">--}}
+                                {{--<div class="form-group selectpicker-wrapper">--}}
+                                    {{--<label for="exampleSelect2">{{ trans('general.color') }}</label>--}}
+                                    {{--<select--}}
+                                            {{--id="color"--}}
+                                            {{--name="color_id"--}}
+                                            {{--class="selectpicker input-price" data-live-search="true"--}}
+                                            {{--data-width="100%"--}}
+                                            {{--data-toggle="tooltip" title="{{ trans('select_color') }}">--}}
+                                        {{--<option value="">{{ trans('general.select_color') }}</option>--}}
+                                        {{--@foreach($product->product_attributes->unique('color')->pluck('color') as $color)--}}
+                                            {{--<option value="{{ $color->id }}">{{ $color->name }}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-sm-6">--}}
+                                {{--<div class="form-group selectpicker-wrapper">--}}
+                                    {{--<label for="exampleSelect1">{{ trans('general.size') }}</label>--}}
+                                    {{--<select--}}
+                                            {{--name="size_id"--}}
+                                            {{--id="size"--}}
+                                            {{--class="col-sm-6 size-menu input-price" data-live-search="true"--}}
+                                            {{--data-width="100%"--}}
+                                            {{--data-toggle="tooltip" title="{{ trans('select_size') }}">--}}
+                                        {{--<option value="">{{ trans('general.select_size') }}</option>--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-lg-12">--}}
                                 <div class="buttons">
                                     <div class="quantity">
                                         <a class="btn qty-decrease"><i class="fa fa-minus"></i></a>
