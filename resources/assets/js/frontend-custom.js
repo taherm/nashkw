@@ -4,6 +4,8 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    // tooltip
+    $('[data-toggle="tooltip"]').tooltip();
     // Fix Carousal click
     $('.owl-item img').on('click', function() {
         $('.owl-item li').removeClass('active');

@@ -12,5 +12,6 @@ use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController
 {
+    const PAGINATE = 100;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ImageHelpers;
 }

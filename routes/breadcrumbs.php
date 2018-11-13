@@ -43,6 +43,26 @@ Breadcrumbs::for('backend.category.index', function ($trail) {
     $trail->push('categories', route('backend.category.index'));
 });
 
+Breadcrumbs::for('backend.survey.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('surveys', route('backend.survey.index'));
+});
+
+Breadcrumbs::for('backend.question.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('questions', route('backend.question.index'));
+});
+
+Breadcrumbs::for('backend.answer.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('answers', route('backend.answer.index'));
+});
+
+Breadcrumbs::for('backend.questionnaire.index', function ($trail) {
+    $trail->parent('backend.home');
+    $trail->push('questionnaires', route('backend.questionnaire.index'));
+});
+
 Breadcrumbs::for('backend.tag.index', function ($trail) {
     $trail->parent('backend.home');
     $trail->push('tags', route('backend.tag.index'));
@@ -140,6 +160,35 @@ Breadcrumbs::for('backend.slider.index', function ($trail) {
 });
 
 
+Breadcrumbs::for('backend.survey.create', function ($trail) {
+    $trail->parent('backend.survey.index');
+    $trail->push('create survey', route('backend.survey.create'));
+});
+
+Breadcrumbs::for('backend.survey.edit', function ($trail, $element) {
+    $trail->parent('backend.survey.index');
+    $trail->push('edit survey', route('backend.survey.edit', $element->id));
+});
+
+Breadcrumbs::for('backend.question.create', function ($trail) {
+    $trail->parent('backend.question.index');
+    $trail->push('create question', route('backend.question.create'));
+});
+
+Breadcrumbs::for('backend.question.edit', function ($trail, $element) {
+    $trail->parent('backend.question.index');
+    $trail->push('edit question', route('backend.question.edit', $element->id));
+});
+
+Breadcrumbs::for('backend.answer.create', function ($trail) {
+    $trail->parent('backend.answer.index');
+    $trail->push('create answer', route('backend.answer.create'));
+});
+
+Breadcrumbs::for('backend.answer.edit', function ($trail, $element) {
+    $trail->parent('backend.answer.index');
+    $trail->push('edit answer', route('backend.answer.edit', $element->id));
+});
 
 Breadcrumbs::for('backend.attribute.create', function ($trail, $element) {
     $trail->parent('backend.attribute.index');
@@ -252,7 +301,6 @@ Breadcrumbs::for('backend.slider.edit', function ($trail, $element) {
     $trail->parent('backend.slider.index');
     $trail->push('edit slider', route('backend.slider.edit', $element->id));
 });
-
 
 
 Breadcrumbs::for('backend.gallery.create', function ($trail) {

@@ -187,7 +187,9 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $elements->render() }}
+                    @if($elements->render())
+                        {{ $elements->render() }}
+                    @endif
                 </div>
             </div>
         </div>

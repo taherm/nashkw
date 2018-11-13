@@ -41,6 +41,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::resource('brand', 'BrandController');
     Route::resource('notification', 'NotificationController');
     Route::resource('package', 'ShipmentPackageController');
+    Route::resource('survey', 'SurveyController');
+    Route::resource('question', 'QuestionController');
+    Route::resource('answer', 'AnswerController');
+    Route::resource('questionnaire', 'QuestionnaireController');
     Route::get('reset/password', 'UserController@getResetPassword')->name('reset.password');
     Route::post('reset/password', 'UserController@postResetPassword')->name('reset');
     Route::get('backup/db', ['as' => 'backup.db', 'uses' => 'DashBoardController@BackupDB']);
@@ -64,6 +68,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::resource('page', 'PageController')->only(['show']);
     Route::resource('user', 'UserController');
     Route::resource('newsletter', 'NewsletterController');
+    Route::resource('survey', 'SurveyController')->only(['show','store']);
     Route::get('search', 'ProductController@search')->name('product.search');
     Route::get('currency/{currency}', 'HomeController@changeCurrency')->name('currency.change');
     Route::get('language/{locale}', 'HomeController@changeLanguage')->name('language.change');

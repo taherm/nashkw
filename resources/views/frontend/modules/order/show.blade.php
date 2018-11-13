@@ -50,7 +50,7 @@
                                                         disabled
                                                        placeholder="{{ trans('general.email') }}">
                         </div>
-                    </div>
+                    </div>z
                     <div class="col-md-12">
                         <label for="address">{{ trans('general.full_address') }}</label>
                         <div class="form-group"><input  name="address" value="{{ auth()->user()->address }}"

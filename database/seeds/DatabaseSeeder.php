@@ -12,14 +12,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-         $this->call(CountriesTableSeeder::class);
-         $this->call(CurrenciesTableSeeder::class);
-         $this->call(SettingsTableSeeder::class);
-         $this->call(PoliciesTableSeeder::class);
-         $this->call(CategoriesTableSeeder::class);
-         $this->call(ColorsTableSeeder::class);
-         $this->call(SizesTableSeeder::class);
-         $this->call(FaqsTableSeeder::class);
+        $this->call(CountriesTableSeeder::class);
+        $this->call(CurrenciesTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
+        $this->call(PoliciesTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(ColorsTableSeeder::class);
+        $this->call(SizesTableSeeder::class);
+        $this->call(FaqsTableSeeder::class);
         $this->call(SlidersTableSeeder::class);
         $this->call(TermsTableSeeder::class);
         $this->call(PagesTableSeeder::class);
@@ -28,14 +28,16 @@ class DatabaseSeeder extends Seeder
         $this->call(ShipmentPackgesTableSeeder::class);
 
         $this->call(UsersTableSeeder::class);
-         $this->call(ProductsTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
         $this->call(CouponsTableSeeder::class);
         $this->call(OrdersTableSeeder::class);
-         $this->call(FavoritesTableSeeder::class);
-         $this->call(TagsTableSeeder::class);
+        $this->call(FavoritesTableSeeder::class);
+        $this->call(TagsTableSeeder::class);
         $this->call(BrandsTableSeeder::class);
         $this->call(NotificationsTableSeeder::class);
-         $this->call(AboutusTableSeeder::class);
+        $this->call(AboutusTableSeeder::class);
+        $this->call(SurveysTableSeeder::class);
+        $this->call(QuestionnairesTableSeeder::class);
 
 
     }
