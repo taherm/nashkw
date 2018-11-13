@@ -18,8 +18,8 @@ class CreateQuestionsTable extends Migration
             $table->string('name_en')->nullable();
             $table->string('notes_ar')->nullable();
             $table->string('notes_en')->nullable();
-            $table->boolean('is_multi')->default(0);
-            $table->boolean('is_text')->default(1);
+            $table->boolean('is_multi')->default(1);
+            $table->boolean('is_text')->default(0);
             $table->boolean('active')->default(0);
             $table->integer('order')->unsigned();
             $table->timestamps();

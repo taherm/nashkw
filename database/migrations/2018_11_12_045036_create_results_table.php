@@ -25,8 +25,8 @@ class CreateResultsTable extends Migration
             $table->integer('questionnaire_id')->unsigned()->index();
             $table->foreign('questionnaire_id')->references('id')->on('questionnaires');
 
-            $table->mediumText('question')->nullable();
-            $table->mediumText('answer')->nullable();
+            $table->mediumText('questioned')->nullable();
+            $table->mediumText('answered')->nullable();
 
             $table->timestamps();
         });

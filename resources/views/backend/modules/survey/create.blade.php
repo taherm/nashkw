@@ -5,7 +5,7 @@
         @include('backend.partials.forms.form_title')
         <div class="portlet-body form">
             <form class="horizontal-form" role="form" method="POST"
-                  action="{{ route('backend.product.store') }}" enctype="multipart/form-data">
+                  action="{{ route('backend.survey.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-body">
                     <h3 class="form-section">Create Survey</h3>
@@ -82,8 +82,8 @@
                                        name="order"
                                        value="{{ old('order') }}"
                                        placeholder="order"
-                                       maxlength="5"
-                                       required autofocus>
+                                       maxlength="2"
+                                       autofocus>
                                 @if ($errors->has('order'))
                                     <span class="help-block">
                                         <strong>
@@ -122,7 +122,7 @@
                                     <label class="control-label">Questions List*</label>
                                     <select multiple="multiple" class="multi-select" id="my_multi_select1"
                                             name="questions[]">
-                                        @foreach($questions as $question)
+                                        @foreach($questions->where('active', true) as $question)
                                             <option value="#" disabled="disabled">Question</option>
                                             <option value="{{ $question->id }}">{{ $question->name_ar }}</option>
                                             @if($question->answers->isNotEmpty())

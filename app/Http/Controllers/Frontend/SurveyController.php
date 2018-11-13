@@ -57,8 +57,8 @@ class SurveyController extends Controller
                     $questionnaire->results()->create([
                         'question_id' => $question->id,
                         'answer_id' => $answer ? $answer->id : null,
-                        'question' => $question->name,
-                        'answer' => $answer ? $answer->value : $request->text[$question->id]
+                        'questioned' => $question->name,
+                        'answered' => $answer ? $answer->value : $request->text[$question->id]
                     ]);
                 }
             }
@@ -75,7 +75,9 @@ class SurveyController extends Controller
      */
     public function show($id)
     {
-        $element = Survey::whereId($id)->with('questions.answers')->active()->first();
+        $element = Survey::whereId($id)->active()->with(['questions' => function ($q) {
+            return $q->has('answers', '>', 0)->with('answers');
+        }])->first();
         if ($element) {
             return view('frontend.modules.survey.show', compact('element'));
         } elseif (auth()->user()->isAdmin) {

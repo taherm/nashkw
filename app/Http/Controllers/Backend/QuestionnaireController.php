@@ -48,7 +48,8 @@ class QuestionnaireController extends Controller
      */
     public function show($id)
     {
-        //
+        $element = Questionnaire::whereId($id)->with('results.question','results.answer')->first();
+        return view('backend.modules.questionnaire.show', compact('element'));
     }
 
     /**

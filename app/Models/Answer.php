@@ -11,7 +11,7 @@ class Answer extends PrimaryModel
 
     public function questions()
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsToMany(Question::class);
     }
 
     public function results()

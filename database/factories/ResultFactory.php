@@ -12,7 +12,7 @@ $factory->define(Result::class, function (Faker $faker) {
         'answer_id' => function ($array) {
             return Question::whereId($array['question_id'])->first()->answers()->get()->random()->id;
         },
-        'question' => $faker->sentence,
-        'answer' => $faker->sentence,
+        'questioned' => $faker->sentence,
+        'answered' => $faker->sentence,
     ];
 });

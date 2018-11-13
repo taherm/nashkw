@@ -32,19 +32,36 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        var_dump('store question');
-        dd($request->all());
+        $validate = validator($request->all(), [
+            'name_ar' => 'required|max:200|unique:questions',
+            'name_en' => 'required|max:200|unique:questions',
+            'notes_ar' => 'nullable',
+            'notes_en' => 'nullable',
+            'is_multi' => 'boolean|nullable',
+            'is_text' => 'boolean|nullable',
+            'active' => 'boolean|nullable',
+            'order' => 'numeric|nullable',
+        ]);
+
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        $element = Question::create($request->all());
+        if ($element) {
+            return redirect()->back()->with('success', 'question created successfully');
+        }
+        return redirect()->back()->with('error', 'question is not created');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -55,7 +72,7 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -66,8 +83,8 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -78,11 +95,18 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $element = Question::whereId($id)->first();
+        if ($element) {
+            $element->survyes()->detach();
+            $element->answers()->detach();
+            $element->delete();
+            return redirect()->route('backend.question.index')->with('success', 'question deleted');
+        }
+        return redirect()->route('backend.question.index')->with('error', 'question is not deleted');
     }
 }

@@ -1,36 +1,18 @@
-@extends('frontend.layouts.app')
-
-@section('title')
-    <title>{{ $element->name }}</title>
-@endsection
+@extends('backend.layouts.app')
 
 
-@section('body')
+@section('content')
     <!-- BREADCRUMBS -->
     <section class="page-section breadcrumbs">
         <div class="container">
             <div class="page-header">
-                <h1>{{ $element->name }}</h1>
+                <h1>Name : {{ $element->name }}</h1>
+                <h1>Mobile : {{ $element->mobile }}</h1>
+                <h1>Email : {{ $element->email }}</h1>
             </div>
-            @include('frontend.partials._breadcrumbs',['name' => $element->slug])
         </div>
     </section>
     <!-- /BREADCRUMBS -->
-
-    @if($element->description)
-        <!-- PAGE -->
-        <section class="page-section">
-            <div class="container">
-                <hr class="page-divider small"/>
-                <div class="message-box">
-                    <div class="message-box-inner">
-                        <h2>{{ $element->description }}</h2>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-    <!-- /PAGE -->
 
     <!-- PAGE -->
     <section class="page-section">
@@ -42,58 +24,59 @@
                       class="contact-form">
                     @csrf
                     <div class="col-md-4 col-xs-12">
-                        <div class="form-group"><input class="form-control" type="text" name="name" required
+                        <div class="form-group"><input disabled class="form-control" type="text" name="name" required
                                                        placeholder="{{ trans('general.name') }}"></div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <div class="form-group"><input class="form-control" type="text" name="mobile" required
+                        <div class="form-group"><input disabled class="form-control" type="text" name="mobile" required
                                                        placeholder="{{ trans('general.mobile') }}"></div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <div class="form-group"><input class="form-control" type="text" name="email"
+                        <div class="form-group"><input disabled class="form-control" type="text" name="email"
                                                        placeholder="{{ trans('general.email') }}"></div>
                     </div>
-                    @foreach($element->questions as $q)
+                    @foreach($element->results as $r)
                         <div class="col-lg-12">
-                            @if($q->is_multi)
+                            @if($r->question->is_multi)
                                 <h3 class="block-title alt">
                                     <i class="fa fa-question"></i>
-                                    @if($q->notes)
+                                    @if($r->question->notes)
                                         <small>
-                                            {{ $q->notes }}
+                                            {{ $r->question->notes }}
                                         </small>
                                     @endif
-                                    {{ $q->name }}
+                                    {{ $r->question->name }}
                                 </h3>
-                                @foreach($q->answers as $a)
+                                @foreach($r->question->answers as $a)
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input type="radio" name="question_id[{{ $q->id }}]"
+                                            <input disabled type="radio" name="question_id[{{ $r->question->id }}]"
                                                    value="{{ $a->value }}">
                                             @if($a->icon)
                                                 &nbsp;<i class="fa fa-fw fa-{{ $a->icon }}"></i>
                                             @endif
                                             @if($a->name)
                                                 <label class="label "
-                                                       for="question_id[{{ $q->id }}]">{{ str_limit($a->name,20,'') }}</label>
+                                                       for="question_id[{{ $r->question->id }}]">{{ str_limit($a->name,20,'') }}</label>
                                             @endif
                                         </div>
                                     </div>
                                 @endforeach
-                            @elseif($q->is_text)
+                            @elseif($r->question->is_text)
                                 <h3 class="block-title alt"
-                                    @if($q->notes)
-                                    data-toggle="tooltip" title="{{ $q->notes }}"
+                                    @if($r->question->notes)
+                                    data-toggle="tooltip" title="{{ $r->question->notes }}"
                                         @endif
-                                ><i class="fa fa-question"></i>{{ $q->name }}</h3>
+                                ><i class="fa fa-question"></i>{{ $r->question->name }}</h3>
                                 <div class="form-group af-inner">
-                                    <label class="sr-only" for="input-message">{{ $q->notes }}</label>
+                                    <label class="sr-only" for="input-message">{{ $r->question->notes }}</label>
                                     <textarea
-                                            name="text[{{ $q->id }}]" placeholder="{{ trans('general.answer') }}"
+                                            disabled
+                                            name="text[{{ $r->question->id }}]" placeholder="{{ trans('general.answer') }}"
                                             rows="4"
                                             cols="50"
-                                            @if($q->notes)
-                                            data-toggle="tooltip" title="{{ $q->notes }}"
+                                            @if($r->question->notes)
+                                            data-toggle="tooltip" title="{{ $r->question->notes }}"
                                             @endif
                                             class="form-control placeholder"></textarea>
                                 </div>
@@ -103,7 +86,7 @@
                     <hr class="page-divider">
                     <div class="outer required">
                         <div class="form-group af-inner">
-                            <input type="submit" name="submit"
+                            <input disabled type="submit" name="submit"
                                    class="form-button form-button-submit btn btn-theme btn-theme-dark"
                                    value="{{ trans('general.submit') }}"/>
                         </div>

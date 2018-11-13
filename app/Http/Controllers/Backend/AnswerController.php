@@ -16,7 +16,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        $elements = Answer::paginate(parent::PAGINATE);
+        $elements = Answer::orderby('id','desc')->paginate(parent::PAGINATE);
         return view('backend.modules.answer.index', compact('elements'));
     }
 
@@ -39,8 +39,8 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         $validate = validator($request->all(), [
-            'name_ar' => 'required|max:200|unique:answers',
-            'name_en' => 'required|max:200|unique:answers',
+            'name_ar' => 'required|max:200',
+            'name_en' => 'required|max:200',
             'value' => 'boolean|nullable',
             'is_multi' => 'boolean|nullable',
             'icon' => 'alpha|nullable',
@@ -57,7 +57,6 @@ class AnswerController extends Controller
                 return redirect()->back()->with('success', 'answered created successfully');
             }
         }
-
         return redirect()->back()->with('error', 'answered is not created');
     }
 
@@ -103,6 +102,12 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $element = Answer::whereId($id)->with('questions')->first();
+        if($element) {
+            $element->questions()->detach();
+            $element->delete();
+            return redirect()->route('backend.answer.index')->with('success','answer deleted');
+        }
+        return redirect()->route('backend.answer.index')->with('error','answer is not deleted');
     }
 }

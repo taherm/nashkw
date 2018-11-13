@@ -23,7 +23,7 @@ class CreateSurveysTable extends Migration
             $table->boolean('is_desktop')->default(0);
             $table->boolean('is_footer')->default(0);
             $table->boolean('active')->default(1);
-            $table->integer('order')->unsigned();
+            $table->integer('order')->unsigned()->nullable();
             $table->timestamps();
         });
     }
