@@ -39,35 +39,17 @@
                         <div class="col-lg-12">
                             @if($r->question->is_multi)
                                 <h3 class="block-title alt">
-                                    <i class="fa fa-question"></i>
-                                    @if($r->question->notes)
-                                        <small>
-                                            {{ $r->question->notes }}
-                                        </small>
-                                    @endif
+                                    <i class="fa fa-exclamation-circle"></i>
                                     {{ $r->question->name }}
                                 </h3>
-                                @foreach($r->question->answers as $a)
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input disabled type="radio" name="question_id[{{ $r->question->id }}]"
-                                                   value="{{ $a->value }}">
-                                            @if($a->icon)
-                                                &nbsp;<i class="fa fa-fw fa-{{ $a->icon }}"></i>
-                                            @endif
-                                            @if($a->name)
-                                                <label class="label "
-                                                       for="question_id[{{ $r->question->id }}]">{{ str_limit($a->name,20,'') }}</label>
-                                            @endif
+                                            {{ $r->answered }}
                                         </div>
                                     </div>
-                                @endforeach
                             @elseif($r->question->is_text)
                                 <h3 class="block-title alt"
-                                    @if($r->question->notes)
-                                    data-toggle="tooltip" title="{{ $r->question->notes }}"
-                                        @endif
-                                ><i class="fa fa-question"></i>{{ $r->question->name }}</h3>
+                                ><i class="fa fa-exclamation-circle"></i>{{ $r->question->name }}</h3>
                                 <div class="form-group af-inner">
                                     <label class="sr-only" for="input-message">{{ $r->question->notes }}</label>
                                     <textarea
@@ -78,7 +60,9 @@
                                             @if($r->question->notes)
                                             data-toggle="tooltip" title="{{ $r->question->notes }}"
                                             @endif
-                                            class="form-control placeholder"></textarea>
+                                            class="form-control placeholder">
+                                        {{ $r->answered }}
+                                    </textarea>
                                 </div>
                             @endif
                         </div>
