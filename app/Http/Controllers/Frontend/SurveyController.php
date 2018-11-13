@@ -80,7 +80,7 @@ class SurveyController extends Controller
         }])->first();
         if ($element) {
             return view('frontend.modules.survey.show', compact('element'));
-        } elseif (auth()->user()->isAdmin) {
+        } elseif (auth()->user()->isAdmin && $element) {
             $element = Survey::whereId($id)->with('questions.answers')->first();
             return view('frontend.modules.survey.show', compact('element'));
         }

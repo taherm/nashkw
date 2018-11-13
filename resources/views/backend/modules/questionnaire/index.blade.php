@@ -25,7 +25,6 @@
                             <th>mobile</th>
                             <th>email</th>
                             <th>created_at</th>
-                            <th>URL</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -36,7 +35,6 @@
                             <th>mobile</th>
                             <th>email</th>
                             <th>created_at</th>
-                            <th>URL</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -48,7 +46,6 @@
                                 <td>{{ $element->mobile }}</td>
                                 <td>{{ $element->email }}</td>
                                 <td>{{ $element->created_at->diffForHumans() }}</td>
-                                <td><a  class="btn btn-circle btn-info" href="{{ url(config('app.url').'/survey/'.$element->id) }}">{{ config('app.url') }}/survey/{{ $element->id }}</a></td>
                                 <td>
                                     <div class="btn-group pull-right">
                                         <button type="button" class="btn green btn-sm btn-outline dropdown-toggle"
