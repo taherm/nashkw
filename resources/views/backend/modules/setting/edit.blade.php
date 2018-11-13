@@ -209,6 +209,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-3">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input">
+                                <textarea type="text" class="form-control" id="code" name="code"
+                                          aria-multiline="true">{{ $element->code }}</textarea>
+                                <label for="form_control_1">Script Codes</label>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
