@@ -9,7 +9,7 @@
                 @csrf
                 <div class="form-body">
                     <h3 class="form-section">Create Product</h3>
-                    @include('____frontend.partials._product_steps')
+                    @include('frontend.partials._product_steps')
                     {{--name arabic / name english --}}
                     <div class="row">
                         <div class="col-md-4">
@@ -357,6 +357,17 @@
                                 <label class="radio-inline">
                                     <input type="radio" name="on_homepage" id="optionsRadios4" checked
                                            value="0">not on_homepage</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label sbold">is_hot_deal</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_hot_deal" id="optionsRadios7" checked
+                                           value="1"> is_hot_deal</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_hot_deal" id="optionsRadios8"
+                                           value="0">not is_hot_deal</label>
                             </div>
                         </div>
                         <div class="col-md-3">

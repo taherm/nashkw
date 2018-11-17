@@ -10,28 +10,28 @@
               enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="_method" value="patch"/>
-            {{--<div class="form-body">--}}
-                {{--<div class="form-group form-md-line-input">--}}
-                    {{--<input type="text" class="form-control" name="title_ar" value={{$element->title_ar}}>--}}
-                    {{--<label for="form_control_1">Slide Title Ar *</label>--}}
-                    {{--<span class="help-block">please enter proper title</span>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="form-body">--}}
-                {{--<div class="form-group form-md-line-input">--}}
-                    {{--<input type="text" class="form-control" name="title_en" value={{ $element->title_en }}>--}}
-                    {{--<label for="form_control_1">Slide Title En*</label>--}}
-                    {{--<span class="help-block">please enter proper title</span>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            <div class="form-body">
+            <div class="col-md-4">
+                <div class="form-group form-md-line-input">
+                    <input type="text" class="form-control" name="caption_ar" value={{$element->caption_ar}}>
+                    <label for="form_control_1">Slide Title Ar *</label>
+                    <span class="help-block">please enter proper title</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-md-line-input">
+                    <input type="text" class="form-control" name="caption_en" value={{ $element->caption_en }}>
+                    <label for="form_control_1">Slide Title En*</label>
+                    <span class="help-block">please enter proper title</span>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="form-group form-md-line-input">
                     <input type="text" class="form-control" name="url" value="{{ $element->url }}" placeholder="...">
                     <label for="form_control_1">Slide URL*</label>
                     <span class="help-block">full link is only allowed ('http://google.com')</span>
                 </div>
             </div>
-            <div class="form-body">
+            <div class="col-md-4">
                 <div class="form-group form-md-line-input">
                     <input type="text" class="form-control" name="order" value="{{ $element->order }}"
                            placeholder="...">
@@ -39,15 +39,24 @@
                     <span class="help-block">slider Order is a number</span>
                 </div>
             </div>
-            <div class="form-body">
+            <div class="col-md-4">
                 <div class="form-group form-md-line-input">
                     <input type="file" class="form-control" name="image" placeholder="...">
                     <label for="form_control_1">Slide Image*</label>
                     <span class="label-warning">slider Image only JPG / PNG is accepted -best fit ['1905', '750']</span>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="form_control_1">Main file</label>
+                    <input type="file" class="form-control" name="path" placeholder="file">
+                    <div class="help-block text-left">
+                        files shall not exceed 50 MB
+                    </div>
+                </div>
+            </div>
 
-            <div class="form-body">
+            <div class="col-md-4">
                 <div class="md-radio-inline">
                     <div class="md-radio">
                         <input type="radio" id="radio53" name="active" value="1"

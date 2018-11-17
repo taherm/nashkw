@@ -100,6 +100,44 @@
                     @endif
                 </div>
             </div>
+            <div class="form-group{{ $errors->has('longitude') ? ' has-error' : '' }}">
+                <label for="longitude" class="col-md-4 control-label">longitude*</label>
+                <div class="col-md-6">
+                    <input id="longitude"
+                           type="text"
+                           class="form-control"
+                           name="longitude"
+                           value="{{ old('longitude') }}"
+                           placeholder="longitude"
+                            autofocus>
+                    @if ($errors->has('longitude'))
+                        <span class="help-block">
+                    <strong>
+                        {{ $errors->first('longitude') }}
+                    </strong>
+                </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group{{ $errors->has('latitude') ? ' has-error' : '' }}">
+                <label for="latitude" class="col-md-4 control-label">latitude*</label>
+                <div class="col-md-6">
+                    <input id="latitude"
+                           type="text"
+                           class="form-control"
+                           name="latitude"
+                           value="{{ old('latitude') }}"
+                           placeholder="latitude"
+                            autofocus>
+                    @if ($errors->has('latitude'))
+                        <span class="help-block">
+                    <strong>
+                        {{ $errors->first('latitude') }}
+                    </strong>
+                </span>
+                    @endif
+                </div>
+            </div>
 
             @include('backend.partials.forms._btn-group')
         </form>

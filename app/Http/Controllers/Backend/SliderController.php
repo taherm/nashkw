@@ -42,6 +42,11 @@ class SliderController extends Controller
             if ($request->hasFile('image')) {
                 $this->saveMimes($element, $request, ['image'], ['1905', '750'], true);
             }
+            if ($request->hasFile('path')) {
+                $path = $request->file('path')->store('public/uploads/files');
+                $path = str_replace('public/uploads/files/', '', $path);
+                $element->update(['path' => $path]);
+            }
             return redirect()->route('backend.slider.index')->with('success', trans('message.store_success'));
         }
         return redirect()->back()->with('error', trans('message.store_error'));
@@ -84,6 +89,11 @@ class SliderController extends Controller
         if ($updated) {
             if ($request->hasFile('image')) {
                 $this->saveMimes($element, $request, ['image'], ['1905', '750'], true);
+            }
+            if ($request->hasFile('path')) {
+                $path = $request->file('path')->store('public/uploads/files');
+                $path = str_replace('public/uploads/files/', '', $path);
+                $element->update(['path' => $path]);
             }
             return redirect()->route('backend.slider.index')->with('success', trans('message.update_success'));
         }

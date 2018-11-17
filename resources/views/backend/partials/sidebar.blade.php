@@ -460,6 +460,80 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item {{ activeItem('question',['survey','answer']) }}">
+                <a href="{{ route('backend.survey.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-th-list"></i>
+                    <span class="title">Surveys</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.survey.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-list-ul"></i>
+                            <span class="title">Surveys List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.question.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-list-ul"></i>
+                            <span class="title">Questions List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.answer.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-magic"></i>
+                            <span class="title">Answers List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-plus-circle"></i>
+                            <span class="title">Create New Survey</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-question-circle-o"></i>
+                            <span class="title">Create New Question</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.answer.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-question-circle"></i>
+                            <span class="title">Create New Answer</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item {{ activeItem('questionnaire') }}">
+                <a href="{{ route('backend.questionnaire.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-fw fa-question-circle"></i>
+                    <span class="title">Questionnaires</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.questionnaire.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-list-ul"></i>
+                            <span class="title">Questionnaire List</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.questionnaire.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-pie-chart"></i>
+                            <span class="title">Create New Questionnaire</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
             {{--<li class="nav-item">--}}

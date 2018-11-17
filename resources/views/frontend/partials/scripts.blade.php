@@ -20,4 +20,7 @@
         gtag('config', 'UA-128359885-1');
     </script>
 @endif
-
+@if($settings->code)
+    {{--code--}}
+    {!!  $settings->code !!}
+@endif

@@ -44,14 +44,17 @@
                 <tr>
                     <td>{{ $element->id }}</td>
                     <td>
-                        @if(!$element->order_metas->isEmpty())
+                        @if($element->order_metas->isNotEmpty())
                             @foreach($element->order_metas as $meta)
-                                <li>
-                                    <span class="label label-sm label-info">
-                                    {{ $meta->product->name_ar}} - {{ $meta->product_attribute->size->name_ar }}
-                                        - {{ $meta->qty }}
-                                    </span>
-                                </li>
+                                @if($meta->product)
+                                    <div class="alert alert-success">
+                                        id : {{ $meta->product->id }} - {{  $meta->product->name}} <br>
+                                        size : {{ $meta->product_attribute->size->name_ar }} <br>
+                                        qty : {{ $meta->qty }}
+                                    </div>
+                                @else
+                                    <div class="alert alert-warning">Product No longer exists</div>
+                                @endif
                             @endforeach
                         @endif
                     </td>

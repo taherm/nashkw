@@ -189,6 +189,35 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-3">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input">
+                                <input type="text" class="form-control" name="longitude" placeholder="..."
+                                       value="{{ $element->longitude }}">
+                                <label for="form_control_1">longitude</label>
+                                <span class="help-block">longitude</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input">
+                                <input type="text" class="form-control" name="latitude" placeholder="..."
+                                       value="{{ $element->latitude }}">
+                                <label for="form_control_1">latitude</label>
+                                <span class="help-block">latitude</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input">
+                                <textarea type="text" class="form-control" id="code" name="code"
+                                          aria-multiline="true">{{ $element->code }}</textarea>
+                                <label for="form_control_1">Script Codes</label>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 

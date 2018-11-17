@@ -2,7 +2,8 @@
 @section('content')
     <div class="clearfix"></div>
     <div class="portlet-body form">
-        <form class="form-horizontal" role="form" method="POST" action="{{ route('backend.branch.update', $element->id) }}">
+        <form class="form-horizontal" role="form" method="POST"
+              action="{{ route('backend.branch.update', $element->id) }}">
             @csrf
             <input type="hidden" name="_method" value="put">
             <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">
@@ -96,6 +97,44 @@
                         <span class="help-block">
                     <strong>
                         {{ $errors->first('phone') }}
+                    </strong>
+                </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group{{ $errors->has('longitude') ? ' has-error' : '' }}">
+                <label for="longitude" class="col-md-4 control-label">longitude*</label>
+                <div class="col-md-6">
+                    <input id="longitude"
+                           type="text"
+                           class="form-control"
+                           name="longitude"
+                           value="{{ $element->longitude }}"
+                           placeholder="longitude"
+                           autofocus>
+                    @if ($errors->has('longitude'))
+                        <span class="help-block">
+                    <strong>
+                        {{ $errors->first('longitude') }}
+                    </strong>
+                </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group{{ $errors->has('latitude') ? ' has-error' : '' }}">
+                <label for="latitude" class="col-md-4 control-label">latitude*</label>
+                <div class="col-md-6">
+                    <input id="latitude"
+                           type="text"
+                           class="form-control"
+                           name="latitude"
+                           value="{{ $element->latitude }}"
+                           placeholder="latitude"
+                           autofocus>
+                    @if ($errors->has('latitude'))
+                        <span class="help-block">
+                    <strong>
+                        {{ $errors->first('latitude') }}
                     </strong>
                 </span>
                     @endif

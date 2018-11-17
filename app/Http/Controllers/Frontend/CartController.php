@@ -62,7 +62,7 @@ class CartController extends Controller
                 'product' => $product
             ]
         );
-        return redirect()->back()->with('success', trans('message.item_added_to_cart'));
+        return redirect()->route('frontend.cart.index')->with('success', trans('message.item_added_to_cart'));
     }
 
     public function checkStock(Product $product, ProductAttribute $productAttribute, $qty)
