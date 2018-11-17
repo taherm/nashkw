@@ -112,6 +112,7 @@
                                                value="{{ old('order') }}"
                                                placeholder="order"
                                                maxlength="2"
+                                               required
                                                >
                                     </div>
                                 </div>
