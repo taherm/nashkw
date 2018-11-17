@@ -105,10 +105,10 @@ class QuestionController extends Controller
     {
         $element = Question::whereId($id)->first();
         if ($element) {
-            if ($element->surveys()->isNotEmpty()) {
+            if ($element->surveys->isNotEmpty()) {
                 $element->survyes()->detach();
             }
-            if ($element->answers()->isNotEmpty()) {
+            if ($element->answers->isNotEmpty()) {
                 $element->answers()->detach();
             }
             $element->delete();
