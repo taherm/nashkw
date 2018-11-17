@@ -39,9 +39,9 @@ class BackupDB extends Command
      */
     public function handle()
     {
-        $username = env('DB_USERNAME');
+        $username = env('DB_USERNAME_ROOT');
 
-        $password = env('DB_PASSWORD');
+        $password = env('DB_PASSWORD_ROOT');
 
         $dbName = env('DB_DATABASE');
 
