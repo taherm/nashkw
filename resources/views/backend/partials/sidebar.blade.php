@@ -495,20 +495,20 @@
                             <span class="arrow"></span>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-question-circle-o"></i>
-                            <span class="title">Create New Question</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.answer.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-question-circle"></i>
-                            <span class="title">Create New Answer</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
+                    {{--<li class="nav-item ">--}}
+                        {{--<a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">--}}
+                            {{--<i class="fa fa-fw fa-question-circle-o"></i>--}}
+                            {{--<span class="title">Create New Question</span>--}}
+                            {{--<span class="arrow"></span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="nav-item ">--}}
+                        {{--<a href="{{ route('backend.answer.create') }}" class="nav-link nav-toggle">--}}
+                            {{--<i class="fa fa-fw fa-question-circle"></i>--}}
+                            {{--<span class="title">Create New Answer</span>--}}
+                            {{--<span class="arrow"></span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
                 </ul>
             </li>
             <li class="nav-item {{ activeItem('questionnaire') }}">

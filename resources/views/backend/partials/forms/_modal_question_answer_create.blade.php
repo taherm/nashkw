@@ -47,7 +47,6 @@
                                                name="notes_ar"
                                                value="{{ old('notes_ar') }}"
                                                placeholder="notes_ar"
-                                               maxlength="5"
                                                required autofocus>
                                         @if ($errors->has('notes_ar'))
                                             <span class="help-block">
