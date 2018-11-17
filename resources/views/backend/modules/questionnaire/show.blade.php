@@ -24,15 +24,15 @@
                       class="contact-form">
                     @csrf
                     <div class="col-md-4 col-xs-12">
-                        <div class="form-group"><input disabled class="form-control" type="text" name="name" required
+                        <div class="form-group"><input disabled class="form-control" type="text" name="name" value="{{ $element->name }}"
                                                        placeholder="{{ trans('general.name') }}"></div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <div class="form-group"><input disabled class="form-control" type="text" name="mobile" required
+                        <div class="form-group"><input disabled class="form-control" type="text" name="mobile" value="{{ $element->mobile }}"
                                                        placeholder="{{ trans('general.mobile') }}"></div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <div class="form-group"><input disabled class="form-control" type="text" name="email"
+                        <div class="form-group"><input disabled class="form-control" type="text" name="email" value="{{ $element->email }}"
                                                        placeholder="{{ trans('general.email') }}"></div>
                     </div>
                     @foreach($element->results as $r)
@@ -44,12 +44,12 @@
                                 </h3>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            {{ $r->answered }}
+                                            {{ $r->answer->name  }}
                                         </div>
                                     </div>
                             @elseif($r->question->is_text)
                                 <h3 class="block-title alt"
-                                ><i class="fa fa-exclamation-circle"></i>{{ $r->question->name }}</h3>
+                                ><i class="fa fa-exclamation-circle"></i>{{ $r->questioned }}</h3>
                                 <div class="form-group af-inner">
                                     <label class="sr-only" for="input-message">{{ $r->question->notes }}</label>
                                     <textarea

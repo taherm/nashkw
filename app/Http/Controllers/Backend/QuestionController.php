@@ -51,6 +51,9 @@ class QuestionController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate->errors());
         }
+        if(!$request->is_multi) {
+            $request->request->add(['is_text' => true]);
+        }
         $element = Question::create($request->all());
         if ($element) {
             return redirect()->back()->with('success', 'question created successfully');
