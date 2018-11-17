@@ -89,7 +89,7 @@
                                 <div class="form-group af-inner">
                                     <label class="sr-only" for="input-message">{{ $q->notes }}</label>
                                     <textarea
-                                            name="text[{{ $q->id }}]" placeholder="{{ trans('general.answer') }}"
+                                            name="question_id[{{ $q->id }}]" placeholder="{{ trans('general.answer') }}"
                                             rows="4"
                                             cols="50"
                                             @if($q->notes)

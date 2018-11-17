@@ -88,18 +88,7 @@
                                                    value="1"> is_multi</label>
                                         <label class="radio-inline">
                                             <input type="radio" name="is_multi" id="optionsRadios6"
-                                                   value="0">not is_multi</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label sbold">is_text</label></br>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="is_text" id="optionsRadios7" checked
-                                                   value="1"> is_text</label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="is_text" id="optionsRadios8"
-                                                   value="0">not is_text</label>
+                                                   value="0">is_text</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
