@@ -103,10 +103,15 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        $element = Question::whereId($id)->first();
+        $element = Question::whereId($id)->with('surveys','answers','results')->first();
         if ($element) {
             if ($element->surveys->isNotEmpty()) {
-                $element->survyes()->detach();
+                $element->surveys()->detach();
+            }
+            if ($element->results->isNotEmpty()) {
+                foreach($element->results as $r) {
+                    $r->update(['question_id' => 1]);
+                }
             }
             if ($element->answers->isNotEmpty()) {
                 $element->answers()->detach();
