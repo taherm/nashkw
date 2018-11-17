@@ -98,7 +98,30 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = validator($request->all(), [
+            'name' => 'required|max:200|unique:surveys,name,'. $id,
+            'slug_ar' => 'required|max:200|unique:surveys,slug_ar,'. $id,
+            'slug_en' => 'required|max:200|unique:surveys,slug_en,'. $id,
+            'description_ar' => 'nullable|max:300',
+            'description_en' => 'nullable|max:300',
+            'is_home' => 'boolean|nullable',
+            'is_desktop' => 'boolean|nullable',
+            'is_footer' => 'boolean|nullable',
+            'active' => 'boolean|nullable',
+            'order' => 'numeric|nullable',
+            'questions' => 'required|array'
+        ]);
+
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        $element = Survey::whereId($id)->first();
+        $element->update($request->except('questions'));
+        if ($element) {
+            $element->questions()->sync($request->questions);
+            return redirect()->route('backend.survey.index')->with('success', 'survey created successfully');
+        }
+        return redirect()->back()->with('error', 'survey is not created');
     }
 
     /**
