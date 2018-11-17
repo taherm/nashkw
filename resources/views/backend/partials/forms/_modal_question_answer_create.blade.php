@@ -47,7 +47,7 @@
                                                name="notes_ar"
                                                value="{{ old('notes_ar') }}"
                                                placeholder="notes_ar"
-                                               required autofocus>
+                                                autofocus>
                                         @if ($errors->has('notes_ar'))
                                             <span class="help-block">
                                         <strong>
@@ -66,7 +66,7 @@
                                                name="notes_en"
                                                value="{{ old('notes_en') }}"
                                                placeholder="notes_en"
-                                               required>
+                                               >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
