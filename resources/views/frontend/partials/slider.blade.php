@@ -7,8 +7,8 @@
                 <div class="caption">
                     <div class="container ">
                         <div class="div-table">
-                            <div class="div-cell">
-                                <div class="caption-content">
+                            <div class="div-cell" style="opacity : 0.8;">
+                                {{--<div class="caption-content">--}}
                                     <h2 class="caption-title"></h2>
                                     @if($slider->path)
                                         <p class="caption-text">
@@ -16,7 +16,7 @@
                                                href="{{ asset(env('FILES').$slider->path) }}">{{ $slider->caption }}</a>
                                         </p>
                                     @endif
-                                </div>
+                                {{--</div>--}}
                             </div>
                         </div>
                     </div>
