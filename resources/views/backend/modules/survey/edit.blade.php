@@ -5,10 +5,11 @@
         @include('backend.partials.forms.form_title')
         <div class="portlet-body form">
             <form class="horizontal-form" role="form" method="POST"
-                  action="{{ route('backend.survey.store') }}" enctype="multipart/form-data">
+                  action="{{ route('backend.survey.update', $element->id) }}" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="_method" value="put">
                 <div class="form-body">
-                    <h3 class="form-section">Create Survey</h3>
+                    <h3 class="form-section">Edit Survey</h3>
                     {{--name arabic / name english --}}
                     <div class="row">
                         <div class="col-md-4">
