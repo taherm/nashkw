@@ -72,7 +72,7 @@
                                                     <i class="fa fa-fw fa-edit"></i>answers List</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('backend.activate',['model' => 'survey','id' => $element->id]) }}">
+                                                <a href="{{ route('backend.activate',['model' => 'question','id' => $element->id]) }}">
                                                     <i class="fa fa-fw fa-check-circle"></i> toggle active</a>
                                             </li>
                                             <li>
