@@ -181,6 +181,7 @@
                                                 <option value="{{ $n }}">{{ $v }}</option>
                                             @endforeach
                                         </select>
+                                        <div class="help-block"><a target="_blank" href="{{ url('https://origin.fontawesome.com/icons?d=gallery') }}" class="btn btn-sm btn-info">View Icons</a></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
