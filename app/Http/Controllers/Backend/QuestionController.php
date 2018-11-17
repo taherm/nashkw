@@ -102,8 +102,12 @@ class QuestionController extends Controller
     {
         $element = Question::whereId($id)->first();
         if ($element) {
-            $element->survyes()->detach();
-            $element->answers()->detach();
+            if ($element->surveys()->isNotEmpty()) {
+                $element->survyes()->detach();
+            }
+            if ($element->answers()->isNotEmpty()) {
+                $element->answers()->detach();
+            }
             $element->delete();
             return redirect()->route('backend.question.index')->with('success', 'question deleted');
         }
