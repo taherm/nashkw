@@ -39,6 +39,7 @@
                             <th>is_text</th>
                             <th>active</th>
                             <th>order</th>
+                            <th>order</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>

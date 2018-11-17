@@ -26,6 +26,7 @@
                             <th>image</th>
                             <th>active</th>
                             <th>Created At</th>
+                            <th>file path</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -37,6 +38,7 @@
                             <th>active</th>
                             <th>image</th>
                             <th>Created At</th>
+                            <th>file path</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -56,6 +58,13 @@
                                     <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
                                 </td>
                                 <td>{{ $element->created_at->diffForHumans() }}</td>
+                                <td>
+                                    @if($element->path)
+                                        <a class="btn btn-info" href="{{ asset(env('FILES').$element->path) }}">{{ $element->caption }}</a>
+                                    @else
+                                        <div class="alert alert-info">No Path</div>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group pull-right">
                                         <button type="button" class="btn green btn-sm btn-outline dropdown-toggle"
