@@ -110,8 +110,9 @@ class QuestionController extends Controller
             }
             if ($element->results->isNotEmpty()) {
                 foreach($element->results as $r) {
-                    $r->update(['question_id' => 1]);
+                    $r->question()->dissociate();
                 }
+
             }
             if ($element->answers->isNotEmpty()) {
                 $element->answers()->detach();

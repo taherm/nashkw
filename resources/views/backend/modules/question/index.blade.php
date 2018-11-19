@@ -27,6 +27,7 @@
                             <th>is_text</th>
                             <th>active</th>
                             <th>order</th>
+                            <th>created at</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -39,7 +40,7 @@
                             <th>is_text</th>
                             <th>active</th>
                             <th>order</th>
-                            <th>order</th>
+                            <th>created at</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -60,6 +61,9 @@
                                 </td>
                                 <td>
                                     <span class="label label-warning">{{ $element->order }}</span>
+                                </td>
+                                <td>
+                                    <span class="label label-warning">{{ $element->created_at->diffForHumans() }}</span>
                                 </td>
                                 <td>
                                     <div class="btn-group pull-right">
