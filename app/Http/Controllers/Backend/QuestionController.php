@@ -111,8 +111,8 @@ class QuestionController extends Controller
             if ($element->results->isNotEmpty()) {
                 foreach($element->results as $r) {
                     $r->question()->dissociate();
+                    $r->save();
                 }
-
             }
             if ($element->answers->isNotEmpty()) {
                 $element->answers()->detach();
