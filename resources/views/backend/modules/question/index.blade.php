@@ -73,6 +73,10 @@
                                         </button>
                                         <ul class="dropdown-menu pull-right" role="menu">
                                             <li>
+                                                <a href="{{ route('backend.question.edit',$element->id) }}">
+                                                    <i class="fa fa-fw fa-edit"></i> Edit</a>
+                                            </li>
+                                            <li>
                                                 <a href="{{ route('backend.answer.index',['question_id' => $element->id]) }}">
                                                     <i class="fa fa-fw fa-edit"></i>answers List</a>
                                             </li>

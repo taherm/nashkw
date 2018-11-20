@@ -112,7 +112,8 @@
                         </div>
                     </div>
 
-                    {{-- answer--}}
+
+                    {{-- create answer--}}
                     <div class="panel panel-warning">
                         <div class="panel-heading">
                             create new answer
@@ -125,7 +126,7 @@
                                     <div class="form-group">
                                         <label class="control-label">Assigned Question</label>
                                         <select class="form-control" name="question_id" required>
-                                            @foreach($questions as $q)
+                                            @foreach($questions->where('is_multi', true) as $q)
                                                 <option value="{{ $q->id }}">{{ $q->name }}</option>
                                             @endforeach
                                         </select>
