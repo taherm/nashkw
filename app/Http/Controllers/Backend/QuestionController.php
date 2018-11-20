@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Answer;
 use App\Models\Question;
+use App\Models\Questionnaire;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -51,7 +53,7 @@ class QuestionController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate->errors());
         }
-        if(!$request->is_multi) {
+        if (!$request->is_multi) {
             $request->request->add(['is_text' => true]);
         }
         $element = Question::create($request->all());
@@ -80,7 +82,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $element = Question::whereId($id)->first();
+        $answers = Answer::active()->get();
+        return view('backend.modules.question.edit', compact('element', 'answers'));
     }
 
     /**
@@ -92,7 +96,29 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = validator($request->all(), [
+            'name_ar' => 'required|max:200|unique:questions,name_ar,' . $id,
+            'name_en' => 'required|max:200|unique:questions,name_en,' . $id,
+            'notes_ar' => 'nullable',
+            'notes_en' => 'nullable',
+            'is_multi' => 'boolean|nullable',
+            'is_text' => 'boolean|nullable',
+            'active' => 'boolean|nullable',
+            'order' => 'numeric|nullable',
+        ]);
+
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        $element = Question::whereId($id)->with('answers')->first();
+        if ($element) {
+            $element->update($request->except('_token', '_method', 'answers'));
+            if ($request->has('answers')) {
+                $element->answers()->sync($request->answers);
+            }
+            return redirect()->route('backend.question.index')->with('success', 'question created successfully');
+        }
+        return redirect()->back()->with('error', 'question is not created');
     }
 
     /**
@@ -103,13 +129,13 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        $element = Question::whereId($id)->with('surveys','answers','results')->first();
+        $element = Question::whereId($id)->with('surveys', 'answers', 'results')->first();
         if ($element) {
             if ($element->surveys->isNotEmpty()) {
                 $element->surveys()->detach();
             }
             if ($element->results->isNotEmpty()) {
-                foreach($element->results as $r) {
+                foreach ($element->results as $r) {
                     $r->question()->dissociate();
                     $r->save();
                 }
@@ -121,5 +147,11 @@ class QuestionController extends Controller
             return redirect()->route('backend.question.index')->with('success', 'question deleted');
         }
         return redirect()->route('backend.question.index')->with('error', 'question is not deleted');
+    }
+
+    public function updateAnswers(Request $request)
+    {
+        $element = Question::whereId($request->id)->first();
+        $element->answers()->sync($request->answer_id);
     }
 }

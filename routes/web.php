@@ -43,6 +43,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
     Route::resource('package', 'ShipmentPackageController');
     Route::resource('survey', 'SurveyController');
     Route::resource('question', 'QuestionController');
+    Route::post('question/answers', 'QuestionController@updateAnswers')->name('question.answers');
     Route::resource('answer', 'AnswerController');
     Route::resource('questionnaire', 'QuestionnaireController');
     Route::get('reset/password', 'UserController@getResetPassword')->name('reset.password');
