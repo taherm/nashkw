@@ -25,7 +25,7 @@
                                                     <span>{{ $parent->description }}</span>
                                                 </h3>
                                             @endif
-                                            <span class="btn btn-theme btn-theme-sm">{{ trans('general.shop_now') }}</span>
+                                            <span class="btn btn-default btn-theme-sm">{{ trans('general.shop_now') }}</span>
                                         </div>
                                     </div>
                                 </div>
