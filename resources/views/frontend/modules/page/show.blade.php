@@ -26,28 +26,8 @@
             <h2 class="section-title"><span>{{ $element->slug }}</span></h2>
             <div style="min-height: 400px;">
                 {!! $element->content !!}
-                @if($element->title_en === 'aboutus')
-                    @if($branches->isNotEmpty())
-                        <div class="col-lg-12">
-                            <div class="widget">
-                                <h4 class="widget-title">{{ trans('general.branches') }}</h4>
-                                @foreach($branches->chunk(3) as $divided)
-                                    <div class="col-lg-3">
-                                        <ul>
-                                            @foreach($divided as $branch)
-                                                <li><i class="fa fa-map-marker"></i><a class="btn-sm"
-                                                                                       href="https://www.google.com/maps/search/?api=1&query={{ $branch->latitude }},{{ $branch->longitude }}">
-                                                        {{ $branch->name }} - {{ $branch->phone }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                @endif
+                <hr class="page-divider small"/>
+                @include('frontend.partials._aboutus_page_case')
             </div>
             <hr class="page-divider small"/>
         </div>
