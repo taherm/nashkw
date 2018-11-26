@@ -7,6 +7,7 @@ use App\Mail\SendContactus;
 
 use App\Http\Requests;
 use App\Jobs\SendContactMail;
+use App\Models\Branch;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,12 +18,13 @@ class PageController extends Controller
     public function show($id)
     {
         $element = Page::find($id);
+        $branches = Branch::active()->get();
         if ($element) {
-            return view('frontend.modules.page.show', compact('element'));
+            return view('frontend.modules.page.show', compact('element','branches'));
         }
         $element = Page::where(['title_ar' => $id])->orWhere(['title_en' => $id])->first();
         if ($element) {
-            return view('frontend.modules.page.show', compact('element'));
+            return view('frontend.modules.page.show', compact('element','branches'));
         }
         return redirect()->back()->with('error', trans('message.page_does_not_exist'));
     }
