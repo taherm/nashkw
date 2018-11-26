@@ -1,6 +1,7 @@
 <!-- HEADER -->
 <header class="header fixed">
-    <div class="header-wrapper">
+    @include('frontend.partials._top_bar')
+    <div class="header-wrapper hidden-xs">
         <div class="container">
 
             <!-- Logo -->
@@ -21,7 +22,7 @@
             <!-- /Header search -->
 
             <!-- Header shopping cart -->
-            <div class="header-cart">
+            <div class="header-cart hidden-xs">
                 <div class="cart-wrapper">
                     <a href="{{ route('frontend.favorite.index') }}" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-heart"></i></a>
                     {{--<a href="compare-products.html" class="btn btn-theme-transparent hidden-xs hidden-sm"><i class="fa fa-exchange"></i></a>--}}

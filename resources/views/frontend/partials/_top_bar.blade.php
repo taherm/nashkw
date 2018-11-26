@@ -76,7 +76,14 @@
                 {{--</li>--}}
                 {{--@endforeach--}}
                 @include('frontend.partials._top_bar_currencies')
-                @include('frontend.partials._top_bar_language')
+                {{--@include('frontend.partials._top_bar_language')--}}
+                <li class="hidden-md hidden-lg">
+                    <a href="{{ route('frontend.cart.index') }}" class="visible-xs" data-toggle="modal" data-target="#popup-cart"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs"> {{ $cartCount }} {{ trans('general.items') }} - {{ getCartNetTotal() }} {{ $currency->symbol }} </span>
+                        <i class="fa fa-angle-down"></i><span>{{ trans('general.cart') }}</span></a>
+                </li>
+                <li class="hidden-md hidden-lg">
+                    <a href="#" class="visible-xs menu-toggle"><i class="fa fa-lg fa-bars"></i><span>{{ trans('general.menu') }}</span></a>
+                </li>
             </ul>
         </div>
     </div>

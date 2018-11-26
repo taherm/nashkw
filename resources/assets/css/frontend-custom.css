@@ -226,3 +226,10 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
 #preloader {
     background-color: white !important;
 }
+
+@media (max-width: 767px) {
+    .sticky-wrapper .header {
+        position: fixed !important;
+    }
+}
+

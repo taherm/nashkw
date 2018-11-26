@@ -22,7 +22,6 @@
 @include('frontend.partials._preloader')
 <div class="wrapper">
 @section('header')
-    @include('frontend.partials._top_bar')
     @include('frontend.partials.header_one')
     @include('frontend.partials._notification')
 @show

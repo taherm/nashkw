@@ -12,6 +12,7 @@
     </section>
     <!-- /PAGE -->
 
+    @include('frontend.partials._categories_on_home_page')
     <!-- PAGE -->
     {{--<section class="page-section">--}}
     {{--<div class="container">--}}
