@@ -231,6 +231,9 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     .sticky-wrapper .header {
         position: fixed !important;
     }
+    .slider-wrapper {
+        margin-top: 54px;
+    }
 }
 
 .page-section.breadcrumbs {

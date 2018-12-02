@@ -14,7 +14,7 @@
                     <li class="dropdown currency">
                         <a href="#" class="dropdown-toggle"
                            data-toggle="dropdown">{{ trans('general.welcome') }}
-                            <small>{{ auth()->user()->name }}</small>
+                            <small>{{ str_limit(auth()->user()->name,15) }}</small>
                             <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="dropdown-menu">
                             @if(auth()->user()->isAdmin)

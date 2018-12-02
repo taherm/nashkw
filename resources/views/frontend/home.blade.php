@@ -5,7 +5,7 @@
 @section('body')
 
     <!-- PAGE -->
-    <section class="page-section no-padding slider">
+    <section class="page-section no-padding slider slider-wrapper">
         <div class="container full-width">
             @include('frontend.partials.slider')
         </div>
