@@ -235,7 +235,6 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                        title="{{ trans('general.sizes') }}"
                                     ><i class="fa fa-fw fa-tags"></i></a>
                                 </div>
-                            </div>
                         </form>
 
 
