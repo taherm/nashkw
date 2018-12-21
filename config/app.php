@@ -163,8 +163,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         TapServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Riverskies\Laravel\MobileDetect\MobileDetectServiceProvider::class
     ],
 

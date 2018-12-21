@@ -5,6 +5,7 @@
 # {{ trans('general.order_number') }}{{ $order->id }}
 <strong style="direction: rtl; float: right;"> {{ trans('general.gentlemen') }} / {{ $user->name }}</strong><br>
 <strong style="direction: rtl; float: right;"> {{ trans('general.address') }}/ {{ $user->address }}</strong>
+<strong style="direction: rtl; float: right;"> {{ trans('general.area') }}/ {{ $order->area }}</strong>
 <strong style="direction: rtl; float: right;"> {{ trans('general.mobile') }} / {{ $user->mobile }}</strong>
 <br>
 

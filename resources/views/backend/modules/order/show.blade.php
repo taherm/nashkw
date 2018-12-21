@@ -41,6 +41,9 @@
                                                                             <span class="header-sm">{{ trans('general.shipping_address') }}</span><br/>
                                                                             {{ $element->address}}<br/>
                                                                             <br/>
+                                                                            <span class="header-sm">{{ trans('general.area') }}</span><br/>
+                                                                            {{ $element->area}}<br/>
+                                                                            <br/>
                                                                             <span class="header-sm">{{ trans('general.country') }}</span><br/>
                                                                             {{ $element->country }}<br/>
                                                                             <br/>
@@ -78,12 +81,16 @@
                                                                     <tr>
                                                                         <td class="mini-block"
                                                                             style="height: 170px;">
-                                                                            <span class="header-sm">{{ trans('general.name') }}</span><br/>
-                                                                            {{ auth()->user()->name  }} <br/>
-                                                                            <br/>
-                                                                            <span class="header-sm">{{ trans('general.email') }}</span><br/>
-                                                                            {{ auth()->user()->email  }} <br/>
-                                                                            <br/>
+                                                                            @if($element->user)
+                                                                                <span class="header-sm">{{ trans('general.name') }}</span>
+                                                                                <br/>
+                                                                                {{ $element->user->name  }} <br/>
+                                                                                <br/>
+                                                                                <span class="header-sm">{{ trans('general.email') }}</span>
+                                                                                <br/>
+                                                                                {{ $element->user->email  }} <br/>
+                                                                                <br/>
+                                                                            @endif
                                                                             <span class="header-sm">{{ trans('general.order_date') }}</span><br/>
                                                                             {{Carbon\Carbon::now()->format('F j, Y')}}
                                                                             <br/>

@@ -110,6 +110,7 @@ class OrderController extends Controller
                 'discount' => $coupon ? $coupon->value : null,
                 'mobile' => $request->mobile,
                 'phone' => $request->phone,
+                'area' => $request->area,
                 'country' => $request->country,
                 'email' => $request->email,
                 'address' => $request->address,
