@@ -28,7 +28,8 @@
             <div class="container">
                 <div class="row">
                     <!-- SIDEBAR -->
-                    <aside class="col-md-3 sidebar" id="sidebar">
+                    @desktop
+                    <aside class="col-md-3 sidebar visible-sm" id="sidebar">
                         <!-- widget search -->
                         <div class="widget">
                             <div class="widget-search">
@@ -110,6 +111,7 @@
                     @endif
                     <!-- /widget tag cloud -->
                     </aside>
+                    @enddesktop
                     <!-- /SIDEBAR -->
                     <!-- CONTENT -->
                     <div class="col-md-9 content" id="content">
@@ -179,6 +181,91 @@
 
                     </div>
                     <!-- /CONTENT -->
+
+                    @mobile
+                    <aside class="col-md-3 sidebar hidden-sm" id="sidebar">
+                        <!-- widget search -->
+                        <div class="widget">
+                            <div class="widget-search">
+                                <Form method="get" action="{{ route('frontend.product.search') }}">
+                                    @csrf
+                                    <input class="form-control" type="text" name="search"
+                                           placeholder="{{ trans('general.search') }}">
+                                    <button><i class="fa fa-search"></i></button>
+                                </Form>
+                            </div>
+                        </div>
+                        <!-- /widget search -->
+                        <div class="widget widget-colors">
+                            <div class="widget-content">
+                                <a class="btn btn-theme-sm"
+                                   href="{{ route('frontend.product.search') }}">{{ trans('general.remove') }}</a>
+                            </div>
+                        </div>
+                        <!-- widget shop categories -->
+                    @include('frontend.partials._product_index_categories')
+                    <!-- /widget shop categories -->
+                    @if(!$colors->isEmpty())
+                        <!-- widget product color -->
+                            <div class="widget widget-colors">
+                                <h4 class="widget-title">{{ trans('general.colors') }}</h4>
+                                <div class="widget-content">
+                                    <ul>
+                                        @foreach($colors as $color)
+                                            <li style="border:{{ request()->has('color_id') && request('color_id') == $color->id ? '3px solid darkblue' : null}} ">
+                                                <a href="{!! request()->fullUrlWithQuery(['color_id' => $color->id]) !!}"><span
+                                                            style="background-color: {{ $color->code }}"></span></a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                    @endif
+
+                    <!-- widget sizes cloud -->
+                        @if(!$sizes->isEmpty())
+                            <div class="widget widget-tag-cloud">
+                                <h4 class="widget-title"><span>{{ trans('general.sizes') }}</span></h4>
+                                <ul>
+                                    @foreach($sizes as $size)
+                                        <li style="background-color:{{ request()->has('size_id') && request('size_id') == $size->id ? 'darkgoldenrod' : null}} ">
+                                            <a href="{!! request()->fullUrlWithQuery(['size_id' => $size->id]) !!}">{{ $size->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                    <!-- widget tag cloud -->
+                        @if(!$tags->isEmpty())
+                            <div class="widget widget-tag-cloud">
+                                <h4 class="widget-title"><span>{{ trans('general.tags') }}</span></h4>
+                                <ul>
+                                    @foreach($tags as $tag)
+                                        <li style="background-color:{{ request()->has('tag_id') && request('tag_id') == $tag->id ? 'darkgoldenrod' : null}} ">
+                                            <a href="{!! request()->fullUrlWithQuery(['tag_id' => $tag->id]) !!}">{{ $tag->slug }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                    <!-- widget brands cloud -->
+                        @if(!$brands->isEmpty())
+                            <div class="widget widget-tag-cloud">
+                                <h4 class="widget-title"><span>{{ trans('general.brands') }}</span></h4>
+                                <ul>
+                                    @foreach($brands as $brand)
+                                        <li style="background-color:{{ request()->has('brand_id') && request('brand_id') == $brand->id ? 'darkgoldenrod' : null}} ">
+                                            <a href="{!! request()->fullUrlWithQuery(['brand_id' => $brand->id]) !!}">{{ $brand->slug }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                    @endif
+                    <!-- /widget tag cloud -->
+                    </aside>
+                    @endmobile
 
                 </div>
             </div>
