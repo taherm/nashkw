@@ -40,10 +40,11 @@
                                                                             <br/>
                                                                             <span class="header-sm">{{ trans('general.shipping_address') }}</span><br/>
                                                                             {{ $element->address}}<br/>
-                                                                            <br/>
-                                                                            <span class="header-sm">{{ trans('general.area') }}</span><br/>
-                                                                            {{ $element->area}}<br/>
-                                                                            <br/>
+                                                                            {{-- area removed due to the request of client --}}
+                                                                            {{--<br/>--}}
+                                                                            {{--<span class="header-sm">{{ trans('general.area') }}</span><br/>--}}
+                                                                            {{--{{ $element->area}}<br/>--}}
+                                                                            {{--<br/>--}}
                                                                             <span class="header-sm">{{ trans('general.country') }}</span><br/>
                                                                             {{ $element->country }}<br/>
                                                                             <br/>
