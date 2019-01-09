@@ -93,7 +93,7 @@
                                                                                 <br/>
                                                                             @endif
                                                                             <span class="header-sm">{{ trans('general.order_date') }}</span><br/>
-                                                                            {{ $element->created_at }}
+                                                                            {{ $element->updated_at }}
                                                                             <br/>
                                                                             <br/>
                                                                             @if(isset($coupon))
