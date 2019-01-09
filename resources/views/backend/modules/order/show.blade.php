@@ -93,7 +93,7 @@
                                                                                 <br/>
                                                                             @endif
                                                                             <span class="header-sm">{{ trans('general.order_date') }}</span><br/>
-                                                                            {{Carbon\Carbon::now()->format('F j, Y')}}
+                                                                            {{ $element->created_at }}
                                                                             <br/>
                                                                             <br/>
                                                                             @if(isset($coupon))
