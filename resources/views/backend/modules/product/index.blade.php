@@ -79,7 +79,7 @@
                                     <img class="img-xs"
                                          src="{{ asset('storage/uploads/images/thumbnail/'.$element->image) }}" alt="">
                                 </td>
-                                <td>{{ !is_null($element->end_sale) ? $element->end_sale->format('Y-d-m') : null }}</td>
+                                <td>{{ !is_null($element->end_sale) ? $element->end_sale->format('Y-m-d') : null }}</td>
                                 <td>
                                     <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active) }}</span>
                                 </td>
