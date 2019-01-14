@@ -15,7 +15,7 @@ trait ProductHelpers
 {
     public function scopeOnSale($q)
     {
-        return $q->where('on_sale', true)->where('end_sale', '>=', Carbon::today());
+        return $q->where('on_sale', true)->where('end_sale', '<=', Carbon::today());
     }
 
     public function getIsOnSaleAttribute()
