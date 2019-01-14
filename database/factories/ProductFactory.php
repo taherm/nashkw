@@ -28,6 +28,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'image' => $faker->numberBetween(1, 10) . '.jpg',
         'start_sale' => $faker->dateTime('now'),
         'end_sale' => $faker->dateTimeBetween('now', '1 year'),
-        'check_stock' => $faker->boolean
+        'check_stock' => $faker->boolean,
+        'is_hot_deal' => $faker->boolean
     ];
 });
