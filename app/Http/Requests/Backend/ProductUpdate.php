@@ -42,7 +42,7 @@ class ProductUpdate extends FormRequest
             'notes_en' => 'min:3|nullable',
             'image' => 'image',
             'start_sale' => 'date|nullable',
-            'end_sale' => 'nullable|date|after_or_equal:start_sale',
+            'end_sale' => 'required',
             'active' => 'required|boolean',
             'categories' => 'array',
             'tags' => 'array'

@@ -157,23 +157,18 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group{{ $errors->has('end_sale') ? ' has-error' : '' }}">
-                                <label for="end_sale" class="control-label">end_sale English</label>
-                                <input id="end_sale"
-                                       type="date"
-                                       class="form-control"
-                                       name="end_sale"
-                                       value="{{ $element->end_sale ? $element->end_sale->format('Y-m-d') : null }}"
-                                       placeholder="name in english"
-                                       autofocus>
-                                @if ($errors->has('end_sale'))
-                                    <span class="help-block">
-                                        <strong>
-                                            {{ $errors->first('end_sale') }}
-                                        </strong>
-                                    </span>
-                                @endif
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label">End Sale Date</label>
+                                <div class="input-group date form_datetime">
+                                    <input type="text" size="16" readonly class="form-control" name="end_sale"
+                                           value="{{ $element->end_sale }}">
+                                    <span class="input-group-btn">
+                                                            <button class="btn default date-set" type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-3">

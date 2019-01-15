@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -20,9 +21,9 @@ class ProductController extends Controller
     public function index()
     {
         if (request()->has('type')) {
-            $elements = Product::where(request('type'), true)->with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
+            $elements = Product::where(request('type'), true)->with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->get();
         } else {
-            $elements = Product::with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->paginate(100);
+            $elements = Product::with('gallery', 'product_attributes.size', 'product_attributes.color')->orderBy('id', 'desc')->get();
         }
         return view('backend.modules.product.index', compact('elements'));
     }
@@ -54,8 +55,15 @@ class ProductController extends Controller
      */
     public function store(ProductStore $request)
     {
-        $element = Product::create($request->except(['_token', 'image', 'categories', 'tags','brands']));
+        if($request->has('end_sale')) {
+            $date = str_replace('-','',$request->end_sale);
+            $date = Carbon::parse($date)->toDateTimeString();
+        }
+        $element = Product::create($request->except(['_token', 'image', 'categories', 'tags','brands','end_sale']));
         if ($element) {
+            if($date) {
+                $element->update(['end_sale' => $date]);
+            }
             $element->tags()->sync($request->tags);
             $element->brands()->sync($request->brands);
             $element->categories()->sync($request->categories);
@@ -107,8 +115,15 @@ class ProductController extends Controller
      */
     public function update(ProductUpdate $request, $id)
     {
+        if($request->has('end_sale')) {
+            $date = str_replace('-','',$request->end_sale);
+            $date = Carbon::parse($date)->toDateTimeString();
+        }
         $element = Product::whereId($id)->first();
-        $updated = $element->update($request->except(['_token', 'image', 'tags', 'categories','brands']));
+        $updated = $element->update($request->except(['_token', 'image', 'tags', 'categories','brands','end_sale']));
+        if($date) {
+            $element->update(['end_sale' => $date]);
+        }
         if ($request->hasFile('image')) {
             $this->saveMimes($element, $request, ['image'], ['1080', '1440'], true);
         }

@@ -19,7 +19,6 @@ $(document).ready(function() {
         }
     });
 
-
     $('#main-slider-ar').owlCarousel({
         //items: 1,
         rtl: true,

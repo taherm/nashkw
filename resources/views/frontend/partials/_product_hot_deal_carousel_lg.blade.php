@@ -13,12 +13,14 @@
                                     <img src="{{ asset(env('THUMBNAIL').$element->image) }}"
                                          alt="{{ $element->name }}"/>
                                     <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                    <div class="countdown-wrapper">
-                                        <input type="hidden" name="counter" value="{{ $element->end_sale }}"
-                                               id="dealCountValue{{ $loop->index }}">
-                                        <div id="dealCountdown{{ $loop->index }}"
-                                             class="defaultCountdown clearfix"></div>
-                                    </div>
+                                    @if($element->is_hot_deal && $element->isOnSale)
+                                        <div class="countdown-wrapper">
+                                            <input type="hidden" name="counter" value="{{ $element->end_sale }}"
+                                                   id="dealCountValue{{ $loop->index }}">
+                                            <div id="dealCountdown{{ $loop->index }}"
+                                                 class="defaultCountdown clearfix"></div>
+                                        </div>
+                                    @endif
                                 </a>
                             </div>
                             <div class="caption text-center">

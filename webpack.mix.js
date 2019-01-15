@@ -20,6 +20,7 @@ mix.styles([
     '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
 
     '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css',
+    '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
     '../metronic_v4.5.6/theme/assets/global/plugins/morris/morris.css"',
     '../metronic_v4.5.6/theme/assets/global/plugins/fullcalendar/fullcalendar.min.css"',
     '../metronic_v4.5.6/theme/assets/global/plugins/jqvmap/jqvmap/jqvmap.css"',
@@ -68,7 +69,17 @@ mix.scripts([
         '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
         '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
         '../metronic_v4.5.6/theme/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js',
+
+        '../metronic_v4.5.6/theme/assets/global/plugins/moment.min.js',
+        '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+        // not needed
+        '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+        '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+        '../metronic_v4.5.6/theme/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+
         '../metronic_v4.5.6/theme/assets/global/scripts/app.min.js',
+        '../metronic_v4.5.6/theme/assets/pages/scripts/components-date-time-pickers.min.js',
+
 
         '../metronic_v4.5.6/theme/assets/pages/scripts/components-multi-select.min.js',
         '../metronic_v4.5.6/theme/assets/pages/scripts/components-color-pickers.min.js',

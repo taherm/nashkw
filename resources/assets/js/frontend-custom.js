@@ -82,19 +82,25 @@ $(document).ready(function() {
         var austDay3 = new Date($('#dealCountValue3').attr('value'));
         var austDay4 = new Date($('#dealCountValue4').attr('value'));
         var austDay5 = new Date($('#dealCountValue5').attr('value'));
+        var austDay6 = new Date($('#dealCountValue6').attr('value'));
         var austDay7 = new Date($('#dealCountValue7').attr('value'));
         var austDay8 = new Date($('#dealCountValue8').attr('value'));
         var austDay9 = new Date($('#dealCountValue9').attr('value'));
         var austDay10 = new Date($('#dealCountValue10').attr('value'));
+        var austDay11 = new Date($('#dealCountValue11').attr('value'));
+        var austDay12 = new Date($('#dealCountValue12').attr('value'));
         $('#dealCountdown0').countdown({ until:  austDay0 });
         $('#dealCountdown1').countdown({ until:  austDay1 });
         $('#dealCountdown2').countdown({ until:  austDay2 });
         $('#dealCountdown3').countdown({ until:  austDay3 });
         $('#dealCountdown4').countdown({ until:  austDay4 });
         $('#dealCountdown5').countdown({ until:  austDay5 });
+        $('#dealCountdown6').countdown({ until:  austDay6 });
         $('#dealCountdown7').countdown({ until:  austDay7 });
         $('#dealCountdown8').countdown({ until:  austDay8 });
         $('#dealCountdown9').countdown({ until:  austDay9 });
         $('#dealCountdown10').countdown({ until:  austDay10 });
+        $('#dealCountdown11').countdown({ until:  austDay11 });
+        $('#dealCountdown12').countdown({ until:  austDay12 });
     }
 });

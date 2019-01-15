@@ -1,4 +1,4 @@
-<li class="dropdown flags">
+<li class="dropdown flags hidden-xs">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ app()->isLocale('ar') ? asset('img/flags/kw.png') : asset('images/flags/us.png') }}" alt="{{ app()->getLocale() }}"/> {{ strtoupper(app()->getLocale()) }}<i class="fa fa-angle-down"></i></a>
     <ul role="menu" class="dropdown-menu">
         <li>
