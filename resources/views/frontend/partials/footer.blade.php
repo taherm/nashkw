@@ -134,9 +134,9 @@
                                 <div class="col-lg-3">
                                     <ul>
                                         @foreach($divided as $branch)
-                                                <li><i class="fa fa-map-marker"></i><a class="btn-sm"
-                                                                             href="https://www.google.com/maps/search/?api=1&query={{ $branch->latitude }},{{ $branch->longitude }}">
-                                                        {{ $branch->name }} - {{ $branch->phone }}
+                                                <li><i class="fa fa-map-marker"></i>
+                                                    <a class="btn-sm" href="https://www.google.com/maps/search/?api=1&query={{ $branch->latitude }},{{ $branch->longitude }}">
+                                                        {{ $branch->name }} &nbsp; - &nbsp; {{ $branch->phone }}
                                                     </a>
                                                 </li>
                                         @endforeach
