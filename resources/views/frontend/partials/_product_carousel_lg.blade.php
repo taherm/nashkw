@@ -8,7 +8,7 @@
                         <div class="media">
                             <a class="media-link"
                                @mobile
-                               href="{{ route('frontend.product.show', $element->id) }}"
+                               href="{{ route('frontend.product.show.name', ['name' => str_replace(' ', '-',$element->name), 'id' => $element->id]) }}"
                                @elsemobile
                                data-gal="prettyPhoto"
                                href="{{ asset(env('LARGE').$element->image) }}"
@@ -23,7 +23,7 @@
                         </div>
                         <div class="caption text-center">
                             <h4 class="caption-title"><a
-                                        href="{{ route('frontend.product.show', $element->id) }}">{{ str_limit($element->name,25,'') }}</a>
+                                        href="{{ route('frontend.product.show.name', ['name' => str_replace(' ', '-',$element->name), 'id' => $element->id]) }}">{{ str_limit($element->name,25,'') }}</a>
                             </h4>
                             {{--<div class="rating">--}}
                             {{--<span class="star"></span>--}}

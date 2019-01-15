@@ -56,6 +56,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('product', 'ProductController');
+    Route::get('product/{id}/{name}', 'ProductController@show')->name('product.show.name');
     Route::resource('cart', 'CartController')->only(['index']);
     Route::post('cart/add', 'CartController@addItem')->name('cart.add');
     Route::get('cart/remove/{id}', 'CartController@removeItem')->name('cart.remove');

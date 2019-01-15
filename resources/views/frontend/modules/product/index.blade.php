@@ -140,7 +140,7 @@
                                             </div>
                                             <div class="caption text-center">
                                                 <h4 class="caption-title"><a
-                                                            href="{{ route('frontend.product.show', $element->id) }}">{{ str_limit($element->name,25,'') }}</a>
+                                                            href="{{ route('frontend.product.show.name', ['name' => str_replace(' ', '-',$element->name), 'id' => $element->id]) }}">{{ str_limit($element->name,25,'') }}</a>
                                                 </h4>
                                                 <div class="price">
                                                     @if($element->isOnSale)
@@ -158,7 +158,7 @@
                                                        href="{{ route('frontend.favorite.add', $element->id) }}"><i
                                                                 class="fa fa-heart"></i></a>
                                                     <a class="btn btn-theme btn-theme-transparent btn-icon-left"
-                                                       href="{{ route('frontend.product.show',$element->id) }}"><i
+                                                       href="{{ route('frontend.product.show.name', ['name' => str_replace(' ', '-',$element->name), 'id' => $element->id]) }}"><i
                                                                 class="fa fa-shopping-cart"></i>{{ trans('general.view_product_details') }}
                                                     </a>
                                                     {{--<a class="btn btn-theme btn-theme-transparent btn-compare"--}}
