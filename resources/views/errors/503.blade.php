@@ -128,9 +128,9 @@
     </div>
 </div>
 <footer>
-    <a href="https://www.instagram.com/harayer7/" class="social" target="_blank"><i
+    <a href="https://www.instagram.com/dailydress/" class="social" target="_blank"><i
                 class="fa fa-instagram"></i></a>
-    <a href="https://www.twitter.com/harayer7/" class="social" target="_blank"><i
+    <a href="https://www.twitter.com/dailydress/" class="social" target="_blank"><i
                 class="fa fa-twitter"></i></a>
     </div>
 </footer>

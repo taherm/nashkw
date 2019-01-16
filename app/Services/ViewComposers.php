@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Branch;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Setting;
@@ -133,6 +134,11 @@ class ViewComposers
     {
         $sizes = Size::active()->get();
         return $view->with(compact('sizes'));
+    }
+
+    public function getBrands(View $view) {
+        $brands = Brand::active()->where('is_home', true)->has('products', '>', 0)->take(12)->get();
+        return $view->with(compact('brands'));
     }
 }
 

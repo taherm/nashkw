@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends PrimaryModel
 {
-    public $localeStrings = ['name', 'description'];
+    public $localeStrings = ['name', 'caption','description'];
     protected $guarded = [''];
     use SoftDeletes;
 

@@ -51,6 +51,46 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->has('caption_ar') ? ' has-error' : '' }}">
+                                <label for="caption_ar" class="control-label">caption Arabic*</label>
+                                <input id="caption_ar"
+                                       type="text"
+                                       class="form-control"
+                                       name="caption_ar"
+                                       value="{{ old('caption_ar') }}"
+                                       placeholder="name in arabic"
+                                       required autofocus>
+                                @if ($errors->has('caption_ar'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('caption_ar') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group{{ $errors->has('caption_en') ? ' has-error' : '' }}">
+                                <label for="caption_en" class="control-label">caption English*</label>
+                                <input id="caption_en"
+                                       type="text"
+                                       class="form-control"
+                                       name="caption_en"
+                                       value="{{ old('caption_en') }}"
+                                       placeholder="name in english"
+                                       required autofocus>
+                                @if ($errors->has('caption_en'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('caption_en') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -113,6 +153,17 @@
                                 <label class="radio-inline">
                                     <input type="radio" name="active" id="optionsRadios4"
                                            value="0">not active</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label sbold">is_featured</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_featured" id="optionsRadios3" checked
+                                           value="1"> is_featured</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_featured" id="optionsRadios4"
+                                           value="0">not is_featured</label>
                             </div>
                         </div>
                         {{--<div class="col-md-3">--}}

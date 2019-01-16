@@ -35,15 +35,15 @@ class HomeController extends Controller
         $onSaleProducts = $this->product->active()->hasProductAttribute()->hasGallery()->onSaleOnHomePage()->with('gallery.images', 'favorites')->orderby('end_sale','desc')->take(self::take)->get();
         $bestSalesProducts = $this->product->whereIn('id', $this->product->active()->hasProductAttribute()->hasGallery()->bestSalesProducts())->with('gallery.images', 'favorites')->get();
         $hotDeals = $this->product->active()->hasProductAttribute()->hasGallery()->onSale()->hotDeals()->with('gallery.images', 'favorites')->orderby('end_sale','desc')->take(10)->get();
-//        $brands = Brand::active()->where('is_home', true)->has('products', '>', 0)->take(12)->get();
-        $categoriesMain = Category::where(['is_home' => true])->take(4)->orderBy('order')->get();
+        $categoriesHome = Category::where(['is_home' => true])->take(4)->orderBy('order')->get();
+        $categoriesFeatured = Category::where(['is_featured' => true])->take(4)->orderBy('order')->get();
         return view('frontend.home', compact(
             'newArrivals',
             'onSaleProducts',
             'bestSalesProducts',
-//            'brands',
             'hotDeals',
-            'categoriesMain'
+            'categoriesHome',
+            'categoriesFeatured'
         ));
     }
 

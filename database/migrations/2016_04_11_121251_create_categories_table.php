@@ -17,12 +17,15 @@ class CreateCategoriesTable extends Migration
             $table->integer('parent_id')->unsigned()->default(0)->index();
             $table->string('name_ar');
             $table->string('name_en');
+            $table->string('caption_ar')->nullable();
+            $table->string('caption_en')->nullable();
             $table->mediumText('description_en')->nullable();
             $table->mediumText('description_ar')->nullable();
             $table->string('image')->nullable();
             $table->boolean('limited')->default(0);
             $table->integer('order')->nullable();
             $table->boolean('is_home')->default(0);
+            $table->boolean('is_featured')->default(0);
             $table->boolean('active')->default(1);
             $table->softDeletes();
             $table->timestamps();

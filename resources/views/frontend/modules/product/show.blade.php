@@ -38,8 +38,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                    data-gal="prettyPhoto"
                                    href="{{ asset(env('LARGE').$product->image) }}"
                                    @enddesktop
-                                ><i
-                                            class="fa fa-plus"></i></a>
+                                ><i class="fa fa-plus"></i></a>
                                 <a
                                         @desktop
                                         data-gal="prettyPhoto"
@@ -126,9 +125,9 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                         <hr class="page-divider"/>
                         <div class="product-availability">{{ trans('general.status') }}:
                             <strong>{{ $product->totalQty > 0 ? trans('general.in_stock')  : trans('general.out_of_stock') }}</strong>
-                            {{--{{ $product->totalQty }} {{ trans('general.items') }}--}}
+                            {{ $product->totalQty }} {{ trans('general.items') }}
                         </div>
-                        <hr class="page-divider"/>
+                        {{--<hr class="page-divider"/>--}}
                         <div class="product-text">
                             <h4>{{ trans('general.price') }}</h4>
                         </div>
@@ -168,8 +167,18 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                             @endif
                         </table>
                         <hr class="page-divider small"/>
-                        <hr class="page-divider small"/>
-
+                        <hr class="page-divider"/>
+                        <div class="product-text">
+                            @if($product->description)
+                                <h4>{{ trans('general.description') }}</h4>
+                                <p>{{ $product->description }}</p>
+                            @endif
+                            @if($product->notes)
+                                <h4>{{ trans('general.notes') }}</h4>
+                                <p>{{ $product->notes }}</p>
+                            @endif
+                        </div>
+                        <hr class="page-divider"/>
                         <form class="row variable" method="post" class="cart"
                               action="{{ route('frontend.cart.add') }}">
                             @csrf
@@ -210,17 +219,17 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                             <div class="col-lg-12">
                                 <div class="buttons">
                                     <div class="quantity">
-                                        <a class="btn qty-decrease"><i class="fa fa-minus"></i></a>
+                                        <a class="btn qty-decrease btn-qty"><i class="fa fa-minus"></i></a>
                                         <input class="form-control qty" type="text" name="qty"
                                                value="1"
                                                title="{{ trans('general.quantity') }}"
                                                id="qty">
                                         <a class="btn qty-increase btn-qty"><i class="fa fa-plus"></i></a>
                                     </div>
-                                    <button class="btn btn-theme btn-cart btn-icon-left" type="submit"><i
-                                                class="fa fa-shopping-cart"></i>{{ trans('general.add_to_cart') }}
+                                    <button class="btn btn-theme btn-cart btn-icon-left" type="submit">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        {{ trans('general.add_to_cart') }}
                                     </button>
-                                    <hr class="page-divider small hidden-md"/>
                                     @if($product->isFavorited)
                                         <a class="btn btn-theme btn-wish-list btn-outline-danger"
                                            href="{{ route("frontend.favorite.remove", $product->id) }}"><span
@@ -237,62 +246,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                 </div>
                             </div>
                         </form>
-
-                        <hr class="page-divider"/>
-                        <div class="product-text">
-                            @if($product->description)
-                                <h4>{{ trans('general.description') }}</h4>
-                                <p>{{ $product->description }}</p>
-                            @endif
-                            @if($product->notes)
-                                <h4>{{ trans('general.notes') }}</h4>
-                                <p>{{ $product->notes }}</p>
-                            @endif
-                        </div>
-                        <hr class="page-divider"/>
-
-                        <table>
-                            <tr>
-                                <td class="title">{{ trans('general.categories') }}:</td>
-                                <td>
-                                    @foreach($product->categories as $cat)
-                                        <a href="{{ route('frontend.product.search',['category_id' => $cat->id]) }}">
-                                            {{ $cat->name }},
-                                        </a>
-                                    @endforeach
-                                </td>
-                            </tr>
-                            @if($product->sku)
-                                <tr>
-                                    <td class="title">{{ trans('general.sku') }}:</td>
-                                    <td>{{ $product->sku }}</td>
-                                </tr>
-                            @endif
-                            @if(!$product->tags->isEmpty())
-                                <tr>
-                                    <td class="title">{{ trans("general.tags") }}:</td>
-                                    <td>
-                                        @foreach($product->tags as $tag)
-                                            <a href="{{ route('frontend.product.search',['tag_id' => $tag->id]) }}">
-                                                {{ $tag->slug }},
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            @endif
-                            @if(!$product->brands->isEmpty())
-                                <tr>
-                                    <td class="title">{{ trans("general.brands") }}:</td>
-                                    <td>
-                                        @foreach($product->brands as $brand)
-                                            <a href="{{ route('frontend.product.search',['brand_id' => $brand->id]) }}">
-                                                {{ $brand->slug }},
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            @endif
-                        </table>
+                        @include('frontend.partials._product_show_categories')
                         <hr class="page-divider small"/>
                         @include('frontend.partials._social_btns')
 
@@ -302,32 +256,12 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
             </div>
         </section>
 
+        <!-- /PAGE -->
         @include('frontend.partials._product_carousel_lg',['elements' => $products, 'title' => trans('general.related_products')])
+        @if($brands->isNotEmpty())
+            @include('frontend.partials._brands_carousel',['bands' => $brands])
+        @endif
     </div>
-    {{--<div class="single-page-area shop-product-area">--}}
-    {{--@include('frontend.partials._breadcrumbs',['name' => $product->name])--}}
-
-    {{--<!-- Single Product details Area -->--}}
-    {{--<div class="single-product-details-area">--}}
-    {{--<div class="single-product-view-area">--}}
-    {{--<div class="container">--}}
-    {{--<div class="row">--}}
-    {{--@include('frontend.partials._product_show_gallery')--}}
-    {{--@include('frontend.partials._product_show_product_data')--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<!--product-Description-area start-->--}}
-    {{--@include('frontend.modules.product.partials.productDescription')--}}
-
-    {{--<!--related-products-area start-->--}}
-    {{--@if(!$products->isEmpty())--}}
-    {{--@include('frontend.modules.product.partials.product_carousel',[$products ,'heading'=> trans('general.related_products'),'backgroundColor'=>'#e7e7e7', 'cols' => 'col-lg-3 col-md-3 col-sm-3'])--}}
-    {{--@endif--}}
-    {{--</div>--}}
-    {{--</div>--}}
     <!-- Single Product Area end -->
     <!-- Creates the bootstrap modal where the image will appear -->
     {{-- moved to modal blade quick view--}}

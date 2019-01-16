@@ -66,22 +66,33 @@ class ComposerServiceProvider extends ServiceProvider
             'frontend.partials._pop_up_cart',
             'frontend.modules.cart.index'
         ], 'App\Services\ViewComposers@getCurrency');
+
+
         view()->composer([
             'frontend.partials._top_bar_currencies',
         ], 'App\Services\ViewComposers@getCurrencies');
+
+
         view()->composer([
             'frontend.partials.header_one',
             'frontend.partials.header_four',
         ], 'App\Services\ViewComposers@getCategories');
+
         view()->composer([
             'frontend.layouts.app',
             'backend.layouts.app',
             'frontend.modules.product.show',
             'frontend.modules.page.show',
         ], 'App\Services\ViewComposers@getSettings');
+
         view()->composer([
             'frontend.layouts.app',
         ], 'App\Services\ViewComposers@getPages');
+
+        view()->composer([
+            'frontend.home',
+            'frontend.modules.product.show'
+        ], 'App\Services\ViewComposers@getBrands');
 
         view()->composer([
             'backend.modules.product.attribute.create',
@@ -90,6 +101,8 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer([
             'backend.modules.product.attribute.create',
         ], 'App\Services\ViewComposers@getActiveColors');
+
+
     }
 
     /**

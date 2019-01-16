@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             {{--{{ dd($categories) }}--}}
-            @foreach($categoriesMain->where('is_home', true)->sortBy('order') as $parent)
+            @foreach($categoriesHome->where('is_home', true)->sortBy('order') as $parent)
                 <div class="col-md-6">
                     <div class="thumbnail no-border no-padding thumbnail-banner size-2x3">
                         <div class="media">
