@@ -118,8 +118,8 @@
 <div class="container">
     <div class="content">
         <div class="header">
-            <a href="{{ asset('images/brochure.pdf') }}">
-                <img src="{{ asset('images/soon.jpeg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
+            <a href="#">
+                <img src="{{ asset('images/logo.jpg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
             </a>
         </div>
         <div class="title">
