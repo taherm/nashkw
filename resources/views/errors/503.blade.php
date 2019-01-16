@@ -1,138 +1,91 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
 <head>
-    <title>{{ config('app.name') }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <title>{{ env('APP_NAME') }}</title>
+
+    <link rel="shortcut icon" href="{{ asset('images/logo.ico') }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/logo.jpg') }}">
+    <link href="{{ asset('images/logo.jpg') }}" rel="shortcut icon" type="image/jpg">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Styles -->
     <style>
         html, body {
-            height: auto;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            color: #B0BEC5;
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
             font-weight: 100;
-            font-family: 'Lato', sans-serif;
-            display: flex;
-            width: 100%;
-            height: auto;
-            flex-direction: column;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
-            flex-wrap: nowrap;
+            height: 100vh;
+            margin: 0;
         }
 
-        .container {
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
+        .full-height {
+            height: 100vh;
+        }
 
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
         }
 
         .content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            align-self: center;
             text-align: center;
-            flex-wrap: nowrap;
         }
 
         .title {
-            font-size: 72px;
-            margin-top: 13%;
+            font-size: 84px;
         }
 
-        .link {
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
             text-decoration: none;
-            font-size: 72px;
-            color: darkgoldenrod;
+            text-transform: uppercase;
         }
 
-        @media only screen and (max-width: 400px) {
-            .pdf-frame {
-                width: 200px;
-                min-height: 500px;
-            }
-        }
-
-        @media screen and (max-width: 400px) and (min-width: 1000px), (min-width: 1100px) {
-            .pdf-frame {
-                width: 600px;
-                min-height: 500px;
-            }
-        }
-
-        .header {
-            width: 100%;
-            height: 20%;
-            background-color: white;
-            margin-bottom: 10px;
-            clear: both;
-            border-bottom: 1px solid darkgoldenrod;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 3%;
-            padding: 20px;
-            border-top: 1px solid whitesmoke;
-            background-color: lightgrey;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            align-self: center;
-        }
-
-        a {
-            color: darkgoldenrod;
-        }
-
-        .social {
-            font-size: 25px;
-            text-align: center;
-            margin: 20px
-        }
-
-        .img-logo {
-            width: 20%;
-            height: auto;
-            max-height: 150px;
-            border-radius: 10px;
-        }
-
-        .img-brochure {
-            width: 50%;
-            height: auto;
+        .m-b-md {
+            margin-bottom: 30px;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 </head>
 <body>
-<div class="container">
+<div class="flex-center position-ref full-height">
+
     <div class="content">
-        <div class="header">
-            <a href="#">
-                <img src="{{ asset('images/logo.jpg') }}" alt="{{ env('APP_NAME') }}" class="img-logo"/>
-            </a>
+        <div class="title m-b-md">
+            {{ env('APP_NAME') }}
         </div>
-        <div class="title">
-                {{ $exception->getMessage() }}
+        <div class="title m-b-md">
+            <img src="{{ asset('images/logo.jpg') }}" alt="">
+        </div>
+
+        <div class="title m-b-md">
+            {{ $exception->getMessage()  }}
+        </div>
+
+        <div class="links">
+            <a href="https://www.instagram.com/daily.dress/"><i class="fa fa-fw fa-instagram fa-2x"></i></a>
         </div>
     </div>
 </div>
-<footer>
-    <a href="https://www.instagram.com/dailydress/" class="social" target="_blank"><i
-                class="fa fa-instagram"></i></a>
-    <a href="https://www.twitter.com/dailydress/" class="social" target="_blank"><i
-                class="fa fa-twitter"></i></a>
-    </div>
-</footer>
 </body>
 </html>
