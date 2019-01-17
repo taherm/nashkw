@@ -2,17 +2,17 @@
 
 use App\Models\Page;
 use Faker\Generator as Faker;
-
-$factory->define(Page::class, function (Faker $faker) {
+$fakerAr = \Faker\Factory::create('ar_JO');
+$factory->define(Page::class, function (Faker $faker) use($fakerAr) {
     return [
-        'title_ar' => $faker->name,
+        'title_ar' => $fakerAr->realText(20),
         'title_en' => $faker->name,
-        'slug_ar' => $faker->name,
+        'slug_ar' => $fakerAr->realText(20),
         'slug_en' => $faker->name,
         'image' => $faker->numberBetween(1, 10) . '.jpg',
-        'content_ar' => $faker->paragraph,
-        'url' => $faker->url,
+        'content_ar' => $fakerAr->realText(200),
         'content_en' => $faker->paragraph,
+        'url' => $faker->url,
         'order' => $faker->numberBetween(1, 10),
         'active' => $faker->boolean,
         'on_footer' => $faker->boolean,

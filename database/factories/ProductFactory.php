@@ -3,11 +3,12 @@
 use App\Models\Product;
 use Faker\Generator as Faker;
 
-$factory->define(Product::class, function (Faker $faker) {
+$fakerAr = \Faker\Factory::create('ar_JO');
+$factory->define(Product::class, function (Faker $faker) use ($fakerAr) {
     return [
         'sku' => $faker->postcode,
         'active' => $faker->boolean,
-        'name_ar' => $faker->name,
+        'name_ar' => $fakerAr->realText(20),
         'name_en' => $faker->name,
         'weight' => $faker->randomDigit,
         'home_delivery_availability' => $faker->boolean,
@@ -20,12 +21,12 @@ $factory->define(Product::class, function (Faker $faker) {
             return $array['price'] - rand(1, 5);
         },
 //        'home_delivery_fees' => $faker->boolean,
-        'size_chart_image' => $faker->numberBetween(1, 10) . '.jpg',
+        'size_chart_image' => $faker->numberBetween(1, 42) . '.jpeg',
         'description_en' => $faker->paragraph,
-        'description_ar' => $faker->paragraph,
-        'notes_ar' => $faker->paragraph,
+        'description_ar' => $fakerAr->realText(),
+        'notes_ar' => $fakerAr->realText(),
         'notes_en' => $faker->paragraph,
-        'image' => $faker->numberBetween(1, 10) . '.jpg',
+        'image' => $faker->numberBetween(1, 42) . '.jpeg',
         'start_sale' => $faker->dateTime('now'),
         'end_sale' => $faker->dateTimeBetween('now', '1 year'),
         'check_stock' => $faker->boolean,

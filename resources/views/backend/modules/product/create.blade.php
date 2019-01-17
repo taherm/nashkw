@@ -171,7 +171,7 @@
                                 <label class="control-label">End Sale Date</label>
                                 <div class="input-group date form_datetime">
                                     <input type="text" size="16" readonly class="form-control" name="end_sale"
-                                           value="{{ old('end_sale') }}" required>
+                                           value="{{ old('end_sale') ? old('end_sale') : '01 January 2019 - 07:55' }}" required>
                                     <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
                                 </div>
                             </div>
