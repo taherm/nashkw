@@ -200,17 +200,16 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     padding: 10px;
 }
 
+
+.header .header-wrapper {
+    padding : 5px 0 !important;
+}
 .top-bar{
     background-color: black !important;
 }
 
-.header .header-wrapper>.container {
-    min-height: 100px;
-}
-
-.header .header-wrapper {
-    padding : 0px;
-    padding-top : 10px;
+.header-search , .header-cart {
+    top: 33px !important;
 }
 
 .logo {
@@ -247,13 +246,5 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
 .defaultCountdown {
     background-color: black !important;
     opacity : 1;
-}
-
-.vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one :-)       */
-
-    display: flex;
-    align-items: center;
 }
 

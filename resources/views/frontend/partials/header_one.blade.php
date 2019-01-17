@@ -1,8 +1,8 @@
 <!-- HEADER -->
-<header class="header fixed">
+<header class="header">
     @include('frontend.partials._top_bar')
     <div class="header-wrapper hidden-xs">
-        <div class="container vertical-center">
+        <div class="container">
 
             <!-- Logo -->
             <div class="logo hidden-xs">
