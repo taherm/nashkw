@@ -8,6 +8,12 @@
         <button onClick="window.print()" class="btn btn-warning">Print</button>
     </div>
     <div class="col-lg-12" style="background-color: white">
+        <div class="col-lg-12" style="background-color: white">
+            <div class="col-lg-12">
+                <img class="img-med img-responsive center-block" src="{{ asset(env('THUMBNAIL').$settings->logo) }}" alt="{{ $settings->company }}">
+            </div>
+            <br>
+            <hr>
         <div class="col-lg-6 col-lg-push-3 col-sm-12">
             <table align="center" cellpadding="0" cellspacing="0" class="container-for-gmail-android"
                    width="100%">
@@ -17,8 +23,8 @@
                         <center>
                             <table cellspacing="0" cellpadding="0" width="100%" class="w320">
                                 <tr>
-                                    <td class="header-lg">
-                                        {{ trans('general.order_details') }}
+                                    <td class="header-lg text-center">
+                                        <h1 class="text-center">order details</h1>
                                     </td>
                                 </tr>
                                 <tr>

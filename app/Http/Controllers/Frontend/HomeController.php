@@ -31,10 +31,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newArrivals = $this->product->active()->hasProductAttribute()->hasGallery()->onHomePage()->orderBy('created_at', 'desc')->with('gallery.images', 'favorites')->take(self::take)->get();
-        $onSaleProducts = $this->product->active()->hasProductAttribute()->hasGallery()->onSaleOnHomePage()->with('gallery.images', 'favorites')->orderby('end_sale','desc')->take(self::take)->get();
-        $bestSalesProducts = $this->product->whereIn('id', $this->product->active()->hasProductAttribute()->hasGallery()->bestSalesProducts())->with('gallery.images', 'favorites')->get();
-        $hotDeals = $this->product->active()->hasProductAttribute()->hasGallery()->onSale()->hotDeals()->with('gallery.images', 'favorites')->orderby('end_sale','desc')->take(10)->get();
+        $newArrivals = $this->product->active()->hasProductAttribute()->hasGallery()->onHomePage()->orderBy('created_at', 'desc')->take(self::take)->get();
+        $onSaleProducts = $this->product->active()->hasProductAttribute()->hasGallery()->onSaleOnHomePage()->with('gallery')->orderby('end_sale','desc')->take(self::take)->get();
+        $bestSalesProducts = $this->product->whereIn('id', $this->product->active()->hasProductAttribute()->hasGallery()->bestSalesProducts())->with('gallery')->get();
+        $hotDeals = $this->product->active()->hasProductAttribute()->hasGallery()->onSale()->hotDeals()->orderby('end_sale','desc')->take(10)->get();
         $categoriesHome = Category::where(['is_home' => true])->take(4)->orderBy('order')->get();
         $categoriesFeatured = Category::where(['is_featured' => true])->take(4)->orderBy('order')->get();
         return view('frontend.home', compact(

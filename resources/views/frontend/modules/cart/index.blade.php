@@ -154,7 +154,7 @@
                                 {{--cart--}}
                                 {{--@auth--}}
                                     <div>
-                                        <input type="hidden" class="cart_count" name="cart_count" value="{{ $cart->count() }}">
+                                        <input type="hidden" class="cart_count" name="cart_count" value="{{ $cart->sum('qty') }}">
                                         <input type="hidden" name="charge" class="charge" value="">
                                         <input type="hidden" name="grandTotal" class="grandTotal"
                                                value="{{ getCartNetTotal() }}">
