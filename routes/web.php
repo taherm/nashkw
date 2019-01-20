@@ -53,8 +53,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend.
 });
 
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []], function () {
-    Route::get('/', 'HomeController@index')->name('index');
-    Route::get('/home', 'HomeController@index')->name('home');
+//    Route::get('/', 'HomeController@index')->name('index');
+//    Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('product', 'ProductController');
     Route::get('product/{id}/{name}', 'ProductController@show')->name('product.show.name');
     Route::resource('cart', 'CartController')->only(['index']);

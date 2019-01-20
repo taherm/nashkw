@@ -4,13 +4,10 @@
 
 @section('body')
 
-    <!-- PAGE -->
-    <section class="page-section no-padding slider slider-wrapper">
-        <div class="container full-width">
+    <!-- Slider -->
             @include('frontend.partials.slider')
-        </div>
-    </section>
     <!-- /PAGE -->
+
 
     <!-- Categories On Sale -->
     @if($categoriesFeatured->isNotEmpty())

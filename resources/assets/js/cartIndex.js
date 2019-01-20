@@ -58,11 +58,29 @@ $(document).ready(function() {
             $('#grossTotal').html(`${grossTotal}`);
             $('#forward').removeAttr('disabled');
         } else {
+            // old code that works with just OneCharge Price for each order
+            // $('.charge').attr('value', charge);
+            // var grandTotal = $('.grandTotal').attr('value');
+            // console.log('isnull', isNaN(charge));
+            // $('#chargeVal').html(parseFloat(!isNaN(charge) ? charge : 0));
+            // var grossTotal = parseFloat(grandTotal) + parseFloat(!isNaN(charge) ? charge : 0);
+            // $('.grossTotal').attr('value', grossTotal);
+            // $('.grandTotal').attr('value', grandTotal);
+            // $('#grossTotal').html(`${grossTotal}`);
+            // $('#forward').removeAttr('disabled');
+
+
+            // here we will calculate the shipment according to number of products
             $('.charge').attr('value', charge);
-            var grandTotal = $('.grandTotal').attr('value');
+            var cartCount = parseFloat($('.cart_count').attr('value'));
+            var finalShipment = parseFloat(cartCount * charge);
+            $('.charge').attr('value', charge);
+            console.log('cartCount', cartCount);
+            console.log('finalShipment', finalShipment);
             console.log('isnull', isNaN(charge));
-            $('#chargeVal').html(parseFloat(!isNaN(charge) ? charge : 0));
-            var grossTotal = parseFloat(grandTotal) + parseFloat(!isNaN(charge) ? charge : 0);
+            var grandTotal = $('.grandTotal').attr('value');
+            $('#chargeVal').html(parseFloat(!isNaN(finalShipment) ? finalShipment : 0));
+            var grossTotal = parseFloat(grandTotal) + parseFloat(!isNaN(finalShipment) ? finalShipment : 0);
             $('.grossTotal').attr('value', grossTotal);
             $('.grandTotal').attr('value', grandTotal);
             $('#grossTotal').html(`${grossTotal}`);
