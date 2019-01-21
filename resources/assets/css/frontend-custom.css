@@ -226,14 +226,6 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     background-color: white !important;
 }
 
-@media (max-width: 767px) {
-    .sticky-wrapper .header {
-        position: fixed !important;
-    }
-    .slider-wrapper {
-        margin-top: 54px;
-    }
-}
 
 .page-section.breadcrumbs {
     padding-top: 21px;
@@ -249,4 +241,24 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     color : darkdarkred;
     min-height: 44px;
     font-weight: bolder;
+}
+
+@media (max-width: 767px) {
+    .sticky-wrapper .header {
+        position: fixed !important;
+    }
+    .slider-wrapper {
+        margin-top: 54px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        padding-top: 0;
+        margin-bottom: 10px;
+        min-height: 50px; !important;
+    }
+    .main-slider {
+        margin-top: 120px !important;
+    }
 }

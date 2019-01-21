@@ -1,11 +1,11 @@
 <!-- HEADER -->
 <header class="header">
     @include('frontend.partials._top_bar')
-    <div class="header-wrapper hidden-xs">
+    <div class="header-wrapper">
         <div class="container">
 
             <!-- Logo -->
-            <div class="logo hidden-xs">
+            <div class="logo">
                 <a href="{{ route('home') }}"><img class="img-sm center-block" src="{{ asset(env('LARGE').$settings->logo) }}" alt="{{ $settings->company_ar .' '.$settings->company_en }}"/></a>
             </div>
             <!-- /Logo -->
