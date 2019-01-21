@@ -26,8 +26,9 @@ $(document).ready(function() {
                             $('#branch').append(`<option value="${v.id}">${v.name}</option>`);
                         });
                     }).catch(e => console.log(e));
-                    var grandTotal = $('.grandTotal').attr('value');
                     $('#chargeVal').html('0');
+                    $('.charge').attr('value', 0);
+                    var grandTotal = $('.grandTotal').attr('value');
                     $('.grossTotal').attr('value', grandTotal);
                     $('.grandTotal').attr('value', grandTotal);
                     $('#grossTotal').html(`<p>${grandTotal}</p>`);
@@ -71,13 +72,12 @@ $(document).ready(function() {
 
 
             // here we will calculate the shipment according to number of products
-            $('.charge').attr('value', charge);
             var cartCount = parseFloat($('.cart_count').attr('value'));
             var finalShipment = parseFloat(cartCount * charge);
-            $('.charge').attr('value', charge);
             console.log('cartCount', cartCount);
             console.log('finalShipment', finalShipment);
             console.log('isnull', isNaN(charge));
+            $('.charge').attr('value', finalShipment);
             var grandTotal = $('.grandTotal').attr('value');
             $('#chargeVal').html(parseFloat(!isNaN(finalShipment) ? finalShipment : 0));
             var grossTotal = parseFloat(grandTotal) + parseFloat(!isNaN(finalShipment) ? finalShipment : 0);

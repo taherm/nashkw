@@ -131,6 +131,7 @@
                 <thead>
                 <tr>
                     <th class="product-thumbnail hidden">{{ trans('cart.image') }}</th>
+                    <th class="product-thumbnail">{{ trans('general.sku') }}</th>
                     <th class="product-thumbnail">{{ trans('cart.color') }}</th>
                     <th class="product-thumbnail">{{ trans('cart.size') }}</th>
                     <th class="product-name">{{ trans('cart.product_name') }}</th>
@@ -151,6 +152,7 @@
                                 </a>
                             </td>
 
+                            <td class="product-thumbnail">{{ $item->product->sku }}</td>
                             <td class="product-thumbnail">{{ $item->product_attribute->colorName }}</td>
                             </td>
 
