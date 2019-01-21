@@ -246,5 +246,7 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
 .defaultCountdown {
     background-color: black !important;
     opacity : 1;
+    color : darkgoldenrod;
+    min-height: 44px;
+    font-weight: bolder;
 }
-

@@ -77,7 +77,6 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                         @if(!$product->gallery->images->isEmpty())
                             <div class="row product-thumbnails">
                                 <div class="col-xs-2 col-sm-2 col-md-3">
-
                                     <a
                                             @desktop
                                             data-gal="prettyPhoto"
@@ -123,14 +122,13 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                         </div>
                         <h2 class="product-title">{{ $product->name }}</h2>
                         <hr class="page-divider"/>
-                        <div class="product-availability">{{ trans('general.status') }}:
-                            <strong>{{ $product->totalQty > 0 ? trans('general.in_stock')  : trans('general.out_of_stock') }}</strong>
-                            {{ $product->totalQty }} {{ trans('general.items') }}
-                        </div>
-                        {{--<hr class="page-divider"/>--}}
                         <div class="product-text">
+                            <div class="product-availability pull-left hidden-xs">{{ trans('general.status') }}:
+                                <strong>{{ $product->totalQty > 0 ? trans('general.in_stock')  : trans('general.out_of_stock') }}</strong> {{ $product->totalQty }} {{ trans('general.items') }}
+                            </div>
                             <h4>{{ trans('general.price') }}</h4>
                         </div>
+                        <hr class="dropdown-divider"/>
                         @if($currency->symbol_en != 'kwd')
                             <div class="pull-{{ app()->isLocale('ar') ? 'left' : 'right' }} hidden-xs">
                                 @include('frontend.partials._top_bar_currencies')
@@ -166,6 +164,14 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                 </tr>
                             @endif
                         </table>
+                        @if($product->is_hot_deal && $product->isOnSale)
+                            <div class="countdown-wrapper">
+                                <input type="hidden" name="counter" value="{{ $product->end_sale }}"
+                                       id="dealCountValue0">
+                                <div id="dealCountdown0"
+                                     class="defaultCountdown clearfix"></div>
+                            </div>
+                        @endif
                         <hr class="page-divider small"/>
                         <hr class="page-divider"/>
                         <div class="product-text">
