@@ -1,13 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=29d29fd300476ee8c69b",
-    "/css/app.css": "/css/app.css?id=943ad87b58616383f50a",
-    "/css/backend.css": "/css/backend.css?id=1da114c489aef20839ed",
-    "/js/backend.js": "/js/backend.js?id=427026c5afd07af84941",
-    "/js/tinymce.min.js": "/js/tinymce.min.js?id=4d2e0997bdd9667645fe",
-    "/js/backend-custom.js": "/js/backend-custom.js?id=36d621b7663acdb338ea",
-    "/css/frontend.css": "/css/frontend.css?id=59e6b89186e14bb84212",
-    "/css/frontend-rtl.css": "/css/frontend-rtl.css?id=4e29ed25f0db5204609d",
-    "/js/frontend.js": "/js/frontend.js?id=e9ebae721622cec67157",
-    "/js/frontend-rtl.js": "/js/frontend-rtl.js?id=915cb7c0dcc9ef90cb5a",
-    "/js/jquery.prettyPhoto.min.js": "/js/jquery.prettyPhoto.min.js?id=c9caf24f20b83d0b0bb7"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/backend.css": "/css/backend.css",
+    "/js/backend.js": "/js/backend.js",
+    "/js/tinymce.min.js": "/js/tinymce.min.js",
+    "/js/backend-custom.js": "/js/backend-custom.js",
+    "/css/frontend.css": "/css/frontend.css",
+    "/css/frontend-rtl.css": "/css/frontend-rtl.css",
+    "/js/frontend.js": "/js/frontend.js",
+    "/js/frontend-rtl.js": "/js/frontend-rtl.js",
+    "/js/jquery.prettyPhoto.min.js": "/js/jquery.prettyPhoto.min.js"
 }

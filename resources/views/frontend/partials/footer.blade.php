@@ -115,11 +115,11 @@
                     <div class="widget widget-tag-cloud">
                         <h4 class="widget-title">{{ $settings->company }}</h4>
                         <div class="center-block text-center">
-                            <a href="https://itunes.apple.com/kw/app/daily-dress/id1112697122?mt=8">
+                            <a href="https://itunes.apple.com/kw/app/nash/id1112697122?mt=8">
                                 <img src="{{ asset('images/apple.png') }}" style="max-width: 100px; margin: 10px"
                                      alt="{{ $settings->company_ar .' '. $settings->company_en}}">
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.dailydressapp">
+                            <a href="https://play.google.com/store/apps/details?id=com.nashapp">
                                 <img src="{{ asset('images/google.png') }}" style="max-width: 100px; margin: 10px;"
                                      alt="{{ $settings->company_ar .' '. $settings->company_en}}">
                             </a>

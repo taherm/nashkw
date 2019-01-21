@@ -168,7 +168,7 @@ return array (
   'submit' => 'submit',
   'best_sale_products' => 'Best Sale Products',
   'meta_description' => 'عبايات الكويت حراير لمسة عباية  روعة التصميم
-dailydress dailydress abaia abaya abayat',
+nash nash abaia abaya abayat',
   'back_to' => 'Back to',
   'approx' => 'approx',
   'in_stock' => 'In Stock',

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Hind Siliguri';
+    src: url('fonts/HindSiliguri-Medium.ttf') format('truetype');
+    font-style: normal;
+}
+
+body, div, a, span, table, p, form, input, h1, h2, h3, h4, input, tr, td, ul, li {
+    font-family: 'Hind Siliguri', sans-serif !important;
+}

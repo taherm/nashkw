@@ -100,8 +100,9 @@ mix.styles([
         '../bella/bella-files/bella/assets/plugins/animate/animate.min.css',
         '../bella/bella-files/bella/assets/plugins/countdown/jquery.countdown.css',
         '../bella/bella-files/bella/assets/css/theme.css',
-        '../bella/bella-files/bella/assets/css/theme-gold.css',
+        'resources/assets/css/theme.css',
         'resources/assets/css/frontend-custom.css',
+        'resources/assets/css/frontend-custom-en.css',
     ]
     , 'public/css/frontend.css');
 mix.styles([
@@ -115,7 +116,8 @@ mix.styles([
     '../bella/bella-files/bella-rtl/assets/plugins/animate/animate.min.css',
     '../bella/bella-files/bella-rtl/assets/plugins/countdown/jquery.countdown.css',
     '../bella/bella-files/bella-rtl/assets/css/theme.css',
-    '../bella/bella-files/bella-rtl/assets/css/theme-gold.css',
+    // '../bella/bella-files/bella-rtl/assets/css/theme-gold.css',
+    'resources/assets/css/theme.css',
     'resources/assets/css/frontend-custom.css',
     'resources/assets/css/frontend-custom-ar.css',
     'resources/assets/js/cartIndex.js'
