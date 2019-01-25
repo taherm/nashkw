@@ -39,20 +39,20 @@
                         <li><a href="{{ $page->url }}">{{ $page->slug }}</a></li>
                     @endforeach
                 @endif
-                <li class="hidden-lg">
+                <li class="visible-sm">
                     <a class="no-child"
                        href="https://api.whatsapp.com/send?phone={{ $settings->whatsapp  }}">{{ trans('general.whatsapp') }}</a>
                 </li>
-                <li class="hidden-lg">
+                <li class="visible-sm">
                     <a class="no-child"
                        href="tel:{{ $settings->mobile }}">{{ trans('general.mobile') }}</a>
                 </li>
-                <li class="hidden-md">
+                <li class="visible-sm">
                     <a href="{{ route('frontend.language.change',['locale' => 'ar']) }}">
                         {{ trans('general.arabic') }}
                     </a>
                 </li>
-                <li class="hidden-md">
+                <li class="visible-sm">
                     <a href="{{ route('frontend.language.change',['locale' => 'en']) }}">
                         {{ trans('general.english') }}
                     </a>

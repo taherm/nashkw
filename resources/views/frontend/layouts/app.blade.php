@@ -2,12 +2,6 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     @section('head')
-        <meta charset="utf-8">
-        <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="{{ config('app.name') }}" content="E-commerce">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
         @include('frontend.partials.head')
     @show
     @section('styles')
