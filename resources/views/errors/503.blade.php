@@ -83,7 +83,7 @@
         </div>
 
         <div class="links">
-            <a href="https://www.instagram.com/daily.dress/"><i class="fa fa-fw fa-instagram fa-2x"></i></a>
+            <a href="https://www.instagram.com/nash.boutiqe/"><i class="fa fa-fw fa-instagram fa-2x"></i></a>
         </div>
     </div>
 </div>
