@@ -108,7 +108,7 @@ class ViewComposers
 
     public function getBranches(View $view)
     {
-        $branches = Branch::active()->get();
+        $branches = Branch::active()->with('country')->get();
         return $view->with(compact('branches'));
     }
 

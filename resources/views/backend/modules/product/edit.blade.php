@@ -234,6 +234,25 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group{{ $errors->has('video_url') ? ' has-error' : '' }}">
+                                <label for="video_url" class="control-label">video_url english</label>
+                                <input id="video_url"
+                                       type="text"
+                                       class="form-control"
+                                       name="video_url"
+                                       value="{{ $element->video_url }}"
+                                       placeholder="video_url arabic"
+                                       autofocus>
+                                @if ($errors->has('video_url'))
+                                    <span class="help-block">
+                                        <strong>
+                                            {{ $errors->first('video_url') }}
+                                        </strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                     </div>
 
 

@@ -126,26 +126,7 @@
                         </div>
                     </div>
                 </div>
-                @if($branches->isNotEmpty())
-                    <div class="col-lg-12">
-                        <div class="widget">
-                            <h4 class="widget-title">{{ trans('general.branches') }}</h4>
-                            @foreach($branches->chunk(3) as $divided)
-                                <div class="col-lg-3">
-                                    <ul>
-                                        @foreach($divided as $branch)
-                                                <li><i class="fa fa-map-marker"></i>
-                                                    <a class="btn-sm" href="https://www.google.com/maps/search/?api=1&query={{ $branch->latitude }},{{ $branch->longitude }}">
-                                                        {{ $branch->name }} &nbsp; - &nbsp; {{ $branch->phone }}
-                                                    </a>
-                                                </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
+                @include('frontend.partials._branches_footer')
             </div>
         </div>
     </div>

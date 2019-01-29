@@ -46,12 +46,10 @@ class ComposerServiceProvider extends ServiceProvider
             'auth.register',
         ], 'App\Services\ViewComposers@getCountriesWorld');
 
-        view()->composer([
-            'frontend.modules.cart.index',
-        ], 'App\Services\ViewComposers@getBranches');
 
         view()->composer([
-            'frontend.partials.footer'], 'App\Services\ViewComposers@getBranches');
+            'frontend.modules.cart.index',
+            'frontend.partials._branches_footer'], 'App\Services\ViewComposers@getBranches');
 
         view()->composer([
             'frontend.home',

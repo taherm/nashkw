@@ -26,7 +26,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('backend.modules.branch.create');
+        $countries = Country::all();
+        return view('backend.modules.branch.create',compact('countries'));
     }
 
     /**
@@ -74,7 +75,8 @@ class BranchController extends Controller
     public function edit($id)
     {
         $element = Branch::whereId($id)->first();
-        return view('backend.modules.branch.edit', compact('element'));
+        $countries = Country::all();
+        return view('backend.modules.branch.edit', compact('element', compact('countries')));
     }
 
     /**

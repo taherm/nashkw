@@ -45,7 +45,8 @@ class ProductUpdate extends FormRequest
             'end_sale' => 'required',
             'active' => 'required|boolean',
             'categories' => 'array',
-            'tags' => 'array'
+            'tags' => 'array',
+            'video_url' => 'nullable|url'
         ];
     }
 }

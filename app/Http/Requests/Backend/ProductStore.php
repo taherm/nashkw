@@ -46,7 +46,8 @@ class ProductStore extends FormRequest
             'end_sale' => 'required',
             'active' => 'required|boolean',
             'categories' => 'required|array',
-            'tags' => 'required|array'
+            'tags' => 'required|array',
+            'video_url' => 'nullable|url'
         ];
     }
 }
