@@ -269,4 +269,6 @@ return array (
   'favorites' => 'المفضلة',
   'information_review' => 'مراجعة البيانات',
   'branches' => 'فروعنا',
+  'not_a_member' => 'سجل معنا',
+  'hot_deals' => 'افضل العروض',
 );
