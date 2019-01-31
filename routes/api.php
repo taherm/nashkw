@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('size', function () {
-    $productAttribute = ProductAttribute::where(['product_id' => request()->product_id, 'color_id' => request()->color_id])->with('size')->get();
+    $productAttribute = ProductAttribute::where(['product_id' => request()->product_id, 'color_id' => request()->color_id])->where('qty', '>', 0)->with('size')->get();
     return response()->json($productAttribute, 200);
 });
 

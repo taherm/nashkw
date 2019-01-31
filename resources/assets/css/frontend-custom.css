@@ -243,6 +243,9 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
     font-weight: bolder;
 }
 
+.product-single .buttons .btn-cart {
+    background-color: darkred;
+}
 @media (max-width: 767px) {
     .sticky-wrapper .header {
         position: fixed !important;
@@ -262,3 +265,5 @@ nav > ul > li > a:hover, .mega-menu mega-menu3 > a:hover {
         margin-top: 120px !important;
     }
 }
+
+

@@ -53,16 +53,21 @@ class CartController extends Controller
             return redirect()->back()->with('error', trans('general.maximum_qty_order_exceed_the_limit'));
         }
 
-        $this->cart->add($productAttribute->id, $product->name, $request->qty, $product->finalPrice,
-            [
-                'size_id' => $productAttribute->size_id,
-                'color_id' => $productAttribute->color_id,
-                'sizeName' => $productAttribute->sizeName,
-                'colorName' => $productAttribute->colorName,
-                'product' => $product
-            ]
-        );
-        return redirect()->route('frontend.cart.index')->with('success', trans('message.item_added_to_cart'));
+        $element = $this->cart->content()->where('id','=', $productAttribute->id)->first();
+        if($element->qty <= $productAttribute->qty) {
+            $this->cart->add($productAttribute->id, $product->name, $request->qty, $product->finalPrice,
+                [
+                    'size_id' => $productAttribute->size_id,
+                    'color_id' => $productAttribute->color_id,
+                    'sizeName' => $productAttribute->sizeName,
+                    'colorName' => $productAttribute->colorName,
+                    'product' => $product
+                ]
+            );
+            return redirect()->back()->with('success', trans('message.item_added_to_cart'));
+        }
+        return redirect()->back()->with('error', trans('message.item_limit_exceed'));
+
     }
 
     public function checkStock(Product $product, ProductAttribute $productAttribute, $qty)
