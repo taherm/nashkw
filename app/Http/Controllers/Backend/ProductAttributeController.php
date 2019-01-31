@@ -48,7 +48,7 @@ class ProductAttributeController extends Controller
     {
         $validate = validator($request->all(),
             [
-                'qty' => 'required|numeric|min:1|max:999',
+                'qty' => 'required|numeric|min:0|max:999',
                 'product_id' => 'required|exists:products,id',
                 'size_id' => 'required|integer|exists:sizes,id',
                 'color_id' => 'required|integer|exists:colors,id',
@@ -96,7 +96,7 @@ class ProductAttributeController extends Controller
     {
         $validate = validator($request->all(),
             [
-                'qty' => 'required|numeric|min:1|max:999',
+                'qty' => 'required|numeric|min:0|max:999',
                 'product_id' => 'required|exists:products,id',
                 'size_id' => 'required|integer|exists:sizes,id',
                 'color_id' => 'required|integer|exists:colors,id',
