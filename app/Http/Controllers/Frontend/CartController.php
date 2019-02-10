@@ -55,7 +55,22 @@ class CartController extends Controller
 
         if ($this->cart->count() > 0) {
             $element = $this->cart->content()->where('id', '=', $productAttribute->id)->first();
-            if ($element && $element->qty + $request->qty <= $productAttribute->qty) {
+            if ($element) {
+                if ($element->qty + $request->qty < $productAttribute->qty) {
+                    $this->cart->add($productAttribute->id, $product->name, $request->qty, $product->finalPrice,
+                        [
+                            'size_id' => $productAttribute->size_id,
+                            'color_id' => $productAttribute->color_id,
+                            'sizeName' => $productAttribute->sizeName,
+                            'colorName' => $productAttribute->colorName,
+                            'product' => $product
+                        ]
+                    );
+                    return redirect()->back()->with('success', trans('message.item_added_to_cart'));
+                } else {
+                    return redirect()->back()->with('error', trans('message.item_limit_exceed'));
+                }
+            } else {
                 $this->cart->add($productAttribute->id, $product->name, $request->qty, $product->finalPrice,
                     [
                         'size_id' => $productAttribute->size_id,
@@ -66,8 +81,6 @@ class CartController extends Controller
                     ]
                 );
                 return redirect()->back()->with('success', trans('message.item_added_to_cart'));
-            } else {
-                return redirect()->back()->with('error', trans('message.item_limit_exceed'));
             }
         }
         $this->cart->add($productAttribute->id, $product->name, $request->qty, $product->finalPrice,
@@ -138,7 +151,7 @@ class CartController extends Controller
         }
 
         $coupon = Coupon::active()->where(['code' => $request->code, 'consumed' => false])
-            ->where('due_date', '>=', Carbon::now())
+            ->whereDate('due_date', '>=', Carbon::now())
             ->where('minimum_charge', '<=', $this->cart->subTotal())
             ->first();
 

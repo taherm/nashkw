@@ -80,7 +80,7 @@
                                        class="form-control"
                                        name="due_date"
                                        minDate="{{ $element->due_date->format('d-m-y') }}"
-                                       value="{{ $element->due_date->format('d-m-y') }}"
+                                       value="{{ $element->due_date ? $element->due_date->format('Y-m-d') : null }}"
                                        placeholder="due_date in arabic"
                                        maxlength="4"
                                        required autofocus>
@@ -127,6 +127,18 @@
                                     <input type="radio" name="is_percentage" id="optionsRadios4"
                                            {{ !$element->is_percentage ? 'checked' : null }}
                                            value="0">not is_percentage</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label sbold">is_permanent</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_permanent" id="optionsRadios3"
+                                           value="1" {{ $element->is_permanent  ? 'checked' : null}}> is_permanent</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_permanent" id="optionsRadios4"
+                                           {{ !$element->is_permanent ? 'checked' : null }}
+                                           value="0">not is_permanent</label>
                             </div>
                         </div>
                     </div>

@@ -101,13 +101,13 @@ class OrderController extends Controller
         }
         if ($user) {
             $shipment = session('shipment');
-            $coupon = session('coupon');
+            $coupon = session()->has('coupon') ? session('coupon') : false;
             auth()->login($user);
             $order = Order::create([
                 'shipping_cost' => $shipment['charge'],
                 'price' => $shipment['grandTotal'],
                 'net_price' => $shipment['grossTotal'],
-                'discount' => $coupon ? $coupon->value : null,
+                'discount' => $coupon ? ($coupon->is_percentage ? ($this->cart->subTotal() * ($coupon->value / 100)) : $coupon->value) : 0,
                 'mobile' => $request->mobile,
                 'phone' => $request->phone,
                 'area' => $request->area,

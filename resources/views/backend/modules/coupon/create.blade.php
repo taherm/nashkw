@@ -128,6 +128,19 @@
                                            value="0">not is_percentage</label>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label sbold">is_permanent</label></br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_permanent" id="optionsRadios5"
+                                           value="1" {{ old('is_permanent')  ? 'checked' : null}}>
+                                    is_permanent</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="is_permanent" id="optionsRadios6"
+                                           {{ !old('is_permanent') ? 'checked' : null }}
+                                           value="0">not is_permanent</label>
+                            </div>
+                        </div>
                     </div>
                     @include('backend.partials.forms._btn-group')
                 </div>

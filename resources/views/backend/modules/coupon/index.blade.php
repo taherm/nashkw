@@ -12,9 +12,9 @@
                 <th>id</th>
                 <th>is_percentage</th>
                 <th>consumed</th>
+                <th>is_permanent</th>
                 <th>code</th>
                 <th>minimum_charge</th>
-                <th>user_id</th>
                 <th>user name</th>
                 <th>due_date</th>
                 <th>active</th>
@@ -26,9 +26,9 @@
                 <th>id</th>
                 <th>is_percentage</th>
                 <th>consumed</th>
+                <th>is_permanent</th>
                 <th>code</th>
                 <th>minimum_charge</th>
-                <th>user_id</th>
                 <th>user name</th>
                 <th>due_date</th>
                 <th>active</th>
@@ -45,9 +45,11 @@
                     <td>
                         <span class="label {{ activeLabel($element->consumed) }}">{{ activeText($element->consumed,'Consumed') }}</span>
                     </td>
+                    <td>
+                        <span class="label {{ activeLabel($element->is_permanent) }}">{{ activeText($element->is_permanent,'is_permanent') }}</span>
+                    </td>
                     <td>{{ $element->code }}</td>
                     <td>{{ $element->minimum_charge}}</td>
-                    <td>{{ $element->user_id }}</td>
                     <td>{{ $element->user->name }}</td>
                     <td>
                         <span class="label {{ activeLabel($element->active) }}">{{ activeText($element->active,$element->due_date->format('d-M-Y')) }}</span>

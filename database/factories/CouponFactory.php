@@ -10,6 +10,7 @@ $factory->define(Coupon::class, function (Faker $faker) {
         'is_percentage' => $faker->boolean,
         'user_id' => User::all()->random()->id,
         'active' => $faker->boolean,
+        'is_permanent' => $faker->boolean,
         'consumed' => $faker->boolean,
         'code' => $faker->numberBetween(999999, 99999999999),
         'minimum_charge' => $faker->randomDigit,

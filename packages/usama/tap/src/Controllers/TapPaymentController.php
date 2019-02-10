@@ -137,13 +137,13 @@ class TapPaymentController extends Controller
             $orderMeta->product->check_stock && $orderMeta->product_attribute->qty > 0 ? $orderMeta->product_attribute->decrement('qty', 1) : null;
         });
         $done = $order->update(['status' => 'success']);
+        $contactus = Setting::first();
+        Mail::to($order->email)->cc($contactus->email)->send(new OrderComplete($order, $order->user));
+        $this->clearCart();
         $coupon = session('coupon');
         if ($coupon && $done) {
             $coupon->update(['consumed' => true]);
         }
-        $contactus = Setting::first();
-        Mail::to($order->email)->cc($contactus->email)->send(new OrderComplete($order, $order->user));
-        $this->clearCart();
         $markdown = new Markdown(view(), config('mail.markdown'));
         return $markdown->render('emails.order-complete', ['order' => $order, 'user' => $order->user]);
     }
@@ -181,6 +181,20 @@ class TapPaymentController extends Controller
                 'UnitName' => 'Shipping Cost',
                 'UnitPrice' => $order->shipping_cost,
                 'UnitDesc' => 'Shipping Cost',
+                'VndID' => '',
+            ]);
+        }
+        $coupon = session()->has('coupon') ? session('coupon') : null;
+        if ($coupon) {
+            array_push($productsList, [
+                'CurrencyCode' => env('TAP_CURRENCY_CODE'),
+                'ImgUrl' => asset(env('LARGE')) . Setting::first()->logo,
+                'Quantity' => 1,
+                'TotalPrice' => '-' . $order->discount,
+                'UnitID' => $order->id,
+                'UnitName' => 'Coupon',
+                'UnitPrice' => '-' . $order->discout,
+                'UnitDesc' => 'Coupon',
                 'VndID' => '',
             ]);
         }
