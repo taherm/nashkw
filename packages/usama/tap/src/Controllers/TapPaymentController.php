@@ -142,7 +142,9 @@ class TapPaymentController extends Controller
         $this->clearCart();
         $coupon = session('coupon');
         if ($coupon && $done) {
-            $coupon->update(['consumed' => true]);
+            if (!$coupon->is_permanent) {
+                $coupon->update(['consumed' => true]);
+            }
         }
         $markdown = new Markdown(view(), config('mail.markdown'));
         return $markdown->render('emails.order-complete', ['order' => $order, 'user' => $order->user]);
