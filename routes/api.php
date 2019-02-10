@@ -38,6 +38,7 @@ Route::get('qty', function () {
 
 
 Route::resource('branch', 'Api\BranchController')->only(['index']);
+Route::get('local/branch', 'Api\BranchController@getLocalBranches');
 
 //Route::get('country/{id}', function ($id) {
 //    $destinationCountry = Country::whereId($id)->first();

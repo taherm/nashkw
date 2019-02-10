@@ -21,7 +21,7 @@ $(document).ready(function() {
                     $('.branches').toggleClass('hidden');
                     $('#branch').toggleClass('hidden');
                     $('#branch_address').toggleClass('hidden');
-                    axios.get('/api/branch').then(r => {
+                    axios.get('/api/local/branch').then(r => {
                         return r.data.map(function(v) {
                             $('#branch').append(`<option value="${v.id}">${v.name}</option>`);
                         });

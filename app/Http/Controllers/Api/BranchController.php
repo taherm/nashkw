@@ -20,6 +20,11 @@ class BranchController extends Controller
         return response()->json(BranchResource::collection($branches),200);
     }
 
+    public function getLocalBranches() {
+        $branches = Branch::where(['active' => true, 'country_id' => 1])->get();
+        return response()->json(BranchResource::collection($branches),200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
