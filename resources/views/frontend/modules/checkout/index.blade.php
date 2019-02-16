@@ -45,9 +45,10 @@
                 <h3 class="block-title alt"><i class="fa fa-angle-down"></i>{{ trans('general.information') }}</h3>
                 <form action="#" class="form-delivery">
                     <div class="row">
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-6">
                             <label for="name">{{ trans('general.full_name') }}*</label>
-                            <div class="form-group"><input required name="name" value="{{ auth()->check() ? auth()->user()->name : null }}"
+                            <div class="form-group"><input required name="name"
+                                                           value="{{ auth()->check() ? auth()->user()->name : null }}"
                                                            class="form-control" type="text"
                                                            placeholder="{{ trans('general.full_name') }}">
                             </div>
