@@ -118,9 +118,23 @@ class TapPaymentController extends Controller
              * store the payment and update it with the refrence
                 * */
                 // create the order here
-                $order->update(['reference_id' => $response->ReferenceID]);
+                if (empty($order->reference_id) && $order->order_metas->count() > 0) {
+                    $order->update(['reference_id' => $response->ReferenceID]);
+                    return redirect()->to($response->PaymentURL);
+                } elseif ($order->order_metas->count() > 0) {
+                    $newOrder = $order->replicate();
+                    $newOrder->save();
+                    foreach ($order->order_metas as $order_meta) {
+                        $newOrderMeta = $order_meta->replicate();
+                        $newOrderMeta->save();
+                        $newOrderMeta->update(['order_id' => $newOrder->id]);
+                    }
+                    $order->update(['reference_id' => $response->ReferenceID]);
+                    return redirect()->to($response->PaymentURL);
+                }
+//                $order->update(['reference_id' => $response->ReferenceID]);
 //                return $response->PaymentURL;
-                return redirect()->to($response->PaymentURL);
+//                return redirect()->to($response->PaymentURL);
             }
 
             return redirect()->back()->with('error', trans('message.payment_url_error'));
