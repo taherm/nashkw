@@ -14,7 +14,7 @@
 | {{ trans('general.product_name') }}       | {{ trans('general.price') }}         | Qty  | {{ trans('general.size') }}  | {{ trans('general.color') }}  | {{ trans('general.product_sku') }}  |
 | ------------- |:-------------:| --------:| --------:|
 @foreach($order->order_metas as $orderMeta)
-    | {{ $orderMeta->product->name }}         | {{ $orderMeta->product->on_sale ? $orderMeta->product->sale_price : $orderMeta->product->price }}| {{ $orderMeta->qty }}| {{ $orderMeta->product_attribute->size->name }} | {{ $orderMeta->product_attribute->color->name }} | {{ $orderMeta->product->id }}         |
+    | {{ $orderMeta->product->name }}         | {{ $orderMeta->price }}| {{ $orderMeta->qty }}| {{ $orderMeta->product_attribute->size->name }} | {{ $orderMeta->product_attribute->color->name }} | {{ $orderMeta->product->id }}         |
 @endforeach
 @if($order->shipping_cost > 0)
 | shipment        |     {{ $order->shipping_cost }}        |           |

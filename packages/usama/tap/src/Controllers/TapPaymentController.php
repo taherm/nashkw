@@ -179,10 +179,10 @@ class TapPaymentController extends Controller
                 'CurrencyCode' => env('TAP_CURRENCY_CODE'),
                 'ImgUrl' => asset(env('LARGE')) . $orderMeta->product->image,
                 'Quantity' => $orderMeta->qty,
-                'TotalPrice' => ($orderMeta->product->on_sale ? $orderMeta->product->sale_price : $orderMeta->product->price) * $orderMeta->qty,
+                'TotalPrice' => $orderMeta->product->finalPrice * $orderMeta->qty,
                 'UnitID' => $orderMeta->product->id,
                 'UnitName' => $orderMeta->product->name_en,
-                'UnitPrice' => $orderMeta->product->price,
+                'UnitPrice' => $orderMeta->product->finalPrice,
                 'UnitDesc' => $orderMeta->product->description,
                 'VndID' => '',
             ]);

@@ -15,7 +15,7 @@
                         <div class="single-product">
                             <div class="product-details">
                                 <div class="price-box">
-                                    @if($product->on_sale)
+                                    @if($product->isOnSale)
                                         <span class="old-price">
                                     {{ $product->convertedPrice }} - {{ $currency->symbol }}
                                 </span>
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="product-img">
-                                @if($product->on_sale)
+                                @if($product->isOnSale)
                                     <span class="sale-text">{{ trans('general.sale') }}</span>
                                 @elseif($product->created_at)
                                     <span class="sale-text new-sale">{{ trans('general.new') }}</span>
