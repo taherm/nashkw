@@ -127,7 +127,7 @@ class OrderController extends Controller
                         'product_id' => $item->options->product->id,
                         'product_attribute_id' => $item->id,
                         'qty' => $item->qty,
-                        'price' => $item->options->product->on_sale ? $item->options->product->sale_price : $item->options->product->price,
+                        'price' => $item->price,
                     ]);
                 });
                 return redirect()->route('frontend.order.show', $order->id)->with('success', trans('message.register_account_password_is_your_mobile'));
