@@ -187,6 +187,31 @@
                                 </td>
                                 <td class="product-subtotal">{{ number_format($item->price * $item->qty,'2','.',',') }} {{ trans('general.kd') }}</td>
                             </tr>
+                        @else
+                            <tr>
+                                <td>
+                                    N/A Image (Product does not exist)
+                                </td>
+                                <td>
+                                    N/A
+                                </td>
+                                <td>
+                                    N/A
+                                </td>
+                                <td>
+                                    N/A
+                                </td>
+                                <td>
+                                    N/A
+                                </td>
+                                <td>
+                                    {{ $item->price }}
+                                </td>
+                                <td>
+                                    {{ $item->qty }}
+                                </td>
+                                <td class="product-subtotal">{{ number_format($item->price * $item->qty,'2','.',',') }} {{ trans('general.kd') }}</td>
+                            </tr>
                         @endif
                     @endforeach
                     </tbody>
