@@ -148,7 +148,8 @@ class TapPaymentController extends Controller
         // once the result is success .. get the deal from refrence then delete all other free deals related to such ad.
         $order = Order::where(['reference_id' => $request->ref])->with('order_metas.product', 'user', 'order_metas.product_attribute.size', 'order_metas.product_attribute.color')->first();
         $order->order_metas->each(function ($orderMeta) use ($order) {
-            $orderMeta->product->check_stock && $orderMeta->product_attribute->qty > 0 ? $orderMeta->product_attribute->decrement('qty', 1) : null;
+            $decrement = (int)$orderMeta->product_attribute->qty - (int) $orderMeta->qty > 0 ? (int)$orderMeta->product_attribute->qty - (int) $orderMeta->qty : 0;
+            $orderMeta->product->check_stock && $orderMeta->product_attribute->qty >= 0 ? $orderMeta->product_attribute->update(['qty' => $decrement]) : null;
         });
         $done = $order->update(['status' => 'success']);
         $contactus = Setting::first();
