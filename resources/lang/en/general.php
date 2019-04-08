@@ -271,4 +271,5 @@ nash nash abaia abaya abayat',
   'app_keywords' => 'Abayat Abaya Kuwait Hijab Lamaset Harayer',
   'app_author' => 'Harayer',
   'branches' => 'Our Branches',
+  'item_code' => 'Product Code'
 );

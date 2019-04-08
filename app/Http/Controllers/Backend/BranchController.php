@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 
 class BranchController extends Controller
 {
@@ -27,7 +28,7 @@ class BranchController extends Controller
     public function create()
     {
         $countries = Country::all();
-        return view('backend.modules.branch.create',compact('countries'));
+        return view('backend.modules.branch.create', compact('countries'));
     }
 
     /**
@@ -38,21 +39,21 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = validator($request->all(),[
+        $validate = validator($request->all(), [
             'name_ar' => 'required',
             'name_en' => 'required',
             'address_ar' => 'required',
             'address_en' => 'required',
             'phone' => 'required',
         ]);
-        if($validate->fails()) {
+        if ($validate->fails()) {
             return redirect()->back()->withErrors($validate);
         }
         $element = Branch::create($request->all());
-        if($element) {
-            return redirect()->route('backend.branch.index')->with('success','branch created');
+        if ($element) {
+            return redirect()->route('backend.branch.index')->with('success', 'branch created');
         }
-        return redirect()->route('backend.branch.index')->with('error','branch not created');
+        return redirect()->route('backend.branch.index')->with('error', 'branch not created');
     }
 
     /**
@@ -76,7 +77,7 @@ class BranchController extends Controller
     {
         $element = Branch::whereId($id)->first();
         $countries = Country::all();
-        return view('backend.modules.branch.edit', compact('element', compact('countries')));
+        return view('backend.modules.branch.edit', compact('element', 'countries'));
     }
 
     /**
@@ -88,21 +89,21 @@ class BranchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate = validator($request->all(),[
+        $validate = validator($request->all(), [
             'name_ar' => 'required',
             'name_en' => 'required',
             'address_ar' => 'required',
             'address_en' => 'required',
             'phone' => 'required',
         ]);
-        if($validate->fails()) {
+        if ($validate->fails()) {
             return redirect()->back()->withErrors($validate);
         }
         $element = Branch::whereId($id)->first()->update($request->all());
-        if($element) {
-            return redirect()->route('backend.branch.index')->with('success','branch created');
+        if ($element) {
+            return redirect()->route('backend.branch.index')->with('success', 'branch created');
         }
-        return redirect()->route('backend.branch.index')->with('error','branch not created');
+        return redirect()->route('backend.branch.index')->with('error', 'branch not created');
     }
 
     /**
