@@ -31,10 +31,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //dd(env('LARGE'));
         $newArrivals = $this->product->active()->onHomePage()->hasProductAttribute()->hasGallery()->orderBy('created_at', 'desc')->take(self::take)->get();
-        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->hasProductAttribute()->hasGallery()->orderby('end_sale','desc')->take(self::take)->get();
+        $onSaleProducts = $this->product->active()->onSaleOnHomePage()->hasProductAttribute()->hasGallery()->orderby('end_sale', 'desc')->take(self::take)->get();
         $bestSalesProducts = $this->product->whereIn('id', $this->product->active()->hasProductAttribute()->hasGallery()->bestSalesProducts())->get();
-        $hotDeals = $this->product->active()->onSale()->hotDeals()->hasProductAttribute()->hasGallery()->orderby('end_sale','desc')->take(10)->get();
+        $hotDeals = $this->product->active()->onSale()->hotDeals()->hasProductAttribute()->hasGallery()->orderby('end_sale', 'desc')->take(10)->get();
         $categoriesHome = Category::where(['is_home' => true])->take(4)->orderBy('order')->get();
         $categoriesFeatured = Category::where(['is_featured' => true])->take(4)->orderBy('order')->get();
         return view('frontend.home', compact(
@@ -73,6 +74,11 @@ class HomeController extends Controller
         return view('frontend.pages.contact');
     }
 
+    public function aboutus()
+    {
+        return view('frontend.pages.about');
+    }
+
     /**
      * Post Contact Form
      * @param Request $request
@@ -84,7 +90,6 @@ class HomeController extends Controller
         try {
 
             Mail::to($email)->cc($request->email)->queue(new SendContactus($request->request->all()));
-
         } catch (\Exception $e) {
 
             return redirect()->back()->with('info', $e->getMessage());
@@ -121,5 +126,4 @@ class HomeController extends Controller
 
         return view('frontend.pages.terms', compact('termsData'));
     }
-
 }

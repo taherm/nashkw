@@ -12,9 +12,9 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function(Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_ar')->nullable();
+            $table->longText('company_ar')->nullable();
             $table->string('company_en')->nullable();
             $table->string('address_ar')->nullable();
             $table->string('address_en')->nullable();
@@ -32,10 +32,10 @@ class CreateSettingsTable extends Migration
             $table->string('snapchat')->nullable();
             $table->string('logo')->nullable();
             $table->string('size_chart')->nullable();
-//            $table->boolean('shipment_service')->default(0);
-//            $table->boolean('delivery_service')->default(0);
-//            $table->boolean('delivery_service_cost')->default(0);
-//            $table->boolean('delivery_service_minimum_charge')->default(0);
+            //            $table->boolean('shipment_service')->default(0);
+            //            $table->boolean('delivery_service')->default(0);
+            //            $table->boolean('delivery_service_cost')->default(0);
+            //            $table->boolean('delivery_service_minimum_charge')->default(0);
             $table->timestamps();
         });
     }

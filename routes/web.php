@@ -71,10 +71,11 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => []
     Route::resource('page', 'PageController')->only(['show']);
     Route::resource('user', 'UserController');
     Route::resource('newsletter', 'NewsletterController');
-    Route::resource('survey', 'SurveyController')->only(['show','store']);
+    Route::resource('survey', 'SurveyController')->only(['show', 'store']);
     Route::get('search', 'ProductController@search')->name('product.search');
     Route::get('currency/{currency}', 'HomeController@changeCurrency')->name('currency.change');
     Route::get('language/{locale}', 'HomeController@changeLanguage')->name('language.change');
+    Route::get('/about', 'HomeController@aboutus')->name('about');
 });
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => ['auth']], function () {
     Route::get('favorite', 'FavoriteController@index')->name('favorite.index');

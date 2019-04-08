@@ -1,31 +1,31 @@
 <?php
 
-return array (
+return array(
   'mail_sent' => 'تحقق من بريدك الالكتروني',
-  'message' => 
-  array (
-    'warning' => 
-    array (
+  'message' =>
+  array(
+    'warning' =>
+    array(
       'product_meta' => 'بيانات المنتج',
       'no_sizes' => 'لا يوجد قياس',
       'no_tags' => 'لا يوجد وسم',
       'no_colors' => 'لايوجد لون',
       'no_categories' => 'لا يوجد تصنيف',
     ),
-    'error' => 
-    array (
+    'error' =>
+    array(
       'no_categories' => 'لا يوجد تصنيف',
     ),
     'order_created' => 'تم انشاء الطلب',
-    'success' => 
-    array (
+    'success' =>
+    array(
       'product_update' => 'تم تحديث المنتج',
     ),
   ),
-  'messsage' => 
-  array (
-    'warning' => 
-    array (
+  'messsage' =>
+  array(
+    'warning' =>
+    array(
       'create_new' => 'messsage.warning.create_new	',
     ),
   ),
@@ -38,7 +38,7 @@ return array (
   'tags' => 'كلمات مفتاحية',
   'shopping_options' => 'خيارات التسوق',
   'color' => 'اللون',
-  'home' => 'الصفحة الرئيسية',
+  'home' => 'الرئيسية',
   'index' => 'index',
   'position' => 'موقع',
   'name' => 'الأسم',
@@ -87,7 +87,7 @@ return array (
   'welcome' => 'هلا',
   'dashboard' => 'إدارة الموقع',
   'my_account' => 'حسابي',
-  'my_wishlist' => 'مفضلة المنتجات',
+  'my_wishlist' => 'مفضلة',
   'shopping_cart' => 'عربة التسوق',
   'logout' => 'الخروج',
   'search' => 'بحث',
@@ -101,7 +101,8 @@ return array (
   'send_within_2_weeks' => 'يتم التوصيل خلال اسبوعين',
   'online_shopping_in_gulf' => 'التسوق الإلكتروني في الخليج',
   'address' => 'العنوان',
-  'order_history' => 'المشتريات السابقة',
+  'order_history' => 'مشترياتي',
+  'about_us' => 'عن ناش',
   'wlist' => 'قائمة الأمنيات',
   'designed_by' => 'تم التصميم عن طريق',
   'all_rights_reserved' => 'جميع الحقوق محفوظة',
@@ -113,7 +114,7 @@ return array (
   'submit' => 'إرسال',
   'categories' => 'التصنيفات',
   'best_sale_products' => 'افضل المبيعات',
-  'aboutus' => 'نبذه عنا',
+  'social_media' => 'التواصل الإجتماعي',
   'active' => 'تفعيل',
   'address_ar' => 'العنوان باللغة العربية',
   'faqs' => 'الأسئلة الشائعة',
@@ -136,12 +137,12 @@ return array (
   'help_contactus' => 'المساعدة',
   'informations' => ' معلومات',
   'lastname' => 'الأسم الأخير',
-  'messages' => 
-  array (
-    'error' => 
-    array (
-      'cart' => 
-      array (
+  'messages' =>
+  array(
+    'error' =>
+    array(
+      'cart' =>
+      array(
         'perfumes' => 'خطأ خاص بمنتجات العطور',
       ),
     ),
@@ -259,8 +260,8 @@ return array (
   'alphabetic' => 'أبجدي',
   'lowest_to_highest' => 'الأقل سعرا',
   'highest_to_lowest' => 'الأعلى سعرا',
-  'general' => 
-  array (
+  'general' =>
+  array(
     'new_arrival' => 'وصل حديثا',
     'on_sale_products' => 'منتجات فى التخفيضات',
     'best_sale_products' => 'افضل المبيعات',
