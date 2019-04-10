@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
-class BrandsTableSeeder extends Seeder
+class TagsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,8 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Brand::class, app()->environment('production') ? 1 : 50)->create()->each(function ($q) {
-            if (app()->environment('local')) {
+        factory(Tag::class, app()->environment('production') ? 1 : 50)->create()->each(function ($q) {
+            if(app()->environment('local')) {
                 return $q->products()->saveMany(Product::all()->random(5));
             }
         });

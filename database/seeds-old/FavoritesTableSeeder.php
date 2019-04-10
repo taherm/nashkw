@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Page;
+use App\Models\Favorite;
 use Illuminate\Database\Seeder;
 
-class PagesTableSeeder extends Seeder
+class FavoritesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        //factory(Page::class,app()->environment('production') ? 2 : 5)->create();
+        factory(Favorite::class,350)->create();
     }
 }

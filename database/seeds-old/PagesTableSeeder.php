@@ -12,6 +12,6 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        //factory(Page::class,app()->environment('production') ? 2 : 5)->create();
+        factory(Page::class,app()->environment('production') ? 2 : 5)->create();
     }
 }

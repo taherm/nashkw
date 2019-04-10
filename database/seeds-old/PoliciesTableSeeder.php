@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Page;
+use App\Models\Policy;
 use Illuminate\Database\Seeder;
 
-class PagesTableSeeder extends Seeder
+class PoliciesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        //factory(Page::class,app()->environment('production') ? 2 : 5)->create();
+        factory(Policy::class, app()->environment('production') ? 1 : 10)->create();
     }
 }
