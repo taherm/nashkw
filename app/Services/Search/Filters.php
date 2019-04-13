@@ -34,16 +34,16 @@ class Filters extends QueryFilters
 
     public function category_id()
     {
-        $parent = $this->category->whereId(request()->category_id)->with('children.products')->first();
-        if ($parent->children->isNotEmpty() && $parent->children->pluck('products')->isNotEmpty()) {
-            $children = $parent->children->pluck('id');
-            return $this->builder->whereHas('categories', function ($q) use ($parent, $children) {
-                if ($parent->children->isEmpty()) {
-                    return $q->where('id', request('category_id'));
-                }
-                return $q->whereIn('id', $children);
-            });
-        }
+        //  $parent = $this->category->whereId(request()->category_id)->with('children.products')->first();
+        // if ($parent->children->isNotEmpty() && $parent->children->pluck('products')->isNotEmpty()) {
+        //     $children = $parent->children->pluck('id');
+        //    return $this->builder->whereHas('categories', function ($q) use ($parent, $children) {
+        //       if ($parent->children->isEmpty()) {
+        //           return $q->where('id', request('category_id'));
+        //      }
+        //     return $q->whereIn('id', $children);
+        //  });
+        // }
         return $this->builder->whereHas('categories', function ($q) {
             return $q->where('id', request()->category_id);
         });
@@ -100,11 +100,10 @@ class Filters extends QueryFilters
     public function sort()
     {
         switch (request('sort')) {
-            case 'name' :
+            case 'name':
                 return $this->builder->orderBy('name_en', 'asc');
-            default :
+            default:
                 return $this->builder->orderBy('price', request('sort'));
         }
     }
-
 }
