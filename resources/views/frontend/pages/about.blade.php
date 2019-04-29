@@ -18,7 +18,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <p style="text-size:51px">
+                <p style="font-size:21px;color:black">
                     {{ trans('message.aboutus_message')}}
                 </p>
             </div>
@@ -30,4 +30,4 @@
     </div>
 </section>
 <!-- /PAGE -->
-@endsection 
+@endsection
