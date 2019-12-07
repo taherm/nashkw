@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
 
-{{--@section('breadcrumbs')
-    {{ Breadcrumbs::render('backend.gallery.index') }}
-@endsection--}}
+@section('breadcrumbs')
+{{ Breadcrumbs::render('backend.gallery.index') }}
+@endsection
 
 @section('content')
 <div class="portlet-body">

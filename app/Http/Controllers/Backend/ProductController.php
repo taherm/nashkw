@@ -60,7 +60,7 @@ class ProductController extends Controller
             $date = str_replace('-', '', $request->end_sale);
             $date = Carbon::parse($date)->toDateTimeString();
         }
-        $element = Product::create($request->except(['_token', 'image', 'categories', 'tags', 'brands', 'end_sale']));
+        $element = Product::create($request->except(['_token', 'image', 'categories', 'tags', 'brands', 'end_sale', 'query_string']));
         if ($element) {
             if ($date) {
                 $element->update(['end_sale' => $date]);
