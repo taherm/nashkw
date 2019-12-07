@@ -91,15 +91,18 @@ class DashBoardController extends Controller
         return redirect()->back()->with('success', 'translations exported');
     }
 
-    public function createNotification($element) {
+    public function createNotification($element)
+    {
         $element = Product::active()->hasAttributes()->first();
         $this->notify(
-            trans('message.notification_message',
+            trans(
+                'message.notification_message',
                 [
                     'type' => 'testing',
                     'name' => $element->name,
                     'project_name' => $element->name
-                ]),
+                ]
+            ),
             '',
             [
                 'path' => asset('storage/uploads/files/' . $element->path),
