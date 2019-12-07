@@ -168,8 +168,7 @@ return array(
   'my_fatorrah' => 'My Fatorrah',
   'submit' => 'submit',
   'best_sale_products' => 'Best Sale Products',
-  'meta_description' => 'عبايات الكويت حراير لمسة عباية  روعة التصميم
-nash nash abaia abaya abayat',
+  'meta_description' => 'NASH is a Kuwaiti brand registered in the State of Kuwait. We started 2014 and we continue to shorten all lines of fashion in cutting the suit of high-end women who need to shine in appearance and care about clean manufacturing and raw materials. ',
   'back_to' => 'Back to',
   'approx' => 'approx',
   'in_stock' => 'In Stock',
@@ -268,7 +267,7 @@ nash nash abaia abaya abayat',
   'welcome_message' => 'welcome message',
   'shop' => 'shop',
   'information_review' => 'Information Review',
-  'app_keywords' => 'Abayat Abaya Kuwait Hijab Lamaset Harayer',
+  'app_keywords' => 'NASH is a Kuwaiti brand registered in the State of Kuwait. We started 2014 and we continue to shorten all lines of fashion in cutting the suit of high-end women who need to shine in appearance and care about clean manufacturing and raw materials. ',
   'app_author' => 'Harayer',
   'branches' => 'Our Branches',
   'item_code' => 'Product Code'
