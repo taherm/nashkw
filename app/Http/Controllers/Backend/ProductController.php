@@ -55,7 +55,7 @@ class ProductController extends Controller
      */
     public function store(ProductStore $request)
     {
-        dd($request->all());
+        //dd($request->all());
         if ($request->has('end_sale')) {
             $date = str_replace('-', '', $request->end_sale);
             $date = Carbon::parse($date)->toDateTimeString();
