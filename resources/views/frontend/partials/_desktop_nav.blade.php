@@ -32,7 +32,7 @@
 
     <ul>
         <li class="row">
-            @foreach($category->children->where('is_home',true)->sortBy('order') as $child)
+            @foreach($category->children->where('active',true)->where('is_home',true)->sortBy('order') as $child)
             <div class="col-md-2">
                 <h4><span><a href="{{ route('frontend.product.search', ['category_id' => $child->id]) }}"><strong>{{ $child->name }}</strong></a></span>
                 </h4>

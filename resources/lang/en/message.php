@@ -7,5 +7,5 @@ return array(
   'no_items_found' => 'No Products found.',
   'checkout' => 'checkout',
   'register' => 'Register with us now.',
-  'copy_right' => 'All Copyright reserved. Lamaset Harayer',
+  'copy_right' => 'All Copyright reserved. Nash',
 );

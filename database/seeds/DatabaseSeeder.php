@@ -11,23 +11,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
+        $this->call(SlidersTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         $this->call(CurrenciesTableSeeder::class);
-        $this->call(SettingsTableSeeder::class);
+        $this->call(BranchesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        /* 
+       
+        
         $this->call(PoliciesTableSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
+       
         $this->call(ColorsTableSeeder::class);
         $this->call(SizesTableSeeder::class);
         $this->call(FaqsTableSeeder::class);
-        $this->call(SlidersTableSeeder::class);
+        
         $this->call(TermsTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(NewslettersTableSeeder::class);
-        $this->call(BranchesTableSeeder::class);
+        
         $this->call(ShipmentPackgesTableSeeder::class);
 
-        $this->call(UsersTableSeeder::class);
+        
         $this->call(ProductsTableSeeder::class);
         $this->call(CouponsTableSeeder::class);
         $this->call(OrdersTableSeeder::class);
@@ -38,7 +44,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutusTableSeeder::class);
         $this->call(SurveysTableSeeder::class);
         $this->call(QuestionnairesTableSeeder::class);
-
-
+*/
     }
 }

@@ -11,8 +11,7 @@
         <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu page-sidebar-menu-closed"
-            data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu page-sidebar-menu-closed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
             <li class="nav-item {{ activeItem('product') }}">
                 <a href="{{ route('backend.product.index')}}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-product-hunt"></i>
@@ -65,6 +64,22 @@
                     <span class="selected"></span>
                     <span class="arrow open"></span>
                 </a>
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.user.index') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-euro"></i>
+                            <span class="title">All Users</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('backend.user.create') }}" class="nav-link nav-toggle">
+                            <i class="fa fa-fw fa-plus-circle"></i>
+                            <span class="title">Create New User</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
 
@@ -147,29 +162,29 @@
                 </ul>
             </li>
 
-            <li class="nav-item {{ activeItem('coupon') }}">
-                <a href="{{ route('backend.coupon.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-credit-card"></i>
-                    <span class="title">Coupons</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.coupon.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-cc-discover"></i>
-                            <span class="title">All Coupons</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.coupon.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-plus-circle"></i>
-                            <span class="title">Create New Coupon</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            {{-- <li class="nav-item {{ activeItem('coupon') }}">
+            <a href="{{ route('backend.coupon.index') }}" class="nav-link nav-toggle">
+                <i class="fa fa-fw fa-credit-card"></i>
+                <span class="title">Coupons</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item ">
+                    <a href="{{ route('backend.coupon.index') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-cc-discover"></i>
+                        <span class="title">All Coupons</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ route('backend.coupon.create') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-plus-circle"></i>
+                        <span class="title">Create New Coupon</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+            </ul>
+            </li>--}}
             {{--Settings--}}
             <li class="nav-item {{ activeItem('setting', ['policy','term','faq','page','contactus', 'aboutus','gallery','image']) }}">
                 <a href="{{ route('backend.setting.index') }}" class="nav-link nav-toggle">
@@ -360,29 +375,29 @@
             </li>
             </li>
             {{--brands--}}
-            <li class="nav-item {{ activeItem('brand') }}">
-                <a href="{{ route('backend.brand.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-shopping-bag"></i>
-                    <span class="title">Brands</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.brand.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-shopping-bag"></i>
-                            <span class="title">All Brands</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.brand.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-plus-square-o"></i>
-                            <span class="title">New Brand</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            {{-- <li class="nav-item {{ activeItem('brand') }}">
+            <a href="{{ route('backend.brand.index') }}" class="nav-link nav-toggle">
+                <i class="fa fa-fw fa-shopping-bag"></i>
+                <span class="title">Brands</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item ">
+                    <a href="{{ route('backend.brand.index') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-shopping-bag"></i>
+                        <span class="title">All Brands</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ route('backend.brand.create') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-plus-square-o"></i>
+                        <span class="title">New Brand</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+            </ul>
+            </li>--}}
             <li class="nav-item {{ activeItem('color') }}">
                 <a href="{{ route('backend.color.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-paint-brush"></i>
@@ -421,8 +436,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="{{ route('backend.order.index',['status' => 'success']) }}"
-                           class="nav-link nav-toggle">
+                        <a href="{{ route('backend.order.index',['status' => 'success']) }}" class="nav-link nav-toggle">
                             <i class="fa fa-fw fa-pie-chart"></i>
                             <span class="title">Successful Orders</span>
                             <span class="arrow"></span>
@@ -460,58 +474,58 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item {{ activeItem('question',['survey','answer']) }}">
-                <a href="{{ route('backend.survey.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-fw fa-th-list"></i>
-                    <span class="title">Surveys</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.survey.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-list-ul"></i>
-                            <span class="title">Surveys List</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.question.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-list-ul"></i>
-                            <span class="title">Questions List</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.answer.index') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-magic"></i>
-                            <span class="title">Answers List</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">
-                            <i class="fa fa-fw fa-plus-circle"></i>
-                            <span class="title">Create New Survey</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
-                    {{--<li class="nav-item ">--}}
-                        {{--<a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">--}}
-                            {{--<i class="fa fa-fw fa-question-circle-o"></i>--}}
-                            {{--<span class="title">Create New Question</span>--}}
-                            {{--<span class="arrow"></span>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                    {{--<li class="nav-item ">--}}
-                        {{--<a href="{{ route('backend.answer.create') }}" class="nav-link nav-toggle">--}}
-                            {{--<i class="fa fa-fw fa-question-circle"></i>--}}
-                            {{--<span class="title">Create New Answer</span>--}}
-                            {{--<span class="arrow"></span>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                </ul>
-            </li>
-            <li class="nav-item {{ activeItem('questionnaire') }}">
+            {{-- <li class="nav-item {{ activeItem('question',['survey','answer']) }}">
+            <a href="{{ route('backend.survey.index') }}" class="nav-link nav-toggle">
+                <i class="fa fa-fw fa-th-list"></i>
+                <span class="title">Surveys</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item ">
+                    <a href="{{ route('backend.survey.index') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-list-ul"></i>
+                        <span class="title">Surveys List</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ route('backend.question.index') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-list-ul"></i>
+                        <span class="title">Questions List</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ route('backend.answer.index') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-magic"></i>
+                        <span class="title">Answers List</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-fw fa-plus-circle"></i>
+                        <span class="title">Create New Survey</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>--}}
+                {{--<li class="nav-item ">--}}
+                {{--<a href="{{ route('backend.survey.create') }}" class="nav-link nav-toggle">--}}
+                {{--<i class="fa fa-fw fa-question-circle-o"></i>--}}
+                {{--<span class="title">Create New Question</span>--}}
+                {{--<span class="arrow"></span>--}}
+                {{--</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item ">--}}
+                {{--<a href="{{ route('backend.answer.create') }}" class="nav-link nav-toggle">--}}
+                {{--<i class="fa fa-fw fa-question-circle"></i>--}}
+                {{--<span class="title">Create New Answer</span>--}}
+                {{--<span class="arrow"></span>--}}
+                {{--</a>--}}
+                {{--</li>--}}
+                {{-- </ul>
+            </li>--}}
+                {{--<li class="nav-item {{ activeItem('questionnaire') }}">
                 <a href="{{ route('backend.questionnaire.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-fw fa-question-circle"></i>
                     <span class="title">Questionnaires</span>
@@ -533,84 +547,84 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+                </li>--}}
 
 
-            {{--<li class="nav-item">--}}
-            {{--<a href="javascript:;" class="nav-link nav-toggle">--}}
-            {{--<i class="icon-folder"></i>--}}
-            {{--<span class="title">Multi Level Menu</span>--}}
-            {{--<span class="arrow "></span>--}}
-            {{--</a>--}}
-            {{--<ul class="sub-menu">--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="javascript:;" class="nav-link nav-toggle">--}}
-            {{--<i class="icon-settings"></i> Item 1--}}
-            {{--<span class="arrow"></span>--}}
-            {{--</a>--}}
-            {{--<ul class="sub-menu">--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="?p=dashboard-2" class="nav-link">--}}
-            {{--<i class="icon-user"></i> Arrow Toggle--}}
-            {{--<span class="arrow nav-toggle"></span>--}}
-            {{--</a>--}}
-            {{--<ul class="sub-menu">--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-power"></i> Sample Link 1</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-paper-plane"></i> Sample Link 1</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-star"></i> Sample Link 1</a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-camera"></i> Sample Link 1</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-link"></i> Sample Link 2</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-pointer"></i> Sample Link 3</a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="?p=dashboard-2" class="nav-link">--}}
-            {{--<i class="icon-globe"></i> Arrow Toggle--}}
-            {{--<span class="arrow nav-toggle"></span>--}}
-            {{--</a>--}}
-            {{--<ul class="sub-menu">--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-tag"></i> Sample Link 1</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-pencil"></i> Sample Link 1</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-graph"></i> Sample Link 1</a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a href="#" class="nav-link">--}}
-            {{--<i class="icon-bar-chart"></i> Item 3 </a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-        </ul>
-        <!-- END SIDEBAR MENU -->
+                {{--<li class="nav-item">--}}
+                {{--<a href="javascript:;" class="nav-link nav-toggle">--}}
+                {{--<i class="icon-folder"></i>--}}
+                {{--<span class="title">Multi Level Menu</span>--}}
+                {{--<span class="arrow "></span>--}}
+                {{--</a>--}}
+                {{--<ul class="sub-menu">--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="javascript:;" class="nav-link nav-toggle">--}}
+                {{--<i class="icon-settings"></i> Item 1--}}
+                {{--<span class="arrow"></span>--}}
+                {{--</a>--}}
+                {{--<ul class="sub-menu">--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="?p=dashboard-2" class="nav-link">--}}
+                {{--<i class="icon-user"></i> Arrow Toggle--}}
+                {{--<span class="arrow nav-toggle"></span>--}}
+                {{--</a>--}}
+                {{--<ul class="sub-menu">--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-power"></i> Sample Link 1</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-paper-plane"></i> Sample Link 1</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-star"></i> Sample Link 1</a>--}}
+                {{--</li>--}}
+                {{--</ul>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-camera"></i> Sample Link 1</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-link"></i> Sample Link 2</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-pointer"></i> Sample Link 3</a>--}}
+                {{--</li>--}}
+                {{--</ul>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="?p=dashboard-2" class="nav-link">--}}
+                {{--<i class="icon-globe"></i> Arrow Toggle--}}
+                {{--<span class="arrow nav-toggle"></span>--}}
+                {{--</a>--}}
+                {{--<ul class="sub-menu">--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-tag"></i> Sample Link 1</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-pencil"></i> Sample Link 1</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-graph"></i> Sample Link 1</a>--}}
+                {{--</li>--}}
+                {{--</ul>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                {{--<a href="#" class="nav-link">--}}
+                {{--<i class="icon-bar-chart"></i> Item 3 </a>--}}
+                {{--</li>--}}
+                {{--</ul>--}}
+                {{--</li>--}}
+            </ul>
+            <!-- END SIDEBAR MENU -->
     </div>
     <!-- END SIDEBAR -->
 </div>

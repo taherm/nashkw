@@ -12,13 +12,13 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('categories')->delete();
-        
-        \DB::table('categories')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('categories')->insert(array(
+            0 =>
+            array(
                 'id' => 1,
                 'parent_id' => 0,
                 'name_ar' => 'ناش أوتليت',
@@ -37,8 +37,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:25',
                 'updated_at' => '2019-04-01 18:52:52',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'id' => 2,
                 'parent_id' => 0,
                 'name_ar' => 'ملابس أطفال',
@@ -57,8 +57,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:25',
                 'updated_at' => '2019-04-01 18:45:25',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'id' => 3,
                 'parent_id' => 0,
                 'name_ar' => 'قسم الرجال',
@@ -77,8 +77,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:25',
                 'updated_at' => '2019-04-01 18:38:17',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'id' => 4,
                 'parent_id' => 0,
                 'name_ar' => 'القسم النسائي',
@@ -97,128 +97,9 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:26',
                 'updated_at' => '2019-03-19 16:06:58',
             ),
-            4 => 
-            array (
-                'id' => 5,
-                'parent_id' => 1,
-                'name_ar' => 'إلى ما اتفقت فيه.',
-                'name_en' => 'Davion Hagenes DVM',
-                'caption_ar' => 'بلغ في ذلك البيت قد ارتحل قبل انهدامه وتركه وهو.',
-                'caption_en' => 'Delbert Kozey',
-                'description_en' => 'Suscipit ducimus doloremque molestias voluptates officia nihil quas.',
-                'description_ar' => 'الغذاء جملة واحدة، لكنه لما لم يمكنه ذلك، لانه طمع أن يجده، فيرى طبيعة الجسم من حيث هو جسم؟ أو هما.',
-                'image' => '20.jpeg',
-                'limited' => 0,
-                'order' => 47,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 1,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:26',
-                'updated_at' => '2019-03-16 16:17:26',
-            ),
-            5 => 
-            array (
-                'id' => 6,
-                'parent_id' => 1,
-                'name_ar' => 'أزعجه إن كان خرج.',
-                'name_en' => 'Claudine Streich',
-                'caption_ar' => 'على حظ من الكلام لا يوجد اقل منها. وهو في أتم.',
-                'caption_en' => 'Mireille McLaughlin',
-                'description_en' => 'Ut voluptates minima sapiente tempore.',
-                'description_ar' => 'واصطحبا على ذلك. وكانا يتفقهان في بعض فعلاً متساوياً، فلا يكون فعل أحد الاسطقسات أظهر فيه، ولا.',
-                'image' => '12.jpeg',
-                'limited' => 1,
-                'order' => 42,
-                'is_home' => 1,
-                'is_featured' => 1,
-                'active' => 1,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:26',
-                'updated_at' => '2019-03-16 16:17:26',
-            ),
-            6 => 
-            array (
-                'id' => 7,
-                'parent_id' => 5,
-                'name_ar' => 'ما يصلح للكسر،.',
-                'name_en' => 'Hettie Marvin',
-                'caption_ar' => 'فيه تجويفين اثنين احدهما من الجهة اليسرى منه.',
-                'caption_en' => 'Freeman Heaney DDS',
-                'description_en' => 'Omnis culpa tempore voluptate modi harum dolor. Ipsam rerum sed ratione sunt quam et maxime temporibus.',
-                'description_ar' => 'وقد تبين إن هذا الموجود الواجب الوجود، الذي هو الروح، الذي هو بمنزلة الطين في هذا الوقت مزيد بيان.',
-                'image' => '21.jpeg',
-                'limited' => 1,
-                'order' => 87,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:26',
-                'updated_at' => '2019-04-02 06:22:40',
-            ),
-            7 => 
-            array (
-                'id' => 8,
-                'parent_id' => 5,
-                'name_ar' => 'أو سارية أليها من.',
-                'name_en' => 'Jenifer Legros',
-                'caption_ar' => 'عن هذا كله، فليسد عنه سمعه من لا يعرف الكلام،.',
-                'caption_en' => 'Bill Breitenberg',
-                'description_en' => 'Est cum voluptatum voluptatibus quia in voluptatem et veniam. Est sunt asperiores impedit eos voluptas non iste.',
-                'description_ar' => 'ذاته، وهو حقيقة الذات، وسائر الأعضاء كلها كالآلات، فكانت تتحد عنده ذاته بهذا الطريق. ثم أنه نظر.',
-                'image' => '14.jpeg',
-                'limited' => 1,
-                'order' => 68,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:26',
-                'updated_at' => '2019-04-02 06:22:53',
-            ),
-            8 => 
-            array (
-                'id' => 9,
-                'parent_id' => 6,
-                'name_ar' => 'الثاني: أوصاف لها.',
-                'name_en' => 'Raoul Pouros',
-                'caption_ar' => 'أخذ حيواناً حياً وشق قلبه ونظر إلى الأجسام بل.',
-                'caption_en' => 'Maegan Gleason',
-                'description_en' => 'Assumenda non quia quia iusto quasi quia voluptates.',
-                'description_ar' => 'والخلق الناقص فلا يجد لنفسه شبيهاً فيهم. وكان أيضاً إذا رجع إلى ذاته، شعر بمثل هذا العضو في صدره.',
-                'image' => '16.jpeg',
-                'limited' => 0,
-                'order' => 15,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:26',
-                'updated_at' => '2019-04-02 06:23:36',
-            ),
-            9 => 
-            array (
-                'id' => 10,
-                'parent_id' => 6,
-                'name_ar' => 'الشمس، ومولية عنها.',
-                'name_en' => 'Prof. Jamil Bernier V',
-                'caption_ar' => 'بارداً، والبارد يصير حار وكان يرى البحر قد أحدق.',
-                'caption_en' => 'Sandrine Hamill',
-                'description_en' => 'Eveniet deserunt beatae vel iusto expedita qui.',
-                'description_ar' => 'الحواس أدراك شيء سواها، وذلك لأنها قوى شائعة في الأجسام، ومنقسمة بانقسامها، فهي لذلك لا تدرك شيئاً.',
-                'image' => '16.jpeg',
-                'limited' => 1,
-                'order' => 16,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:26',
-                'updated_at' => '2019-04-02 06:23:48',
-            ),
-            10 => 
-            array (
+
+            10 =>
+            array(
                 'id' => 11,
                 'parent_id' => 2,
                 'name_ar' => 'أولاد',
@@ -237,8 +118,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:26',
                 'updated_at' => '2019-04-01 18:47:28',
             ),
-            11 => 
-            array (
+            11 =>
+            array(
                 'id' => 12,
                 'parent_id' => 2,
                 'name_ar' => 'بنات',
@@ -257,88 +138,9 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:26',
                 'updated_at' => '2019-04-01 18:50:00',
             ),
-            12 => 
-            array (
-                'id' => 13,
-                'parent_id' => 11,
-                'name_ar' => 'أثر الصنعة، ومن.',
-                'name_en' => 'Aurelio Hegmann',
-                'caption_ar' => 'السلف الصالح في الضنانا به والشح عليه. إلا أن.',
-                'caption_en' => 'Uriel Kuvalis',
-                'description_en' => 'Aut vitae sunt et rerum quisquam adipisci. Voluptatem enim deleniti doloribus iste sunt.',
-                'description_ar' => 'ما يراه من حرارة الحيوان طول مدة حياته، وبرودته من بعد موته، وكل هذا دائم لا يختل، وما كان يجده في.',
-                'image' => '34.jpeg',
-                'limited' => 0,
-                'order' => 63,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:26',
-                'updated_at' => '2019-04-02 06:21:29',
-            ),
-            13 => 
-            array (
-                'id' => 14,
-                'parent_id' => 11,
-                'name_ar' => 'ملئ به التابوت.',
-                'name_en' => 'Mrs. Madonna Bashirian II',
-                'caption_ar' => 'بحسب ذلك أن حركته قديمة لا نهاية لها، فرأى إن.',
-                'caption_en' => 'Lenny Corwin',
-                'description_en' => 'Consequatur quia itaque dolorum quisquam sed consequuntur. Dolores deleniti enim in corrupti quia quis rerum quos.',
-                'description_ar' => 'له بكل ما فاته من ذلك، وكان لا يقاومه شيء من ذلك؛ تحقق عنده كروية الشكل. وما زال يتفكر في ذلك.',
-                'image' => '10.jpeg',
-                'limited' => 1,
-                'order' => 90,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:27',
-                'updated_at' => '2019-04-02 06:21:45',
-            ),
-            14 => 
-            array (
-                'id' => 15,
-                'parent_id' => 12,
-                'name_ar' => 'ولا يجهله إلا أهل.',
-                'name_en' => 'Cheyenne Wiegand',
-                'caption_ar' => 'وتنازعه في الأوقات التي يكون له طول وعرض وعمق،.',
-                'caption_en' => 'Dr. Lourdes Kub',
-                'description_en' => 'Quam ex est in sint quis nihil consequatur. Officiis quia repellendus animi ut illo ea temporibus.',
-                'description_ar' => 'الماء فحينئذً يسكن ويزول عنه ذلك الحاجب إن كان خرج كارهاً؟ وما السبب الذي أزعجه إن كان خرج كارهاً؟.',
-                'image' => '14.jpeg',
-                'limited' => 1,
-                'order' => 58,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:27',
-                'updated_at' => '2019-04-02 06:22:12',
-            ),
-            15 => 
-            array (
-                'id' => 16,
-                'parent_id' => 12,
-                'name_ar' => 'على بعض الأنبياء.',
-                'name_en' => 'Ebony Kovacek',
-                'caption_ar' => 'في قوله، ورسول من عند الفاعل الواجب الوجود.',
-                'caption_en' => 'Marlen Gutmann',
-                'description_en' => 'Animi sit voluptatem itaque non hic et.',
-                'description_ar' => 'الصورة التي لسائر الأجسام ذوات الصور، كالطين مثلاً، كان له من جهة الابتداء، إذ لم يكن شاهده قبل.',
-                'image' => '3.jpeg',
-                'limited' => 0,
-                'order' => 28,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:27',
-                'updated_at' => '2019-04-02 06:22:27',
-            ),
-            16 => 
-            array (
+
+            16 =>
+            array(
                 'id' => 17,
                 'parent_id' => 3,
                 'name_ar' => 'سديري - فيست',
@@ -357,8 +159,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:27',
                 'updated_at' => '2019-04-01 18:40:12',
             ),
-            17 => 
-            array (
+            17 =>
+            array(
                 'id' => 18,
                 'parent_id' => 3,
                 'name_ar' => 'كاجوال',
@@ -377,88 +179,9 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:27',
                 'updated_at' => '2019-04-01 18:42:01',
             ),
-            18 => 
-            array (
-                'id' => 19,
-                'parent_id' => 17,
-                'name_ar' => 'في المشي وأثغر.',
-                'name_en' => 'Hyman Dach',
-                'caption_ar' => 'الموجود الواجب الوجود. فكان يسوءه ذلك، ويعلم انه.',
-                'caption_en' => 'Ignacio Kerluke',
-                'description_en' => 'Quisquam consequuntur harum distinctio vel dolorem. Debitis aut qui iure recusandae ea.',
-                'description_ar' => 'لقلنا إنها هي! ولولا اختصاصها ببدنه عند حدوثه، لقلنا إنها لم تحدث! وشاهد في هذه الأقسام الثلاثة من.',
-                'image' => '21.jpeg',
-                'limited' => 1,
-                'order' => 41,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:27',
-                'updated_at' => '2019-04-02 06:20:31',
-            ),
-            19 => 
-            array (
-                'id' => 20,
-                'parent_id' => 17,
-                'name_ar' => 'الرؤية أعظم من.',
-                'name_en' => 'Winston Friesen',
-                'caption_ar' => 'أحاط بها سرادق العذاب، وأحرقتها نار الحجاب،.',
-                'caption_en' => 'Eino King',
-                'description_en' => 'Molestiae porro dolor consequatur.',
-                'description_ar' => 'في خاطرة أن الآفة التي نزلت بها، إنما هي العضو غائب عن العيان مستكن في باطن الجسد، وان ذلك بمنزلة.',
-                'image' => '18.jpeg',
-                'limited' => 1,
-                'order' => 4,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:27',
-                'updated_at' => '2019-04-02 06:20:44',
-            ),
-            20 => 
-            array (
-                'id' => 21,
-                'parent_id' => 18,
-                'name_ar' => 'أدرك بها ذلك.',
-                'name_en' => 'Cathryn Nikolaus',
-                'caption_ar' => 'بميله إلى جهة العلو على الإطلاق، ولا إلى اسفل،.',
-                'caption_en' => 'Anika Fritsch',
-                'description_en' => 'Fugiat exercitationem voluptatibus fugiat possimus esse suscipit.',
-                'description_ar' => 'كل واحد من هذه الاضرب الثلاثة. آما الضرب الأول: فكان تشبه بها فيه: إن ألزم نفسه إن لا يرى شيئاً.',
-                'image' => '32.jpeg',
-                'limited' => 1,
-                'order' => 91,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:28',
-                'updated_at' => '2019-04-02 06:20:58',
-            ),
-            21 => 
-            array (
-                'id' => 22,
-                'parent_id' => 18,
-                'name_ar' => 'وهو الكمال، وهو.',
-                'name_en' => 'Dan Kovacek MD',
-                'caption_ar' => 'أنه هداه لاستعمال تلك الأعضاء التي خلقت له في.',
-                'caption_en' => 'Kali Bartoletti',
-                'description_en' => 'Velit delectus animi tenetur sapiente numquam voluptas veniam maiores. Nostrum velit sint dolorem dolores eos quia ab.',
-                'description_ar' => 'بها. وكان أولاً نصفها الذي هو الروح، الذي هو بمنزلة الطين في المثال المتقدم، يشبه معنى الجسمية.',
-                'image' => '29.jpeg',
-                'limited' => 1,
-                'order' => 36,
-                'is_home' => 0,
-                'is_featured' => 1,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:28',
-                'updated_at' => '2019-04-02 06:21:12',
-            ),
-            22 => 
-            array (
+
+            22 =>
+            array(
                 'id' => 23,
                 'parent_id' => 4,
                 'name_ar' => 'كاجوال',
@@ -477,8 +200,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:28',
                 'updated_at' => '2019-03-19 16:11:07',
             ),
-            23 => 
-            array (
+            23 =>
+            array(
                 'id' => 24,
                 'parent_id' => 4,
                 'name_ar' => 'بدلات إستقبال',
@@ -497,88 +220,9 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-03-16 16:17:28',
                 'updated_at' => '2019-04-01 18:27:56',
             ),
-            24 => 
-            array (
-                'id' => 25,
-                'parent_id' => 23,
-                'name_ar' => 'ويلتفت إليه حسبما.',
-                'name_en' => 'Georgianna Schuppe',
-                'caption_ar' => 'الأول كثرة لا نهاية له، فهي قوة ليست في جسم، وقد.',
-                'caption_en' => 'Miss Kattie Kulas Jr.',
-                'description_en' => 'Perspiciatis alias rem sit aut.',
-                'description_ar' => 'تعب أعظم وشقاوةً أطم ممن إذا تصفحت أعماله من وقت انتباهه من نومه إلى حين مماتها وانقضاء مدتها. ولم.',
-                'image' => '12.jpeg',
-                'limited' => 1,
-                'order' => 81,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:28',
-                'updated_at' => '2019-04-02 06:19:25',
-            ),
-            25 => 
-            array (
-                'id' => 26,
-                'parent_id' => 23,
-                'name_ar' => 'لتكون الأمشاج.',
-                'name_en' => 'Percy Batz',
-                'caption_ar' => 'تظهر في مرآة من المرائي الصقيلة، فانها ليست.',
-                'caption_en' => 'Matt Murphy',
-                'description_en' => 'Et sed consequatur dolor ducimus pariatur et.',
-                'description_ar' => 'في جحر استحسنه للسكنى قبل ذلك. وكان عليه مدرعة سوداء من الشعر والصوف، فظن إنها لباس طبيعي. فوقف.',
-                'image' => '16.jpeg',
-                'limited' => 1,
-                'order' => 83,
-                'is_home' => 0,
-                'is_featured' => 1,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:28',
-                'updated_at' => '2019-04-02 06:19:45',
-            ),
-            26 => 
-            array (
-                'id' => 27,
-                'parent_id' => 24,
-                'name_ar' => 'العلم والجسم.',
-                'name_en' => 'Sterling Armstrong',
-                'caption_ar' => 'حشو فلك القمر. فرأى له ذاتاً بريئة عن المادة.',
-                'caption_en' => 'Agustina Jacobs',
-                'description_en' => 'Culpa culpa nulla sed ea dolorem et.',
-                'description_ar' => 'أنه تولد من الأرض في وقت الحر، أسخن كثيراً من الهواء من الأرض والماء وأغلظ من النار والهواء، صار.',
-                'image' => '3.jpeg',
-                'limited' => 0,
-                'order' => 58,
-                'is_home' => 0,
-                'is_featured' => 0,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:28',
-                'updated_at' => '2019-04-02 06:20:01',
-            ),
-            27 => 
-            array (
-                'id' => 28,
-                'parent_id' => 24,
-                'name_ar' => 'لابد للعالم من.',
-                'name_en' => 'Madge Dicki PhD',
-                'caption_ar' => 'ومازال يطلب الفناء عن نفسه والإخلاص في مشاهدة.',
-                'caption_en' => 'Eldon Rodriguez',
-                'description_en' => 'Nihil labore consequuntur deserunt quo incidunt.',
-                'description_ar' => 'حجاب رقيق وستر لطيف ينتهك سريعاً لمن هو أهله، ويتكاثف لمن لا يستحق تجاوزه حتى لا يقع بصره على.',
-                'image' => '25.jpeg',
-                'limited' => 0,
-                'order' => 85,
-                'is_home' => 0,
-                'is_featured' => 1,
-                'active' => 0,
-                'deleted_at' => NULL,
-                'created_at' => '2019-03-16 16:17:28',
-                'updated_at' => '2019-04-02 06:20:16',
-            ),
-            28 => 
-            array (
+
+            28 =>
+            array(
                 'id' => 29,
                 'parent_id' => 4,
                 'name_ar' => 'بدلات خروج',
@@ -597,8 +241,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-04-01 18:31:09',
                 'updated_at' => '2019-04-01 18:31:09',
             ),
-            29 => 
-            array (
+            29 =>
+            array(
                 'id' => 30,
                 'parent_id' => 4,
                 'name_ar' => 'أحذية نسائي',
@@ -617,8 +261,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-04-01 18:32:25',
                 'updated_at' => '2019-04-01 18:32:25',
             ),
-            30 => 
-            array (
+            30 =>
+            array(
                 'id' => 31,
                 'parent_id' => 4,
                 'name_ar' => 'إكسسوارات',
@@ -637,8 +281,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2019-04-01 18:34:41',
                 'updated_at' => '2019-04-01 18:34:41',
             ),
-            31 => 
-            array (
+            31 =>
+            array(
                 'id' => 32,
                 'parent_id' => 3,
                 'name_ar' => 'أحذية وإكسسوارات',
@@ -658,7 +302,5 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => '2019-04-01 18:43:56',
             ),
         ));
-        
-        
     }
 }

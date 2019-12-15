@@ -136,9 +136,9 @@ class ViewComposers
         return $view->with(compact('sizes'));
     }
 
-    public function getBrands(View $view) {
+    public function getBrands(View $view)
+    {
         $brands = Brand::active()->where('is_home', true)->has('products', '>', 0)->take(12)->get();
         return $view->with(compact('brands'));
     }
 }
-
