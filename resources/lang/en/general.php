@@ -268,7 +268,7 @@ return array(
   'shop' => 'shop',
   'information_review' => 'Information Review',
   'app_keywords' => 'NASH is a Kuwaiti brand registered in the State of Kuwait. We started 2014 and we continue to shorten all lines of fashion in cutting the suit of high-end women who need to shine in appearance and care about clean manufacturing and raw materials. ',
-  'app_author' => 'Harayer',
+  'app_author' => 'NashKW',
   'branches' => 'Our Branches',
   'item_code' => 'Product Code'
 );
