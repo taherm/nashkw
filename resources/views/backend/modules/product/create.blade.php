@@ -111,23 +111,20 @@
 
 
                     <div class="col-md-3">
-                        <div class="form-group{{ $errors->has('start_sale') ? ' has-error' : '' }}">
-                            <label for="start_sale" class="control-label">start_sale Arabic</label>
-                            <input id="start_sale" type="date" class="form-control" name="start_sale" value="{{ old('start_sale') }}" placeholder="name in arabic" autofocus>
-                            @if ($errors->has('start_sale'))
-                            <span class="help-block">
-                                <strong>
-                                    {{ $errors->first('start_sale') }}
-                                </strong>
-                            </span>
-                            @endif
+                        <div class="form-group">
+                            <label class="control-label">Start Sale Date</label>
+                            <div class="input-group date form_datetime">
+                                <input type="text" size="16" readonly class="form-control" name="start_sale" value="{{ old('start_sale') ? old('start_sale') : date('Y-m-d') }}" required>
+                                <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
+                            </div>
                         </div>
+
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label class="control-label">End Sale Date</label>
                             <div class="input-group date form_datetime">
-                                <input type="text" size="16" readonly class="form-control" name="end_sale" value="{{ old('end_sale') ? old('end_sale') : '01 January 2019 - 07:55' }}" required>
+                                <input type="text" size="16" readonly class="form-control" name="end_sale" value="{{ old('end_sale') ? old('end_sale') : date('Y-m-d') }}" required>
                                 <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
                             </div>
                         </div>

@@ -1,0 +1,14 @@
+
+                    <div class="col-md-3">
+                        <div class="form-group{{ $errors->has('start_sale') ? ' has-error' : '' }}">
+                            <label for="start_sale" class="control-label">start_sale Arabic</label>
+                            <input id="start_sale" type="date" class="form-control" name="start_sale" value="{{ old('start_sale') }}" placeholder="name in arabic" autofocus>
+                            @if ($errors->has('start_sale'))
+                            <span class="help-block">
+                                <strong>
+                                    {{ $errors->first('start_sale') }}
+                                </strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
