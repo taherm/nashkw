@@ -12,8 +12,11 @@
                 @endif
                 <ul>
                     @foreach($group as $branch)
-                    <li><i class="fa fa-map-marker"></i>
-                        <a class="btn-sm" href="https://www.google.com/maps/search/?api=1&query={{ $branch->latitude }},{{ $branch->longitude }}">
+                    <li>{{--<i class="fa fa-map-marker"></i>--}}
+                        {{-- <a class="btn-sm" href="https://www.google.com/maps/search/?api=1&query={{ $branch->latitude }},{{ $branch->longitude }}">
+                        <font size="4"> {{ $branch->name }} </font>
+                        </a>--}}
+                        <a class="btn-sm" href="#">
                             <font size="4"> {{ $branch->name }} </font>
                         </a>
                         <br>
