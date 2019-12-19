@@ -86,7 +86,7 @@ return array(
   'return_policy' => 'Return Policy',
   'orders_and_shopping' => 'orders and shopping',
   'my_account' => 'My Account',
-  'order_history' => 'order history',
+  'order_history' => 'Order History',
   'wlist' => 'Wishlist',
   'designed_by' => 'designed by',
   'all_rights_reserved' => 'All Rights Reserved	',
@@ -235,7 +235,7 @@ return array(
   'master_or_visa' => 'master or visa',
   'maximum_qty_order_exceed_the_limit' => 'maximum qty order exceed the limit',
   'message_free_shipment_branch_receiving' => 'message free shipment branch receiving',
-  'mobile' => 'mobile',
+  'mobile' => 'Mobile',
   'more_information' => 'more information',
   'net_price' => 'net price',
   'notes' => 'notes',
@@ -270,5 +270,7 @@ return array(
   'app_keywords' => 'NASH is a Kuwaiti brand registered in the State of Kuwait. We started 2014 and we continue to shorten all lines of fashion in cutting the suit of high-end women who need to shine in appearance and care about clean manufacturing and raw materials. ',
   'app_author' => 'NashKW',
   'branches' => 'Our Branches',
-  'item_code' => 'Product Code'
+  'item_code' => 'Product Code',
+  'not_a_member' => 'Sign Up',
+  'whatsapp' => "WhatsApp"
 );

@@ -273,4 +273,5 @@ return array(
   'not_a_member' => 'سجل معنا',
   'hot_deals' => 'افضل العروض',
   'item_code' => 'رقم الكود',
+  'whatsapp' => "WhatsApp"
 );
