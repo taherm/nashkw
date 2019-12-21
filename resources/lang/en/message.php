@@ -8,4 +8,7 @@ return array(
   'checkout' => 'checkout',
   'register' => 'Register with us now.',
   'copy_right' => 'All Copyright reserved. Nash',
+  'item_added_to_cart' => 'Item Added To Cart.',
+  'item_limit_exceed' => 'Item Limit Exceeded.',
+  'cart_destroyed' => 'Cart Cleared.'
 );
