@@ -35,7 +35,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                         <div class="item">
                             <a class="btn btn-theme btn-theme-transparent btn-zoom" @desktop data-gal="prettyPhoto" href="{{ asset(env('LARGE').$product->image) }}" @enddesktop><i class="fa fa-plus"></i></a>
                             <a @desktop data-gal="prettyPhoto" href="{{ asset(env('LARGE').$product->image) }}" @enddesktop>
-                                <img class="img-responsive" src="{{ asset(env('LARGE').$product->image) }}" alt="" />
+                                <img class="img-responsive" src="{{ asset(env('LARGE').$product->image) }}" alt="{{ $product->name_ar . $product->name_en . $product->description_ar . $product->description_en }}" />
                             </a>
                         </div>
                         @if(!$product->gallery->images->isEmpty())
@@ -45,7 +45,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                 <i class="fa fa-plus"></i>
                             </a>
                             <a @desktop data-gal="prettyPhoto" href="{{ asset(env('LARGE').$img->path) }}" @enddesktop>
-                                <img class="img-responsive" src="{{ asset(env('LARGE').$img->path) }}" alt="" />
+                                <img class="img-responsive" src="{{ asset(env('LARGE').$img->path) }}" alt="{{ $product->name_ar . $product->name_en . $product->description_ar . $product->description_en . $img->caption_ar . $img->caption_en}}" />
                             </a>
                         </div>
                         @endforeach
