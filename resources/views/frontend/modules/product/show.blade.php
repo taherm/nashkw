@@ -62,7 +62,7 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                         @foreach($product->gallery->images as $img)
                         <div class="col-xs-2 col-sm-2 col-md-3">
                             <a @desktop data-gal="prettyPhoto" href="{{ asset(env('LARGE').$img->path) }}" @enddesktop>
-                                <img class="img-responsive" src="{{ asset(env('LARGE').$img->path) }}" alt="{{ $img->path}}" />
+                                <img class="img-responsive" src="{{ asset(env('LARGE').$img->path) }}" alt="{{ $product->name}}" />
                             </a>
                         </div>
                         @endforeach
