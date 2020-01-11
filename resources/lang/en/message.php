@@ -10,5 +10,6 @@ return array(
   'copy_right' => 'All Copyright reserved. Nash',
   'item_added_to_cart' => 'Item Added To Cart.',
   'item_limit_exceed' => 'Item Limit Exceeded.',
-  'cart_destroyed' => 'Cart Cleared.'
+  'cart_destroyed' => 'Cart Cleared.',
+  'shipping_message' => 'We are interested in highlighting the beauty of Muslim women beacuse they are a modern women.',
 );
