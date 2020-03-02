@@ -20,7 +20,9 @@
                             <font size="4"> {{ $branch->name }} </font>
                         </a>
                         <br>
-                        <font size="4"> {{ $branch->phone }} </font>
+                        <p style="direction:ltr">
+                            <font face="Hind Siliguri" size="4"> {{ $branch->phone }} </font>
+                        </p>
                     </li>
                     @endforeach
                 </ul>
