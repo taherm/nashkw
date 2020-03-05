@@ -267,7 +267,7 @@ return array(
   'welcome_message' => 'welcome message',
   'shop' => 'shop',
   'information_review' => 'Information Review',
-  'app_keywords' => 'NASH is a Kuwaiti brand registered in the State of Kuwait. We started 2014 and we continue to shorten all lines of fashion in cutting the suit of high-end women who need to shine in appearance and care about clean manufacturing and raw materials. ',
+  'app_keywords' => 'Outfit,outfits,shopping,fashion,kagwal,nash,manstyle,beauty,hijab,sportswear',
   'app_author' => 'NashKW',
   'branches' => 'Our Branches',
   'item_code' => 'Product Code',
