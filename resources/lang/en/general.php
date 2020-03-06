@@ -267,7 +267,7 @@ return array(
   'welcome_message' => 'welcome message',
   'shop' => 'shop',
   'information_review' => 'Information Review',
-  'app_keywords' => 'Outfit,outfits,shopping,fashion,kagwal,nash,manstyle,beauty,hijab,sportswear',
+  'app_keywords' => 'Outfit outfits shopping fashion kagwal nash manstyle beauty hijab sportswear',
   'app_author' => 'NashKW',
   'branches' => 'Our Branches',
   'item_code' => 'Product Code',
