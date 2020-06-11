@@ -183,11 +183,11 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
                                     {{ trans('general.add_to_cart') }}
                                 </button>
                                 @if($product->isFavorited)
-                                <a class="btn btn-theme btn-wish-list btn-outline-danger" href="{{ route("frontend.favorite.remove", $product->id) }}"><span class="fa fa-fw fa-heart"></span></a>
+                                <a class="btn btn-theme btn-wish-list btn-outline-danger" href="{{ route("frontend.favorite.remove", $product->id) }}"><i class="fa fa-fw fa-heart"></i></a>
                                 @else
-                                <a class="btn btn-theme btn-wish-list" href="{{ route("frontend.favorite.add", $product->id) }}"><span class="fa fa-fw fa-heart"></span></a>
+                                <a class="btn btn-theme btn-wish-list" href="{{ route("frontend.favorite.add", $product->id) }}"><i class="fa fa-fw fa-heart"></i></a>
                                 @endif
-                                <a class="btn btn-theme btn-compare" href="#" data-toggle="modal" data-target="#imagemodal" title="{{ trans('general.sizes') }}"><i class="fa fa-fw fa-tags"></i></a>
+                                <!-- <a class="btn btn-theme btn-compare" href="#" data-toggle="modal" data-target="#imagemodal" title="{{ trans('general.sizes') }}"><i class="fa fa-fw fa-tags"></i></a> -->
                             </div>
                         </div>
                     </form>

@@ -13,25 +13,19 @@
 
                             <li>
                                 @auth
-                                    @if($product->isFavorited)
-                                        <a href="{{ route('frontend.favorite.remove',$product->id) }}"
-                                           data-toggle="tooltip"
-                                           title="{{ trans('general.remove_from_favorite') }}">
-                                            <i class="fa fa-heart" style="color: red"></i>
-                                        </a>
-                                    @else
-                                        <a href="{{ route('frontend.favorite.add',$product->id) }}"
-                                           data-toggle="tooltip"
-                                           title="{{ trans('general.add_to_favorite') }}">
-                                            <i class="fa fa-heart-o"></i>
-                                        </a>
-                                    @endif
+                                @if($product->isFavorited)
+                                <a href="{{ route('frontend.favorite.remove',$product->id) }}" data-toggle="tooltip" title="{{ trans('general.remove_from_favorite') }}">
+                                    <i class="fa fa-heart" style="color: red"></i>
+                                </a>
                                 @else
-                                    <a href="{{ route('login') }}"
-                                       data-toggle="tooltip"
-                                       title="{{ trans('general.add_to_favorite') }}">
-                                        <i class="fa fa-heart-o"></i>
-                                    </a>
+                                <a href="{{ route('frontend.favorite.add',$product->id) }}" data-toggle="tooltip" title="{{ trans('general.add_to_favorite') }}">
+                                    <i class="fa fa-heart-o"></i>
+                                </a>
+                                @endif
+                                @else
+                                <a href="{{ route('login') }}" data-toggle="tooltip" title="{{ trans('general.add_to_favorite') }}">
+                                    <i class="fa fa-heart-o"></i>
+                                </a>
                                 @endauth
                             </li>
 
@@ -47,18 +41,17 @@
         @include('frontend.partials._product_show_price')
         <hr>
         @if($product->totalQty > 0)
-            <p class="availability in-stock">{{ trans('general.availability') }}:
-                <span>In stock</span></p>
-            </br>
-            <div class="product-review">
-                <p>{!! $product->description !!}</p>
-            </div>
-            <hr>
-            @include('frontend.partials._product_show_sizes_colors')
+        <p class="availability in-stock">{{ trans('general.availability') }}:
+            <span>In stock</span></p>
+        </br>
+        <div class="product-review">
+            <p>{!! $product->description !!}</p>
+        </div>
+        <hr>
+        @include('frontend.partials._product_show_sizes_colors')
         @else
-            <p class="availability in-stock">{{ trans('general.availability') }} : <span
-                        style="color: #ff0000;">{{ trans('general.out_of_stock') }}</span>
-            </p>
+        <p class="availability in-stock">{{ trans('general.availability') }} : <span style="color: #ff0000;">{{ trans('general.out_of_stock') }}</span>
+        </p>
         @endif
     </div>
 </div>
